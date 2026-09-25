@@ -1,0 +1,299 @@
+{
+  "_help": [
+    "Sound effects for Sunrise Suite. Run `npm run sfx` after editing; WAVs go to assets/audio/sfx/<name>.wav.",
+    "Each sound: optional \"preset\" (pickupCoin, powerUp, blipSelect, jump, hitHurt, click, synth, tone, random, laserShoot, explosion)",
+    "with a \"seed\" (change the seed for a different variation), plus \"overrides\" for exact jsfxr parameters,",
+    "OR a \"b58\" string copied from an sfxr.me link (see tools/sfx/LINKS.md). Optional \"volume\" 0..1.",
+    "wave_type: 0 square, 1 sawtooth, 2 sine, 3 noise. p_base_freq ~ pitch (0.2717 C4, 0.3517 A4, 0.3837 C5, 0.4311 E5, 0.4703 G5, 0.5439 C6).",
+    "Envelope values (attack/sustain/decay) are lengths: 0.1 ~ 0.02 s, 0.3 ~ 0.2 s, 0.5 ~ 0.57 s.",
+    "Cozy rules: prefer sine (2), keep volume low, soften noise with p_lpf_freq 0.2-0.5, no harsh lasers or explosions."
+  ],
+  "defaults": {
+    "sample_rate": 44100,
+    "sample_size": 16,
+    "sound_vol": 0.22,
+    "overrides": {}
+  },
+  "sounds": {
+    "ui_click": {
+      "note": "Any button press: a tiny soft wooden 'tok'.",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.5,
+        "p_freq_ramp": -0.3,
+        "p_env_sustain": 0.03,
+        "p_env_decay": 0.16,
+        "p_env_punch": 0.2
+      }
+    },
+    "ui_hover": {
+      "note": "Pointer enters a button (desktop only). Very quiet.",
+      "volume": 0.08,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.58,
+        "p_env_sustain": 0.02,
+        "p_env_decay": 0.1
+      }
+    },
+    "ui_back": {
+      "note": "Close a panel / go back.",
+      "volume": 0.18,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.45,
+        "p_freq_ramp": -0.25,
+        "p_env_sustain": 0.04,
+        "p_env_decay": 0.2
+      }
+    },
+    "item_pickup": {
+      "note": "Item goes into the inventory: C5 rising to G5.",
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.3837,
+        "p_arp_mod": 0.608,
+        "p_arp_speed": 0.55,
+        "p_env_sustain": 0.08,
+        "p_env_decay": 0.25,
+        "p_env_punch": 0.3
+      }
+    },
+    "item_combine": {
+      "note": "Two items combined successfully: shimmering rising third.",
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.3837,
+        "p_arp_mod": 0.478,
+        "p_arp_speed": 0.62,
+        "p_env_sustain": 0.15,
+        "p_env_decay": 0.35,
+        "p_vib_strength": 0.1,
+        "p_vib_speed": 0.5
+      }
+    },
+    "item_fail": {
+      "note": "Item can't be used here / can't combine: gentle low 'bwomp', never harsh.",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.27,
+        "p_freq_ramp": -0.08,
+        "p_env_sustain": 0.06,
+        "p_env_decay": 0.26,
+        "p_env_punch": 0.1
+      }
+    },
+    "lock_digit": {
+      "note": "Turning a dial / pressing a key on a lock: short soft tick.",
+      "volume": 0.18,
+      "overrides": {
+        "wave_type": 3,
+        "p_base_freq": 0.7,
+        "p_env_sustain": 0.02,
+        "p_env_decay": 0.1,
+        "p_lpf_freq": 0.6,
+        "p_hpf_freq": 0.1
+      }
+    },
+    "lock_wrong": {
+      "note": "Wrong code: soft falling minor third.",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.3,
+        "p_arp_mod": -0.15,
+        "p_arp_speed": 0.55,
+        "p_env_sustain": 0.08,
+        "p_env_decay": 0.2
+      }
+    },
+    "lock_open": {
+      "note": "Any lock opens: G4 jumping an octave.",
+      "volume": 0.24,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.3318,
+        "p_arp_mod": 0.745,
+        "p_arp_speed": 0.6,
+        "p_env_sustain": 0.1,
+        "p_env_decay": 0.3,
+        "p_env_punch": 0.35
+      }
+    },
+    "drawer_open": {
+      "note": "Drawer / cabinet / box opens: soft wooden slide.",
+      "volume": 0.25,
+      "overrides": {
+        "wave_type": 3,
+        "p_base_freq": 0.3,
+        "p_env_attack": 0.08,
+        "p_env_sustain": 0.12,
+        "p_env_decay": 0.2,
+        "p_lpf_freq": 0.25,
+        "p_lpf_ramp": 0.05,
+        "p_hpf_freq": 0.02
+      }
+    },
+    "door_open": {
+      "note": "Balcony door slides open: soft breeze whoosh.",
+      "volume": 0.28,
+      "overrides": {
+        "wave_type": 3,
+        "p_base_freq": 0.2,
+        "p_env_attack": 0.2,
+        "p_env_sustain": 0.3,
+        "p_env_decay": 0.4,
+        "p_lpf_freq": 0.18,
+        "p_lpf_ramp": 0.08
+      }
+    },
+    "hint": {
+      "note": "Grandma's notepad gives a hint: little bell.",
+      "volume": 0.18,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.4703,
+        "p_arp_mod": 0.478,
+        "p_arp_speed": 0.5,
+        "p_env_sustain": 0.05,
+        "p_env_decay": 0.3,
+        "p_vib_strength": 0.15,
+        "p_vib_speed": 0.6
+      }
+    },
+    "step_solved": {
+      "note": "A puzzle step is solved and the sun rises a bit: E5 to A5.",
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.4311,
+        "p_arp_mod": 0.528,
+        "p_arp_speed": 0.58,
+        "p_env_sustain": 0.06,
+        "p_env_decay": 0.3,
+        "p_env_punch": 0.3
+      }
+    },
+    "star_1": {
+      "note": "Results screen, first star (C5).",
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.3837,
+        "p_env_sustain": 0.05,
+        "p_env_decay": 0.35,
+        "p_env_punch": 0.4
+      }
+    },
+    "star_2": {
+      "note": "Second star (E5).",
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.4311,
+        "p_env_sustain": 0.05,
+        "p_env_decay": 0.35,
+        "p_env_punch": 0.4
+      }
+    },
+    "star_3": {
+      "note": "Third star (G5), rings a bit longer.",
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.4703,
+        "p_env_sustain": 0.06,
+        "p_env_decay": 0.45,
+        "p_env_punch": 0.4
+      }
+    },
+    "seashell_gain": {
+      "note": "Seashells (currency) earned: tiny sparkle. Example of a seeded preset.",
+      "preset": "pickupCoin",
+      "seed": 7,
+      "volume": 0.16,
+      "overrides": {
+        "wave_type": 2
+      }
+    },
+    "decor_place": {
+      "note": "Decor item set down in the penthouse: soft thud.",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.25,
+        "p_freq_ramp": -0.35,
+        "p_env_sustain": 0.04,
+        "p_env_decay": 0.2,
+        "p_env_punch": 0.5
+      }
+    },
+    "decor_pickup": {
+      "note": "Decor item lifted: little upward 'bloop'.",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.28,
+        "p_freq_ramp": 0.3,
+        "p_env_sustain": 0.03,
+        "p_env_decay": 0.2
+      }
+    },
+    "postcard_found": {
+      "note": "Hidden postcard from Grandma found: warm, a little magical.",
+      "volume": 0.24,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.3517,
+        "p_arp_mod": 0.478,
+        "p_arp_speed": 0.5,
+        "p_env_sustain": 0.2,
+        "p_env_decay": 0.4,
+        "p_env_punch": 0.2,
+        "p_vib_strength": 0.12,
+        "p_vib_speed": 0.55
+      }
+    },
+    "page_turn": {
+      "note": "Scrapbook / postcard / note flips.",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 3,
+        "p_base_freq": 0.55,
+        "p_freq_ramp": -0.1,
+        "p_env_attack": 0.03,
+        "p_env_sustain": 0.1,
+        "p_env_decay": 0.22,
+        "p_lpf_freq": 0.45,
+        "p_hpf_freq": 0.15
+      }
+    },
+    "level_complete": {
+      "note": "Balcony door open, sun is up: G4 to D5, long and warm.",
+      "volume": 0.26,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.3318,
+        "p_arp_mod": 0.608,
+        "p_arp_speed": 0.4,
+        "p_env_sustain": 0.3,
+        "p_env_decay": 0.55,
+        "p_env_punch": 0.25,
+        "p_vib_strength": 0.1,
+        "p_vib_speed": 0.5
+      }
+    },
+    "daily_unlock": {
+      "note": "Today's Daily Sunrise is ready / calendar tile added.",
+      "volume": 0.24,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.3837,
+        "p_arp_mod": 0.745,
+        "p_arp_speed": 0.5,
+        "p_env_sustain": 0.2,
+        "p_env_decay": 0.45,
+        "p_vib_strength": 0.12,
+        "p_vib_speed": 0.5
+      }
+    }
+  }
+}

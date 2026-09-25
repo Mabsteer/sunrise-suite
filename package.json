@@ -1,0 +1,14 @@
+{
+  "name": "sunrise-suite",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sunrise Suite - a cozy 2D escape-room puzzle game (Godot). Node is only used for tooling.",
+  "type": "module",
+  "scripts": {
+    "sfx": "node tools/sfx/generate_sfx.mjs",
+    "sfx:list": "node tools/sfx/generate_sfx.mjs --list"
+  },
+  "devDependencies": {
+    "jsfxr": "^1.4.1"
+  }
+}

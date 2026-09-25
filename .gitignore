@@ -1,0 +1,20 @@
+# Godot
+.godot/
+*.translation
+
+# Exported builds (CI builds and deploys these)
+builds/
+
+# Node
+node_modules/
+
+# Screenshot tour output
+tests/screenshots/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Personal Claude Code settings
+.claude/settings.local.json
