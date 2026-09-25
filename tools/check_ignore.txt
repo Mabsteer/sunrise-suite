@@ -1,2 +1,4 @@
 # Regexes (one per line) for Godot log lines that tools/check.sh should NOT treat as failures.
 # Keep this list short and explain every entry.
+# CI container has no fontconfig; the game only uses its bundled fonts, so system fonts don't matter.
+Unable to load fontconfig, system font support is disabled
