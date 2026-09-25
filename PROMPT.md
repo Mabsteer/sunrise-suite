@@ -14,6 +14,7 @@ You are building **Sunrise Suite**, a cozy 2D point-and-click escape-room puzzle
 
 ## 1. Environment (already set up — do not reinstall)
 - Windows 11 with Git Bash. Godot 4.7.2 standard (not .NET) is installed. **Always call it via `bash tools/godot.sh <args>`**. The wrapper finds the console binary locally and uses `godot` in CI. Export templates 4.7.2 (Windows x86_64 + Web) are installed in `%APPDATA%\Godot\export_templates\4.7.2.stable\`.
+- The PC's system language is Dutch, so Godot's CLI progress messages may be in Dutch. `ERROR:`/`WARNING:` prefixes stay English, so grep for those. Write `export_presets.cfg` with every standard key (including `include_filter`/`exclude_filter`), because a hand-trimmed preset file makes Godot log errors.
 - Node 24 + npm, `jsfxr` installed. `npm run sfx` generates sound effects (§7).
 - Git + GitHub CLI logged in as `Mabsteer`. Remote `origin` = `https://github.com/Mabsteer/sunrise-suite` (public). GitHub Pages is set to deploy from GitHub Actions → `https://mabsteer.github.io/sunrise-suite/`.
 - Already in the repo: `tools/godot.sh`, `tools/sfx/` (generator + `sfx.json` + `LINKS.md`), `assets/audio/sfx/*.wav` (23 starter sounds), `docs/SUNO_PROMPTS.md`, `.claude/settings.json`, `.gitignore`, `.gitattributes`, `package.json`, this file.
