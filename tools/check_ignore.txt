@@ -1,0 +1,2 @@
+# Regexes (one per line) for Godot log lines that tools/check.sh should NOT treat as failures.
+# Keep this list short and explain every entry.
