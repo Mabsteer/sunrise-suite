@@ -150,7 +150,7 @@
       }
     },
     "hint": {
-      "note": "Grandma's notepad gives a hint: little bell.",
+      "note": "Mamie's notebook gives a hint: little bell.",
       "volume": 0.18,
       "overrides": {
         "wave_type": 2,
@@ -215,7 +215,7 @@
       }
     },
     "decor_place": {
-      "note": "Decor item set down in the penthouse: soft thud.",
+      "note": "Decor item set down in the sunroom: soft thud.",
       "volume": 0.2,
       "overrides": {
         "wave_type": 2,
@@ -238,7 +238,7 @@
       }
     },
     "postcard_found": {
-      "note": "Hidden postcard from Grandma found: warm, a little magical.",
+      "note": "Hidden postcard found: warm, a little magical.",
       "volume": 0.24,
       "overrides": {
         "wave_type": 2,
@@ -459,7 +459,7 @@
       }
     },
     "purchase": {
-      "note": "Buying something from Grandma's Catalog.",
+      "note": "Buying something at the Saturday market.",
       "volume": 0.2,
       "overrides": {
         "wave_type": 2,

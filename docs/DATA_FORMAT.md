@@ -59,10 +59,10 @@ Keys starting with `_` (like `_help`) are comments and are ignored.
 ## `data/daily.json`
 `rooms` rotation, `weekday_tiers` (Sunday first), `streak_rewards` (streak length → decor id).
 
-## `data/decor.json`: penthouse decor
+## `data/decor.json`: decor for the sunroom
 `items`: `{ "name", "sprite", "size": [w, h], "slot": "floor_large" | "floor_small" | "wall" | "table" | "rug", "price": seashells or null (earned only), "text", "idle"? }`.
-`idle` adds a small loop in the penthouse: `"breathe"` (grows a little from the floor, like a sleeping cat) or `"sway"` (swings from its top edge, like lanterns). Players who turn on *Reduce motion* don't see it.
-`slots`: where decor can stand in the penthouse (`id`, `type`, `anchor` [x, y], optional `max` [w, h]).
+`idle` adds a small loop in the sunroom: `"breathe"` (grows a little from the floor, like a sleeping cat) or `"sway"` (swings from its top edge, like lanterns). Players who turn on *Reduce motion* don't see it.
+`slots`: where decor can stand in the sunroom (`id`, `type`, `anchor` [x, y], optional `max` [w, h]).
 
 ## `data/clues.json`: clue wording
 Per lock type, lists of phrasings by how indirect they are (`"0"` names the lock and gives the answer, `"3"` makes you think), plus `first`/`last` halves for split clues. See `_help` in the file for all placeholders. Add as many phrasings as you like; the level validator fails if a placeholder is misspelled. `decoys` are harmless notes that don't open anything.

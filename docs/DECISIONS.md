@@ -57,3 +57,11 @@ One line per decision: what, and why.
 - Par-time sanity check: LevelSolver.estimate_seconds models a careful player who uses no hints (finding things, reading, working out answers, sliding puzzles). The validator prints the median and 90th percentile per room × tier and fails if a tier's par_time is below the 90th percentile. Tiers 9-10 were raised to 960 s / 1020 s.
 - Hub decor can have an "idle" loop in decor.json (breathe / sway). It's skipped with Reduce motion.
 - The web loading screen is styled through the export preset's head_include (CSS over Godot's default shell) instead of a custom HTML shell, so engine upgrades keep working.
+
+## v2 (playtest feedback, 2026-09-26)
+- The game stays in English (translation-ready), and so do the docs, including docs/STORY.md; the owner's feedback was in Dutch, the chat replies are in Dutch.
+- New premise (docs/STORY.md): Juliette inherits the house of her grandmother Céline ("Mamie", 1938-2025). Céline left one last treasure hunt through the house; each room is one period of her life, going back in time from the kitchen (her last years) to the front garden (her childhood). This also explains why there are riddles everywhere: Mamie made treasure hunts for Juliette every summer.
+- The title stays "Sunrise Suite" (repo, URL and saves keep working); the subtitle becomes "Mamie Céline's house by the sea". The penthouse hub becomes "the sunroom", the catalog "the Saturday market" (the market around the corner), hints come from "Mamie's notebook".
+- The five existing postcard pictures are kept; their backs are rewritten as moments from Céline's life (Kyoto 1958 is from Henri, the sailor who courted her). Postcards now have a year and are listed newest first, like the route.
+- Mango the cat stays as decor but becomes Minou, the neighbour's cat (Chloé is the household's animal now). Decor ids stay the same, so saves keep working.
+- The last letter scrolls inside its paper card, so the close button is always on screen.

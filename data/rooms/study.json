@@ -1,7 +1,7 @@
 {
   "_help": "Room template. See docs/DATA_FORMAT.md. pos/size in stage pixels; spot rects in the furniture's own coordinates.",
   "id": "study",
-  "name": "Grandma's Study",
+  "name": "Henri's Study",
   "background": "rooms/study_bg.svg",
   "light": "rooms/study_light.svg",
   "view_far": "rooms/view_far.svg",
@@ -14,7 +14,7 @@
   "furniture": [
     {"id": "world_map", "name": "the world map", "sprite": "props/study/world_map.svg", "pos": [180, 140], "size": [440, 270],
      "spots": [{"id": "pins", "name": "the world map", "rect": [14, 14, 404, 232], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "a folded note tucked behind the frame"}],
-     "flavor": "Every red pin is a place Grandma has watched the sun come up."},
+     "flavor": "Every red pin is a place Mamie watched the sun come up."},
     {"id": "grandfather_clock", "name": "the grandfather clock", "sprite": "props/study/grandfather_clock.svg", "pos": [10, 190], "size": [140, 580],
      "spots": [
        {"id": "face", "name": "the grandfather clock", "rect": [26, 56, 88, 88], "locks": ["clock"]},
@@ -36,7 +36,7 @@
        {"id": "left_drawers", "name": "the desk's left drawers", "rect": [26, 134, 188, 184], "locks": ["key", "combo"]},
        {"id": "right_drawers", "name": "the desk's right drawers", "rect": [386, 134, 188, 184], "locks": ["combo", "key"]}
      ],
-     "flavor": "Where Grandma writes her postcards. Clack clack clack."},
+     "flavor": "Where Mamie wrote her postcards. Clack clack clack."},
     {"id": "trunk", "name": "the travel trunk", "sprite": "props/study/trunk.svg", "pos": [1500, 840], "size": [380, 210],
      "spots": [{"id": "trunk", "name": "the travel trunk", "rect": [10, 40, 360, 160], "locks": ["key", "combo"]}],
      "flavor": "Stickers from forty years of adventures."}

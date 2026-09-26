@@ -1,17 +1,17 @@
 keys,en
 TITLE,Sunrise Suite
-SUBTITLE,Grandma June's beachside penthouse
+SUBTITLE,Mamie Céline's house by the sea
 COMING_SOON,"The sun is almost up... more rooms arrive every day."
 Sunrise Lounge,Sunrise Lounge
 Kitchen & Bar,Kitchen & Bar
-Grandma's Study,Grandma's Study
+Henri's Study,Henri's Study
 MODE_TIER,Sunrise %d
 MODE_DAILY,Daily Sunrise
 MODE_ENDLESS,Endless Sunrise %d
 PAUSE,Pause
-HINT,Ask Grandma's notepad for a hint
-HINT_TITLE,Grandma's notepad
-HINT_THANKS,"Thanks, Grandma!"
+HINT,Look in Mamie's notebook for a hint
+HINT_TITLE,Mamie's notebook
+HINT_THANKS,"Merci, Mamie!"
 CLOSE,Close
 LOCK_OPEN,Open
 LOCK_CLEAR,Start over
@@ -28,7 +28,7 @@ TOOL_TEXT_SCREWDRIVER,The cover is screwed on tight.
 TOOL_TEXT_MAGNET,"Something shiny glints at the bottom, but it's out of reach."
 TOOL_TEXT_GENERIC,You'll need something to get at this.
 USE_ITEM_HELP,"Select an item in your bag, then tap here."
-SEARCH_TEXT,Grandma might have hidden something here.
+SEARCH_TEXT,Mamie might have hidden something here.
 SEARCH,Search
 INSIDE,Inside you find:
 INSIDE_REVEAL,You find %s!
@@ -36,7 +36,7 @@ INSIDE_EMPTY,Nothing else in here.
 NOTHING_HIDDEN,You check %s. Nothing hidden there.
 NOTHING_HIDDEN_SHORT,Nothing hidden there.
 POSTCARD,Postcard
-POSTCARD_FOUND_TITLE,A postcard from Grandma!
+POSTCARD_FOUND_TITLE,A postcard from Mamie's life!
 POSTCARD_FOUND_TEXT,"A postcard from %s! It's been added to your scrapbook."
 INVENTORY_EMPTY,Things you pick up will appear here.
 ITEM_SELECTED,"%s - tap where to use it, or tap it again to look."
@@ -58,16 +58,16 @@ CONTINUE,Continue
 REPLAY,Play again
 MENU_TRY_ROOM,Try the test room
 MENU_PLAY,Start your first sunrise
-MENU_CONTINUE,Grandma's Sunrise Book
+MENU_CONTINUE,Mamie's Sunrise Book
 MENU_DAILY,Daily Sunrise
 MENU_DAILY_DONE,Daily Sunrise (done today!)
-MENU_PENTHOUSE,The penthouse
+MENU_PENTHOUSE,The sunroom
 MENU_SCRAPBOOK,Scrapbook
 MENU_SETTINGS,Settings
 BACK,Back
 OK,OK
 CANCEL,Never mind
-BOOK_TITLE,Grandma's Sunrise Book
+BOOK_TITLE,Mamie's Sunrise Book
 TIER_TITLE,Sunrise %d
 GATE_NEEDS,Needs %d stars
 LOCKED_TITLE,Not yet!
@@ -75,7 +75,7 @@ LOCKED_PREVIOUS,Finish the sunrise before this one first.
 LOCKED_STARS,"This page opens with %d stars. Replay earlier rooms for more stars: finish quickly, and ask for 1 hint or fewer."
 LOCKED_SOON,This room is still being decorated. Check back soon!
 LEVEL_POPUP_TITLE,Sunrise %d
-LEVEL_POPUP_TEXT,"Play the same puzzle again, or let Grandma set up a fresh one in this room?"
+LEVEL_POPUP_TEXT,"Play the same puzzle again, or one of Mamie's other riddles in this room?"
 PLAY_AGAIN_SAME,Same puzzle again
 PLAY_FRESH,A fresh puzzle
 POSTCARD_HERE,A postcard is hidden in this room!
@@ -86,12 +86,12 @@ ENDLESS_BEST,Best so far: Sunrise %d
 ENDLESS_PLAY,Play Endless
 UNLOCK_NEXT,The next sunrise is unlocked!
 UNLOCK_GATE,Sunrise %d is open now!
-UNLOCK_ENDLESS,You've finished Grandma's book! Endless Sunrise is open.
+UNLOCK_ENDLESS,You've finished Mamie's book! Endless Sunrise is open.
 NEXT_LEVEL,Next sunrise
 NEXT_ENDLESS,Next endless sunrise
 BACK_TO_BOOK,Back to the book
-HUB_TITLE,Grandma's Penthouse
-HUB_TIP,"This is Grandma's penthouse. Tap Decorate to make it yours, and spend seashells in her catalog!"
+HUB_TITLE,The sunroom
+HUB_TIP,"This is your sunroom now. Tap Decorate to make it yours, and spend seashells at the Saturday market!"
 DECORATE,Decorate
 DECORATE_DONE,Done
 DECORATE_HINT,"Tap a + to place something, or tap your decor to move, flip or put it away."
@@ -106,13 +106,13 @@ DECOR_PLACE,Place it
 DECOR_BUY,Buy for %d
 DECOR_BOUGHT,"%s is yours! Use Decorate to place it."
 DECOR_LOCKED,Earn it
-CATALOG_BUTTON,Grandma's Catalog
-CATALOG_TITLE,Grandma's Catalog
+CATALOG_BUTTON,Saturday market
+CATALOG_TITLE,The Saturday market
 REWARD_LEVEL,Finish sunrise %d to earn this.
 REWARD_STREAK,Play the Daily Sunrise %d days in a row to earn this.
-REWARD_POSTCARDS,Find all of Grandma's postcards to earn this.
+REWARD_POSTCARDS,Find all the postcards from Mamie's life to earn this.
 REWARD_SECRET,A secret reward...
-UNLOCK_DECOR,New for the penthouse: %s!
+UNLOCK_DECOR,New for the house: %s!
 WEEKDAY_0,Sunday
 WEEKDAY_1,Monday
 WEEKDAY_2,Tuesday
@@ -151,11 +151,11 @@ CALENDAR_HELP,Every sunrise you finish paints its day in the calendar.
 DAILY_STREAK,"Daily streak: %d days!"
 DAILY_SLEEP_IN_USED,You slept in - your weekly sleep-in kept the streak going.
 BACK_TO_CALENDAR,Back to the calendar
-POSTCARD_ALL_FOUND,You found every postcard! Grandma left you a letter in the scrapbook.
-SCRAPBOOK_TITLE,Grandma's Scrapbook
+POSTCARD_ALL_FOUND,You found every postcard! Mamie's last letter is in the scrapbook.
+SCRAPBOOK_TITLE,Céline's scrapbook
 SCRAPBOOK_COUNT,%d of %d postcards
-SCRAPBOOK_LETTER,Read Grandma's letter
-SCRAPBOOK_LETTER_LOCKED,Find all the postcards to read Grandma's letter
+SCRAPBOOK_LETTER,Read Mamie's last letter
+SCRAPBOOK_LETTER_LOCKED,Find all the postcards to read Mamie's last letter
 SCRAPBOOK_MISSING,A postcard is still hidden somewhere...
 SCRAPBOOK_HINT,Hidden somewhere in Sunrise %d
 POSTCARD_TURN,Turn it over
@@ -171,7 +171,7 @@ SETTINGS_TEXT_NOTE,Takes effect on the next screen.
 SETTINGS_CREDITS,Credits
 SETTINGS_RESET,Start over...
 SETTINGS_DONE,Done
-CREDITS_TEXT,"Sunrise Suite - made with Godot Engine.\nArt and sound effects made for this game (sounds with jsfxr).\nMusic made with Suno.\nFonts: Nunito and Caveat (SIL Open Font License)."
+CREDITS_TEXT,"Sunrise Suite - made with Godot Engine.\nArt and sound effects made for this game (sounds with jsfxr).\nMusic made with Suno.\nFonts: Nunito and Caveat (SIL Open Font License).\nFor every grandmother who ever hid a riddle."
 RESET_TITLE,Start over?
 RESET_TEXT,"This erases your stars, seashells, decor, postcards and streak. It can't be undone."
 RESET_YES,"Yes, start over"

@@ -543,7 +543,7 @@ func _build_ui() -> void:
 		closeup.show_thing("item", id)
 		inventory.deselect())
 
-	# Hint bubble (Grandma's notepad)
+	# Hint bubble (Mamie's notebook)
 	_hint_panel = PanelContainer.new()
 	_hint_panel.add_theme_stylebox_override("panel", UIKit.paper(26))
 	_hint_panel.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)

@@ -1,5 +1,5 @@
 {
-  "_help": "Decor you can only earn. levels: finishing a main level for the first time. streak: Daily Sunrise streak length. postcards_all: finding all of Grandma's postcards. Item ids are from decor.json.",
+  "_help": "Decor you can only earn. levels: finishing a main level for the first time. streak: Daily Sunrise streak length. postcards_all: finding all the postcards from Céline's life. Item ids are from decor.json.",
   "levels": {
     "main_03": "mango_cat",
     "main_12": "sunburst_mirror",

@@ -24,7 +24,7 @@
   ],
   "clues": [
     {"id": "c_welcome", "host": {"kind": "prop", "prop": "note", "slot": "coffee_2"}, "location": "room", "for": "drawers",
-     "text": "Welcome, sweetheart! Thank you for house-sitting. I left you a little puzzle so you can open the balcony door in time for sunrise. The credenza drawers open with 7 1 4. Love, Grandma June"}
+     "text": "Ma chérie Juliette,\nWelcome home. Yes, home: the house is yours now.\nYou know I can't give anything without a riddle, so I made you one last treasure hunt, back through my life.\nThe first one is easy. The drawers want three numbers: how old I was at my first sunrise (7), how many husbands I had (1, and one was plenty), and the legs on Chloé (4).\nMamie"}
   ],
   "decoys": []
 }

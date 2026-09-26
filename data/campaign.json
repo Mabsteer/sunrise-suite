@@ -1,5 +1,5 @@
 {
-  "_help": "The 30 main levels, in order. room + tier + seed decide the puzzle (change the seed for a different level). level_file: use a hand-made level from data/levels/ instead (level 1 is the tutorial). postcard: which of Grandma's postcards is hidden in the level. Star gates: total stars needed to start a tier.",
+  "_help": "The 30 main levels, in order. room + tier + seed decide the puzzle (change the seed for a different level). level_file: use a hand-made level from data/levels/ instead (level 1 is the tutorial). postcard: which postcard from Céline's life is hidden in the level. Star gates: total stars needed to start a tier.",
   "levels": [
     {"id": "main_01", "room": "lounge", "tier": 1, "seed": 1031, "level_file": "tutorial"},
     {"id": "main_02", "room": "kitchen", "tier": 1, "seed": 1062},

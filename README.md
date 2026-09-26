@@ -1,19 +1,19 @@
 # Sunrise Suite
 
-A cozy 2D escape-room puzzle game. You're house-sitting for adventurous Grandma June in her beachside penthouse. Every morning she leaves a trail of riddles, and solving them opens the balcony door just as the sun comes up.
+A cozy 2D escape-room puzzle game. Juliette inherits the house by the sea of her grandmother Céline ("Mamie"), who loved sunrises, the market around the corner, and riddles. Mamie left one last treasure hunt: room by room through the house and back through her life, until the garden gate opens just as the sun comes up. The whole story is in [`docs/STORY.md`](docs/STORY.md).
 
 **Play it in your browser: https://mabsteer.github.io/sunrise-suite/** (works on phones too; hold the phone sideways).
 
 Made with [Godot 4.7](https://godotengine.org). The Windows version is built automatically on every push (see *Automatic builds* below).
 
 ## What's in the game
-- **30 sunrises** in Grandma's Sunrise Book: 3 rooms (Sunrise Lounge, Kitchen & Bar, Grandma's Study) × 10 difficulty tiers. Each room comes back harder.
+- **30 sunrises** in Mamie's Sunrise Book: 3 rooms (Sunrise Lounge, Kitchen & Bar, Henri's Study) × 10 difficulty tiers. Each room comes back harder.
 - **8 kinds of locks**: number codes, symbol sequences (they play a little tune), keys, hidden spots, clocks, light switches, sliding-tile pictures and item combinations.
 - **The sunrise is your progress bar**: every solved step brightens the sky.
 - **Replay** any room with a fresh puzzle, and **Endless Sunrise** after the book is finished.
 - **Daily Sunrise**: one puzzle a day (the same for everyone), a streak with a free weekly sleep-in, and a calendar that paints each finished day in its sky colours.
-- **The penthouse**: earn seashells and decorate Grandma's home with 24 pieces of decor.
-- **Grandma's postcards**: five hidden postcards tell her story. Find them all for a final letter.
+- **The sunroom**: earn seashells and make the house yours with 24 pieces of decor from the Saturday market.
+- **Céline's scrapbook**: five hidden postcards from her life. Find them all for her last letter.
 - **Stars**: finish (★), use at most one hint (★★), beat the par time (★★★).
 
 ## How to play
@@ -21,7 +21,7 @@ Tap (or click) things in the room to look closer. Things you pick up go into you
 - Tap an item in the bag to select it, then tap something in the room to use it.
 - Tap the selected item again to look at it.
 - With one item selected, tap another to combine them (or drag one onto the other).
-- Stuck? Grandma's notepad (top right) gives hints that get more specific each time.
+- Stuck? Mamie's notebook (top right) gives hints that get more specific each time.
 - Keyboard: Esc closes things or pauses.
 
 ---
@@ -35,7 +35,7 @@ All art is SVG (vector) in `assets/sprites/`: `rooms/`, `props/`, `items/`, `pro
 2. Save it with the **same file name** (in Inkscape: *Save As → Plain SVG*).
 3. Follow the rules in [`docs/ART_STYLE.md`](docs/ART_STYLE.md): no blur/shadow filters, masks, clipping or text. Draw shadows as see-through shapes instead.
 
-### Add a decor item for the penthouse
+### Add a decor item for the sunroom
 1. Draw `assets/sprites/props/decor/my_item.svg`.
 2. Add an entry to `data/decor.json` under `items`:
    `"my_item": {"name": "My item", "sprite": "props/decor/my_item.svg", "size": [200, 300], "slot": "floor_small", "price": 60, "text": "A short description."}`
@@ -57,7 +57,7 @@ Sounds are made with **jsfxr** from `tools/sfx/sfx.json`.
 Follow [`docs/SUNO_PROMPTS.md`](docs/SUNO_PROMPTS.md): make a track in Suno, name it exactly as listed (e.g. `menu_theme.mp3`) and put it in `assets/audio/music/`. Missing tracks are simply quiet.
 
 ### Edit story text
-- Postcards and Grandma's final letter: `data/postcards.json` (`\n` starts a new line).
+- Postcards and Mamie's last letter: `data/postcards.json` (`\n` starts a new line).
 - Clue wording and decoy notes: `data/clues.json`.
 - Tutorial guide bubbles: `data/tutorial.json`. The tutorial level itself: `data/levels/tutorial.json`.
 - Menu and button text: `i18n/strings.csv` (the `en` column). Add a column to translate the game.

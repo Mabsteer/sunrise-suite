@@ -171,7 +171,7 @@ func hint_texts(goal: Dictionary) -> PackedStringArray:
 			return _open_hints(str(goal["id"]))
 	return [
 		"Take a slow look around the room. Tap anything that catches your eye.",
-		"Tap the furniture and the things on the walls. Grandma hides things everywhere.",
+		"Tap the furniture and the things on the walls. Mamie hid things everywhere.",
 		"Try every drawer, frame and cushion. Something is waiting to be found.",
 	]
 
@@ -190,7 +190,7 @@ func _open_hints(lock_id: String) -> PackedStringArray:
 		]
 	if t == "hidden":
 		return [
-			"Grandma loves hiding things. Search around the room.",
+			"Mamie loved hiding things. Search around the room.",
 			"Search %s." % name,
 			"Tap %s and have a good look." % name,
 		]

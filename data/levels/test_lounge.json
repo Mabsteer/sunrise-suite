@@ -38,7 +38,7 @@
   ],
   "clues": [
     {"id": "c_seq", "host": {"kind": "prop", "prop": "photo_frame", "slot": "wall_left_top"}, "location": "room", "for": "music_box",
-     "text": "Grandma on the pier, laughing. On the back: \"My favourite tune goes {sun} {shell} {wave}.\""},
+     "text": "Mamie on the pier, laughing. On the back: \"My favourite tune goes {sun} {shell} {wave}.\""},
     {"id": "c_clock", "host": {"kind": "prop", "prop": "note", "slot": "coffee_2"}, "location": "room", "for": "clock",
      "text": "Breakfast on the balcony at half past seven. Don't be late! - J."},
     {"id": "c_switch", "host": {"kind": "prop", "prop": "note"}, "location": "lockbox", "for": "switches",

@@ -19,7 +19,7 @@ Live build: https://mabsteer.github.io/sunrise-suite/
 The owner's playtest feedback changes the direction: difficulty must come from thinking, not searching; more kinds of puzzles; one route through a whole house; a new story (Juliette inherits her late grandmother Céline's house) told through the notes; Chloé the dog as a helper; zooming. Work in this order, each milestone ends with `bash tools/check.sh`, commit, push and a green CI run.
 
 - [x] **F1 Bug**: the missing `NOTHING_HIDDEN_SHORT` text and the `NOTHING_HIDDEN` placeholder. New unit test: every text key the code uses exists, and keys formatted with `%` have a placeholder.
-- [ ] **F2 Story**: `docs/STORY.md` (premise, people, timeline, one life period per room, the notes as memories with riddles woven in, Chloé, the postcards, the scrapbook, the last letter). Rewrite the postcards, the final letter and every "Grandma June / penthouse" text to fit.
+- [x] **F2 Story**: `docs/STORY.md` (premise, people, timeline, one life period per room, the notes as memories with riddles woven in, Chloé, the postcards, the scrapbook, the last letter). Rewrite the postcards, the final letter and every "Grandma June / penthouse" text to fit.
 - [ ] **F3 Puzzle system and difficulty**
   - New locks you *do* something with: **order** (arrange things, solved with a logic note), **sudoku** (small 4×4 number square), **pattern** (what comes next?), **rotate** (turn the tiles until the picture is right), **tool** (use an item on something you can see).
   - Riddle notes: the code is never written plainly above tier 1. Digits come from facts, from counting things in the room (jars of shells, birds in a painting...), from sums, and from logic statements (for symbol, lamp and order locks).
@@ -40,7 +40,7 @@ The owner's playtest feedback changes the direction: difficulty must come from t
 - [ ] **F8 Polish and summary**
 
 ## Next
-- F2: write `docs/STORY.md`.
+- F3: the new puzzle system (see below).
 
 ## Known issues
 - Portrait phones show a "turn your phone sideways" card (it can be dismissed); the game is designed for landscape.

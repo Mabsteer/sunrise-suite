@@ -1,6 +1,6 @@
 # Art style
 
-**Mood:** cozy beachside penthouse at dawn. Flat vector, soft rounded shapes, gentle gradients, warm light.
+**Mood:** a cozy old house by the sea at dawn (see docs/STORY.md). Flat vector, soft rounded shapes, gentle gradients, warm light.
 
 ## Palette
 All colours come from `assets/palette.json` (scripts read them via `Palette.color("coral")`). Use these hex values in SVGs:

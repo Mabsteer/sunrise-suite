@@ -1,5 +1,5 @@
 extends Node2D
-## Grandma's penthouse: decorate it with things bought with seashells or earned as rewards.
+## The sunroom: decorate it with things bought with seashells or earned as rewards.
 ## Normal mode: tap decor for a little reaction. Decorate mode: tap an empty slot to place/buy,
 ## tap placed decor to move, flip or put it away. The Catalog lists everything.
 

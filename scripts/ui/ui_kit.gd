@@ -70,7 +70,7 @@ static func label(text: String, size: int = 34, color: Color = Color(0.231, 0.18
 	return l
 
 
-## A RichTextLabel in Grandma's handwriting (for notes and clues).
+## A RichTextLabel in Mamie's handwriting (for notes and clues).
 static func handwriting(bbcode: String, size: int = 46) -> RichTextLabel:
 	var r := RichTextLabel.new()
 	r.bbcode_enabled = true

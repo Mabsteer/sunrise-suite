@@ -1,7 +1,7 @@
 {
-  "_help": "The penthouse hub. decor_slots: where decor can go. anchor = bottom-centre for floor/table/rug slots, centre for wall slots. max = largest size shown (bigger items are scaled down).",
+  "_help": "The sunroom (hub). decor_slots: where decor can go. anchor = bottom-centre for floor/table/rug slots, centre for wall slots. max = largest size shown (bigger items are scaled down).",
   "id": "hub",
-  "name": "Grandma's Penthouse",
+  "name": "The sunroom",
   "background": "rooms/hub_bg.svg",
   "light": "rooms/hub_light.svg",
   "view_far": "rooms/view_far.svg",

@@ -1,5 +1,5 @@
 extends Control
-## Grandma's Scrapbook: the postcards you found (tap to read, turn over for the back) and, once all
+## Céline's scrapbook: the postcards you found (tap to read, turn over for the back) and, once all
 ## are found, her final letter.
 
 const CARD := Vector2(470, 310)
@@ -95,7 +95,10 @@ func _slot(p: Dictionary, tilt: float) -> Control:
 			tape.rotation_degrees = -12.0 if corner.x < 0 else 12.0
 			tape.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			holder.add_child(tape)
-		var name_label := UIKit.label(str(p.get("place", "")), 24, Palette.color("ink_soft"))
+		var caption := str(p.get("place", ""))
+		if p.has("year"):
+			caption += "  ·  %d" % int(p["year"])
+		var name_label := UIKit.label(caption, 24, Palette.color("ink_soft"))
 		name_label.position = Vector2(0, CARD.y - 4)
 		name_label.size = Vector2(CARD.x, 30)
 		holder.add_child(name_label)
@@ -138,7 +141,10 @@ func show_postcard(id: String) -> void:
 	card.add_child(back)
 	var bv := VBoxContainer.new()
 	back.add_child(bv)
-	var place := UIKit.label(str(p.get("place", "")), 30, Palette.color("coral_dark"), HORIZONTAL_ALIGNMENT_LEFT)
+	var place_text := str(p.get("place", ""))
+	if p.has("year"):
+		place_text += ", %d" % int(p["year"])
+	var place := UIKit.label(place_text, 30, Palette.color("coral_dark"), HORIZONTAL_ALIGNMENT_LEFT)
 	bv.add_child(place)
 	var text := UIKit.handwriting(str(p.get("text", "")), 42)
 	text.custom_minimum_size.x = 800
@@ -183,9 +189,15 @@ func show_letter() -> void:
 	v.add_theme_constant_override("separation", 16)
 	paper.add_child(v)
 	v.add_child(UIKit.label(str(letter.get("title", "")), 44, Palette.color("coral_dark")))
-	var text := UIKit.handwriting(str(letter.get("text", "")), 40)
-	text.custom_minimum_size.x = 1000
-	v.add_child(text)
+	# Long letters scroll inside the paper, so the close button always stays on screen.
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.custom_minimum_size = Vector2(1000, 640)
+	v.add_child(scroll)
+	var text := UIKit.handwriting(str(letter.get("text", "")), 38)
+	text.custom_minimum_size.x = 960
+	text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(text)
 	var close := UIKit.text_button(tr("CLOSE"), Vector2(260, 90))
 	close.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	close.pressed.connect(_close_overlay)

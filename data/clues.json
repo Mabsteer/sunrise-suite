@@ -6,10 +6,10 @@
       "{lock} opens with {code}. Love, G.",
       "Note to self: {lock} is {code}.",
       "{lock}: {code}. Don't tell the cat.",
-      "Darling, {lock} is {code}. Hugs, Grandma J."
+      "Ma puce, {lock} is {code}. Bisous, Mamie."
     ],
     "1": [
-      "Grandma's lucky number: {code}.",
+      "Mamie's lucky number: {code}.",
       "Don't forget: {code}!",
       "Our old house number was {code}.",
       "Locker number at the beach club: {code}.",
@@ -22,7 +22,7 @@
       "{words}. Say it out loud!",
       "Read it backwards: {reversed}.",
       "Count them out: {words}.",
-      "Mango kept stepping on the keys: {words}.",
+      "Chloé kept stepping on the keys: {words}.",
       "I always write it the wrong way round: {reversed}."
     ],
     "first": [
@@ -94,7 +94,7 @@
     "2": [
       "Tea at {time_words}, as always.",
       "Sunrise walk at {time_words}.",
-      "Feed Mango at {time_words}. She WILL remind you.",
+      "Feed Chloé at {time_words}. She WILL remind you.",
       "The bells ring at {time_words}."
     ],
     "3": [
@@ -149,7 +149,7 @@
     "Tide table: high tide at 5:40, low tide at 11:55.",
     "Pilates moved to Wednesdays at 6.",
     "The ferry leaves from pier 9.",
-    "Mango's vet: Dr. Okafor, Tuesday at 10:30.",
+    "Chloé's vet: Dr. Okafor, Tuesday at 10:30.",
     "Buy stamps. At least 20. Postcards don't send themselves.",
     "Surf report: waves 1.5 m, wind from the west.",
     "Library books due on the 3rd. (The one about octopuses is overdue. Oops.)",

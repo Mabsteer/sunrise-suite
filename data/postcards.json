@@ -1,39 +1,44 @@
 {
-  "_help": "Grandma June's postcards, in story order. front: picture (assets/sprites/...). text: the handwritten back. Which level hides which postcard is set in campaign.json. final_letter is shown once all postcards are found.",
+  "_help": "The postcards in Céline's life (see docs/STORY.md), newest first. front: picture (assets/sprites/...). year: when it was written. text: the handwritten back. Which level hides which postcard is set in campaign.json. final_letter is the last letter, read at the end of the story (the front garden).",
   "postcards": [
     {
-      "id": "lisbon",
-      "place": "Lisbon, Portugal",
-      "front": "postcards/lisbon.svg",
-      "text": "Sweetheart,\nYour grandfather Teo and I once missed the last tram up the hill, so we walked all night and ended up on a garden wall above the river. The sun came up gold over the rooftops. Teo said: \"Every sunrise is the world saying: let's try again.\" I have been saying it ever since.\nLove, Grandma June"
-    },
-    {
-      "id": "kyoto",
-      "place": "Kyoto, Japan",
-      "front": "postcards/kyoto.svg",
-      "text": "Dear one,\nI got up at 4 to find a famous temple for sunrise and got completely lost. Instead I found a tiny tea shop, and Mrs. Aoki taught me that tea must be made slowly, like a good morning. (I found the temple later. It was next door.)\nSlowly, slowly,\nGrandma June"
+      "id": "reykjavik",
+      "place": "Reykjavik, Iceland",
+      "year": 2013,
+      "front": "postcards/reykjavik.svg",
+      "text": "Ma puce,\nHere the sun doesn't bother to set in summer, so it never really rises either. I waited all night for a sunrise and it just... stayed. Very rude. Next summer: our beach, the first bus, 7:15. I'll save you the seat behind the driver.\nMamie"
     },
     {
       "id": "santorini",
       "place": "Santorini, Greece",
+      "year": 1994,
       "front": "postcards/santorini.svg",
-      "text": "Hello from the island!\nEveryone comes here for the sunsets. I came for the sunrise, and had the whole cliff to myself: just me, a donkey called Stavros and a very sleepy baker. The baker gave me warm bread. Stavros tried to eat my hat. Best morning of the year.\nJune"
+      "text": "Ma chérie,\nPapa and I climbed six hundred steps in the dark to watch the sun come up over the sea. He did his number puzzle on the way up, by torchlight, and got it right. He says hello, and that Montréal is much too cold for a daughter of ours.\nMaman"
     },
     {
       "id": "marrakech",
       "place": "Marrakech, Morocco",
+      "year": 1979,
       "front": "postcards/marrakech.svg",
-      "text": "My darling,\nThe call to prayer woke me before dawn, so I climbed onto the roof of the riad and watched the sky turn the colour of saffron. Afterwards I bargained for the spices in our kitchen rack. I definitely paid too much. Worth every coin.\nHugs, Grandma"
+      "text": "Maman,\nMargot bargained for a lamp all by herself (she is sixteen and thinks she is thirty). At dawn we climbed onto the roof and the sky went the colour of your saffron roses. Home on Saturday, in time for the market.\nCéline"
     },
     {
-      "id": "reykjavik",
-      "place": "Reykjavik, Iceland",
-      "front": "postcards/reykjavik.svg",
-      "text": "Sweetheart,\nIn summer here the sun barely sets, so it barely rises either! I waited up all night for a sunrise that never really left. Teo would have laughed at me. I laughed too, and cried a little, and then laughed again. That's how it goes, and that's alright.\nYour Grandma June"
+      "id": "lisbon",
+      "place": "Lisbon, Portugal",
+      "year": 1960,
+      "front": "postcards/lisbon.svg",
+      "text": "Maman,\nWe missed the last tram up the hill, so we walked all night and watched the sun come up gold over the rooftops. Henri says every sunrise is the world saying \"let's try again\". Please water my lemon tree, it's still so small.\nYour married daughter (!), Céline"
+    },
+    {
+      "id": "kyoto",
+      "place": "Kyoto, Japan",
+      "year": 1958,
+      "front": "postcards/kyoto.svg",
+      "text": "To the girl at the flower stall,\nThe sun rises here too, over temple roofs instead of the sea. It is very beautiful, but it is not our beach, and you are not on it. Keep one sunflower for me. I'll be back in spring and I'll buy them all.\nHenri (the sunflower sailor)"
     }
   ],
   "final_letter": {
-    "title": "A letter from Grandma",
-    "text": "My dear,\nIf you are reading this, you found every one of my postcards. I hid them because I wanted you to find what I found: every morning is a present you get to open again.\nThe penthouse is yours to fill with light while I'm away. Leave the balcony door open tomorrow. I'll be home soon, with a suitcase full of new stories.\nAll my love, always,\nGrandma June\n\nP.S. Mango has breakfast at 7:00. Sharp. He will remind you."
+    "title": "The last letter",
+    "text": "Ma Juliette,\nYou found my old tin. I buried it when I was ten, with a shell, a marble and a drawing of the sun, and I dug it up last spring to add this letter. Don't laugh: at eighty-seven, digging is harder than riddles.\nI had a beautiful life. Not a perfect one: a beautiful one. I was born in this house, I ran down that path every morning to wave at my father's boat, I sold flowers, I married a sailor under a lemon tree, I raised a stubborn, wonderful daughter, I danced in my socks, I saw the sun come up over half the world and still liked ours best. And then, when the house was quiet, you came, with your bucket and your serious face, and it was full again.\nI wish you the same. Not the same life: your own. But just as full.\nI hope you will build it here. Fill the kitchen with people. Go to the market on Saturdays, the cheese man will know who you are. Let Chloé sleep where the sun falls on the floor. Paint the shed a new colour if you want to; Henri won't mind. And one day, make a treasure hunt for someone you love.\nThe house is yours now, ma puce. So is the sunrise. Go and look.\nMamie"
   }
 }

@@ -1,5 +1,5 @@
 extends Control
-## Grandma's Sunrise Book: the 30 main levels in 10 tier rows (Lounge, Kitchen, Study), plus Endless Sunrise.
+## Mamie's Sunrise Book: the 30 main levels in 10 tier rows (Lounge, Kitchen, Study), plus Endless Sunrise.
 
 const CARD_SIZE := Vector2(400, 300)
 

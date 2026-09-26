@@ -21,7 +21,7 @@
      "flavor": "Butcher-block counters, always a little floury."},
     {"id": "espresso", "name": "the espresso machine", "sprite": "props/kitchen/espresso.svg", "pos": [520, 360], "size": [180, 190],
      "spots": [{"id": "drip_tray", "name": "under the drip tray", "rect": [20, 130, 140, 56], "locks": ["hidden"], "tools": [null], "reveal": "something tucked under the drip tray"}],
-     "flavor": "Grandma's pride and joy. It hisses like a happy dragon."},
+     "flavor": "Mamie's pride and joy. It hisses like a happy dragon."},
     {"id": "spice_rack", "name": "the spice rack", "sprite": "props/kitchen/spice_rack.svg", "pos": [495, 150], "size": [230, 160],
      "spots": [{"id": "spices", "name": "the spice jars", "rect": [0, 0, 226, 152], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "a little tin behind the jars"}],
      "flavor": "Cinnamon, cardamom, saffron from Marrakech..."},
