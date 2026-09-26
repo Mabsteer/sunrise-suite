@@ -185,3 +185,7 @@ DIFF_EASY,Gentle
 DIFF_MEDIUM,Medium
 DIFF_HARD,Tricky
 BEST_TIME,Best %s
+ORDER_HELP,"Tap two things to swap them. When the order is right, tap Open."
+SUDOKU_HELP,"Tap an empty square to write 1, 2, 3 or 4. Every row, column and box needs each number once."
+PATTERN_HELP,"What comes next? Tap a gap, then fill it in."
+ROTATE_HELP,Tap a tile to turn it. Turn them all the right way up.

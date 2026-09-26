@@ -16,5 +16,17 @@
   "note": {"name": "the note", "sprite": "props/common/note.svg", "size": [90, 60], "place": "surface", "clue": true},
   "open_book": {"name": "the open book", "sprite": "props/common/open_book.svg", "size": [130, 60], "place": "surface", "clue": true},
   "photo_stand": {"name": "the photo", "sprite": "props/common/photo_stand.svg", "size": [80, 100], "place": "surface", "clue": true},
-  "postcard": {"name": "a postcard", "sprite": "props/common/postcard_small.svg", "size": [70, 50], "place": "surface"}
+  "postcard": {"name": "a postcard", "sprite": "props/common/postcard_small.svg", "size": [70, 50], "place": "surface"},
+  "jar_shelf": {"name": "the jar shelf", "sprite": "props/puzzles/jar_shelf.svg", "sprite_open": "props/puzzles/jar_shelf_open.svg", "size": [170, 150], "place": "wall", "locks": ["order"]},
+  "photo_ledge": {"name": "the photo ledge", "sprite": "props/puzzles/photo_ledge.svg", "sprite_open": "props/puzzles/photo_ledge_open.svg", "size": [170, 140], "place": "wall", "locks": ["order"]},
+  "newspaper": {"name": "the morning paper", "sprite": "props/puzzles/newspaper.svg", "sprite_open": "props/puzzles/newspaper_open.svg", "size": [130, 90], "place": "surface", "locks": ["sudoku"]},
+  "number_box": {"name": "the number box", "sprite": "props/puzzles/number_box.svg", "sprite_open": "props/puzzles/number_box_open.svg", "size": [110, 90], "place": "surface", "locks": ["sudoku"]},
+  "chalkboard": {"name": "the little chalkboard", "sprite": "props/puzzles/chalkboard.svg", "sprite_open": "props/puzzles/chalkboard_open.svg", "size": [150, 150], "place": "wall", "locks": ["pattern"]},
+  "bead_box": {"name": "the bead box", "sprite": "props/puzzles/bead_box.svg", "sprite_open": "props/puzzles/bead_box_open.svg", "size": [120, 80], "place": "surface", "locks": ["pattern"]},
+  "picture_box": {"name": "the picture box", "sprite": "props/puzzles/picture_box.svg", "sprite_open": "props/puzzles/picture_box_open.svg", "size": [110, 90], "place": "surface", "locks": ["rotate"]},
+  "tile_frame": {"name": "the tile picture", "sprite": "props/puzzles/tile_frame.svg", "sprite_open": "props/puzzles/tile_frame_open.svg", "size": [150, 150], "place": "wall", "locks": ["rotate"]},
+  "shell_jar": {"name": "the jar of shells", "sprite": "props/counters/shell_jar_5.svg", "sprite_count": "props/counters/shell_jar_{n}.svg", "size": [90, 120], "place": "surface", "clue": true},
+  "daisy_vase": {"name": "the vase of daisies", "sprite": "props/counters/daisy_vase_5.svg", "sprite_count": "props/counters/daisy_vase_{n}.svg", "size": [100, 130], "place": "surface", "clue": true},
+  "boat_photo": {"name": "the harbour photo", "sprite": "props/counters/boat_photo_5.svg", "sprite_count": "props/counters/boat_photo_{n}.svg", "size": [160, 120], "place": "wall", "clue": true},
+  "bird_picture": {"name": "the bird picture", "sprite": "props/counters/bird_picture_5.svg", "sprite_count": "props/counters/bird_picture_{n}.svg", "size": [160, 110], "place": "wall", "clue": true}
 }

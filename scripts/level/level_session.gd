@@ -12,8 +12,13 @@ signal items_combined(a: String, b: String, result: String)
 signal step_solved(solved: int, total: int)
 signal completed()
 
-const KNOWLEDGE_TYPES: PackedStringArray = ["combo", "sequence", "clock", "switches"]
-const ALL_TYPES: PackedStringArray = ["combo", "sequence", "clock", "switches", "key", "hidden", "slider"]
+## Locks opened with knowledge from clues (codes, tunes, times, lamps, orders).
+const KNOWLEDGE_TYPES: PackedStringArray = ["combo", "sequence", "clock", "switches", "order"]
+## Puzzles solved right there, needing nothing from elsewhere.
+const SELF_TYPES: PackedStringArray = ["slider", "sudoku", "pattern", "rotate"]
+## Locks opened by using an item on them (a key, or a tool on something you can see).
+const ITEM_TYPES: PackedStringArray = ["key", "tool"]
+const ALL_TYPES: PackedStringArray = ["combo", "sequence", "clock", "switches", "order", "key", "tool", "hidden", "slider", "sudoku", "pattern", "rotate"]
 
 var level: Dictionary
 var locks: Dictionary = {}
@@ -108,15 +113,31 @@ func lock_clues(lock_id: String) -> Array[String]:
 	return out
 
 
+## Locks that must be open before this one can be used (e.g. Chloé only helps after breakfast).
+func lock_after(lock_id: String) -> Array[String]:
+	var out: Array[String] = []
+	for a: Variant in locks[lock_id].get("after", []):
+		out.append(str(a))
+	return out
+
+
+func needs_item(lock_id: String) -> bool:
+	var t := lock_type(lock_id)
+	return t in ITEM_TYPES or (t == "hidden" and lock_item(lock_id) != "")
+
+
 ## True when the player has everything needed to open this lock right now.
 func requirement_met(lock_id: String) -> bool:
+	for a in lock_after(lock_id):
+		if not opened.has(a):
+			return false
 	var t := lock_type(lock_id)
 	if t in KNOWLEDGE_TYPES:
 		for c in lock_clues(lock_id):
 			if not clue_available(c):
 				return false
 		return true
-	if t == "key" or (t == "hidden" and lock_item(lock_id) != ""):
+	if needs_item(lock_id):
 		return _has_item(lock_item(lock_id))
 	return true
 
@@ -178,7 +199,7 @@ func submit_answer(lock_id: String, answer: String) -> bool:
 	if not _can_touch(lock_id):
 		return false
 	var t := lock_type(lock_id)
-	if not (t in KNOWLEDGE_TYPES or t == "slider"):
+	if not (t in KNOWLEDGE_TYPES or t in SELF_TYPES):
 		return false
 	if normalize_answer(t, answer) != normalize_answer(t, str(locks[lock_id].get("answer", ""))):
 		return false
@@ -304,7 +325,12 @@ static func normalize_answer(type: String, answer: String) -> String:
 
 
 func _can_touch(lock_id: String) -> bool:
-	return locks.has(lock_id) and not opened.has(lock_id) and lock_visible(lock_id) and not finished
+	if not locks.has(lock_id) or opened.has(lock_id) or not lock_visible(lock_id) or finished:
+		return false
+	for a in lock_after(lock_id):
+		if not opened.has(a):
+			return false
+	return true
 
 
 func _open(lock_id: String) -> void:

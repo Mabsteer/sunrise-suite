@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" width="150" height="150">
+  <!-- Tile frame swung open (rotate lock, open). -->
+  <rect x="12" y="14" width="132" height="132" rx="6" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="24" y="16" width="112" height="118" rx="4" fill="#6b5a66"/>
+  <rect x="30" y="70" width="100" height="6" fill="#7a5134"/>
+  <path d="M24 10 L4 22 L4 140 L24 138 Z" fill="#d4a24c"/>
+</svg>

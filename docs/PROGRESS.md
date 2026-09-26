@@ -20,7 +20,7 @@ The owner's playtest feedback changes the direction: difficulty must come from t
 
 - [x] **F1 Bug**: the missing `NOTHING_HIDDEN_SHORT` text and the `NOTHING_HIDDEN` placeholder. New unit test: every text key the code uses exists, and keys formatted with `%` have a placeholder.
 - [x] **F2 Story**: `docs/STORY.md` (premise, people, timeline, one life period per room, the notes as memories with riddles woven in, Chloé, the postcards, the scrapbook, the last letter). Rewrite the postcards, the final letter and every "Grandma June / penthouse" text to fit.
-- [ ] **F3 Puzzle system and difficulty**
+- [x] **F3 Puzzle system and difficulty**
   - New locks you *do* something with: **order** (arrange things, solved with a logic note), **sudoku** (small 4×4 number square), **pattern** (what comes next?), **rotate** (turn the tiles until the picture is right), **tool** (use an item on something you can see).
   - Riddle notes: the code is never written plainly above tier 1. Digits come from facts, from counting things in the room (jars of shells, birds in a painting...), from sums, and from logic statements (for symbol, lamp and order locks).
   - Puzzles build on each other: a solved puzzle can reveal the code for the next one.
@@ -40,7 +40,7 @@ The owner's playtest feedback changes the direction: difficulty must come from t
 - [ ] **F8 Polish and summary**
 
 ## Next
-- F3: the new puzzle system (see below).
+- F4: the house route (new rooms, walks, level select, scrapbook).
 
 ## Known issues
 - Portrait phones show a "turn your phone sideways" card (it can be dismissed); the game is designed for landscape.

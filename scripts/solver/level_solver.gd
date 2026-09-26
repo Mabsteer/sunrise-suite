@@ -33,7 +33,7 @@ static func solve(level: Dictionary) -> Dictionary:
 ## Rough time (seconds) a thoughtful player who uses no hints needs: looking around, reading,
 ## working out answers and entering them. Used to check that par times are fair (the validator
 ## prints it per tier). `actions` comes from solve().
-static func estimate_seconds(level: Dictionary, actions: Array, indirection: int) -> float:
+static func estimate_seconds(level: Dictionary, actions: Array, riddle: int) -> float:
 	var t := 0.0
 	var things: int = level.get("locks", []).size() + level.get("items", []).size() + level.get("clues", []).size() + level.get("decoys", []).size()
 	t += 5.0 * things  # finding each thing in the room
@@ -46,21 +46,32 @@ static func estimate_seconds(level: Dictionary, actions: Array, indirection: int
 			"pick_up":
 				t += 4.0
 			"see_clue":
-				t += 8.0 + 7.0 * indirection
+				# Reading, and working out the riddle: deeper riddles take much longer.
+				t += 8.0 + 9.0 * riddle
 			"combine":
 				t += 12.0
 			"open":
 				var l: Dictionary = locks.get(str(a.get("id", "")), {})
+				var cfg: Dictionary = l.get("config", {})
 				match str(l.get("type", "")):
 					"combo":
 						t += 10.0 + 2.0 * str(l.get("answer", "")).length()
 					"sequence", "switches":
 						t += 14.0
+					"order":
+						t += 10.0 + 4.0 * int(cfg.get("length", 3))
 					"clock":
 						t += 12.0
 					"slider":
-						var n := int((l.get("config", {}) as Dictionary).get("size", 3))
+						var n := int(cfg.get("size", 3))
 						t += 40.0 if n <= 3 else 110.0
+					"sudoku":
+						t += 20.0 + 7.0 * str(cfg.get("givens", "")).count(".")
+					"pattern":
+						t += 15.0 + 12.0 * riddle
+					"rotate":
+						var r := int(cfg.get("size", 2))
+						t += 6.0 * r * r
 					_:
 						t += 5.0
 	return t
@@ -84,9 +95,9 @@ static func apply_goal(s: LevelSession, goal: Dictionary) -> bool:
 
 static func open_lock(s: LevelSession, lock_id: String) -> bool:
 	var t := s.lock_type(lock_id)
-	if t in LevelSession.KNOWLEDGE_TYPES or t == "slider":
+	if t in LevelSession.KNOWLEDGE_TYPES or t in LevelSession.SELF_TYPES:
 		return s.submit_answer(lock_id, str(s.locks[lock_id].get("answer", "")))
-	if t == "key" or (t == "hidden" and s.lock_item(lock_id) != ""):
+	if s.needs_item(lock_id):
 		var held := s._inventory_match(s.lock_item(lock_id))
 		return held != "" and s.use_item(held, lock_id) == "opened"
 	if t == "hidden":

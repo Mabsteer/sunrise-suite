@@ -166,9 +166,12 @@ func _open_lock(scene: LevelScene, lock_id: String) -> bool:
 		"switches":
 			w.call("set_answer", answer)
 			w.submitted.emit(str(w.call("answer")))
-		"slider":
+		"slider", "sudoku", "rotate":
 			w.call("solve_instantly")
-		"key":
+		"order", "pattern":
+			w.call("set_answer", answer)
+			w.submitted.emit(answer)
+		"key", "tool":
 			scene.select_item(s._inventory_match(s.lock_item(lock_id)))
 			w.use_requested.emit()
 		"hidden":

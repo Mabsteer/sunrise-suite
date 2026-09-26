@@ -16,6 +16,12 @@ func _run() -> void:
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--seeds="):
 			seeds = int(arg.trim_prefix("--seeds="))
+		if arg.begins_with("--print="):
+			# Show one generated level in words:  -- --print=kitchen:6:123
+			var p := arg.trim_prefix("--print=").split(":")
+			_print_level(LevelGenerator.generate(p[0], int(p[1]), int(p[2])))
+			get_tree().quit(0)
+			return
 	var rooms := available_rooms()
 	var failures: PackedStringArray = []
 	var total := 0
@@ -57,8 +63,8 @@ func _run() -> void:
 		var a := LevelGenerator.generate(rooms[0], tier, 42)
 		if a.is_empty():
 			failures.append("endless tier %d failed" % tier)
-	var x := LevelGenerator.generate(rooms[0], 5, 777)
-	var y := LevelGenerator.generate(rooms[0], 5, 777)
+	var x := LevelGenerator.generate(rooms[0], 7, 777)
+	var y := LevelGenerator.generate(rooms[0], 7, 777)
 	if JSON.stringify(x) != JSON.stringify(y):
 		failures.append("generator is not deterministic")
 	# Campaign + daily levels.
@@ -85,6 +91,18 @@ func _run() -> void:
 		get_tree().quit(1)
 		return
 	get_tree().quit(0 if failures.is_empty() else 1)
+
+
+func _print_level(level: Dictionary) -> void:
+	print("LEVEL %s (tier %d, par %ds, attempt %d)" % [level.get("id", "?"), int(level.get("tier", 0)), int(level.get("par_time", 0)), int(level.get("attempt", 0))])
+	for l: Dictionary in level.get("locks", []):
+		print("  lock %s: %s in %s, answer %s%s" % [l["id"], l["type"], l.get("location", "room"), l.get("answer", "-"), "  (door)" if l.get("is_door", false) else ""])
+	for i: Dictionary in level.get("items", []):
+		print("  item %s: %s in %s" % [i["id"], i["type"], i.get("location", "room")])
+	for c: Dictionary in level.get("clues", []):
+		print("  clue %s for %s in %s: %s" % [c["id"], c.get("for", "?"), c.get("location", "room"), c.get("text", "")])
+	for d: Dictionary in level.get("decoys", []):
+		print("  decoy: %s" % d.get("text", ""))
 
 
 static func available_rooms() -> Array[String]:

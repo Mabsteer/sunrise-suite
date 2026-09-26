@@ -284,10 +284,11 @@ func _place_host(key: String, host: Dictionary, _open: bool) -> void:
 				(hotspots[flavor_key] as Node).queue_free()
 				hotspots.erase(flavor_key)
 			_add_hotspot(key, rect, room_view.furniture_nodes.get(str(host.get("furniture", ""))))
-			# A little padlock shows that this part of the furniture is locked (hidden spots stay a secret).
+			# A little badge shows that this part of the furniture is locked, a puzzle, or needs a tool
+			# (the one search spot stays a secret).
 			if key.begins_with("lock:") and session.lock_type(key.substr(5)) not in ["hidden"]:
 				var badge := Sprite2D.new()
-				badge.texture = UIKit.texture("ui/padlock.svg")
+				badge.texture = UIKit.texture(_badge_for(session.lock_type(key.substr(5))))
 				badge.scale = Vector2(0.7, 0.7)
 				badge.position = rect.position + Vector2(rect.size.x - 24, rect.size.y / 2.0)
 				_props_layer.add_child(badge)
@@ -296,7 +297,7 @@ func _place_host(key: String, host: Dictionary, _open: bool) -> void:
 			var prop: Dictionary = Data.get_dict("props").get(str(host.get("prop", "")), {})
 			var rect := _slot_rect(str(host.get("slot", "")), _vec(prop.get("size", [100, 100])))
 			var sprite := Sprite2D.new()
-			sprite.texture = UIKit.texture(str(prop.get("sprite", "")))
+			sprite.texture = UIKit.texture(LevelText.prop_sprite(host))
 			sprite.centered = false
 			sprite.position = rect.position
 			if sprite.texture:
@@ -329,6 +330,14 @@ func _place_item(item_id: String, slot: String) -> void:
 		var t := sparkle.create_tween().set_loops()
 		t.tween_property(sparkle, "modulate:a", 0.2, 1.1).set_trans(Tween.TRANS_SINE)
 		t.tween_property(sparkle, "modulate:a", 1.0, 1.1).set_trans(Tween.TRANS_SINE)
+
+
+static func _badge_for(type: String) -> String:
+	if type in LevelSession.SELF_TYPES or type == "order":
+		return "ui/puzzle_badge.svg"
+	if type == "tool":
+		return "ui/tool_badge.svg"
+	return "ui/padlock.svg"
 
 
 ## Where a prop of `prop_size` goes in a wall or surface slot (scaled down to fit).

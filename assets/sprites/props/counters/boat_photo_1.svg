@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" width="160" height="120">
+  <!-- Harbour photo with 1 boat (counter prop). -->
+  <defs><linearGradient id="dawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9c8ac4"/><stop offset="1" stop-color="#f9b98a"/></linearGradient></defs>
+  <rect x="6" y="8" width="150" height="110" rx="4" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="2" y="2" width="150" height="110" rx="4" fill="#fffbf5"/>
+  <rect x="10" y="10" width="134" height="94" fill="url(#dawn)"/>
+  <circle cx="112" cy="50" r="12" fill="#f6c453"/>
+  <rect x="10" y="54" width="134" height="50" fill="#2e8c8c"/>
+  <rect x="10" y="54" width="134" height="4" fill="#6cc2be"/>
+  <rect x="96" y="62" width="30" height="3" rx="1.5" fill="#fbe3a0" opacity="0.7"/>
+  <g transform="translate(30 100) scale(0.95)">
+    <path d="M-12 0 L12 0 L8 6 L-8 6 Z" fill="#7a5134"/>
+    <path d="M0 -1 L0 -24 L11 -2 Z" fill="#fffbf5"/>
+    <path d="M-1 -2 L-1 -18 L-9 -2 Z" fill="#fcd9b8"/>
+  </g>
+  <rect x="2" y="2" width="150" height="5" rx="2" fill="#fff4e2"/>
+</svg>

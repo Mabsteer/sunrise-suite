@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 110" width="160" height="110">
+  <!-- Picture with 7 birds on the wires (counter prop). -->
+  <rect x="6" y="8" width="150" height="100" rx="6" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="2" y="2" width="150" height="100" rx="6" fill="#a8744a"/>
+  <rect x="10" y="10" width="134" height="84" fill="#fff4e2"/>
+  <rect x="10" y="10" width="134" height="30" fill="#fcd9b8" opacity="0.6"/>
+  <path d="M10 45 Q77 52 144 45" stroke="#6b5a66" stroke-width="1.6" fill="none"/>
+  <path d="M10 81 Q77 88 144 81" stroke="#6b5a66" stroke-width="1.6" fill="none"/>
+  <g transform="translate(34 44) scale(1 1)">
+    <path d="M-7 -2 L-12 2 L-7 1 Z" fill="#6b5a66"/>
+    <ellipse cx="0" cy="-3" rx="7.5" ry="6" fill="#3e3570"/>
+    <circle cx="5" cy="-9" r="4.2" fill="#3e3570"/>
+    <path d="M9 -9.5 L12.5 -8.5 L9 -7.5 Z" fill="#f6c453"/>
+    <circle cx="6" cy="-10" r="1" fill="#fffbf5"/>
+    <ellipse cx="-1" cy="-2" rx="4" ry="2.6" fill="#9c8ac4"/>
+  </g>
+  <g transform="translate(62 46) scale(-1 1)">
+    <path d="M-7 -2 L-12 2 L-7 1 Z" fill="#6b5a66"/>
+    <ellipse cx="0" cy="-3" rx="7.5" ry="6" fill="#3e3570"/>
+    <circle cx="5" cy="-9" r="4.2" fill="#3e3570"/>
+    <path d="M9 -9.5 L12.5 -8.5 L9 -7.5 Z" fill="#f6c453"/>
+    <circle cx="6" cy="-10" r="1" fill="#fffbf5"/>
+    <ellipse cx="-1" cy="-2" rx="4" ry="2.6" fill="#9c8ac4"/>
+  </g>
+  <g transform="translate(90 46) scale(1 1)">
+    <path d="M-7 -2 L-12 2 L-7 1 Z" fill="#6b5a66"/>
+    <ellipse cx="0" cy="-3" rx="7.5" ry="6" fill="#3e3570"/>
+    <circle cx="5" cy="-9" r="4.2" fill="#3e3570"/>
+    <path d="M9 -9.5 L12.5 -8.5 L9 -7.5 Z" fill="#f6c453"/>
+    <circle cx="6" cy="-10" r="1" fill="#fffbf5"/>
+    <ellipse cx="-1" cy="-2" rx="4" ry="2.6" fill="#9c8ac4"/>
+  </g>
+  <g transform="translate(118 44) scale(1 1)">
+    <path d="M-7 -2 L-12 2 L-7 1 Z" fill="#6b5a66"/>
+    <ellipse cx="0" cy="-3" rx="7.5" ry="6" fill="#3e3570"/>
+    <circle cx="5" cy="-9" r="4.2" fill="#3e3570"/>
+    <path d="M9 -9.5 L12.5 -8.5 L9 -7.5 Z" fill="#f6c453"/>
+    <circle cx="6" cy="-10" r="1" fill="#fffbf5"/>
+    <ellipse cx="-1" cy="-2" rx="4" ry="2.6" fill="#9c8ac4"/>
+  </g>
+  <g transform="translate(48 80) scale(-1 1)">
+    <path d="M-7 -2 L-12 2 L-7 1 Z" fill="#6b5a66"/>
+    <ellipse cx="0" cy="-3" rx="7.5" ry="6" fill="#3e3570"/>
+    <circle cx="5" cy="-9" r="4.2" fill="#3e3570"/>
+    <path d="M9 -9.5 L12.5 -8.5 L9 -7.5 Z" fill="#f6c453"/>
+    <circle cx="6" cy="-10" r="1" fill="#fffbf5"/>
+    <ellipse cx="-1" cy="-2" rx="4" ry="2.6" fill="#9c8ac4"/>
+  </g>
+  <g transform="translate(76 82) scale(1 1)">
+    <path d="M-7 -2 L-12 2 L-7 1 Z" fill="#6b5a66"/>
+    <ellipse cx="0" cy="-3" rx="7.5" ry="6" fill="#3e3570"/>
+    <circle cx="5" cy="-9" r="4.2" fill="#3e3570"/>
+    <path d="M9 -9.5 L12.5 -8.5 L9 -7.5 Z" fill="#f6c453"/>
+    <circle cx="6" cy="-10" r="1" fill="#fffbf5"/>
+    <ellipse cx="-1" cy="-2" rx="4" ry="2.6" fill="#9c8ac4"/>
+  </g>
+  <g transform="translate(104 82) scale(1 1)">
+    <path d="M-7 -2 L-12 2 L-7 1 Z" fill="#6b5a66"/>
+    <ellipse cx="0" cy="-3" rx="7.5" ry="6" fill="#3e3570"/>
+    <circle cx="5" cy="-9" r="4.2" fill="#3e3570"/>
+    <path d="M9 -9.5 L12.5 -8.5 L9 -7.5 Z" fill="#f6c453"/>
+    <circle cx="6" cy="-10" r="1" fill="#fffbf5"/>
+    <ellipse cx="-1" cy="-2" rx="4" ry="2.6" fill="#9c8ac4"/>
+  </g>
+  <rect x="2" y="2" width="150" height="5" rx="2" fill="#c99a6b"/>
+</svg>

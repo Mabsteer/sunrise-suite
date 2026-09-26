@@ -23,18 +23,18 @@
      "spots": [{"id": "drip_tray", "name": "under the drip tray", "rect": [20, 130, 140, 56], "locks": ["hidden"], "tools": [null], "reveal": "something tucked under the drip tray"}],
      "flavor": "Mamie's pride and joy. It hisses like a happy dragon."},
     {"id": "spice_rack", "name": "the spice rack", "sprite": "props/kitchen/spice_rack.svg", "pos": [495, 150], "size": [230, 160],
-     "spots": [{"id": "spices", "name": "the spice jars", "rect": [0, 0, 226, 152], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "a little tin behind the jars"}],
+     "spots": [{"id": "spices", "name": "the spice jars", "rect": [0, 0, 226, 152], "locks": ["hidden", "order"], "tools": [null], "clue": true, "reveal": "a little tin behind the jars"}],
      "flavor": "Cinnamon, cardamom, saffron from Marrakech..."},
     {"id": "fridge", "name": "the fridge", "sprite": "props/kitchen/fridge.svg", "pos": [1650, 244], "size": [250, 530],
      "spots": [
-       {"id": "freezer", "name": "the freezer", "rect": [10, 10, 230, 150], "locks": ["key", "combo"]},
+       {"id": "freezer", "name": "the freezer", "rect": [10, 10, 230, 150], "locks": ["key", "combo", "sudoku"]},
        {"id": "magnets", "name": "the fridge magnets", "rect": [60, 290, 180, 110], "clue": true}
      ],
      "flavor": "A mint-green fridge that hums a little tune."},
     {"id": "island", "name": "the kitchen island", "sprite": "props/kitchen/island.svg", "pos": [520, 772], "size": [880, 230],
      "spots": [
        {"id": "left_drawer", "name": "the island's left drawer", "rect": [30, 46, 400, 52], "locks": ["key", "combo"]},
-       {"id": "right_drawer", "name": "the island's right drawer", "rect": [450, 46, 400, 52], "locks": ["combo", "key"]}
+       {"id": "right_drawer", "name": "the island's right drawer", "rect": [450, 46, 400, 52], "locks": ["combo", "key", "pattern"]}
      ],
      "flavor": "The island where breakfast happens."},
     {"id": "fruit_bowl", "name": "the fruit bowl", "sprite": "props/kitchen/fruit_bowl.svg", "pos": [560, 662], "size": [210, 120],

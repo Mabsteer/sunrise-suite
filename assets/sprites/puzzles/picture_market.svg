@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- Market stall with fruit under a striped awning (rotation puzzle picture). -->
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fcd9b8"/><stop offset="1" stop-color="#fff4e2"/></linearGradient></defs>
+  <rect width="600" height="600" fill="url(#sky)"/>
+  <circle cx="110" cy="110" r="46" fill="#f6c453"/>
+  <rect x="0" y="470" width="600" height="130" fill="#f3ddb3"/>
+  <ellipse cx="30" cy="520" rx="24" ry="10" fill="#c99a6b" opacity="0.45"/><ellipse cx="90" cy="550" rx="24" ry="10" fill="#c99a6b" opacity="0.45"/><ellipse cx="150" cy="520" rx="24" ry="10" fill="#c99a6b" opacity="0.45"/><ellipse cx="210" cy="550" rx="24" ry="10" fill="#c99a6b" opacity="0.45"/><ellipse cx="270" cy="520" rx="24" ry="10" fill="#c99a6b" opacity="0.45"/><ellipse cx="330" cy="550" rx="24" ry="10" fill="#c99a6b" opacity="0.45"/><ellipse cx="390" cy="520" rx="24" ry="10" fill="#c99a6b" opacity="0.45"/><ellipse cx="450" cy="550" rx="24" ry="10" fill="#c99a6b" opacity="0.45"/><ellipse cx="510" cy="520" rx="24" ry="10" fill="#c99a6b" opacity="0.45"/><ellipse cx="570" cy="550" rx="24" ry="10" fill="#c99a6b" opacity="0.45"/>
+  <rect x="120" y="240" width="14" height="240" fill="#7a5134"/><rect x="466" y="240" width="14" height="240" fill="#7a5134"/>
+  <path d="M100 190 L157 190 L157 260 Q128 280 100 260 Z" fill="#ee7b6b"/><path d="M157 190 L214 190 L214 260 Q185 280 157 260 Z" fill="#fffbf5"/><path d="M214 190 L271 190 L271 260 Q242 280 214 260 Z" fill="#ee7b6b"/><path d="M271 190 L328 190 L328 260 Q299 280 271 260 Z" fill="#fffbf5"/><path d="M328 190 L385 190 L385 260 Q356 280 328 260 Z" fill="#ee7b6b"/><path d="M385 190 L442 190 L442 260 Q413 280 385 260 Z" fill="#fffbf5"/><path d="M442 190 L499 190 L499 260 Q470 280 442 260 Z" fill="#ee7b6b"/>
+  <rect x="90" y="176" width="420" height="18" rx="6" fill="#c95b52"/>
+  <rect x="110" y="380" width="380" height="24" rx="6" fill="#a8744a"/>
+  <rect x="120" y="404" width="360" height="70" fill="#c99a6b"/>
+  <rect x="124" y="336" width="52" height="46" rx="6" fill="#a8744a"/><circle cx="136" cy="338" r="10" fill="#f6c453"/><circle cx="150" cy="330" r="10" fill="#f6c453"/><circle cx="164" cy="338" r="10" fill="#f6c453"/><rect x="194" y="336" width="52" height="46" rx="6" fill="#a8744a"/><circle cx="206" cy="338" r="10" fill="#ee7b6b"/><circle cx="220" cy="330" r="10" fill="#ee7b6b"/><circle cx="234" cy="338" r="10" fill="#ee7b6b"/><rect x="264" y="336" width="52" height="46" rx="6" fill="#a8744a"/><circle cx="276" cy="338" r="10" fill="#8faf8a"/><circle cx="290" cy="330" r="10" fill="#8faf8a"/><circle cx="304" cy="338" r="10" fill="#8faf8a"/><rect x="334" y="336" width="52" height="46" rx="6" fill="#a8744a"/><circle cx="346" cy="338" r="10" fill="#f9b98a"/><circle cx="360" cy="330" r="10" fill="#f9b98a"/><circle cx="374" cy="338" r="10" fill="#f9b98a"/><rect x="404" y="336" width="52" height="46" rx="6" fill="#a8744a"/><circle cx="416" cy="338" r="10" fill="#f6c453"/><circle cx="430" cy="330" r="10" fill="#f6c453"/><circle cx="444" cy="338" r="10" fill="#f6c453"/>
+  <path d="M300 300 C290 280 310 270 300 250" stroke="#5e7f5e" stroke-width="4" fill="none"/>
+  <circle cx="300" cy="244" r="16" fill="#f6c453"/><circle cx="300" cy="244" r="6" fill="#7a5134"/>
+</svg>

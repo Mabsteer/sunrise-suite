@@ -26,13 +26,30 @@ func test_wrong_answers_do_not_open() -> void:
 	assert_false(s.is_open("clock"))
 	assert_true(s.submit_answer("clock", "07:30"), "07:30 means the same as 7:30")
 	assert_true(s.is_open("clock"))
-	assert_true(s.item_available("i_trowel"), "clock contents become reachable")
+	assert_true(s.clue_available("c_order"), "clock contents become reachable")
+
+
+func test_new_puzzle_types() -> void:
+	var s := LevelSession.new(level)
+	assert_false(s.submit_answer("records", "sun,shell,star"), "wrong order")
+	assert_true(s.submit_answer("records", "shell, sun, star"), "right order (spaces don't matter)")
+	assert_false(s.submit_answer("drawers", "10,14"))
+	assert_true(s.submit_answer("drawers", "10, 12"))
+	assert_true(s.lock_visible("paper"), "the number square was in the drawers")
+	assert_false(s.submit_answer("paper", "1234341221434312"), "a wrong square")
+	assert_true(s.submit_answer("paper", "1234341221434321"))
+	assert_true(s.submit_answer("picture_box", "solved"))
+	var text := LevelText.new(s, Data.get_dict("rooms/lounge"))
+	assert_eq(text.answer_text("records"), "from left to right: shell, sun, star")
+	assert_eq(text.answer_text("drawers"), "10 and 12")
 
 
 func test_combine_and_use_tool() -> void:
 	var s := LevelSession.new(level)
-	assert_true(s.pick_up("i_flashlight_empty"))
+	assert_false(s.pick_up("i_flashlight_empty"), "it's inside the music box")
 	assert_true(s.submit_answer("music_box", "sun,shell,wave"))
+	assert_true(s.pick_up("i_flashlight_empty"))
+	assert_true(s.submit_answer("picture_box", "solved"))
 	assert_true(s.pick_up("i_batteries"))
 	assert_eq(s.combine("i_batteries", "i_flashlight_empty"), "i_flashlight")
 	assert_false(s.inventory.has("i_batteries"), "parts are used up")
@@ -45,7 +62,7 @@ func test_sunrise_follows_steps() -> void:
 	var s := LevelSession.new(level)
 	assert_eq(s.sunrise_t(), 0.0)
 	s.submit_answer("clock", "7:30")
-	assert_between(s.sunrise_t(), 0.09, 0.11)
+	assert_between(s.sunrise_t(), 1.0 / 14.0 - 0.001, 1.0 / 14.0 + 0.001)
 
 
 func test_hints_get_more_specific() -> void:

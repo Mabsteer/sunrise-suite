@@ -23,7 +23,7 @@
      "flavor": "Tick... tock... It chimes a little tune at sunrise."},
     {"id": "bookcase", "name": "the bookcase", "sprite": "props/study/bookcase.svg", "pos": [1580, 150], "size": [320, 620],
      "spots": [
-       {"id": "books", "name": "the travel books", "rect": [14, 14, 282, 418], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "a hollow book"},
+       {"id": "books", "name": "the travel books", "rect": [14, 14, 282, 418], "locks": ["hidden", "order"], "tools": [null], "clue": true, "reveal": "a hollow book"},
        {"id": "cabinet", "name": "the bookcase cabinet", "rect": [14, 444, 282, 146], "locks": ["key", "combo"]}
      ],
      "flavor": "Guidebooks with notes in every margin."},
@@ -34,11 +34,11 @@
      "spots": [
        {"id": "typewriter", "name": "the page in the typewriter", "rect": [50, 0, 200, 92], "clue": true},
        {"id": "left_drawers", "name": "the desk's left drawers", "rect": [26, 134, 188, 184], "locks": ["key", "combo"]},
-       {"id": "right_drawers", "name": "the desk's right drawers", "rect": [386, 134, 188, 184], "locks": ["combo", "key"]}
+       {"id": "right_drawers", "name": "the desk's right drawers", "rect": [386, 134, 188, 184], "locks": ["combo", "key", "pattern"]}
      ],
      "flavor": "Where Mamie wrote her postcards. Clack clack clack."},
     {"id": "trunk", "name": "the travel trunk", "sprite": "props/study/trunk.svg", "pos": [1500, 840], "size": [380, 210],
-     "spots": [{"id": "trunk", "name": "the travel trunk", "rect": [10, 40, 360, 160], "locks": ["key", "combo"]}],
+     "spots": [{"id": "trunk", "name": "the travel trunk", "rect": [10, 40, 360, 160], "locks": ["key", "combo", "sudoku"]}],
      "flavor": "Stickers from forty years of adventures."}
   ],
   "wall_slots": [

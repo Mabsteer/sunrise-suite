@@ -7,8 +7,19 @@ extends RefCounted
 ## (a recipe). New containers have their own requirements, which are handled the same way until the
 ## step budget from tiers.json is used up. Afterwards the level is checked by LevelValidator; if it
 ## fails, the generator retries with a derived seed.
+##
+## Difficulty comes from thinking, not searching (see docs/DECISIONS.md, v2): riddles get deeper
+## (RiddleMaker), puzzles feed each other (a number square that gives a code), and puzzle types get
+## bigger. Keys are always the reward of a solved puzzle, and there is at most one search spot.
 
 const DOOR_TYPES: PackedStringArray = ["combo", "sequence", "clock", "key"]
+const CONTAINER_TYPES: PackedStringArray = ["combo", "sequence", "clock", "switches", "key", "hidden", "slider", "order", "sudoku", "pattern", "rotate"]
+## A key is only ever found inside one of these (a puzzle you solved), never lying around.
+const REWARD_CONTAINERS: PackedStringArray = ["combo", "sequence", "clock", "switches", "order", "sudoku", "pattern", "rotate", "slider", "tool", "care"]
+## Puzzles that need nothing from elsewhere: they're solved on the spot.
+const FREE_TYPES: PackedStringArray = ["slider", "sudoku", "pattern", "rotate"]
+const SUDOKU_PROPS: PackedStringArray = ["newspaper", "number_box"]
+const ROTATE_PICTURES: PackedStringArray = ["puzzles/slider_sunrise.svg", "puzzles/picture_lemon_tree.svg", "puzzles/picture_market.svg"]
 const KEY_TYPES: PackedStringArray = ["brass_key", "tiny_key", "shell_key", "old_key"]
 const SYMBOLS: PackedStringArray = ["sun", "shell", "wave", "star", "leaf", "heart"]
 const CLUE_PROPS_SURFACE: PackedStringArray = ["note", "open_book", "photo_stand"]
@@ -67,7 +78,7 @@ static func tier_config(tier: int) -> Dictionary:
 	var data := Data.get_dict("tiers")
 	var tiers: Array = data.get("tiers", [])
 	if tiers.is_empty():
-		return {"tier": tier, "steps": [3, 3], "types": ["combo", "key", "hidden"], "par_time": 300}
+		return {"tier": tier, "steps": [3, 3], "types": ["combo", "key", "order"], "par_time": 300}
 	var last: Dictionary = tiers[tiers.size() - 1]
 	if tier <= tiers.size():
 		return (tiers[maxi(tier, 1) - 1] as Dictionary).duplicate(true)
@@ -132,7 +143,7 @@ var _postcard: Dictionary = {}
 
 ## Creates and places whatever `lock` needs. Returns steps used.
 func _provide_requirements(lock: Dictionary, budget: int) -> int:
-	var reqs := _requirements(lock)
+	var reqs := _requirements(lock, budget)
 	if reqs.is_empty():
 		return 0
 	var shares := _split(budget, reqs.size())
@@ -146,16 +157,23 @@ func _provide_requirements(lock: Dictionary, budget: int) -> int:
 func _provide_thing(thing: Dictionary, budget: int) -> int:
 	if _failed:
 		return 0
-	if budget <= 0:
+	if bool(thing.get("chain", false)):
+		# A puzzle made while writing a clue (e.g. the number square that gives a code) is a step itself.
+		thing.erase("chain")
+		return 1 + _provide_thing(thing, budget - 1)
+	var reward := _is_reward(thing)
+	if reward:
+		budget = maxi(budget, 1) # keys are never just lying around
+	elif budget <= 0:
 		if _place_in_room(thing):
 			return 0
 		budget = 1 # no room left: hide it in a container anyway
 	# A recipe can make items (the parts become two branches).
-	if str(thing["kind"]) == "item" and bool(cfg.get("combine", false)):
+	if str(thing["kind"]) == "item" and not reward and bool(cfg.get("combine", false)):
 		var recipe := _recipe_for(str(thing["data"]["type"]))
 		if not recipe.is_empty() and rng.randf() < 0.45:
 			return _make_by_recipe(thing, recipe, budget)
-	return _hide_in_container(thing, budget)
+	return _hide_in_container(thing, budget, reward)
 
 
 func _make_by_recipe(thing: Dictionary, recipe: Dictionary, budget: int) -> int:
@@ -170,12 +188,12 @@ func _make_by_recipe(thing: Dictionary, recipe: Dictionary, budget: int) -> int:
 	return 1 + _provide_thing(part_a, shares[0]) + _provide_thing(part_b, shares[1])
 
 
-func _hide_in_container(thing: Dictionary, budget: int) -> int:
+func _hide_in_container(thing: Dictionary, budget: int, reward: bool = false) -> int:
 	var after := budget - 1
-	var choice := _choose_container(after, thing)
+	var choice := _choose_container(after, thing, reward)
 	if choice.is_empty():
-		# Nothing can hold it: try the room, else give up this attempt.
-		if _place_in_room(thing):
+		# Nothing can hold it: try the room (never for a key), else give up this attempt.
+		if not reward and _place_in_room(thing):
 			return 0
 		_failed = true
 		return 0
@@ -198,8 +216,9 @@ func _hide_in_container(thing: Dictionary, budget: int) -> int:
 
 # ================================================================== requirements of a lock
 
-## Things a lock needs: [{ "kind": "item"|"clue", "data": Dictionary }]. Creates their records.
-func _requirements(lock: Dictionary) -> Array[Dictionary]:
+## Things a lock needs: [{ "kind": "item"|"clue"|"lock", "data": Dictionary }]. Creates their records.
+## `budget` = steps still available for this lock's needs (a chained puzzle costs one).
+func _requirements(lock: Dictionary, budget: int = 0) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
 	var t := str(lock["type"])
 	match t:
@@ -211,27 +230,109 @@ func _requirements(lock: Dictionary) -> Array[Dictionary]:
 			var key := _new_item(key_type)
 			lock["item"] = key["data"]["id"]
 			out.append(key)
-		"hidden":
+		"hidden", "tool":
 			var tool := str(lock.get("tool", ""))
 			if tool != "":
 				var it := _new_item(tool)
 				lock["item"] = it["data"]["id"]
 				out.append(it)
-		"combo", "sequence", "clock", "switches":
+		"combo", "sequence", "clock", "switches", "order":
+			if t == "combo" and budget >= 1 and _allowed(["sudoku"]).has("sudoku") and str(lock["answer"]).length() <= 4 \
+					and rng.randf() < float(cfg.get("chain", 0.0)):
+				var chained := _sudoku_chain(lock)
+				if not chained.is_empty():
+					out.append(chained)
+					return out
 			out.append_array(_make_clues(lock))
 	return out
 
 
 func _requirement_free(lock: Dictionary) -> bool:
 	var t := str(lock["type"])
-	return t == "slider" or (t == "hidden" and str(lock.get("tool", "")) == "")
+	return FREE_TYPES.has(t) or (t == "hidden" and str(lock.get("tool", "")) == "")
+
+
+func _is_reward(thing: Dictionary) -> bool:
+	return str(thing["kind"]) == "item" and str(items_db.get(str(thing["data"]["type"]), {}).get("kind", "")) == "key"
+
+
+func _count_type(type: String) -> int:
+	var n := 0
+	for l in locks:
+		if str(l["type"]) == type:
+			n += 1
+	return n
+
+
+## Puzzles that build on each other: a 4x4 number square whose shaded squares give `lock`'s code.
+## Returns the square as a thing to place (it holds the note that says how to read it).
+func _sudoku_chain(lock: Dictionary) -> Dictionary:
+	var prop := ""
+	for p in SUDOKU_PROPS:
+		if props_db.has(p) and not used_props.has(p):
+			prop = p
+			break
+	if prop == "":
+		return {}
+	var n := str(lock["answer"]).length()
+	var sq := _new_lock("sudoku", {"kind": "prop", "prop": prop}, "room")
+	var givens := str((sq["config"] as Dictionary)["givens"])
+	var blank_cells: Array = []
+	for i in 16:
+		if givens[i] == ".":
+			blank_cells.append(i)
+	if blank_cells.size() < n:
+		locks.erase(sq)
+		return {}
+	used_props[prop] = true
+	_shuffle(blank_cells)
+	var shaded := blank_cells.slice(0, n)
+	shaded.sort()
+	var code := ""
+	for c: int in shaded:
+		code += str(sq["answer"])[c]
+	lock["answer"] = code
+	(sq["config"] as Dictionary)["shaded"] = shaded
+	steps += 1
+	var templates: Array = (clue_db.get("combo", {}) as Dictionary).get("sudoku", ["{lock}: the shaded squares."])
+	var note := _new_clue(lock, _fill(str(templates[rng.randi_range(0, templates.size() - 1)]), lock, ""))
+	note["data"]["location"] = sq["id"]
+	note["data"]["host"] = {"kind": "prop", "prop": "note"}
+	note["data"]["source"] = sq["id"]
+	contents[sq["id"]] = int(contents.get(sq["id"], 0)) + 1
+	return {"kind": "lock", "data": sq, "chain": true}
+
+
+## Puts a prop showing `count` things (shells in a jar, boats in a photo...) in the room, as a clue
+## for `lock`. Returns how a riddle names it ("the shells in the jar"), or "" if nothing fits.
+func place_counter(lock: Dictionary, count: int) -> String:
+	var counters: Dictionary = clue_db.get("counters", {})
+	var options: Array = []
+	for id: String in counters.keys():
+		if not id.begins_with("_") and props_db.has(id) and not used_props.has(id):
+			options.append(id)
+	options.sort()
+	_shuffle(options)
+	for id: String in options:
+		var place := str((props_db[id] as Dictionary).get("place", "surface"))
+		var slot := _free_surface_slot() if place == "surface" else _free_wall_slot(place)
+		if slot == "":
+			continue
+		used_slots[slot] = true
+		used_props[id] = true
+		var info: Dictionary = counters[id]
+		var c := _new_clue(lock, str(info.get("text", "")))
+		c["data"]["host"] = {"kind": "prop", "prop": id, "slot": slot, "count": count}
+		return str(info.get("phrase", id))
+	return ""
 
 
 # ================================================================== containers and hosts
 
 ## Picks a lock type + host that can hold `thing`. `after` = budget left for the container's needs.
-func _choose_container(after: int, thing: Dictionary) -> Dictionary:
-	var types := _allowed(["combo", "sequence", "clock", "switches", "key", "hidden", "slider"])
+## `reward`: the thing is a key, so only a real puzzle may hold it.
+func _choose_container(after: int, thing: Dictionary, reward: bool = false) -> Dictionary:
+	var allowed: Array = cfg.get("types", [])
 	var options: Array[Dictionary] = []
 	var thing_is_wall_prop := false
 	if str(thing["kind"]) == "lock":
@@ -239,17 +340,30 @@ func _choose_container(after: int, thing: Dictionary) -> Dictionary:
 		thing_is_wall_prop = str(props_db.get(str(host.get("prop", "")), {}).get("place", "")) != "surface"
 	if thing_is_wall_prop:
 		return {}
-	for t in types:
+	# Searching is not a difficulty knob: at most `max_hidden` search spots per level, at every tier.
+	var search_ok := allowed.has("hidden") and not reward and _count_type("hidden") < int(cfg.get("max_hidden", 1))
+	var tool_ok := allowed.has("tool") and bool(cfg.get("tools", false))
+	for t in CONTAINER_TYPES:
+		if t == "hidden":
+			if not search_ok and not tool_ok:
+				continue
+		elif not allowed.has(t):
+			continue
+		if t == "key" and after <= 0:
+			continue # its key needs a step of its own
 		# Furniture spots
 		for f: Dictionary in room.get("furniture", []):
 			for spot: Dictionary in f.get("spots", []):
 				var key := "%s:%s" % [f["id"], spot["id"]]
 				if used_spots.has(key) or used_spots.has(key + ":clue") or not (spot.get("locks", []) as Array).has(t):
 					continue
-				var tool := _tool_for(spot.get("tools", [null]), t)
+				var tool := _tool_for(spot.get("tools", [null]), t, search_ok, tool_ok)
 				if tool == "!":
 					continue
-				options.append({"type": t, "tool": tool, "weight": 3.0,
+				var real := "tool" if tool != "" else t
+				if reward and not REWARD_CONTAINERS.has(real):
+					continue
+				options.append({"type": real, "tool": tool, "weight": 3.0,
 					"host": {"kind": "furniture", "furniture": f["id"], "spot": spot["id"]}, "spot_key": key})
 		# Props
 		for prop_id: String in props_db.keys():
@@ -258,22 +372,25 @@ func _choose_container(after: int, thing: Dictionary) -> Dictionary:
 			var prop: Dictionary = props_db[prop_id]
 			if not (prop.get("locks", []) as Array).has(t):
 				continue
-			var tool := _tool_for(prop.get("tools", [null]), t)
+			var tool := _tool_for(prop.get("tools", [null]), t, search_ok, tool_ok)
 			if tool == "!":
+				continue
+			var real := "tool" if tool != "" else t
+			if reward and not REWARD_CONTAINERS.has(real):
 				continue
 			var place := str(prop.get("place", "surface"))
 			if place == "surface":
-				options.append({"type": t, "tool": tool, "weight": 2.0, "portable": true,
+				options.append({"type": real, "tool": tool, "weight": 2.0, "portable": true,
 					"host": {"kind": "prop", "prop": prop_id}, "prop": prop_id})
 			else:
 				var slot := _free_wall_slot(place)
 				if slot != "":
-					options.append({"type": t, "tool": tool, "weight": 2.5,
+					options.append({"type": real, "tool": tool, "weight": 2.5,
 						"host": {"kind": "prop", "prop": prop_id, "slot": slot}, "prop": prop_id, "slot": slot})
 	# Budget rules: with steps still to spend, the container must need something (or be portable so it can nest).
 	var filtered: Array[Dictionary] = []
 	for o in options:
-		var free := str(o["type"]) == "slider" or (str(o["type"]) == "hidden" and str(o["tool"]) == "")
+		var free := FREE_TYPES.has(str(o["type"])) or (str(o["type"]) == "hidden" and str(o["tool"]) == "")
 		if after > 0 and free and not bool(o.get("portable", false)):
 			continue
 		filtered.append(o)
@@ -300,18 +417,18 @@ func _choose_container(after: int, thing: Dictionary) -> Dictionary:
 	return pick
 
 
-## For hidden spots: which tool to require. "" = none, "!" = this host can't be used with type t now.
-func _tool_for(tools: Variant, t: String) -> String:
+## For hidden spots: which tool to require (then it becomes a visible "tool" lock). "" = none (a search
+## spot), "!" = this host can't be used now.
+func _tool_for(tools: Variant, t: String, search_ok: bool, tool_ok: bool) -> String:
 	if t != "hidden":
 		return ""
 	var list: Array = tools if tools is Array else [null]
-	var allow_tools := bool(cfg.get("tools", false))
 	var options: Array[String] = []
 	var has_none := false
 	for tool: Variant in list:
 		if tool == null:
-			has_none = true
-		elif allow_tools and not used_item_types.has(str(tool)) and _item_obtainable(str(tool)):
+			has_none = search_ok
+		elif tool_ok and not used_item_types.has(str(tool)) and _item_obtainable(str(tool)):
 			options.append(str(tool))
 	if not options.is_empty() and (not has_none or rng.randf() < 0.6):
 		return options[rng.randi_range(0, options.size() - 1)]
@@ -392,8 +509,8 @@ func _clue_host_in_room() -> Dictionary:
 			var key := "%s:%s:clue" % [f["id"], spot["id"]]
 			var lock_key := "%s:%s" % [f["id"], spot["id"]]
 			if bool(spot.get("clue", false)) and not used_spots.has(key) and not used_spots.has(lock_key):
-				# Low tiers prefer clues you can see at a glance (notes, photos) over ones tucked into furniture.
-				options.append({"w": 0.4 if int(cfg.get("indirection", 0)) <= 1 else 2.0, "host": {"kind": "furniture", "furniture": f["id"], "spot": spot["id"]}, "used": key})
+				# Same at every tier: where a clue sits is not what makes a level hard.
+				options.append({"w": 1.0, "host": {"kind": "furniture", "furniture": f["id"], "spot": spot["id"]}, "used": key})
 	for prop_id in CLUE_PROPS_WALL:
 		if used_props.has(prop_id) or not props_db.has(prop_id):
 			continue
@@ -475,6 +592,24 @@ func _new_lock(type: String, host: Dictionary, location: String) -> Dictionary:
 		"slider":
 			lock["answer"] = "solved"
 			lock["config"] = {"size": int(cfg.get("slider_size", 3)), "picture": "puzzles/slider_sunrise.svg", "scramble": int(cfg.get("slider_scramble", 20))}
+		"order":
+			var n := clampi(int(cfg.get("order_length", 3)), 3, 5)
+			var pool := _symbol_pool()
+			_shuffle(pool)
+			lock["answer"] = ",".join(PackedStringArray(pool.slice(0, n)))
+			lock["config"] = {"length": n}
+		"sudoku":
+			var sq := PuzzleMath.sudoku_generate(rng, int(cfg.get("sudoku_blanks", 7)))
+			lock["answer"] = str(sq["solution"])
+			lock["config"] = {"givens": str(sq["givens"])}
+		"pattern":
+			var kind := "symbols" if rng.randf() < 0.4 else "numbers"
+			var p := PuzzleMath.pattern_generate(rng, int(cfg.get("riddle", 0)), kind, _symbol_pool())
+			lock["answer"] = str(p["answer"])
+			lock["config"] = {"kind": kind, "terms": p["terms"], "blanks": p["blanks"]}
+		"rotate":
+			lock["answer"] = "solved"
+			lock["config"] = {"size": clampi(int(cfg.get("rotate_size", 2)), 2, 4), "picture": ROTATE_PICTURES[rng.randi_range(0, ROTATE_PICTURES.size() - 1)]}
 	locks.append(lock)
 	return lock
 
@@ -514,29 +649,15 @@ func _unused_item_type(pool: PackedStringArray) -> String:
 
 # ================================================================== clues
 
+## Writes the notes for a lock that needs knowledge (see RiddleMaker). Riddle depth varies a little
+## around the tier's "riddle" value, so not every lock in a level is equally tricky.
 func _make_clues(lock: Dictionary) -> Array[Dictionary]:
-	var t := str(lock["type"])
-	var templates: Dictionary = clue_db.get(t, {})
-	var ind := int(cfg.get("indirection", 0))
-	var level := rng.randi_range(maxi(0, ind - 1), ind)
+	var riddle := int(cfg.get("riddle", cfg.get("indirection", 0)))
+	var depth := riddle if riddle <= 1 else rng.randi_range(riddle - 1, riddle)
 	var out: Array[Dictionary] = []
-	var answer := str(lock["answer"])
-	var split := templates.has("first") and ((level == 2 and rng.randf() < 0.55) or level >= 3)
-	if split:
-		var parts := _split_answer(t, answer, lock)
-		out.append(_new_clue(lock, _fill(_pick_template(templates, "first"), lock, parts[0])))
-		out.append(_new_clue(lock, _fill(_pick_template(templates, "last"), lock, parts[1])))
-	else:
-		var key := str(mini(level, 3))
-		if not templates.has(key):
-			key = "1"
-		out.append(_new_clue(lock, _fill(_pick_template(templates, key), lock, "")))
+	for note in RiddleMaker.new(self).notes_for(lock, depth):
+		out.append(_new_clue(lock, note))
 	return out
-
-
-func _pick_template(templates: Dictionary, key: String) -> String:
-	var list: Array = templates.get(key, templates.get("0", ["{code}"]))
-	return str(list[rng.randi_range(0, list.size() - 1)])
 
 
 func _split_answer(type: String, answer: String, lock: Dictionary) -> PackedStringArray:
@@ -567,7 +688,7 @@ func _fill(template: String, lock: Dictionary, part: String) -> String:
 			out = out.replace("{code}", _spaced(answer))
 			out = out.replace("{reversed}", _spaced(answer.reverse()))
 			out = out.replace("{words}", _digit_words(answer))
-		"sequence":
+		"sequence", "order":
 			var seq := answer.split(",")
 			out = out.replace("{seq}", _tokens(seq))
 			var rev := seq.duplicate()

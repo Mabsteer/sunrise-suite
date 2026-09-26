@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Small badge: this is a puzzle. -->
+  <circle cx="32" cy="32" r="27" fill="#fffbf5" opacity="0.85"/>
+  <path d="M18 22 H27 C27 16 37 16 37 22 H46 V31 C52 31 52 41 46 41 V48 H37 C37 42 27 42 27 48 H18 Z" fill="#ee7b6b"/>
+  <path d="M18 22 H27 C27 16 37 16 37 22 H46 V26 H18 Z" fill="#fcd9b8" opacity="0.6"/>
+</svg>

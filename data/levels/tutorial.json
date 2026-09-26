@@ -10,7 +10,7 @@
     {"id": "door", "type": "key", "is_door": true, "host": {"kind": "door"}, "location": "room", "item": "i_key"},
     {"id": "drawers", "type": "combo", "host": {"kind": "furniture", "furniture": "credenza", "spot": "drawers"}, "location": "room",
      "answer": "714", "clues": ["c_welcome"], "config": {"digits": 3}},
-    {"id": "cushion", "type": "hidden", "host": {"kind": "furniture", "furniture": "armchair", "spot": "cushion"}, "location": "room",
+    {"id": "cushion", "type": "tool", "host": {"kind": "furniture", "furniture": "armchair", "spot": "cushion"}, "location": "room",
      "item": "i_flashlight"}
   ],
   "items": [

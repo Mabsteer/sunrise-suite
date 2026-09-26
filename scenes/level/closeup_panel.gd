@@ -15,8 +15,13 @@ const WIDGETS := {
 	"switches": "res://scenes/puzzles/switches/switches_widget.gd",
 	"slider": "res://scenes/puzzles/slider/slider_widget.gd",
 	"key": "res://scenes/puzzles/keyhole/keyhole_widget.gd",
+	"tool": "res://scenes/puzzles/keyhole/keyhole_widget.gd",
 	"hidden_tool": "res://scenes/puzzles/keyhole/keyhole_widget.gd",
 	"hidden": "res://scenes/puzzles/search/search_widget.gd",
+	"order": "res://scenes/puzzles/order/order_widget.gd",
+	"sudoku": "res://scenes/puzzles/sudoku/sudoku_widget.gd",
+	"pattern": "res://scenes/puzzles/pattern/pattern_widget.gd",
+	"rotate": "res://scenes/puzzles/rotate/rotate_widget.gd",
 }
 
 var session: LevelSession
@@ -129,8 +134,21 @@ func _show(what: Dictionary, animate: bool = true) -> void:
 			_build_lock(id)
 		"clue":
 			var c: Dictionary = session.clues[id]
-			_header(_host_sprite(c.get("host", {})), _cap(text.host_name(c.get("host", {}))))
-			_note(str(c.get("text", "")))
+			var host: Dictionary = c.get("host", {})
+			_header(_host_sprite(host), _cap(text.host_name(host)))
+			if host.has("count"):
+				# Something to count: show it big.
+				var art := TextureRect.new()
+				art.texture = _host_sprite(host)
+				art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+				art.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+				art.custom_minimum_size = Vector2(560, 400)
+				_body.add_child(art)
+				var l := UIKit.label(str(c.get("text", "")), 36, Palette.color("ink"))
+				l.custom_minimum_size.x = 900
+				_body.add_child(l)
+			else:
+				_note(str(c.get("text", "")))
 		"decoy":
 			var d: Dictionary = session.decoys[id]
 			_header(_host_sprite(d.get("host", {})), _cap(text.host_name(d.get("host", {}))))
@@ -181,7 +199,12 @@ func _build_lock(lock_id: String) -> void:
 		widget.submitted.connect(func(answer: String) -> void: answer_submitted.emit(lock_id, answer))
 		widget.use_requested.connect(func() -> void: use_requested.emit(lock_id))
 		return
-	# Opened: show what's inside.
+	# Opened: a solved number square stays visible, so its shaded squares can be read.
+	if str(lock.get("type", "")) == "sudoku":
+		var view := (load(WIDGETS["sudoku"]) as GDScript).new() as LockWidget
+		view.call("setup_solved", lock)
+		_body.add_child(view)
+	# Show what's inside.
 	var things := session.things_at(lock_id)
 	var available: Array[Dictionary] = []
 	for th in things:
@@ -276,9 +299,7 @@ func _header(icon: Texture2D, title: String) -> void:
 func _host_sprite(host: Dictionary, open: bool = false) -> Texture2D:
 	match str(host.get("kind", "")):
 		"prop":
-			var prop: Dictionary = Data.get_dict("props").get(str(host.get("prop", "")), {})
-			var path := str(prop.get("sprite_open", "")) if open and prop.has("sprite_open") else str(prop.get("sprite", ""))
-			return UIKit.texture(path)
+			return UIKit.texture(LevelText.prop_sprite(host, open))
 		"furniture":
 			return UIKit.texture(str(text.furniture(str(host.get("furniture", ""))).get("sprite", "")))
 		"door":

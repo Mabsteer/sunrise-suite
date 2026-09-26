@@ -8,7 +8,7 @@ Made with [Godot 4.7](https://godotengine.org). The Windows version is built aut
 
 ## What's in the game
 - **30 sunrises** in Mamie's Sunrise Book: 3 rooms (Sunrise Lounge, Kitchen & Bar, Henri's Study) × 10 difficulty tiers. Each room comes back harder.
-- **8 kinds of locks**: number codes, symbol sequences (they play a little tune), keys, hidden spots, clocks, light switches, sliding-tile pictures and item combinations.
+- **Puzzles that make you think**: number codes, symbol tunes, clocks, lamps, things to put in order, little 4×4 number squares, "what comes next?" patterns, turning-tile and sliding-tile pictures, keys, tools and item combinations. From level 2 on no code is written out: Mamie's notes are riddles (count the shells in the jar, sums, patterns, logic), and one puzzle often gives the answer to the next. Keys are always the reward for a solved puzzle.
 - **The sunrise is your progress bar**: every solved step brightens the sky.
 - **Replay** any room with a fresh puzzle, and **Endless Sunrise** after the book is finished.
 - **Daily Sunrise**: one puzzle a day (the same for everyone), a streak with a free weekly sleep-in, and a calendar that paints each finished day in its sky colours.
@@ -43,7 +43,8 @@ All art is SVG (vector) in `assets/sprites/`: `rooms/`, `props/`, `items/`, `pro
    - `price` is in seashells. Use `null` for items you can only earn, and add them to `data/rewards.json`.
 
 ### Make levels easier or harder
-Edit `data/tiers.json`. Each tier sets the number of steps, parallel puzzle chains, decoy notes, how cryptic clues are (`indirection` 0-3), which lock types appear, code length and `par_time` (seconds for the third star).
+Edit `data/tiers.json`. Difficulty comes from thinking, not from searching. Each tier sets the number of steps, parallel puzzle chains, how deep the riddles go (`riddle` 0-4), how often one puzzle gives the code for the next (`chain`), which lock types appear, puzzle sizes and `par_time` (seconds for the third star). There's at most one search spot per level at every tier (`max_hidden`).
+Riddle wording lives in `data/clues.json`. To read what the generator makes, print a level: `bash tools/godot.sh --headless --path . res://tests/validate_levels.tscn -- --print=kitchen:6:123`.
 To change one specific main level, give it a different `seed` in `data/campaign.json`.
 The checks print a time estimate per tier (how long a careful player needs without hints) and fail if a `par_time` is set below it, so the third star always stays within reach.
 

@@ -17,20 +17,20 @@
      "flavor": "A soft jute rug with a sunrise woven into it."},
     {"id": "bookshelf", "name": "the bookshelf", "sprite": "props/lounge/bookshelf.svg", "pos": [30, 160], "size": [260, 610],
      "spots": [
-       {"id": "books", "name": "the books", "rect": [14, 14, 222, 420], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "a hollow book"},
+       {"id": "books", "name": "the books", "rect": [14, 14, 222, 420], "locks": ["hidden", "order"], "tools": [null], "clue": true, "reveal": "a hollow book"},
        {"id": "cabinet", "name": "the bookshelf cabinet", "rect": [14, 444, 222, 136], "locks": ["key", "combo"]}
      ],
      "flavor": "Mamie's travel books, sorted by colour, of course."},
     {"id": "credenza", "name": "the credenza", "sprite": "props/lounge/credenza.svg", "pos": [600, 600], "size": [720, 170],
      "spots": [
        {"id": "left_door", "name": "the credenza's left door", "rect": [18, 36, 224, 88], "locks": ["key", "combo"]},
-       {"id": "drawers", "name": "the credenza drawers", "rect": [256, 36, 208, 88], "locks": ["combo", "key"]},
+       {"id": "drawers", "name": "the credenza drawers", "rect": [256, 36, 208, 88], "locks": ["combo", "key", "pattern"]},
        {"id": "right_door", "name": "the credenza's right door", "rect": [478, 36, 224, 88], "locks": ["key", "combo"]}
      ],
      "flavor": "A low credenza with cane doors. It smells faintly of cedar."},
     {"id": "record_cabinet", "name": "the record player", "sprite": "props/lounge/record_cabinet.svg", "pos": [1250, 540], "size": [200, 250],
      "spots": [
-       {"id": "records", "name": "the record sleeves", "rect": [12, 100, 176, 106], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "something tucked into a sleeve"},
+       {"id": "records", "name": "the record sleeves", "rect": [12, 100, 176, 106], "locks": ["hidden", "order"], "tools": [null], "clue": true, "reveal": "something tucked into a sleeve"},
        {"id": "turntable", "name": "the record on the turntable", "rect": [8, 26, 184, 60], "clue": true}
      ],
      "flavor": "Henri's record player. Bossa nova, mostly."},
@@ -38,7 +38,7 @@
      "spots": [{"id": "pot", "name": "the monstera pot", "rect": [48, 300, 124, 114], "locks": ["hidden"], "tools": ["trowel"], "reveal": "something buried in the soil"}],
      "flavor": "A very happy monstera. Mamie grew it from a cutting in 1972."},
     {"id": "coffee_table", "name": "the coffee table", "sprite": "props/lounge/coffee_table.svg", "pos": [660, 840], "size": [600, 150],
-     "spots": [{"id": "drawer", "name": "the coffee table drawer", "rect": [200, 40, 200, 40], "locks": ["key", "combo"]}],
+     "spots": [{"id": "drawer", "name": "the coffee table drawer", "rect": [200, 40, 200, 40], "locks": ["key", "combo", "sudoku"]}],
      "flavor": "A travertine coffee table. Coasters, always."},
     {"id": "armchair", "name": "the armchair", "sprite": "props/lounge/armchair.svg", "pos": [80, 650], "size": [360, 340],
      "spots": [{"id": "cushion", "name": "under the cushion", "rect": [60, 100, 240, 180], "locks": ["hidden"], "tools": [null, "flashlight"], "reveal": "something wedged under the cushion"}],

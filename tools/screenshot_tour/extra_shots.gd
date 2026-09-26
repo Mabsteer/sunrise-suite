@@ -119,6 +119,8 @@ func shots() -> Array[Dictionary]:
 		{"name": "art_props", "screen": "art_sheet", "params": {"dirs": ["props/common"], "scale": 1.0}},
 		{"name": "art_items", "screen": "art_sheet", "params": {"dirs": ["items", "ui/symbols", "ui"], "scale": 0.9}},
 		{"name": "art_puzzles", "screen": "art_sheet", "params": {"dirs": ["puzzles"], "scale": 0.5}},
+		{"name": "art_counters", "screen": "art_sheet", "params": {"dirs": ["props/counters"], "scale": 1.0}},
+		{"name": "art_puzzle_props", "screen": "art_sheet", "params": {"dirs": ["props/puzzles"], "scale": 1.3}},
 		{"name": "level_start", "screen": "level", "params": TEST_LEVEL},
 		{"name": "gen_lounge_t1", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 1, 11)}},
 		{"name": "gen_lounge_t5", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 5, 55)}},
@@ -143,6 +145,30 @@ func shots() -> Array[Dictionary]:
 			var session: LevelSession = s.get("session")
 			session.opened["credenza"] = true
 			(s.get("closeup") as CloseupPanel).show_lock("puzzle_box")},
+		{"name": "level_w_order", "screen": "level", "params": TEST_LEVEL, "action": func(s: Node) -> void: s.call("tap", "lock:records")},
+		{"name": "level_w_pattern", "screen": "level", "params": TEST_LEVEL, "action": func(s: Node) -> void: s.call("tap", "lock:drawers")},
+		{"name": "level_w_pattern_symbols", "screen": "level", "params": func() -> Dictionary:
+			var lvl: Dictionary = Data.get_dict("levels/test_lounge").duplicate(true)
+			for l: Dictionary in lvl["locks"]:
+				if str(l["id"]) == "drawers":
+					l["answer"] = "shell,sun"
+					l["config"] = {"kind": "symbols", "terms": ["sun", "shell", "shell", "sun", "shell", "shell", "sun", "shell", "sun"], "blanks": [7, 8]}
+			return {"level": lvl}, "action": func(s: Node) -> void: s.call("tap", "lock:drawers")},
+		{"name": "level_w_sudoku", "screen": "level", "params": TEST_LEVEL, "action": func(s: Node) -> void:
+			var session: LevelSession = s.get("session")
+			session.opened["drawers"] = true
+			(s.get("closeup") as CloseupPanel).show_lock("paper")},
+		{"name": "level_w_sudoku_solved", "screen": "level", "params": TEST_LEVEL, "action": func(s: Node) -> void:
+			var session: LevelSession = s.get("session")
+			session.submit_answer("drawers", "10,12")
+			session.submit_answer("paper", "1234341221434321")
+			(s.get("closeup") as CloseupPanel).show_lock("paper"), "frames": 40},
+		{"name": "level_w_rotate", "screen": "level", "params": TEST_LEVEL, "action": func(s: Node) -> void: s.call("tap", "lock:picture_box")},
+		{"name": "level_counter", "screen": "level", "params": TEST_LEVEL, "action": func(s: Node) -> void: s.call("tap", "clue:c_jar")},
+		{"name": "level_riddle_note", "screen": "level", "params": TEST_LEVEL, "action": func(s: Node) -> void:
+			var session: LevelSession = s.get("session")
+			session.submit_answer("clock", "7:30")
+			(s.get("closeup") as CloseupPanel).show_thing("clue", "c_order")},
 		{"name": "level_contents", "screen": "level", "params": TEST_LEVEL, "action": func(s: Node) -> void:
 			s.call("submit", "clock", "7:30")
 			s.call("tap", "lock:clock"), "frames": 90},

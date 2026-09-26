@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 90" width="110" height="90">
+  <!-- Picture box with its lid open (rotate lock, open). -->
+  <ellipse cx="55" cy="84" rx="48" ry="5" fill="#3b2e3a" opacity="0.16"/>
+  <rect x="8" y="30" width="94" height="52" rx="8" fill="#c8674a"/>
+  <rect x="14" y="30" width="82" height="14" rx="4" fill="#3b2e3a"/>
+  <path d="M6 30 L104 30 L96 4 L14 4 Z" fill="#e08e6d"/>
+</svg>

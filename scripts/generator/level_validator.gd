@@ -71,7 +71,7 @@ static func validate(level: Dictionary, tier_cfg: Dictionary = {}) -> Dictionary
 				if used_spots.has(key):
 					errors.append("%s: furniture spot %s used twice" % [tid, key])
 				used_spots[key] = true
-				if lock_ids.has(tid) and not (spot.get("locks", []) as Array).has(str(t.get("type", ""))):
+				if lock_ids.has(tid) and not _host_takes(spot.get("locks", []), str(t.get("type", ""))):
 					errors.append("%s: spot %s can't hold a %s lock" % [tid, key, t.get("type", "")])
 				if clue_ids.has(tid) and not bool(spot.get("clue", false)):
 					errors.append("%s: spot %s can't carry a clue" % [tid, key])
@@ -81,8 +81,12 @@ static func validate(level: Dictionary, tier_cfg: Dictionary = {}) -> Dictionary
 					errors.append("%s: unknown prop %s" % [tid, prop_id])
 					continue
 				var prop: Dictionary = props[prop_id]
-				if lock_ids.has(tid) and not (prop.get("locks", []) as Array).has(str(t.get("type", ""))):
+				if lock_ids.has(tid) and not _host_takes(prop.get("locks", []), str(t.get("type", ""))):
 					errors.append("%s: prop %s can't hold a %s lock" % [tid, prop_id, t.get("type", "")])
+				if host.has("count"):
+					var count := int(host["count"])
+					if count < 1 or count > 9 or not prop.has("sprite_count"):
+						errors.append("%s: prop %s can't show %d things" % [tid, prop_id, count])
 				if loc == "room":
 					var slot := str(host.get("slot", ""))
 					if not _slot_accepts(room, slot, str(prop.get("place", "surface"))):
@@ -135,10 +139,38 @@ static func validate(level: Dictionary, tier_cfg: Dictionary = {}) -> Dictionary
 			for c: Variant in cl:
 				if not clue_ids.has(str(c)):
 					errors.append("%s: missing clue %s" % [lid, c])
-		if t == "key" and not item_ids.has(str(l.get("item", ""))):
-			errors.append("%s: key lock without a key" % lid)
-		if str(l.get("answer", "x")) == "" and t != "key" and t != "hidden":
+		if t in LevelSession.ITEM_TYPES and not item_ids.has(str(l.get("item", ""))):
+			errors.append("%s: %s lock without its item" % [lid, t])
+		if str(l.get("answer", "x")) == "" and not t in ["key", "tool", "hidden"]:
 			errors.append("%s: empty answer" % lid)
+		for a: Variant in l.get("after", []):
+			if not lock_ids.has(str(a)):
+				errors.append("%s: comes after unknown lock %s" % [lid, a])
+		errors.append_array(_puzzle_errors(l))
+	# Puzzles that build on each other: a code read from a number square must match its shaded squares.
+	for c: Dictionary in level.get("clues", []):
+		if c.has("source") and lock_ids.has(str(c["source"])) and lock_ids.has(str(c.get("for", ""))):
+			var sq: Dictionary = lock_ids[str(c["source"])]
+			var code := ""
+			for cell: Variant in (sq.get("config", {}) as Dictionary).get("shaded", []):
+				code += str(sq.get("answer", ""))[int(cell)]
+			if code != str((lock_ids[str(c["for"])] as Dictionary).get("answer", "")):
+				errors.append("%s: the shaded squares of %s don't give the code" % [c.get("id", "?"), c["source"]])
+	# Keys are always the reward of a solved puzzle: never lying around, never in a plain search spot.
+	for i: Dictionary in level.get("items", []):
+		if str(items_db.get(str(i.get("type", "")), {}).get("kind", "")) != "key":
+			continue
+		var loc := str(i.get("location", "room"))
+		if not lock_ids.has(loc) or not LevelGenerator.REWARD_CONTAINERS.has(str((lock_ids[loc] as Dictionary).get("type", ""))):
+			errors.append("%s: a key must be the reward of a puzzle (it is in '%s')" % [i.get("id", "?"), loc])
+	# Searching is not a difficulty knob.
+	if tier_cfg.has("max_hidden"):
+		var hidden := 0
+		for l: Dictionary in level.get("locks", []):
+			if str(l.get("type", "")) == "hidden":
+				hidden += 1
+		if hidden > int(tier_cfg["max_hidden"]):
+			errors.append("%d search spots, at most %d allowed" % [hidden, int(tier_cfg["max_hidden"])])
 	var needed := {}
 	for l: Dictionary in level.get("locks", []):
 		var it := str(l.get("item", ""))
@@ -158,8 +190,55 @@ static func validate(level: Dictionary, tier_cfg: Dictionary = {}) -> Dictionary
 		var r: Array = tier_cfg["steps"]
 		if steps < int(r[0]) or steps > int(r[1]) + 1:
 			errors.append("%d steps, tier wants %d-%d" % [steps, int(r[0]), int(r[1])])
-	var estimate := LevelSolver.estimate_seconds(level, result["actions"], int(tier_cfg.get("indirection", 0)))
+	var estimate := LevelSolver.estimate_seconds(level, result["actions"], int(tier_cfg.get("riddle", level.get("riddle", 1))))
 	return {"ok": errors.is_empty(), "errors": errors, "steps": steps, "estimate": estimate}
+
+
+## A spot or prop lists the lock types it can hold; "hidden" spots with tools also take "tool" locks.
+static func _host_takes(list: Array, type: String) -> bool:
+	return list.has(type) or (type == "tool" and list.has("hidden"))
+
+
+## Checks the data of the self-contained puzzles (and orders): they must have exactly one answer.
+static func _puzzle_errors(l: Dictionary) -> PackedStringArray:
+	var out: PackedStringArray = []
+	var lid := str(l.get("id", "?"))
+	var cfg: Dictionary = l.get("config", {})
+	var answer := str(l.get("answer", ""))
+	match str(l.get("type", "")):
+		"order":
+			var items := answer.split(",")
+			var unique := {}
+			for s in items:
+				unique[s] = true
+			if items.size() < 3 or unique.size() != items.size():
+				out.append("%s: an order needs 3+ different things (%s)" % [lid, answer])
+		"sudoku":
+			var givens := str(cfg.get("givens", ""))
+			if not PuzzleMath.sudoku_valid(answer, givens):
+				out.append("%s: the number square's answer is wrong" % lid)
+			else:
+				var grid: Array[int] = []
+				for ch in givens:
+					grid.append(0 if ch == "." else int(ch))
+				if PuzzleMath.sudoku_count(grid, 2) != 1:
+					out.append("%s: the number square has more than one answer" % lid)
+		"pattern":
+			var terms: Array = cfg.get("terms", [])
+			var blanks: Array = cfg.get("blanks", [])
+			var expect: PackedStringArray = []
+			for b: Variant in blanks:
+				if int(b) < 0 or int(b) >= terms.size():
+					out.append("%s: pattern gap %s is outside the pattern" % [lid, b])
+					return out
+				expect.append(str(terms[int(b)]))
+			if blanks.is_empty() or ",".join(expect) != answer:
+				out.append("%s: the pattern's answer doesn't match its gaps" % lid)
+		"rotate":
+			var n := int(cfg.get("size", 0))
+			if n < 2 or n > 4 or not ResourceLoader.exists("res://assets/sprites/" + str(cfg.get("picture", ""))):
+				out.append("%s: rotate puzzle needs a size 2-4 and a picture" % lid)
+	return out
 
 
 static func _spot(room: Dictionary, furniture_id: String, spot_id: String) -> Dictionary:

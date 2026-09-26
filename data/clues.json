@@ -1,17 +1,17 @@
 {
-  "_help": "Clue text templates, picked at random by the generator. Levels 0-3 = how indirect the clue is (see tiers.json 'indirection'). Split clues use 'first'/'last'. Placeholders: {lock} name of the lock, {code} 4 7 2, {part} part of a code, {words} four, seven, two, {reversed} 2 7 4, {seq} symbols, {seq_reversed}, {time} 7:30, {time_words} half past seven, {time_before} 6:30 (one hour earlier), {time_after} 8:30 (one hour later), {on} symbols switched on, {off} symbols switched off. Write {sun} etc. for symbol icons. The level validator fails if a placeholder is misspelled.",
+  "_help": "Clue text for generated levels (Mamie's old treasure hunts). The generator picks a riddle depth 0-4 per lock from tiers.json 'riddle'. Depth 0-1 use the plain templates below ('0'..'3', split clues 'first'/'last'). Depth 2+ build riddles: facts, counting things in the room (counters), sums, number patterns, and logic statements (for symbol tunes, lamps and orders). Placeholders: {lock} name of the lock, {code} 4 7 2, {part} part of a code, {words} four, seven, two, {reversed} 2 7 4, {seq} symbols, {seq_reversed}, {time} 7:30, {time_words} half past seven, {time_before} / {time_after} one hour earlier / later, {on} / {off} lamps on / off, {count} how many numbers, {parts} the riddle parts, {shown} the numbers of a pattern, {statements} logic sentences, {base} and {offset} times. Write {sun} etc. for symbol icons. The level validator fails if a placeholder is left over.",
   "combo": {
     "0": [
       "The code for {lock} is {code}.",
-      "{lock} opens with {code}. Love, G.",
+      "{lock} opens with {code}. Bisous, Mamie.",
       "Note to self: {lock} is {code}.",
-      "{lock}: {code}. Don't tell the cat.",
+      "{lock}: {code}. Don't tell Chloé.",
       "Ma puce, {lock} is {code}. Bisous, Mamie."
     ],
     "1": [
       "Mamie's lucky number: {code}.",
       "Don't forget: {code}!",
-      "Our old house number was {code}.",
+      "Our old telephone number ended in {code}.",
       "Locker number at the beach club: {code}.",
       "Table {code} at the seafood place. Best view in town.",
       "My bingo numbers, in order: {code}.",
@@ -28,7 +28,7 @@
     "first": [
       "The code starts with {part}...",
       "First the {part}...",
-      "Begin with {part}, dear...",
+      "Begin with {part}, ma puce...",
       "(torn note) ...a code that opens with {part}..."
     ],
     "last": [
@@ -42,6 +42,29 @@
       "In words: {words}.",
       "Hold this up to a mirror: {reversed}.",
       "Whisper it like a secret: {words}."
+    ],
+    "riddle": [
+      "{lock} opens with {count} numbers: {parts}.",
+      "Ma puce, {lock} wants {count} numbers. {parts}.",
+      "Count with me for {lock}: {parts}.",
+      "A little sum for {lock}, like on rainy days: {parts}."
+    ],
+    "riddle_first": [
+      "(torn note) {lock} wants {count} numbers. {parts}...",
+      "Half a riddle for {lock} ({count} numbers): {parts}..."
+    ],
+    "riddle_last": [
+      "(other half of the note) ...{parts}.",
+      "...and the rest of the numbers: {parts}."
+    ],
+    "pattern": [
+      "My morning count goes {shown}... {lock} opens with the next {count} numbers.",
+      "Chloé's steps on the stairs: {shown}... Keep counting, and the next {count} numbers open {lock}.",
+      "The waves came in like this: {shown}... The next {count} are the code for {lock}."
+    ],
+    "sudoku": [
+      "Finish the number square. The shaded squares, read like a book, open {lock}.",
+      "Henri's trick: solve the square, then read the shaded squares from left to right, top to bottom. They open {lock}."
     ]
   },
   "sequence": {
@@ -75,7 +98,27 @@
     "3": [
       "Play it from the end to the start: {seq_reversed}.",
       "The gulls sing it backwards: {seq_reversed}."
-    ]
+    ],
+    "riddle": [
+      "The tune for {lock}, as I remember it: {statements}",
+      "Hum the tune for {lock}. {statements}",
+      "I never wrote the tune down, only this: {statements}"
+    ],
+    "riddle_first": ["(half a music sheet) The tune for {lock}: {statements}"],
+    "riddle_last": ["(other half of the sheet) {statements}"]
+  },
+  "order": {
+    "0": [
+      "{lock}, from left to right: {seq}.",
+      "Put {lock} back like this: {seq}."
+    ],
+    "riddle": [
+      "Put {lock} back in the right order. {statements}",
+      "Everything on {lock} has its place, ma puce. {statements}",
+      "Chloé knocked {lock} over again. The right order: {statements}"
+    ],
+    "riddle_first": ["(torn note) The order for {lock}: {statements}"],
+    "riddle_last": ["(the other half) {statements}"]
   },
   "clock": {
     "0": [
@@ -84,7 +127,7 @@
       "{lock} should say {time}. It's always right twice a day."
     ],
     "1": [
-      "Breakfast on the balcony at {time}. Don't be late! - J.",
+      "Breakfast in the garden at {time}. Don't be late! - Mamie",
       "Morning swim at {time} sharp.",
       "Yoga on the sand at {time}.",
       "Fresh croissants at the bakery from {time}.",
@@ -102,6 +145,19 @@
       "An hour after the {time_before} ferry.",
       "An hour before the {time_after} tram.",
       "One hour before my {time_after} nap. Naps are sacred."
+    ],
+    "offset": [
+      "Set {lock} to {offset} after {base}.",
+      "The baker opens {offset} after {base}. Set {lock} to croissant time.",
+      "We always left for the beach {offset} after {base}. That's the time for {lock}."
+    ],
+    "offset_before": [
+      "Set {lock} to {offset} before {base}.",
+      "The first bus leaves at {base}; I always got to the stop {offset} early. Set {lock} to that."
+    ],
+    "two_steps": [
+      "The market opens at {base}. I walk there in {offset}, then chat with the cheese man for {offset2}. Set {lock} to when I finally buy the cheese.",
+      "We woke at {base}, dressed in {offset} and walked {offset2} to the beach. Set {lock} to when we reached the sand."
     ]
   },
   "switches": {
@@ -134,36 +190,115 @@
     "3": [
       "All lamps on, apart from {off}.",
       "Light everything but {off}. Moths love it."
-    ]
+    ],
+    "riddle": [
+      "The lamps for {lock}, the way I like them: {statements}",
+      "Story-time lights for {lock}: {statements}",
+      "Get the lights right for {lock}. {statements}"
+    ],
+    "riddle_first": ["(a note on the switch) {statements}"],
+    "riddle_last": ["(the back of the note) {statements}"]
+  },
+  "statements": {
+    "_help": "One sentence per logic statement. {a} {b} {c} are symbols, {ord} is first/second/..., {k} a number word.",
+    "pos": ["{a} comes {ord}.", "{a} is in the {ord} place."],
+    "first": ["{a} comes first.", "It starts with {a}."],
+    "last": ["{a} comes last.", "It ends with {a}."],
+    "right_before": ["{b} comes right after {a}.", "{a} is just before {b}."],
+    "before": ["{a} comes somewhere before {b}.", "{b} comes later than {a}."],
+    "next_to": ["{a} and {b} are next to each other."],
+    "not_next_to": ["{a} and {b} are not next to each other."],
+    "not_first": ["{a} doesn't come first."],
+    "not_last": ["{a} isn't the last one."],
+    "between": ["{a} is somewhere between {b} and {c}."],
+    "on": ["The {a} lamp is on.", "The {a} lamp glows."],
+    "off": ["The {a} lamp stays off.", "Leave the {a} lamp dark."],
+    "same": ["The {a} and {b} lamps are both on, or both off."],
+    "different": ["Exactly one of the {a} and {b} lamps is on."],
+    "if_on_then_on": ["If the {a} lamp is on, the {b} lamp is on too."],
+    "not_both": ["The {a} and {b} lamps are never on together."],
+    "count": ["Exactly {k} lamps are on.", "{k} lamps glow, no more, no fewer."]
+  },
+  "ordinals": ["first", "second", "third", "fourth", "fifth", "sixth"],
+  "arithmetic": {
+    "minus": ["{x} minus {y}", "{x} take away {y}"],
+    "plus": ["{x} plus {y}"],
+    "half": ["half of {x}"],
+    "double": ["double {x}", "twice {x}"]
+  },
+  "facts": [
+    {"n": 0, "text": "the socks Chloé wears"},
+    {"n": 0, "text": "the legs on a fish"},
+    {"n": 1, "text": "the tails on Chloé"},
+    {"n": 1, "text": "the noses on a face"},
+    {"n": 2, "text": "the wheels on a bicycle"},
+    {"n": 2, "text": "the wings on a gull"},
+    {"n": 3, "text": "the sides of a triangle"},
+    {"n": 3, "text": "the wheels on a tricycle"},
+    {"n": 4, "text": "the legs on a dog"},
+    {"n": 4, "text": "the seasons in a year"},
+    {"n": 5, "text": "the fingers on one hand"},
+    {"n": 5, "text": "the arms on a starfish"},
+    {"n": 6, "text": "the legs on a bee"},
+    {"n": 6, "text": "the strings on a guitar"},
+    {"n": 7, "text": "the days in a week"},
+    {"n": 7, "text": "the colours in a rainbow"},
+    {"n": 8, "text": "the legs on a spider"},
+    {"n": 8, "text": "the arms on an octopus"},
+    {"n": 9, "text": "the lives of a cat"},
+    {"n": 9, "text": "the squares in a noughts-and-crosses grid"},
+    {"n": 10, "text": "the fingers on two hands"},
+    {"n": 10, "text": "the legs on a crab"},
+    {"n": 12, "text": "the months in a year"},
+    {"n": 12, "text": "the eggs in a dozen"}
+  ],
+  "counters": {
+    "_help": "Props that show a number of things (1-9). Riddles ask you to count them. phrase: how a riddle names them. text: what the close-up says.",
+    "shell_jar": {"phrase": "the shells in the jar", "text": "An old jam jar full of shells from the beach."},
+    "daisy_vase": {"phrase": "the daisies in the vase", "text": "A little vase of daisies from the garden."},
+    "boat_photo": {"phrase": "the boats in the harbour photo", "text": "A photo of the harbour at dawn, boats going out."},
+    "bird_picture": {"phrase": "the birds on the wire in the little picture", "text": "A little picture of birds sitting on a wire."}
   },
   "decoys": [
-    "Grocery list: 3 lemons, 12 eggs, 1 very large pineapple.",
+    "Market list: 3 lemons, 12 eggs, 1 very large melon.",
     "Water the monstera twice a week. It sulks otherwise.",
-    "Book club - Thursday at 4:15. Bring biscuits!",
+    "Card club - Thursday at 4:15. Bring biscuits!",
     "Bus 27 to the flower market.",
-    "Sunscreen! SPF 50. Every. Single. Day.",
+    "Sunscreen! Every. Single. Day.",
     "Room 812 at the Lisbon hotel had the best view.",
     "Remember: 2 scoops of coffee, not 3.",
     "Call Marisol about the boat trip on the 14th.",
     "Recipe: 250 g flour, 3 eggs, a pinch of cinnamon.",
     "Tide table: high tide at 5:40, low tide at 11:55.",
-    "Pilates moved to Wednesdays at 6.",
+    "Gym for old ladies moved to Wednesdays at 6.",
     "The ferry leaves from pier 9.",
     "Chloé's vet: Dr. Okafor, Tuesday at 10:30.",
     "Buy stamps. At least 20. Postcards don't send themselves.",
     "Surf report: waves 1.5 m, wind from the west.",
     "Library books due on the 3rd. (The one about octopuses is overdue. Oops.)",
     "Birthday cake for Rosa: 8 candles, not 80. She will count.",
-    "Wi-Fi password is on the fridge. No, the OTHER fridge.",
     "Knitting pattern: knit 2, purl 2, repeat until happy.",
-    "Flight home: gate 42, seat 17C. Window seat next time!",
-    "Tango class, Saturday 7 pm. Borrow Mr. Pereira's shoes."
+    "Tango class, Saturday 7 pm. Borrow Mr. Pereira's shoes.",
+    "The cheese man says the goat cheese is ready on the 21st.",
+    "Juliette's shoe size this summer: 31. They grow so fast."
   ],
   "time_words": {
     "0": "{h} o'clock",
     "15": "quarter past {h}",
     "30": "half past {h}",
     "45": "quarter to {h1}"
+  },
+  "offset_words": {
+    "5": "five minutes",
+    "10": "ten minutes",
+    "15": "a quarter of an hour",
+    "20": "twenty minutes",
+    "25": "twenty-five minutes",
+    "30": "half an hour",
+    "40": "forty minutes",
+    "45": "three quarters of an hour",
+    "60": "an hour",
+    "90": "an hour and a half"
   },
   "number_words": ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]
 }

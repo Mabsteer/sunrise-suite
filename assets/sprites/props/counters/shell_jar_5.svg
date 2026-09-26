@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 120" width="90" height="120">
+  <!-- Jar of shells with 5 shells (counter prop). -->
+  <ellipse cx="45" cy="114" rx="34" ry="5" fill="#3b2e3a" opacity="0.16"/>
+  <rect x="14" y="30" width="62" height="82" rx="14" fill="#cfeeea" opacity="0.55"/>
+  <g transform="translate(28 98) scale(0.78)">
+    <path d="M0 8 C-9 6 -10 -4 -6 -8 C-3 -11 3 -11 6 -8 C10 -4 9 6 0 8 Z" fill="#ee7b6b"/>
+    <path d="M0 7 L-5 -7 M0 7 L0 -9 M0 7 L5 -7" stroke="#fffbf5" stroke-width="1.4" opacity="0.7" fill="none"/>
+    <path d="M-3 8 L0 11 L3 8 Z" fill="#ee7b6b"/>
+  </g>
+  <g transform="translate(45 99) scale(0.78)">
+    <path d="M0 8 C-9 6 -10 -4 -6 -8 C-3 -11 3 -11 6 -8 C10 -4 9 6 0 8 Z" fill="#f9b98a"/>
+    <path d="M0 7 L-5 -7 M0 7 L0 -9 M0 7 L5 -7" stroke="#fffbf5" stroke-width="1.4" opacity="0.7" fill="none"/>
+    <path d="M-3 8 L0 11 L3 8 Z" fill="#f9b98a"/>
+  </g>
+  <g transform="translate(62 98) scale(0.78)">
+    <path d="M0 8 C-9 6 -10 -4 -6 -8 C-3 -11 3 -11 6 -8 C10 -4 9 6 0 8 Z" fill="#f3ddb3"/>
+    <path d="M0 7 L-5 -7 M0 7 L0 -9 M0 7 L5 -7" stroke="#fffbf5" stroke-width="1.4" opacity="0.7" fill="none"/>
+    <path d="M-3 8 L0 11 L3 8 Z" fill="#f3ddb3"/>
+  </g>
+  <g transform="translate(28 80) scale(0.78)">
+    <path d="M0 8 C-9 6 -10 -4 -6 -8 C-3 -11 3 -11 6 -8 C10 -4 9 6 0 8 Z" fill="#e08e6d"/>
+    <path d="M0 7 L-5 -7 M0 7 L0 -9 M0 7 L5 -7" stroke="#fffbf5" stroke-width="1.4" opacity="0.7" fill="none"/>
+    <path d="M-3 8 L0 11 L3 8 Z" fill="#e08e6d"/>
+  </g>
+  <g transform="translate(45 81) scale(0.78)">
+    <path d="M0 8 C-9 6 -10 -4 -6 -8 C-3 -11 3 -11 6 -8 C10 -4 9 6 0 8 Z" fill="#fcd9b8"/>
+    <path d="M0 7 L-5 -7 M0 7 L0 -9 M0 7 L5 -7" stroke="#fffbf5" stroke-width="1.4" opacity="0.7" fill="none"/>
+    <path d="M-3 8 L0 11 L3 8 Z" fill="#fcd9b8"/>
+  </g>
+  <rect x="14" y="30" width="62" height="82" rx="14" fill="none" stroke="#6cc2be" stroke-width="3" opacity="0.8"/>
+  <rect x="20" y="36" width="8" height="60" rx="4" fill="#fffbf5" opacity="0.5"/>
+  <rect x="18" y="18" width="54" height="16" rx="5" fill="#c99a6b"/>
+  <rect x="18" y="18" width="54" height="5" rx="2.5" fill="#fbe3a0" opacity="0.6"/>
+  <path d="M16 30 L74 30" stroke="#ee7b6b" stroke-width="4"/>
+</svg>

@@ -33,6 +33,16 @@ func host_name(host: Dictionary) -> String:
 	return "it"
 
 
+## The sprite for a prop host: its open version, or the one showing `count` things (counter props).
+static func prop_sprite(host: Dictionary, open: bool = false) -> String:
+	var prop: Dictionary = Data.get_dict("props").get(str(host.get("prop", "")), {})
+	if host.has("count") and prop.has("sprite_count"):
+		return str(prop["sprite_count"]).replace("{n}", str(int(host["count"])))
+	if open and prop.has("sprite_open"):
+		return str(prop["sprite_open"])
+	return str(prop.get("sprite", ""))
+
+
 func lock_name(lock_id: String) -> String:
 	return host_name(session.locks[lock_id].get("host", {}))
 
@@ -109,8 +119,26 @@ func answer_text(lock_id: String) -> String:
 				if answer[i] == "1":
 					on.append(symbol_name(str(symbols[i])))
 			return "only the %s lamps on" % " and ".join(on)
+		"order":
+			var names: PackedStringArray = []
+			for s in answer.split(","):
+				names.append(symbol_name(s))
+			return "from left to right: " + ", ".join(names)
 		"slider":
 			return "the whole picture"
+		"rotate":
+			return "every tile turned the right way up"
+		"sudoku":
+			var rows: PackedStringArray = []
+			for r in 4:
+				rows.append(answer.substr(r * 4, 4))
+			return "row by row: " + " / ".join(rows)
+		"pattern":
+			var kind := str((lock.get("config", {}) as Dictionary).get("kind", "numbers"))
+			var parts: PackedStringArray = []
+			for p in answer.split(","):
+				parts.append(symbol_name(p) if kind == "symbols" else p)
+			return " and ".join(parts)
 	return answer
 
 
@@ -180,7 +208,7 @@ func _open_hints(lock_id: String) -> PackedStringArray:
 	var name := lock_name(lock_id)
 	var t := session.lock_type(lock_id)
 	var item := session.lock_item(lock_id)
-	if t == "key" or (t == "hidden" and item != ""):
+	if session.needs_item(lock_id):
 		var held := session._inventory_match(item)
 		var what := item_name(held if held != "" else item)
 		return [
@@ -199,6 +227,24 @@ func _open_hints(lock_id: String) -> PackedStringArray:
 			"%s is a sliding picture puzzle." % _cap(name),
 			"Slide the tiles next to the gap until the sunrise picture is whole.",
 			"Solve it one row at a time: top row first, then the left column.",
+		]
+	if t == "rotate":
+		return [
+			"%s is a picture in little tiles, some of them turned." % _cap(name),
+			"Tap a tile to turn it. Turn them all until the picture looks right.",
+			"Look for the horizon and the sun: every tile should line up with its neighbours.",
+		]
+	if t == "sudoku":
+		return [
+			"%s is a little number square, like Henri's in the paper." % _cap(name),
+			"Every row, every column and every 2x2 box needs 1, 2, 3 and 4 exactly once.",
+			"The answer, %s." % answer_text(lock_id),
+		]
+	if t == "pattern":
+		return [
+			"%s shows a pattern with gaps. What's the rule?" % _cap(name),
+			"Look at how each one changes into the next, then keep going.",
+			"The gaps are %s." % answer_text(lock_id),
 		]
 	var clue_list := session.lock_clues(lock_id)
 	var where := clue_place(clue_list[0]) if not clue_list.is_empty() else "the room"
