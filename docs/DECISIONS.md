@@ -95,3 +95,16 @@ One line per decision: what, and why.
 - Double-tap zooms in on empty spots only: tapping furniture already opens its close-up, which is the "look closer" for things you can use. Double-tap again (or the minus button) goes back to the whole room.
 - The + / - buttons sit bottom-left, away from the bag, for mouse players and anyone who doesn't pinch. When the door opens the view eases back to the whole room so the sunrise moment is always seen in full.
 - Zoomed in, the view may go a little past the top and bottom of the stage so things behind the top bar or the bag can be brought into the open.
+
+## v3: third playtest (2026-09-26, see docs/PLAN_V3.md section 2)
+- Story: three chapters (days) of the same seven rooms, 21 hand-made rooms. Each chapter is one period of Céline's life (2001-2025, 1960-2001, 1938-1960) and the whole story runs backwards in time, so nothing jumps forward again. The last letter comes at the end of chapter 3.
+- Linear: each room unlocks the next, each chapter the next chapter. No star gates. Daily and Endless open after chapter 1. The old generated walks 2-3 leave the story; Endless becomes "Mamie's shoebox" of old hunts.
+- A new morning per chapter: every chapter starts dark in the kitchen and ends with the sun up in the front garden.
+- Rooms connect physically: exits show a painted view of the next room and the camera walks through (the hall's stairs lead up to the bedroom, the bedroom's stairs lead down through the hall to the living room). A small toast per room, a results card per chapter.
+- Notes are memories, not instructions: they never name the lock or explain how to read the code; the answer data lives in the room. No symbol icons in notes, no ordered symbol lists. Hints go nudge, then which object, then how to read it.
+- The room gives nothing away by default: badges, sparkles and Chloé barking at the next goal are off unless "Show helpers" is on (for players who want it easier).
+- Chloé is commanded, not offered: tap her, then tap a spot. She may come back with nothing or with something silly. Her needs show through behaviour, not text. In the hall she's hidden: you hear her and see a tuft only when zoomed in.
+- Notes are taken into Mamie's notebook when read, so the player never has to reopen a cupboard to reread a clue. The bag is see-through and collapsible.
+- Rooms have a light to find; some puzzles need it on or off.
+- Placeholder ambience per room (generated) until the Suno music exists. A hidden dev mode (tap the version 5 times) lets the owner jump to any room.
+- The validator checks 30 seeds per room/tier locally (fast) and 200 in CI.

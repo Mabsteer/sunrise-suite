@@ -15,6 +15,36 @@ Live build: https://mabsteer.github.io/sunrise-suite/
 - [x] **M9 Audio**: 37 jsfxr sounds (music-box notes per symbol, clock ticks, switches, tiles, key/tool/search, purchase, streak...), music per screen (menu, rooms, hub, daily), one-shot sunrise stinger that ducks the music, Settings panel (4 volume sliders, fullscreen, timer, reduce motion, text size, credits, start over) from the menu and pause menu; audio test checks every sound name used in code exists
 - [x] **M10 Onboarding & polish**: hand-made tutorial level 1 with a step-by-step guide (data/tutorial.json), dust motes in the sunbeams, settle-in zoom, door glow + lean toward the door on completion, bouncing boxes, rotate-your-phone hint, Esc everywhere, sky shader limited to window areas (web performance), README with recipes
 
+## v3: third playtest (2026-09-26)
+The owner's third playtest: a linear story over three chapters (days) of seven hand-made rooms, cryptic notes, no helper icons, a new way to work with Chloé, walking from room to room, lights, a notebook for notes, a see-through bag, sound and a dev mode. The full plan with every decision is `docs/PLAN_V3.md`; it wins over older docs. Each milestone ends with `bash tools/check.sh`, a commit, a push and a green CI run.
+
+### Phase A: foundation
+- [x] **G0** Plan in PROGRESS.md and DECISIONS.md
+- [ ] **G1** Sound: resume audio on the first tap (web), audio status, test-sound button
+- [ ] **G2** Dev mode (tap the version 5 times in Settings)
+- [ ] **G3** Helpers off by default ("Show helpers" setting)
+- [ ] **G4** See-through, collapsible bag and Mamie's notebook (notes are taken along)
+- [ ] **G5** Chloé the new way: tap her, then a spot; hidden in the hall; care through behaviour
+- [ ] **G6** Walking from room to room: exits with a view of the next room, new hall stairs, toast per room
+- [ ] **G7** Lights (and things only visible in the dark)
+- [ ] **G8** Generated room ambience
+- [ ] **G9** Faster local check (30 seeds locally, 200 in CI)
+- [ ] **Playtest checkpoint 1**
+
+### Phase B: structure and chapter 1
+- [ ] **G10** Story bible for three chapters (STORY.md, story.json)
+- [ ] **G11** Chapter structure: linear, Day cards, chapter results, finale after chapter 3, save v3
+- [ ] **G12** Hand-written hints and the notes lint
+- [ ] **G13** Chapter 1 rewritten
+- [ ] **G14** Half-cryptic generated notes, Endless becomes Mamie's shoebox
+- [ ] **Playtest checkpoint 2**
+
+### Phase C: chapters 2 and 3
+- [ ] **G15** Chapter 2
+- [ ] **G16** Chapter 3 and the finale
+- [ ] **G17** Polish and the v3 summary
+- [ ] **Playtest checkpoint 3**
+
 ## v2: playtest feedback (2026-09-26)
 The owner's playtest feedback changes the direction: difficulty must come from thinking, not searching; more kinds of puzzles; one route through a whole house; a new story (Juliette inherits her late grandmother Céline's house) told through the notes; Chloé the dog as a helper; zooming. Work in this order, each milestone ends with `bash tools/check.sh`, commit, push and a green CI run.
 
@@ -40,7 +70,7 @@ The owner's playtest feedback changes the direction: difficulty must come from t
 - [x] **F8 Polish and summary**: scrapbook memories show symbols as icons, the "memory for the scrapbook" toast waits until the note is put down, Chloé's spots sit above the bag in every room, the screenshot tour waits for the first screen, and this summary.
 
 ## Next
-- v2 is done. Waiting for the owner's next playtest; ideas that didn't make this round are in the polish backlog below.
+- v3 (see above and `docs/PLAN_V3.md`).
 
 ## Known issues
 - Portrait phones show a "turn your phone sideways" card (it can be dismissed); the game is designed for landscape.
