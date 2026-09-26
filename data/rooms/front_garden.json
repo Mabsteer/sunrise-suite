@@ -11,6 +11,7 @@
   "outdoor": true,
   "door": {"name": "the garden gate", "rect": [860, 450, 200, 160]},
   "exit": {"kind": "gate", "to": "kitchen"},
+  "light_switch": {"name": "the garden lantern", "rect": [618,396,54,84], "sprite": "props/common/lantern.svg", "glow": [645,430]},
   "dog_spot": [1240, 885],
   "furniture": [
     {"id": "roses", "name": "Rose's roses", "sprite": "props/front_garden/roses.svg", "pos": [60, 470], "size": [430, 280],

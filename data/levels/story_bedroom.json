@@ -32,6 +32,9 @@
      "text": "Céline and Henri on their wedding day, laughing under a very small lemon tree. The year is painted in the corner."},
     {"id": "c_numbers", "memory": "bedroom_numbers", "host": {"kind": "prop", "prop": "note"}, "location": "paper", "for": "nightstand", "source": "paper"}
   ],
-  "decoys": [],
+  "decoys": [
+    {"id": "d_stars", "host": {"kind": "prop", "prop": "glow_stars", "slot": "wall_dresser"}, "location": "room", "visible_when": "dark",
+     "text": "Little plastic stars on the ceiling, still glowing a little. Someone stuck them up there, one summer, standing on the bed."}
+  ],
   "postcard": {"id": "santorini", "host": {"kind": "prop", "prop": "postcard"}, "location": "suitcase"}
 }

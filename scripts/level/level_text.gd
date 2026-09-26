@@ -193,6 +193,13 @@ func hint_texts(goal: Dictionary) -> PackedStringArray:
 			]
 		"open":
 			return _open_hints(str(goal["id"]))
+		"lights":
+			var sw := str((room.get("light_switch", {}) as Dictionary).get("name", "the light switch"))
+			return [
+				"Some things only show themselves in a different light.",
+				"Have you tried %s?" % sw,
+				"Tap %s, then look around again." % sw,
+			]
 	return [
 		"Take a slow look around the room. Tap anything that catches your eye.",
 		"Tap the furniture and the things on the walls. Mamie hid things everywhere.",

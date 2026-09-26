@@ -40,6 +40,13 @@ var zoom := 1.0:
 		zoom = value
 		_center_stage()
 var zoom_focus := Vector2(960, 540)
+## The room's own light (0 = off, 1 = on): brightens the room on top of the sunrise.
+var lamp := 0.0:
+	set(value):
+		lamp = value
+		_apply_lighting()
+## How far a lamp lifts the room toward full daylight.
+const LAMP_LIFT := 0.35
 ## The player's own view (pinch, wheel, drag): how far zoomed in, and which stage point is in the
 ## middle of the screen. 1 = the whole room. The camera-like `zoom` above works on top of it.
 var view_zoom := 1.0
@@ -267,7 +274,8 @@ func _apply_lighting() -> void:
 		return
 	var t := clampf(sunrise_t, 0.0, 1.0)
 	sky.sunrise_t = sunrise_t
-	room_layer.modulate = _ramp(ROOM_TINT, t)
+	# A lamp switched on (0..1) lifts the room part of the way toward daylight.
+	room_layer.modulate = _ramp(ROOM_TINT, t).lerp(ROOM_TINT[2], lamp * LAMP_LIFT)
 	if _balcony:
 		_balcony.modulate = _ramp(ROOM_TINT, t).lerp(Color(0.8, 0.8, 0.95), 0.15)
 	if _view_far:

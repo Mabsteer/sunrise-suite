@@ -10,6 +10,7 @@
   "music": "level_hall",
   "door": {"name": "the stair gate", "rect": [1380, 610, 190, 160]},
   "exit": {"kind": "stairs_up", "to": "bedroom", "furniture": "stair_gate", "sprite_open": "props/hall/stair_gate_open.svg", "walk_to": [1880,200]},
+  "light_switch": {"name": "the light switch", "rect": [1150,408,54,70], "glow": [760,90]},
   "dog_spot": [700, 885],
   "furniture": [
     {"id": "umbrella_stand", "name": "the umbrella stand", "sprite": "props/hall/umbrella_stand.svg", "pos": [24, 560], "size": [90, 220],

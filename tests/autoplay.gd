@@ -114,6 +114,10 @@ func _do(scene: LevelScene, goal: Dictionary) -> bool:
 			return s.seen.has(cid)
 		"open":
 			return _open_lock(scene, str(goal["id"]))
+		"lights":
+			var before := s.lights_on
+			scene.tap("lights")
+			return s.lights_on != before
 	return false
 
 

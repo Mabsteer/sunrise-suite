@@ -231,5 +231,14 @@ files["postcard_small.svg"] = svg(70, 52, `  <g transform="rotate(-8 35 26)">
     <path d="M36 12 V42" stroke="#f3ddb3" stroke-width="2"/>
   </g>`, "A postcard peeking out.");
 
+// ---- lights (v3): a wall switch, a garden lantern, and glow-in-the-dark stars on a ceiling
+files["light_switch.svg"] = svg(36, 56, `  <rect x="2" y="2" width="32" height="52" rx="6" fill="#fffbf5"/><rect x="2" y="2" width="32" height="52" rx="6" fill="none" stroke="#d9c6a6" stroke-width="2"/>
+  <rect x="12" y="14" width="12" height="28" rx="4" fill="#e9dcc6"/><rect x="12" y="14" width="12" height="13" rx="4" fill="#d9c6a6"/>`, "A light switch on the wall.");
+files["lantern.svg"] = svg(50, 80, `  <path d="M25 2 V10" stroke="#3e3570" stroke-width="3"/><path d="M14 10 H36 L32 18 H18 Z" fill="#3e3570"/>
+  <rect x="12" y="18" width="26" height="42" rx="4" fill="#fbe3a0" opacity="0.7"/><rect x="12" y="18" width="26" height="42" rx="4" fill="none" stroke="#3e3570" stroke-width="3"/>
+  <path d="M25 18 V60" stroke="#3e3570" stroke-width="2"/><path d="M10 60 H40 L36 68 H14 Z" fill="#3e3570"/>`, "A little garden lantern on a post.");
+const star = (cx, cy, r) => { const p = []; for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5; const rr = i % 2 ? r * 0.45 : r; p.push(`${(cx + Math.cos(a) * rr).toFixed(1)} ${(cy + Math.sin(a) * rr).toFixed(1)}`); } return `<path d="M${p.join(" L")} Z" fill="#d9f5c4"/>`; };
+files["glow_stars.svg"] = svg(200, 90, [[20, 20, 10], [60, 50, 14], [100, 18, 9], [140, 44, 12], [180, 22, 8], [44, 76, 7], [118, 74, 8], [168, 70, 10]].map(([x, y, r]) => star(x, y, r)).join("\n  "), "Glow-in-the-dark stars stuck on the ceiling, glowing faintly.");
+
 for (const [name, content] of Object.entries(files)) writeFileSync(join(OUT, name), content);
 console.log(`${Object.keys(files).length} prop SVGs written to ${OUT}`);

@@ -15,6 +15,8 @@ signal completed()
 signal dog_found()
 ## Chloé did something for a lock ("fetch", "dig", "sniff", "care").
 signal dog_acted(lock_id: String, action: String)
+## The room's light was switched on or off.
+signal lights_changed(on: bool)
 
 ## Locks opened with knowledge from clues (codes, tunes, times, lamps, orders).
 const KNOWLEDGE_TYPES: PackedStringArray = ["combo", "sequence", "clock", "switches", "order"]
@@ -48,6 +50,9 @@ var finished := false
 var postcard_taken := false
 ## Is Chloé with Juliette in this room? (From the start with "companion": "chloe", or once she's found.)
 var dog_present := false
+## The room's light (off when the level starts). Some things can only be seen with it on, others
+## only in the dark ("visible_when": "light" | "dark").
+var lights_on := false
 ## How many times Juliette sent Chloé somewhere (seeds what she brings back from empty trips).
 var dog_trips := 0
 ## Things Chloé brings back from a trip where there's nothing to find (just for fun, not usable).
@@ -96,7 +101,19 @@ func item_available(item_id: String) -> bool:
 	if not items.has(item_id) or picked.has(item_id):
 		return false
 	var loc := str(items[item_id].get("location", "room"))
-	return loc != "recipe" and accessible(loc)
+	return loc != "recipe" and accessible(loc) and visible_now(items[item_id])
+
+
+## Can this thing be seen in the room's light right now? (Things without "visible_when" always can.)
+func visible_now(thing: Dictionary) -> bool:
+	var w := str(thing.get("visible_when", ""))
+	return w == "" or (w == "light") == lights_on
+
+
+## Switches the room's light on or off.
+func toggle_lights() -> void:
+	lights_on = not lights_on
+	lights_changed.emit(lights_on)
 
 
 ## A clue is available when its carrier can be seen (or, for clue items, when the item is in the inventory).
@@ -238,7 +255,7 @@ func take_note(kind: String, id: String) -> void:
 
 
 func see_clue(clue_id: String) -> void:
-	if clue_available(clue_id) and not seen.has(clue_id):
+	if clue_available(clue_id) and visible_now(clues[clue_id]) and not seen.has(clue_id):
 		seen[clue_id] = true
 		clue_seen.emit(clue_id)
 
@@ -388,9 +405,12 @@ func take_postcard() -> bool:
 ## Returns what the player should do next: { "target": String, "action": String, "texts": [nudge, what, answer] }.
 func next_goal() -> Dictionary:
 	# 1. Items lying around.
+	var in_other_light := false
 	for id: String in _sorted_keys(items):
 		if item_available(id):
 			return {"target": "item:" + id, "action": "pick_up", "id": id}
+		if not picked.has(id) and not visible_now(items[id]) and accessible(str(items[id].get("location", "room"))) and str(items[id].get("location", "room")) != "recipe":
+			in_other_light = true
 	# 2. Combinations ready to make.
 	for i in recipes.size():
 		if combined_recipes.has(i):
@@ -411,8 +431,13 @@ func next_goal() -> Dictionary:
 		var id := ready[0]
 		for c in lock_clues(id):
 			if not seen.has(c):
+				if not visible_now(clues[c]):
+					return {"target": "lights", "action": "lights", "lock": id}
 				return {"target": "clue:" + c, "action": "see_clue", "id": c, "lock": id}
 		return {"target": "lock:" + id, "action": "open", "id": id}
+	# 4. Something can only be seen in the other light.
+	if in_other_light:
+		return {"target": "lights", "action": "lights"}
 	return {"target": "look", "action": "look"}
 
 

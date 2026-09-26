@@ -11,6 +11,7 @@
   "music": "level_bedroom",
   "door": {"name": "the door to the landing", "rect": [1640, 190, 230, 580]},
   "exit": {"kind": "stairs_down", "to": "lounge", "view_room": "hall", "view_center": [1640,380], "hinge": "right"},
+  "light_switch": {"name": "the bedside lamp", "rect": [1270,420,110,130], "glow": [1320,470]},
   "dog_spot": [1480, 885],
   "furniture": [
     {"id": "wardrobe", "name": "the wardrobe", "sprite": "props/bedroom/wardrobe.svg", "pos": [40, 150], "size": [300, 620],

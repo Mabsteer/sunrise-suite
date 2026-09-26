@@ -30,6 +30,17 @@ static func validate(level: Dictionary, tier_cfg: Dictionary = {}) -> Dictionary
 			elif str(c.get("text", "")) == "":
 				errors.append("%s has no text" % c.get("id", "?"))
 
+	# --- things that only show in the light or in the dark need a light to switch
+	for key in ["items", "clues", "decoys"]:
+		for t: Dictionary in level.get(key, []):
+			var w := str(t.get("visible_when", ""))
+			if w == "":
+				continue
+			if w != "light" and w != "dark":
+				errors.append("%s: visible_when must be \"light\" or \"dark\", not '%s'" % [t.get("id", "?"), w])
+			elif (room.get("light_switch", {}) as Dictionary).is_empty():
+				errors.append("%s only shows in the %s, but %s has no light_switch" % [t.get("id", "?"), w, room.get("id", "?")])
+
 	# --- exactly one door
 	var doors := 0
 	for l: Dictionary in level.get("locks", []):

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 80" width="50" height="80">
+  <!-- A little garden lantern on a post. -->
+  <path d="M25 2 V10" stroke="#3e3570" stroke-width="3"/><path d="M14 10 H36 L32 18 H18 Z" fill="#3e3570"/>
+  <rect x="12" y="18" width="26" height="42" rx="4" fill="#fbe3a0" opacity="0.7"/><rect x="12" y="18" width="26" height="42" rx="4" fill="none" stroke="#3e3570" stroke-width="3"/>
+  <path d="M25 18 V60" stroke="#3e3570" stroke-width="2"/><path d="M10 60 H40 L36 68 H14 Z" fill="#3e3570"/>
+</svg>

@@ -12,6 +12,7 @@
   "outdoor": true,
   "door": {"name": "the shed door", "rect": [1600, 380, 200, 320]},
   "exit": {"kind": "door", "to": "shed", "view_center": [780,440], "hinge": "left"},
+  "light_switch": {"name": "the light switch on the shed", "rect": [1500,480,40,60], "sprite": "props/common/light_switch.svg", "glow": [1300,420]},
   "dog_spot": [1340, 885],
   "furniture": [
     {"id": "bird_bath", "name": "the bird bath", "sprite": "props/garden/bird_bath.svg", "pos": [60, 640], "size": [150, 220],

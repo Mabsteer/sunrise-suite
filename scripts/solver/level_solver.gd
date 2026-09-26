@@ -50,6 +50,8 @@ static func estimate_seconds(level: Dictionary, actions: Array, riddle: int) -> 
 				t += 8.0 + 9.0 * riddle
 			"combine":
 				t += 12.0
+			"lights":
+				t += 15.0  # finding the switch and noticing what changed
 			"open":
 				var l: Dictionary = locks.get(str(a.get("id", "")), {})
 				var cfg: Dictionary = l.get("config", {})
@@ -94,6 +96,9 @@ static func apply_goal(s: LevelSession, goal: Dictionary) -> bool:
 			return s.seen.size() > before
 		"open":
 			return open_lock(s, str(goal["id"]))
+		"lights":
+			s.toggle_lights()
+			return true
 	return false
 
 

@@ -218,6 +218,9 @@ func tap(key: String) -> void:
 			take("postcard", id, _hotspot_center(key))
 		"dog":
 			_tap_chloe()
+		"lights":
+			AudioManager.play_sfx("switch_toggle")
+			session.toggle_lights()
 		"flavor":
 			if inventory.selected != "":
 				_nothing_here()
@@ -346,6 +349,80 @@ func _build_room_things() -> void:
 	var pc: Dictionary = level.get("postcard", {})
 	if not pc.is_empty() and str(pc.get("location", "room")) == "room" and not session.postcard_taken:
 		_place_host("postcard:" + str(pc.get("id", "")), pc.get("host", {}), false)
+	_build_light()
+
+
+# ======================================================================= the room's light
+
+const LIGHT_GLOW_RADIUS := 720.0
+
+var _light_glow: Sprite2D
+
+
+## The room's light switch (or lamp, or lantern): no badge, you have to find it. With the light on
+## there's a warm glow and the room is brighter; some things only show in the light or in the dark.
+func _build_light() -> void:
+	var ls: Dictionary = room_view.room.get("light_switch", {})
+	if ls.is_empty():
+		return
+	var r: Array = ls.get("rect", [0, 0, 40, 60])
+	var rect := Rect2(float(r[0]), float(r[1]), float(r[2]), float(r[3]))
+	var sprite: Sprite2D = null
+	if str(ls.get("sprite", "")) != "":
+		sprite = Sprite2D.new()
+		sprite.texture = UIKit.texture(str(ls["sprite"]))
+		sprite.centered = false
+		sprite.position = rect.position
+		if sprite.texture:
+			sprite.scale = rect.size / sprite.texture.get_size()
+		_props_layer.add_child(sprite)
+		host_sprites["lights"] = sprite
+	_add_hotspot("lights", rect, sprite)
+	var g: Array = ls.get("glow", [960, 300])
+	var tex := GradientTexture2D.new()
+	tex.fill = GradientTexture2D.FILL_RADIAL
+	tex.fill_from = Vector2(0.5, 0.5)
+	tex.fill_to = Vector2(1.0, 0.5)
+	tex.width = 256
+	tex.height = 256
+	var grad := Gradient.new()
+	grad.colors = PackedColorArray([Color(1.0, 0.86, 0.55, 0.26), Color(1.0, 0.8, 0.5, 0.0)])
+	tex.gradient = grad
+	_light_glow = Sprite2D.new()
+	_light_glow.name = "LightGlow"
+	_light_glow.texture = tex
+	_light_glow.position = Vector2(float(g[0]), float(g[1]))
+	_light_glow.scale = Vector2.ONE * (LIGHT_GLOW_RADIUS * 2.0 / 256.0)
+	var mat := CanvasItemMaterial.new()
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	_light_glow.material = mat
+	_light_glow.modulate.a = 0.0
+	room_view.stage.add_child(_light_glow)
+	session.lights_changed.connect(_on_lights_changed)
+	_apply_visibility()
+
+
+func _on_lights_changed(on: bool) -> void:
+	var t := create_tween().set_parallel(true)
+	t.tween_property(_light_glow, "modulate:a", 1.0 if on else 0.0, 0.25)
+	t.tween_property(room_view, "lamp", 1.0 if on else 0.0, 0.25)
+	_apply_visibility()
+
+
+## Shows only the things that can be seen in the room's light right now ("visible_when").
+func _apply_visibility() -> void:
+	for pair: Array in [["clue", session.clues], ["decoy", session.decoys], ["item", session.items]]:
+		var things: Dictionary = pair[1]
+		for id: String in things.keys():
+			var thing: Dictionary = things[id]
+			if str(thing.get("visible_when", "")) == "":
+				continue
+			var key := "%s:%s" % [pair[0], id]
+			var seen := session.visible_now(thing)
+			if hotspots.has(key):
+				(hotspots[key] as Control).visible = seen
+			if host_sprites.has(key):
+				(host_sprites[key] as CanvasItem).visible = seen
 
 
 func _place_host(key: String, host: Dictionary, _open: bool) -> void:
