@@ -105,6 +105,96 @@ static func pop_in(node: CanvasItem, seconds: float = 0.22) -> void:
 		node.create_tween().tween_property(node, "modulate:a", 1.0, seconds)
 
 
+## Makes a button the coral "main action" button.
+static func primary(b: Button) -> Button:
+	for state in ["normal", "hover", "pressed", "hover_pressed"]:
+		var base := b.get_theme_stylebox(state, "Button") as StyleBoxFlat
+		if base == null:
+			continue
+		var sb := base.duplicate() as StyleBoxFlat
+		sb.bg_color = Palette.color("coral") if state == "normal" else (Palette.color("coral_dark") if state.contains("pressed") else Palette.color("terracotta_light"))
+		sb.border_color = Palette.color("coral_dark")
+		b.add_theme_stylebox_override(state, sb)
+	for c in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color"]:
+		b.add_theme_color_override(c, Palette.color("white_warm"))
+	return b
+
+
+static func text_button(caption: String, min_size: Vector2 = Vector2(420, 96)) -> Button:
+	var b := Button.new()
+	b.text = caption
+	b.custom_minimum_size = min_size
+	b.focus_mode = Control.FOCUS_NONE
+	return b
+
+
+## A modal card with a title, optional text and buttons [[caption, callable, primary?], ...]. Returns the overlay.
+## Any button closes the dialog before running its callable.
+static func dialog(parent: Node, title: String, body: String, buttons: Array) -> Control:
+	var overlay := Control.new()
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	var dim := ColorRect.new()
+	dim.color = Color(0.169, 0.137, 0.314, 0.5)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.add_child(dim)
+	var center := CenterContainer.new()
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.add_child(center)
+	var panel := PanelContainer.new()
+	panel.add_theme_stylebox_override("panel", card(44))
+	panel.custom_minimum_size = Vector2(780, 0)
+	center.add_child(panel)
+	var v := VBoxContainer.new()
+	v.add_theme_constant_override("separation", 22)
+	panel.add_child(v)
+	v.add_child(label(title, 52, Palette.color("ink")))
+	if body != "":
+		var b := label(body, 34, Palette.color("ink_soft"))
+		b.custom_minimum_size.x = 680
+		v.add_child(b)
+	for entry: Array in buttons:
+		var button := text_button(str(entry[0]), Vector2(460, 96))
+		button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		if entry.size() > 2 and bool(entry[2]):
+			primary(button)
+		var cb: Callable = entry[1]
+		button.pressed.connect(func() -> void:
+			AudioManager.play_sfx("ui_click")
+			overlay.queue_free()
+			if cb.is_valid():
+				cb.call())
+		v.add_child(button)
+	overlay.set_meta("body", v)
+	parent.add_child(overlay)
+	pop_in(panel)
+	return overlay
+
+
+## Seashell + star counters for screen headers.
+static func counters() -> HBoxContainer:
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 14)
+	for pair in [["ui/star_full.svg", str(GameState.total_stars())], ["ui/seashell.svg", str(GameState.seashells())]]:
+		var chip := PanelContainer.new()
+		chip.add_theme_stylebox_override("panel", box(Palette.color("white_warm", 0.92), 30, Palette.color("sand"), 3, 10))
+		var h := HBoxContainer.new()
+		h.add_theme_constant_override("separation", 8)
+		chip.add_child(h)
+		var icon := TextureRect.new()
+		icon.texture = texture(str(pair[0]))
+		icon.custom_minimum_size = Vector2(48, 48)
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		h.add_child(icon)
+		var l := label(str(pair[1]), 34, Palette.color("ink"))
+		l.autowrap_mode = TextServer.AUTOWRAP_OFF
+		l.custom_minimum_size.x = 56
+		h.add_child(l)
+		row.add_child(chip)
+	return row
+
+
 ## A gentle "no" wiggle.
 static func wiggle(node: Control) -> void:
 	if bool(SaveManager.settings.get("reduce_motion", false)):

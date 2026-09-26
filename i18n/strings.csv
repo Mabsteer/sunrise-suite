@@ -56,3 +56,36 @@ RESULTS_SHELLS,+%d seashells
 CONTINUE,Continue
 REPLAY,Play again
 MENU_TRY_ROOM,Try the test room
+MENU_PLAY,Start your first sunrise
+MENU_CONTINUE,Grandma's Sunrise Book
+MENU_DAILY,Daily Sunrise
+MENU_DAILY_DONE,Daily Sunrise (done today!)
+MENU_PENTHOUSE,The penthouse
+MENU_SCRAPBOOK,Scrapbook
+MENU_SETTINGS,Settings
+BACK,Back
+OK,OK
+CANCEL,Never mind
+BOOK_TITLE,Grandma's Sunrise Book
+TIER_TITLE,Sunrise %d
+GATE_NEEDS,Needs %d stars
+LOCKED_TITLE,Not yet!
+LOCKED_PREVIOUS,Finish the sunrise before this one first.
+LOCKED_STARS,"This page opens with %d stars. Replay earlier rooms for more stars: finish quickly, and ask for 1 hint or fewer."
+LOCKED_SOON,This room is still being decorated. Check back soon!
+LEVEL_POPUP_TITLE,Sunrise %d
+LEVEL_POPUP_TEXT,"Play the same puzzle again, or let Grandma set up a fresh one in this room?"
+PLAY_AGAIN_SAME,Same puzzle again
+PLAY_FRESH,A fresh puzzle
+POSTCARD_HERE,A postcard is hidden in this room!
+ENDLESS_TITLE,Endless Sunrise
+ENDLESS_LOCKED,Finish all 30 sunrises to unlock endless puzzles that keep getting trickier.
+ENDLESS_READY,Puzzles that keep getting trickier. How far can you go?
+ENDLESS_BEST,Best so far: Sunrise %d
+ENDLESS_PLAY,Play Endless
+UNLOCK_NEXT,The next sunrise is unlocked!
+UNLOCK_GATE,Sunrise %d is open now!
+UNLOCK_ENDLESS,You've finished Grandma's book! Endless Sunrise is open.
+NEXT_LEVEL,Next sunrise
+NEXT_ENDLESS,Next endless sunrise
+BACK_TO_BOOK,Back to the book

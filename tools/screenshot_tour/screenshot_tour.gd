@@ -50,7 +50,13 @@ func _run() -> void:
 			var shot_name: String = shot["name"]
 			if not filter.is_empty() and not _matches(shot_name, filter):
 				continue
-			var ok: bool = await Router.goto(str(shot["screen"]), shot.get("params", {}), false)
+			SaveManager.data = SaveManager.default_save()
+			if shot.has("setup"):
+				(shot["setup"] as Callable).call()
+			var params: Variant = shot.get("params", {})
+			if params is Callable:
+				params = (params as Callable).call()
+			var ok: bool = await Router.goto(str(shot["screen"]), params, false)
 			if not ok:
 				push_warning("Screenshot tour: could not open %s" % shot["screen"])
 				continue

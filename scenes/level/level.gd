@@ -606,8 +606,8 @@ func _toggle_pause() -> void:
 	if not _paused:
 		return
 	AudioManager.play_sfx("ui_click")
-	_pause_menu = _overlay_card(tr("PAUSE_TITLE"), [
-		[tr("RESUME"), _toggle_pause],
+	_pause_menu = UIKit.dialog(ui, tr("PAUSE_TITLE"), "", [
+		[tr("RESUME"), _toggle_pause, true],
 		[tr("RESTART"), func() -> void: Router.goto("level", Router.params)],
 		[tr("LEAVE"), func() -> void: Router.goto(_exit_screen())],
 	])
@@ -616,10 +616,22 @@ func _toggle_pause() -> void:
 func _show_results(result: Dictionary) -> void:
 	var stars := int(result.get("stars", 1))
 	var card_items: Array = []
-	if Router.has_screen(_exit_screen()):
-		card_items.append([tr("CONTINUE"), func() -> void: Router.goto(_exit_screen())])
-	card_items.append([tr("REPLAY"), func() -> void: Router.goto("level", Router.params)])
-	_results = _overlay_card(tr("RESULTS_TITLE"), card_items)
+	match mode:
+		"main", "replay":
+			var nxt := GameState.next_level_id(record_id)
+			if nxt != "" and GameState.is_level_unlocked(nxt):
+				card_items.append([tr("NEXT_LEVEL"), func() -> void: Launcher.play_main(nxt), true])
+			elif nxt == "" and GameState.campaign_finished():
+				card_items.append([tr("ENDLESS_PLAY"), func() -> void: Launcher.play_endless(), true])
+			card_items.append([tr("BACK_TO_BOOK"), func() -> void: Router.goto("level_select")])
+			card_items.append([tr("REPLAY"), func() -> void: Router.goto("level", Router.params)])
+		"endless":
+			card_items.append([tr("NEXT_ENDLESS"), func() -> void: Launcher.play_endless(), true])
+			card_items.append([tr("BACK_TO_BOOK"), func() -> void: Router.goto("level_select")])
+		_:
+			card_items.append([tr("CONTINUE"), func() -> void: Router.goto(_exit_screen()), true])
+			card_items.append([tr("REPLAY"), func() -> void: Router.goto("level", Router.params)])
+	_results = UIKit.dialog(ui, tr("RESULTS_TITLE"), "", card_items)
 	var body: VBoxContainer = _results.get_meta("body")
 	var star_row := HBoxContainer.new()
 	star_row.alignment = BoxContainer.ALIGNMENT_CENTER
@@ -659,44 +671,6 @@ func _show_results(result: Dictionary) -> void:
 		body.move_child(ul, body.get_child_count() - 2)
 
 
-## A centred card with a title and a column of buttons: [[caption, callable], ...]. Returns the overlay.
-func _overlay_card(title: String, buttons: Array) -> Control:
-	var overlay := Control.new()
-	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
-	var dim := ColorRect.new()
-	dim.color = Color(0.169, 0.137, 0.314, 0.5)
-	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	overlay.add_child(dim)
-	var center := CenterContainer.new()
-	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	overlay.add_child(center)
-	var card := PanelContainer.new()
-	card.add_theme_stylebox_override("panel", UIKit.card(44))
-	card.custom_minimum_size = Vector2(760, 0)
-	center.add_child(card)
-	var v := VBoxContainer.new()
-	v.add_theme_constant_override("separation", 22)
-	card.add_child(v)
-	v.add_child(UIKit.label(title, 56, Palette.color("ink")))
-	var btns := VBoxContainer.new()
-	btns.add_theme_constant_override("separation", 16)
-	v.add_child(btns)
-	for b: Array in buttons:
-		var button := Button.new()
-		button.text = str(b[0])
-		button.custom_minimum_size = Vector2(420, 96)
-		button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		button.focus_mode = Control.FOCUS_NONE
-		var cb: Callable = b[1]
-		button.pressed.connect(func() -> void:
-			AudioManager.play_sfx("ui_click")
-			cb.call())
-		btns.add_child(button)
-	overlay.set_meta("body", v)
-	ui.add_child(overlay)
-	UIKit.pop_in(card)
-	return overlay
 
 
 func _exit_screen() -> String:

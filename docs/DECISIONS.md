@@ -33,4 +33,9 @@ One line per decision: what, and why.
 - Tier step counts may exceed the tier maximum by 1 when the room runs out of slots (an item gets hidden in an extra container). The validator allows min..max+1.
 - Furniture-hosted key/code locks show a small brass padlock, so new players can see something is locked. Hidden spots stay unmarked, to be discovered.
 - Headless tests set AudioManager.enabled = false, because the dummy audio driver never releases finished sounds (it causes "resources still in use" errors).
+- New players go straight from "Start your first sunrise" into level 1. After that the main button opens the level book.
+- Unlock rule: finish the previous level. Soft star gates: tier 4 needs 12 stars, tier 7 needs 24, tier 10 needs 40 (at least 9/18/27 are guaranteed by then). Gates live in campaign.json.
+- Replays of a main level (same or fresh puzzle) count toward that level's best stars, so replaying is the way to open star gates.
+- Room thumbnails reuse each room's background art over a sunrise gradient (no extra art to maintain).
+- Doc and data edits containing apostrophes go through the editor tool, not quoted shell one-liners.
 - Campaign levels are generated from data/campaign.json (room, tier, fixed seed) instead of stored as big level files, so levels can be tuned by changing one seed.

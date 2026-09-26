@@ -5,8 +5,23 @@ extends RefCounted
 const TEST_LEVEL := {"level_id": "test_lounge"}
 
 
+## Pretend the player finished the first few levels with some stars.
+static func fake_progress(count: int) -> void:
+	var levels: Dictionary = {}
+	var list := Campaign.levels()
+	for i in mini(count, list.size()):
+		levels[str(list[i]["id"])] = {"stars": [3, 2, 3, 1, 3, 2, 2, 3, 1, 3, 2, 3][i % 12], "completions": 1, "best_time": 200.0}
+	SaveManager.data["levels"] = levels
+	SaveManager.data["seashells"] = 145
+
+
 func shots() -> Array[Dictionary]:
 	return [
+		{"name": "menu_new", "screen": "main_menu", "frames": 30},
+		{"name": "menu_returning", "screen": "main_menu", "setup": func() -> void: fake_progress(8), "frames": 30},
+		{"name": "select_start", "screen": "level_select", "frames": 30},
+		{"name": "select_progress", "screen": "level_select", "setup": func() -> void: fake_progress(11), "frames": 40},
+		{"name": "select_popup", "screen": "level_select", "setup": func() -> void: fake_progress(11), "action": func(s: Node) -> void: s.call("_on_card", "main_02", true, true), "frames": 30},
 		{"name": "art_props", "screen": "art_sheet", "params": {"dirs": ["props/common"], "scale": 1.0}},
 		{"name": "art_items", "screen": "art_sheet", "params": {"dirs": ["items", "ui/symbols", "ui"], "scale": 0.9}},
 		{"name": "art_puzzles", "screen": "art_sheet", "params": {"dirs": ["puzzles"], "scale": 0.5}},
