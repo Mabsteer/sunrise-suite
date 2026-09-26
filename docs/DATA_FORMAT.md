@@ -10,7 +10,10 @@ Keys starting with `_` (like `_help`) are comments and are ignored.
 | `background`, `light`, `view_far`, `balcony` | Layer sprites (2400×1440, see ART_STYLE.md) |
 | `horizon_y`, `sun_x` | Where the horizon and the sun are, in stage pixels |
 | `music` | Music track name (see SUNO_PROMPTS.md) |
-| `door` | `{ "name", "rect": [x, y, w, h] }`: the balcony door, the final lock of every level |
+| `sky_rect` | Where the sunrise sky shader is drawn (only behind windows indoors; the whole sky outdoors) |
+| `outdoor` | `true` for the garden and the front garden (no walls; sky above) |
+| `door` | `{ "name", "rect": [x, y, w, h] }`: the room's exit (to the next room on the route), the final lock of every level |
+| `dog_spot` | `[x, y]`: where Chloé sits in this room (bottom-centre) |
 | `furniture` | Always-present furniture: `{ id, name, sprite, pos: [x,y], size: [w,h], spots: [...], flavor }` |
 | `furniture[].spots` | Places on the furniture that can hold something: `{ id, name, rect: [x,y,w,h] (furniture-local), locks: [types], tools: [null or item type], clue: bool, reveal }` |
 | `wall_slots` | Where wall props go: `{ id, rect: [x,y,w,h], accepts: ["wall", "wall_small"] }` |
@@ -66,6 +69,17 @@ Keys starting with `_` (like `_help`) are comments and are ignored.
 - **Clues** can be carried by an item (`"item"`). The clue is then read by looking at that item in the bag.
 - Every lock and every recipe is one **step**. The sunrise progress is `solved steps / all steps`.
 - **riddle** (optional, hand-made levels): how hard the notes are, for the par-time check (generated levels take it from `tiers.json`).
+
+## `data/campaign.json`: the walks through the house
+`walks`: `[ { "id": 1, "title", "subtitle" (text keys), "story"?: true, "star_gate": stars needed to start it, "levels": [ ... ] } ]`.
+Each walk lists the seven rooms in route order (kitchen, hall, bedroom, lounge = living room, garden, shed, front_garden). A level is `{ "id", "room", "tier", "seed", "level_file"?, "postcard"?, "chapter"?, "finale"? }`:
+- `level_file`: a hand-made level in `data/levels/` instead of a generated one.
+- `chapter`: shows that room's chapter card (from `data/story.json`) when the level starts.
+- `finale`: the end of the story; Mamie's last letter opens when it's finished.
+Walk levels share one morning: each room gets its own slice of the sunrise (`sunrise_range`, filled in by the game).
+
+## `data/story.json`: the chapters of Céline's life
+`chapters`: one per room in route order, `{ "room", "title", "years", "intro", "outro", "memories"?: [ { "id", "title", "text" } ] }`. The scrapbook shows one page per chapter; `memories` are the story notes collected there (see docs/STORY.md).
 
 ## `data/daily.json`
 `rooms` rotation, `weekday_tiers` (Sunday first), `streak_rewards` (streak length → decor id).

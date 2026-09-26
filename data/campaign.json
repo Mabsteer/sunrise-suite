@@ -1,40 +1,51 @@
 {
-  "_help": "The 30 main levels, in order. room + tier + seed decide the puzzle (change the seed for a different level). level_file: use a hand-made level from data/levels/ instead (level 1 is the tutorial). postcard: which postcard from Céline's life is hidden in the level. Star gates: total stars needed to start a tier.",
-  "levels": [
-    {"id": "main_01", "room": "lounge", "tier": 1, "seed": 1031, "level_file": "tutorial"},
-    {"id": "main_02", "room": "kitchen", "tier": 1, "seed": 1062},
-    {"id": "main_03", "room": "study", "tier": 1, "seed": 1093, "postcard": "lisbon"},
-    {"id": "main_04", "room": "lounge", "tier": 2, "seed": 1124},
-    {"id": "main_05", "room": "kitchen", "tier": 2, "seed": 1155},
-    {"id": "main_06", "room": "study", "tier": 2, "seed": 1186},
-    {"id": "main_07", "room": "lounge", "tier": 3, "seed": 1217},
-    {"id": "main_08", "room": "kitchen", "tier": 3, "seed": 1248},
-    {"id": "main_09", "room": "study", "tier": 3, "seed": 1279, "postcard": "kyoto"},
-    {"id": "main_10", "room": "lounge", "tier": 4, "seed": 1310},
-    {"id": "main_11", "room": "kitchen", "tier": 4, "seed": 1341},
-    {"id": "main_12", "room": "study", "tier": 4, "seed": 1372},
-    {"id": "main_13", "room": "lounge", "tier": 5, "seed": 1403},
-    {"id": "main_14", "room": "kitchen", "tier": 5, "seed": 1434},
-    {"id": "main_15", "room": "study", "tier": 5, "seed": 1465, "postcard": "santorini"},
-    {"id": "main_16", "room": "lounge", "tier": 6, "seed": 1496},
-    {"id": "main_17", "room": "kitchen", "tier": 6, "seed": 1527},
-    {"id": "main_18", "room": "study", "tier": 6, "seed": 1558},
-    {"id": "main_19", "room": "lounge", "tier": 7, "seed": 1589},
-    {"id": "main_20", "room": "kitchen", "tier": 7, "seed": 1620},
-    {"id": "main_21", "room": "study", "tier": 7, "seed": 1651, "postcard": "marrakech"},
-    {"id": "main_22", "room": "lounge", "tier": 8, "seed": 1682},
-    {"id": "main_23", "room": "kitchen", "tier": 8, "seed": 1713},
-    {"id": "main_24", "room": "study", "tier": 8, "seed": 1744},
-    {"id": "main_25", "room": "lounge", "tier": 9, "seed": 1775},
-    {"id": "main_26", "room": "kitchen", "tier": 9, "seed": 1806},
-    {"id": "main_27", "room": "study", "tier": 9, "seed": 1837, "postcard": "reykjavik"},
-    {"id": "main_28", "room": "lounge", "tier": 10, "seed": 1868},
-    {"id": "main_29", "room": "kitchen", "tier": 10, "seed": 1899},
-    {"id": "main_30", "room": "study", "tier": 10, "seed": 1930}
-  ],
-  "star_gates": {
-    "4": 12,
-    "7": 24,
-    "10": 40
-  }
+  "_help": "The walks through Céline's house (see docs/STORY.md). Each walk goes through the seven rooms in route order: kitchen, hall, bedroom, living room, garden, shed, front garden. Walk 1 is the story (Mamie's last treasure hunt); walks 2 and 3 are her old treasure hunts from the shoebox, harder. Per level: room + tier + seed decide a generated puzzle (change the seed for a different one); level_file uses a hand-made level from data/levels/ instead; postcard: which postcard from Céline's life is hidden in it; chapter: the story chapter card shown at the start (data/story.json). star_gate: total stars needed to start the walk.",
+  "walks": [
+    {
+      "id": 1,
+      "title": "WALK_1_TITLE",
+      "subtitle": "WALK_1_SUBTITLE",
+      "story": true,
+      "star_gate": 0,
+      "levels": [
+        {"id": "w1_kitchen", "room": "kitchen", "tier": 1, "seed": 2101, "level_file": "tutorial", "chapter": "kitchen"},
+        {"id": "w1_hall", "room": "hall", "tier": 2, "seed": 2102, "postcard": "reykjavik", "chapter": "hall"},
+        {"id": "w1_bedroom", "room": "bedroom", "tier": 3, "seed": 2103, "postcard": "santorini", "chapter": "bedroom"},
+        {"id": "w1_lounge", "room": "lounge", "tier": 4, "seed": 2104, "postcard": "marrakech", "chapter": "lounge"},
+        {"id": "w1_garden", "room": "garden", "tier": 5, "seed": 2105, "postcard": "lisbon", "chapter": "garden"},
+        {"id": "w1_shed", "room": "shed", "tier": 6, "seed": 2106, "postcard": "kyoto", "chapter": "shed"},
+        {"id": "w1_front_garden", "room": "front_garden", "tier": 7, "seed": 2107, "chapter": "front_garden", "finale": true}
+      ]
+    },
+    {
+      "id": 2,
+      "title": "WALK_2_TITLE",
+      "subtitle": "WALK_2_SUBTITLE",
+      "star_gate": 12,
+      "levels": [
+        {"id": "w2_kitchen", "room": "kitchen", "tier": 3, "seed": 2201},
+        {"id": "w2_hall", "room": "hall", "tier": 4, "seed": 2202},
+        {"id": "w2_bedroom", "room": "bedroom", "tier": 5, "seed": 2203},
+        {"id": "w2_lounge", "room": "lounge", "tier": 6, "seed": 2204},
+        {"id": "w2_garden", "room": "garden", "tier": 7, "seed": 2205},
+        {"id": "w2_shed", "room": "shed", "tier": 8, "seed": 2206},
+        {"id": "w2_front_garden", "room": "front_garden", "tier": 8, "seed": 2207}
+      ]
+    },
+    {
+      "id": 3,
+      "title": "WALK_3_TITLE",
+      "subtitle": "WALK_3_SUBTITLE",
+      "star_gate": 30,
+      "levels": [
+        {"id": "w3_kitchen", "room": "kitchen", "tier": 6, "seed": 2301},
+        {"id": "w3_hall", "room": "hall", "tier": 7, "seed": 2302},
+        {"id": "w3_bedroom", "room": "bedroom", "tier": 8, "seed": 2303},
+        {"id": "w3_lounge", "room": "lounge", "tier": 9, "seed": 2304},
+        {"id": "w3_garden", "room": "garden", "tier": 9, "seed": 2305},
+        {"id": "w3_shed", "room": "shed", "tier": 10, "seed": 2306},
+        {"id": "w3_front_garden", "room": "front_garden", "tier": 10, "seed": 2307}
+      ]
+    }
+  ]
 }

@@ -119,7 +119,7 @@ func _play_caption() -> String:
 			return tr("ENDLESS_PLAY")
 		"book":
 			return tr("MENU_CONTINUE")
-	return tr("MENU_NEXT") % (Campaign.index_of(GameState.current_level_id()) + 1)
+	return tr("MENU_NEXT") % Campaign.room_name(GameState.current_level_id())
 
 
 func _on_play() -> void:

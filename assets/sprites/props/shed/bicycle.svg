@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 290" width="340" height="290">
+  <!-- Céline's old delivery bicycle with a big basket (a sunflower in it) and a chain lock. -->
+  <ellipse cx="170" cy="282" rx="160" ry="8" fill="#3b2e3a" opacity="0.2"/>
+  <circle cx="70" cy="210" r="66" fill="none" stroke="#3b2e3a" stroke-width="9"/><circle cx="70" cy="210" r="8" fill="#6b5a66"/>
+  <circle cx="270" cy="210" r="66" fill="none" stroke="#3b2e3a" stroke-width="9"/><circle cx="270" cy="210" r="8" fill="#6b5a66"/>
+  <path d="M10.0 210.0 L130.0 210.0 M210.0 210.0 L330.0 210.0" stroke="#c9d0d6" stroke-width="1.5"/><path d="M18.0 180.0 L122.0 240.0 M218.0 180.0 L322.0 240.0" stroke="#c9d0d6" stroke-width="1.5"/><path d="M40.0 158.0 L100.0 262.0 M240.0 158.0 L300.0 262.0" stroke="#c9d0d6" stroke-width="1.5"/><path d="M70.0 150.0 L70.0 270.0 M270.0 150.0 L270.0 270.0" stroke="#c9d0d6" stroke-width="1.5"/><path d="M100.0 158.0 L40.0 262.0 M300.0 158.0 L240.0 262.0" stroke="#c9d0d6" stroke-width="1.5"/><path d="M122.0 180.0 L18.0 240.0 M322.0 180.0 L218.0 240.0" stroke="#c9d0d6" stroke-width="1.5"/>
+  <path d="M70 210 L150 210 L210 120 L110 120 Z M150 210 L110 120 M210 120 L262 210" stroke="#2e8c8c" stroke-width="10" fill="none" stroke-linejoin="round"/>
+  <path d="M106 120 L96 96" stroke="#3b2e3a" stroke-width="8"/><rect x="76" y="88" width="46" height="12" rx="6" fill="#7a5134"/>
+  <path d="M210 120 L226 80 L250 76" stroke="#3b2e3a" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <!-- the basket -->
+  <path d="M232 60 L322 60 L312 124 L242 124 Z" fill="#c99a6b"/>
+  <path d="M234 72 L320 72" stroke="#a8744a" stroke-width="4"/><path d="M234 86 L320 86" stroke="#a8744a" stroke-width="4"/><path d="M234 100 L320 100" stroke="#a8744a" stroke-width="4"/><path d="M234 114 L320 114" stroke="#a8744a" stroke-width="4"/>
+  <path d="M250 60 L246 124" stroke="#a8744a" stroke-width="3"/><path d="M270 60 L266 124" stroke="#a8744a" stroke-width="3"/><path d="M290 60 L286 124" stroke="#a8744a" stroke-width="3"/><path d="M310 60 L306 124" stroke="#a8744a" stroke-width="3"/>
+  <circle cx="260" cy="54" r="11" fill="#f6c453"/><circle cx="286" cy="50" r="12" fill="#f6c453"/><circle cx="286" cy="50" r="5" fill="#7a5134"/>
+  <!-- chain lock with little number wheels -->
+  <path d="M146 200 C150 236 196 236 206 212" stroke="#6b5a66" stroke-width="7" fill="none"/>
+  <rect x="160" y="226" width="40" height="18" rx="5" fill="#e3ad3a"/>
+</svg>

@@ -1,16 +1,17 @@
 {
   "_help": "Room template. See docs/DATA_FORMAT.md. pos/size in stage pixels; spot rects in the furniture's own coordinates.",
   "id": "kitchen",
-  "name": "Kitchen & Bar",
+  "name": "The kitchen",
   "background": "rooms/kitchen_bg.svg",
   "light": "rooms/kitchen_light.svg",
   "view_far": "rooms/view_far.svg",
   "balcony": "rooms/balcony.svg",
   "horizon_y": 450,
   "sun_x": 960,
-  "sky_rect": [130, 70, 1070, 720],
+  "sky_rect": [750, 150, 420, 380],
   "music": "level_kitchen",
-  "door": {"name": "the balcony door", "rect": [170, 110, 260, 660]},
+  "door": {"name": "the door to the hall", "rect": [170, 110, 260, 660]},
+  "dog_spot": [420, 930],
   "furniture": [
     {"id": "counter", "name": "the kitchen counter", "sprite": "props/kitchen/counter.svg", "pos": [460, 488], "size": [1180, 300],
      "spots": [

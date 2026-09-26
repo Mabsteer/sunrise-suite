@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260" width="200" height="260">
+  <!-- Round-topped brass mirror. -->
+  <rect x="10" y="12" width="186" height="244" rx="93" fill="#3b2e3a" opacity="0.15"/>
+  <rect x="2" y="2" width="186" height="244" rx="93" fill="#d4a24c"/>
+  <rect x="14" y="14" width="162" height="220" rx="81" fill="#cfe3e6"/>
+  <path d="M40 60 L90 20 L110 20 L40 110 Z" fill="#fffbf5" opacity="0.5"/>
+  <path d="M120 200 L160 150 L166 170 L136 214 Z" fill="#fffbf5" opacity="0.3"/>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 250" width="340" height="250">
+  <!-- White round garden table with a little drawer and two yellow chairs. -->
+  <ellipse cx="170" cy="242" rx="160" ry="9" fill="#3b2e3a" opacity="0.18"/>
+  <!-- two chairs -->
+  <path d="M10 70 L60 70 L66 240 L58 240 L52 150 L18 150 L14 240 L6 240 Z" fill="#f6c453"/>
+  <rect x="4" y="140" width="66" height="14" rx="5" fill="#e3ad3a"/>
+  <path d="M330 70 L280 70 L274 240 L282 240 L288 150 L322 150 L326 240 L334 240 Z" fill="#f6c453"/>
+  <rect x="270" y="140" width="66" height="14" rx="5" fill="#e3ad3a"/>
+  <!-- table -->
+  <ellipse cx="170" cy="96" rx="130" ry="30" fill="#fffbf5"/>
+  <ellipse cx="170" cy="92" rx="124" ry="25" fill="#fff4e2"/>
+  <path d="M166 120 L174 120 L180 236 L160 236 Z" fill="#6b5a66"/>
+  <path d="M120 240 Q170 214 220 240" stroke="#6b5a66" stroke-width="8" fill="none"/>
+  <!-- the drawer under the tabletop -->
+  <rect x="120" y="116" width="100" height="24" rx="5" fill="#e9dcc2"/><rect x="156" y="124" width="28" height="7" rx="3" fill="#d4a24c"/>
+</svg>

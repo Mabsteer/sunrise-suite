@@ -4,7 +4,7 @@ extends Node
 
 const SAVE_PATH := "user://save.json"
 const SETTINGS_PATH := "user://settings.json"
-const SAVE_VERSION := 1
+const SAVE_VERSION := 2
 const SETTINGS_VERSION := 1
 
 var data: Dictionary = {}
@@ -36,6 +36,8 @@ func default_save() -> Dictionary:
 		## hub slot id -> { "id": decor_id, "flipped": bool }
 		"decor_placed": {},
 		"postcards": [],
+		## memory ids from data/story.json the player has read
+		"memories": [],
 		"final_letter_read": false,
 		"daily": {
 			## "YYYY-MM-DD" -> { "stars": int, "time": float }
@@ -70,8 +72,13 @@ func default_settings() -> Dictionary:
 ## Brings any older save up to SAVE_VERSION and fills missing keys.
 func migrate_save(save: Dictionary) -> Dictionary:
 	var version := int(save.get("version", 0))
-	# Future migrations go here, e.g.:
-	# if version < 2: save["new_key"] = ...; version = 2
+	if version < 2 and save.has("levels"):
+		# v2: the 30 "main_XX" levels became walks through Céline's house (new ids, new rooms).
+		# Level progress and Endless start over; seashells, decor, postcards and the daily streak stay.
+		save["levels"] = {}
+		save["endless"] = {}
+		save["final_letter_read"] = false
+		version = 2
 	if version > SAVE_VERSION:
 		push_warning("Save file is from a newer version (%d); loading what we can." % version)
 	var merged := _merge_defaults(save, default_save())

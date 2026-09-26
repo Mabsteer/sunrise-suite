@@ -25,8 +25,8 @@ func _run() -> void:
 		if arg.begins_with("--seeds="):
 			seeds = int(arg.trim_prefix("--seeds="))
 	var played := 0
-	var levels: Array[Dictionary] = [Data.get_dict("levels/test_lounge"), Campaign.build("main_01")]
-	for room in ["lounge", "kitchen", "study"]:
+	var levels: Array[Dictionary] = [Data.get_dict("levels/test_lounge"), Campaign.build("w1_kitchen")]
+	for room in Campaign.rooms():
 		if not Campaign.room_available(room):
 			continue
 		for tier in range(1, 11):

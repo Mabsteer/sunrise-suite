@@ -25,3 +25,12 @@ func test_json_round_trip() -> void:
 	var back: Dictionary = SaveManager.migrate_save(JSON.parse_string(text))
 	assert_eq(int(back["seashells"]), 7)
 	assert_eq(int((back["levels"]["main_01"] as Dictionary)["stars"]), 3)
+
+
+func test_v1_saves_start_the_walks_fresh() -> void:
+	var old := {"version": 1, "seashells": 120, "levels": {"main_01": {"stars": 3, "completions": 1}}, "postcards": ["kyoto"], "decor_owned": {"hammock": 1}}
+	var migrated := SaveManager.migrate_save(old)
+	assert_eq((migrated["levels"] as Dictionary).size(), 0, "old main_XX levels are gone")
+	assert_eq(int(migrated["seashells"]), 120, "seashells stay")
+	assert_eq((migrated["postcards"] as Array).size(), 1, "postcards stay")
+	assert_eq(int((migrated["decor_owned"] as Dictionary).get("hammock", 0)), 1, "decor stays")

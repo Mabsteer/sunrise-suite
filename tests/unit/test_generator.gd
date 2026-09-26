@@ -69,7 +69,7 @@ func test_higher_tiers_hide_the_code_in_riddles() -> void:
 func test_keys_are_always_puzzle_rewards() -> void:
 	for tier in [1, 4, 8]:
 		for s in 20:
-			var level := LevelGenerator.generate("study", tier, 1300 + s)
+			var level := LevelGenerator.generate("bedroom", tier, 1300 + s)
 			var locks := {}
 			for l: Dictionary in level["locks"]:
 				locks[str(l["id"])] = l
@@ -100,14 +100,16 @@ func test_at_most_one_search_spot() -> void:
 			assert_true(hidden <= 1, "tier %d seed %d has %d search spots" % [tier, s, hidden])
 
 
-func test_campaign_has_thirty_levels_and_postcards() -> void:
+func test_campaign_walks_through_the_house() -> void:
 	var list := Campaign.levels()
-	assert_eq(list.size(), 30)
+	assert_eq(list.size(), 21, "three walks of seven rooms")
 	var postcards := 0
 	for e in list:
 		if e.has("postcard"):
 			postcards += 1
+		assert_eq(str(e["room"]), Campaign.ROUTE[int(e["step"])], "every walk follows the route")
 	assert_eq(postcards, 5)
-	var first := Campaign.build("main_01")
-	assert_false(first.is_empty(), "main_01 builds")
-	assert_eq(str(first["room"]), "lounge")
+	var first := Campaign.build("w1_kitchen")
+	assert_false(first.is_empty(), "the first room builds")
+	assert_eq(str(first["room"]), "kitchen")
+	assert_true(bool(first.get("tutorial", false)), "the kitchen is the tutorial")

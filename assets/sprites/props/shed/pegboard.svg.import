@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu8dvgu0yxc4s"
-path="res://.godot/imported/study_light.svg-83bc9089fb13d32e42fb3513a5e4d5be.ctex"
+uid="uid://ciiw4kn2j6tfe"
+path="res://.godot/imported/pegboard.svg-c70b4ae1011e4f65a17050799f69d2dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/rooms/study_light.svg"
-dest_files=["res://.godot/imported/study_light.svg-83bc9089fb13d32e42fb3513a5e4d5be.ctex"]
+source_file="res://assets/sprites/props/shed/pegboard.svg"
+dest_files=["res://.godot/imported/pegboard.svg-c70b4ae1011e4f65a17050799f69d2dd.ctex"]
 
 [params]
 

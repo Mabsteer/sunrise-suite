@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8njvvjlx8j8j"
-path="res://.godot/imported/study_bg.svg-081d7419b4b0d0344835992516a3816a.ctex"
+uid="uid://dsw1ejxuqh4yq"
+path="res://.godot/imported/front_garden_bg.svg-7fcec3f26c6896fe796c5eb73cea4f82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/rooms/study_bg.svg"
-dest_files=["res://.godot/imported/study_bg.svg-081d7419b4b0d0344835992516a3816a.ctex"]
+source_file="res://assets/sprites/rooms/front_garden_bg.svg"
+dest_files=["res://.godot/imported/front_garden_bg.svg-7fcec3f26c6896fe796c5eb73cea4f82.ctex"]
 
 [params]
 

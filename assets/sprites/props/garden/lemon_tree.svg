@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 640" width="500" height="640">
+  <!-- The lemon tree, full of lemons, with the old stick from 1960 still tied to its trunk. -->
+  <ellipse cx="250" cy="628" rx="150" ry="14" fill="#3b2e3a" opacity="0.22"/>
+  <path d="M232 630 C226 540 220 470 196 400 L236 396 C252 460 262 540 270 630 Z" fill="#7a5134"/>
+  <path d="M240 420 C270 380 310 360 350 356" stroke="#7a5134" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <path d="M220 440 C190 410 150 400 120 404" stroke="#7a5134" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <path d="M242 600 C246 560 244 520 238 480" stroke="#a8744a" stroke-width="6" fill="none" opacity="0.6"/>
+  <circle cx="250" cy="200" r="190" fill="#5e7f5e"/>
+  <circle cx="150" cy="220" r="120" fill="#6f9468"/>
+  <circle cx="350" cy="210" r="130" fill="#6f9468"/>
+  <circle cx="250" cy="130" r="130" fill="#8faf8a"/>
+  <circle cx="200" cy="100" r="60" fill="#a9c7a3" opacity="0.6"/>
+  <ellipse cx="140" cy="170" rx="17" ry="13" fill="#f6c453"/><ellipse cx="135" cy="166" rx="5" ry="3" fill="#fbe3a0"/>
+  <ellipse cx="230" cy="120" rx="17" ry="13" fill="#f6c453"/><ellipse cx="225" cy="116" rx="5" ry="3" fill="#fbe3a0"/>
+  <ellipse cx="330" cy="180" rx="17" ry="13" fill="#f6c453"/><ellipse cx="325" cy="176" rx="5" ry="3" fill="#fbe3a0"/>
+  <ellipse cx="180" cy="260" rx="17" ry="13" fill="#f6c453"/><ellipse cx="175" cy="256" rx="5" ry="3" fill="#fbe3a0"/>
+  <ellipse cx="290" cy="280" rx="17" ry="13" fill="#f6c453"/><ellipse cx="285" cy="276" rx="5" ry="3" fill="#fbe3a0"/>
+  <ellipse cx="390" cy="250" rx="17" ry="13" fill="#f6c453"/><ellipse cx="385" cy="246" rx="5" ry="3" fill="#fbe3a0"/>
+  <ellipse cx="250" cy="210" rx="17" ry="13" fill="#f6c453"/><ellipse cx="245" cy="206" rx="5" ry="3" fill="#fbe3a0"/>
+  <ellipse cx="110" cy="230" rx="17" ry="13" fill="#f6c453"/><ellipse cx="105" cy="226" rx="5" ry="3" fill="#fbe3a0"/>
+  <ellipse cx="360" cy="130" rx="17" ry="13" fill="#f6c453"/><ellipse cx="355" cy="126" rx="5" ry="3" fill="#fbe3a0"/>
+  <!-- the old stick it needed in 1960, still tied on -->
+  <path d="M262 630 L276 470" stroke="#c99a6b" stroke-width="7" stroke-linecap="round"/>
+  <path d="M254 520 L282 514" stroke="#ee7b6b" stroke-width="5" stroke-linecap="round"/>
+</svg>

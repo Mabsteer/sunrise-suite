@@ -1,9 +1,13 @@
 {
-  "_help": "Daily Sunrise settings. rooms: rotation of room ids by day. weekday_tiers: difficulty per weekday, starting with Sunday. Streak rewards are in rewards.json.",
+  "_help": "Daily Sunrise settings. rooms: rotation of room ids by day (all seven rooms of the house). weekday_tiers: difficulty per weekday, starting with Sunday. Streak rewards are in rewards.json.",
   "rooms": [
-    "lounge",
     "kitchen",
-    "study"
+    "hall",
+    "bedroom",
+    "lounge",
+    "garden",
+    "shed",
+    "front_garden"
   ],
   "weekday_tiers": [
     4,

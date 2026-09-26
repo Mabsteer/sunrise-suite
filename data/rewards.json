@@ -1,10 +1,10 @@
 {
   "_help": "Decor you can only earn. levels: finishing a main level for the first time. streak: Daily Sunrise streak length. postcards_all: finding all the postcards from Céline's life. Item ids are from decor.json.",
   "levels": {
-    "main_03": "mango_cat",
-    "main_12": "sunburst_mirror",
-    "main_21": "telescope",
-    "main_30": "golden_sun"
+    "w1_bedroom": "mango_cat",
+    "w1_front_garden": "sunburst_mirror",
+    "w2_front_garden": "telescope",
+    "w3_front_garden": "golden_sun"
   },
   "streak": {
     "3": "shell_lamp",

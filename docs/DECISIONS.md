@@ -72,3 +72,10 @@ One line per decision: what, and why.
 - New lock types: order (swap things until they match a logic note), sudoku (4x4, 1-4), pattern (numbers or symbols, fill the gaps), rotate (2x2-3x3 turned tiles), tool. Order locks are never the door (a door you "put in order" reads oddly).
 - Counter props (jar of shells, vase of daisies, harbour photo, bird picture) have 9 drawn variants each; a riddle uses at most two per lock so levels don't fill up with them.
 - Par times were re-derived from the solver's time model with riddle costs (tier 4-10: 480-1350 s); the validator still fails any tier whose par is below its 90th-percentile estimate.
+- The house route (F4): kitchen, hall, bedroom, living room ("lounge" id kept), garden, shed, front garden. Five new rooms were drawn with the same tools (tools/art/*.mjs); the kitchen's glass balcony door became a solid door to the hall; the study retired as a room (its grandfather clock now stands in the hall).
+- The campaign became three walks of seven rooms (21 levels) instead of 30 levels: walk 1 is the story, walks 2 and 3 are "Mamie's old treasure hunts from the shoebox" (generated, harder). Soft star gates are per walk (12 and 30 stars). Endless goes round the house.
+- One walk is one morning: each room gets a slice of the sunrise (starting at 0.15 so the first room is not pitch dark); the last room ends with the sun clearing the sea above the garden gate.
+- Story rooms show a chapter card (period, years, one line) when they start, and a line on the way to the next room in the results. Finishing the front garden in walk 1 opens Mamie's last letter before the results; the scrapbook keeps it.
+- The scrapbook is organised by chapter (room/period) instead of a row of postcards; memories (story notes) get their own place per chapter (filled in F6).
+- Old saves (v1) keep seashells, decor, postcards and the daily streak, but level progress starts over, because the old main_XX levels no longer exist.
+- Digits in art (height marks, the wedding year, the house number, hopscotch) are drawn as strokes by a helper (room_kit.mjs digit/number), because SVG text isn't allowed.

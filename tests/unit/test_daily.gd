@@ -10,7 +10,7 @@ func test_level_for_day() -> void:
 	var a := Daily.level_for("2026-09-26")
 	var b := Daily.level_for("2026-09-26")
 	assert_eq(a, b, "same day gives the same level")
-	assert_true(["lounge", "kitchen", "study"].has(a["room"]))
+	assert_true(Campaign.ROUTE.has(str(a["room"])))
 	assert_between(float(a["tier"]), 1.0, 10.0)
 
 

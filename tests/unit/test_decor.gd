@@ -48,10 +48,10 @@ func test_place_move_flip_store() -> void:
 
 
 func test_level_reward_granted_once() -> void:
-	var names := GameState.grant_rewards("level", "main_03")
+	var names := GameState.grant_rewards("level", "w1_bedroom")
 	assert_eq(names.size(), 1)
 	assert_eq(GameState.owned_count("mango_cat"), 1)
-	assert_eq(GameState.grant_rewards("level", "main_03").size(), 0, "not granted twice")
+	assert_eq(GameState.grant_rewards("level", "w1_bedroom").size(), 0, "not granted twice")
 
 
 func test_streak_rewards_accumulate() -> void:

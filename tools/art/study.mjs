@@ -1,4 +1,4 @@
-// Generates Grandma's Study art (background, light layer, furniture). The SVG files are the editable source;
+// Generates the furniture first drawn for the (retired) study: grandfather clock, globe, desk, bookcase, trunk, world map.
 // re-running this overwrites them:  node tools/art/study.mjs
 import { save, svg, roomSvg, woodFloor, wallWithHoles, glassReflections, lightLayer } from "./room_kit.mjs";
 
@@ -67,12 +67,9 @@ const bg = roomSvg(`  <defs>
   <rect x="-240" y="${FLOOR_Y - 20}" width="970" height="20" fill="#7a5134"/>
   <rect x="1190" y="${FLOOR_Y - 20}" width="970" height="20" fill="#7a5134"/>
   <rect x="-240" y="${FLOOR_Y}" width="2400" height="10" fill="#3b2e3a" opacity="0.15"/>`, "Grandma's Study background. The French balcony doors in the middle are transparent holes.");
-save("rooms/study_bg.svg", bg);
-
-save("rooms/study_light.svg", lightLayer(
-  ["760,760 950,760 900,1180 620,1180", "970,760 1160,760 1300,1180 1020,1180"],
-  [[960, 900, 420, 110, 1], [960, 420, 380, 260, 0.45]],
-  "Sunbeams through the study's French doors (additive, strength follows the sunrise)."));
+// v2: the study is no longer a room (the house route has seven other rooms), so its background and
+// light layer aren't written any more. Its furniture stays: the grandfather clock stands in the hall.
+void bg;
 
 // ---------------------------------------------------------------- furniture
 const shadow = (cx, cy, rx, ry, op = 0.2) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="#3b2e3a" opacity="${op}"/>`;

@@ -312,7 +312,7 @@ func _reward_hint(id: String) -> String:
 	var rewards := Data.get_dict("rewards")
 	for level_id: String in (rewards.get("levels", {}) as Dictionary).keys():
 		if str(rewards["levels"][level_id]) == id:
-			return tr("REWARD_LEVEL") % (Campaign.index_of(level_id) + 1)
+			return tr("REWARD_LEVEL") % Campaign.level_label(level_id)
 	for n: String in (rewards.get("streak", {}) as Dictionary).keys():
 		if str(rewards["streak"][n]) == id:
 			return tr("REWARD_STREAK") % int(n)

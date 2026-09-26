@@ -1,13 +1,13 @@
 {
-  "_help": "Guide bubbles for the tutorial level. Each step waits for its 'done' event, then the next step shows. target: what to sparkle (a hotspot key). Events: clue_seen:<id>, lock_opened:<id>, item_picked:<id>, combined, level_complete.",
+  "_help": "Guide bubbles for the tutorial level (the kitchen, room 1 of the story). Each step waits for its 'done' event, then the next step shows. target: what to sparkle (a hotspot key). Events: clue_seen:<id>, lock_opened:<id>, item_picked:<id>, combined, level_complete.",
   "steps": [
-    {"text": "Good morning, Juliette. Mamie Céline left you one last treasure hunt. Tap things in the room to take a closer look. Start with the note on the coffee table.", "target": "clue:c_welcome", "done": "clue_seen:c_welcome"},
-    {"text": "Mamie's riddle gives 7, 1 and 4. Close the note, tap the credenza drawers and enter 7 1 4.", "target": "lock:drawers", "done": "lock_opened:drawers"},
+    {"text": "Good morning, Juliette. Mamie Céline left you one last treasure hunt. Tap things in the kitchen to take a closer look. Start with the letter on the kitchen island.", "target": "clue:c_welcome", "done": "clue_seen:c_welcome"},
+    {"text": "Mamie's market list: 3 lemons, 1 cheese, 7 peaches. Close the letter, tap the kitchen drawers and enter 3 1 7.", "target": "lock:drawers", "done": "lock_opened:drawers"},
     {"text": "Something's inside. Tap the batteries to put them in your bag (at the bottom of the screen).", "target": "lock:drawers", "done": "item_picked:i_batteries"},
-    {"text": "There's a flashlight on the bookshelf. Tap it to pick it up too.", "target": "item:i_flashlight_empty", "done": "item_picked:i_flashlight_empty"},
+    {"text": "There's a flashlight on the counter. Tap it to pick it up too.", "target": "item:i_flashlight_empty", "done": "item_picked:i_flashlight_empty"},
     {"text": "Let's combine them! In your bag, tap the flashlight, then tap the batteries. (You can also drag one onto the other.)", "target": "", "done": "combined"},
-    {"text": "A working flashlight! It's too dark under the armchair cushion... Tap the flashlight in your bag, then tap the armchair.", "target": "lock:cushion", "done": "lock_opened:cushion"},
-    {"text": "You found a key! Pick it up.", "target": "lock:cushion", "done": "item_picked:i_key"},
-    {"text": "Last step: tap the key in your bag, then tap the balcony door. The sun is almost up! (Stuck any time? Mamie's notebook in the top corner gives hints.)", "target": "lock:door", "done": "level_complete"}
+    {"text": "A working flashlight! It's too dark under the sink... Tap the flashlight in your bag, then tap under the sink.", "target": "lock:sink", "done": "lock_opened:sink"},
+    {"text": "You found a key! Pick it up.", "target": "lock:sink", "done": "item_picked:i_key"},
+    {"text": "Last step: tap the key in your bag, then tap the door to the hall. (Stuck any time? Mamie's notebook in the top corner gives hints.)", "target": "lock:door", "done": "level_complete"}
   ]
 }

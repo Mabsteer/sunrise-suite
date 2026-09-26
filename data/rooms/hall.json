@@ -1,0 +1,63 @@
+{
+  "_help": "Room template. See docs/DATA_FORMAT.md. pos/size in stage pixels; spot rects in the furniture's own coordinates. The hall: 'the summers with Juliette' (docs/STORY.md).",
+  "id": "hall",
+  "name": "The hall",
+  "background": "rooms/hall_bg.svg",
+  "light": "rooms/hall_light.svg",
+  "horizon_y": 300,
+  "sun_x": 1610,
+  "sky_rect": [100, 60, 1660, 320],
+  "music": "level_hall",
+  "door": {"name": "the bedroom door", "rect": [880, 190, 240, 580]},
+  "dog_spot": [700, 930],
+  "furniture": [
+    {"id": "umbrella_stand", "name": "the umbrella stand", "sprite": "props/hall/umbrella_stand.svg", "pos": [24, 560], "size": [90, 220],
+     "spots": [{"id": "umbrellas", "name": "the umbrella stand", "rect": [8, 20, 74, 190], "locks": ["hidden"], "tools": [null], "reveal": "something tucked between the umbrellas"}],
+     "flavor": "A coral umbrella, a teal umbrella and Mamie's walking stick, which she never used."},
+    {"id": "front_door", "name": "the front door", "sprite": "", "pos": [120, 250], "size": [250, 520],
+     "spots": [],
+     "flavor": "The front door. Mamie's first note said: not this way, ma puce. Follow the hunt."},
+    {"id": "coat_rack", "name": "the coat rack", "sprite": "props/hall/coat_rack.svg", "pos": [395, 245], "size": [200, 530],
+     "spots": [
+       {"id": "beach_bag", "name": "the beach bag", "rect": [8, 104, 86, 150], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "something at the bottom of the beach bag, under the towels"},
+       {"id": "hats", "name": "the straw hats", "rect": [0, 16, 200, 100], "clue": true}
+     ],
+     "flavor": "Two straw hats, a scarf, and the beach bag that was always packed. Just in case."},
+    {"id": "mirror", "name": "the mirror", "sprite": "props/hall/mirror.svg", "pos": [615, 260], "size": [200, 260],
+     "spots": [{"id": "mirror", "name": "behind the mirror", "rect": [2, 2, 186, 244], "locks": ["hidden"], "tools": [null, "screwdriver"], "reveal": "a little niche behind the mirror"}],
+     "flavor": "Mamie always checked her hat in this mirror before the market."},
+    {"id": "console", "name": "the console table", "sprite": "props/hall/console.svg", "pos": [585, 540], "size": [260, 240],
+     "spots": [
+       {"id": "drawer", "name": "the console drawer", "rect": [30, 46, 200, 54], "locks": ["combo", "key", "pattern", "sudoku"]},
+       {"id": "bowl", "name": "the bowl of shells", "rect": [146, 0, 72, 24], "clue": true},
+       {"id": "basket", "name": "the basket of flip-flops", "rect": [60, 168, 140, 62], "locks": ["hidden"], "tools": [null], "reveal": "something under the flip-flops"}
+     ],
+     "flavor": "Keys, shells and sunglasses. Everything you need on the way out."},
+    {"id": "height_marks", "name": "the door frame", "sprite": "props/hall/height_marks.svg", "pos": [828, 250], "size": [56, 520],
+     "spots": [{"id": "marks", "name": "the pencil marks on the door frame", "rect": [0, 20, 56, 480], "clue": true}],
+     "flavor": "Pencil marks with little numbers. Every summer, a bit higher."},
+    {"id": "grandfather_clock", "name": "the grandfather clock", "sprite": "props/study/grandfather_clock.svg", "pos": [1200, 190], "size": [140, 580],
+     "spots": [
+       {"id": "face", "name": "the grandfather clock", "rect": [26, 56, 88, 88], "locks": ["clock"]},
+       {"id": "case", "name": "the clock's case", "rect": [32, 196, 76, 288], "locks": ["key", "combo", "hidden"], "tools": [null], "reveal": "something behind the pendulum"}
+     ],
+     "flavor": "Tick... tock... It has been two minutes slow since 1987. Nobody minds."},
+    {"id": "stairs", "name": "the stairs", "sprite": "props/hall/stairs.svg", "pos": [1340, 80], "size": [820, 700],
+     "spots": [
+       {"id": "cupboard", "name": "the cupboard under the stairs", "rect": [70, 400, 160, 290], "locks": ["key", "combo"]},
+       {"id": "treads", "name": "the stairs", "rect": [250, 180, 330, 300], "clue": true}
+     ],
+     "flavor": "The stairs creak on the fourth step. Juliette always jumped over it."}
+  ],
+  "wall_slots": [
+    {"id": "wall_a", "rect": [420, 90, 160, 150], "accepts": ["wall", "wall_small"]},
+    {"id": "wall_b", "rect": [596, 90, 150, 150], "accepts": ["wall", "wall_small"]},
+    {"id": "wall_stairs", "rect": [1360, 170, 150, 150], "accepts": ["wall", "wall_small"]}
+  ],
+  "surface_slots": [
+    {"id": "console_1", "anchor": [680, 560], "max": [120, 110], "name": "the console table"},
+    {"id": "stair_1", "anchor": [1532, 574], "max": [90, 90], "name": "the stairs"},
+    {"id": "floor_1", "anchor": [520, 900], "max": [120, 110], "name": "the runner rug"},
+    {"id": "floor_2", "anchor": [1120, 890], "max": [120, 110], "name": "the floor by the clock"}
+  ]
+}

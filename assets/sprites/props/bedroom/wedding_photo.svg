@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 170" width="190" height="170">
+  <!-- Wedding photo: Henri and Céline under the little lemon tree, with 1960 written underneath. -->
+  <rect x="8" y="10" width="180" height="158" rx="6" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="2" y="2" width="180" height="158" rx="6" fill="#d4a24c"/>
+  <rect x="14" y="14" width="156" height="110" fill="#f3e6cf"/>
+  <rect x="14" y="94" width="156" height="30" fill="#c9d6bd"/>
+  <!-- the little lemon tree with its stick -->
+  <path d="M132 118 L132 70" stroke="#7a5134" stroke-width="4"/><path d="M140 118 L140 60" stroke="#a8744a" stroke-width="2"/>
+  <circle cx="132" cy="62" r="16" fill="#8faf8a"/><circle cx="126" cy="60" r="3" fill="#f6c453"/><circle cx="138" cy="66" r="3" fill="#f6c453"/>
+  <!-- Henri and Céline -->
+  <rect x="58" y="60" width="26" height="58" rx="8" fill="#3e3570"/><circle cx="71" cy="48" r="11" fill="#e0b48c"/><path d="M60 42 C62 32 80 32 82 42 Z" fill="#3b2e3a"/>
+  <path d="M88 118 L96 64 L112 64 L120 118 Z" fill="#fffbf5"/><circle cx="104" cy="52" r="11" fill="#e0b48c"/><path d="M92 50 C92 36 116 36 116 50 C116 44 110 40 104 40 C98 40 94 44 92 50 Z" fill="#7a5134"/>
+  <path d="M94 44 C100 30 112 34 116 44" stroke="#fffbf5" stroke-width="6" fill="none" opacity="0.8"/>
+  <circle cx="90" cy="84" r="6" fill="#ee7b6b"/><circle cx="96" cy="88" r="5" fill="#f6c453"/>
+  <!-- the date written under the photo -->
+  <rect x="14" y="128" width="156" height="24" fill="#fff4e2"/>
+  <path d="M71.3 130.0 L70.6 139.0 M70.6 139.0 L69.9 148.0" stroke="#3e3570" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M74.9 130.0 L84.8 130.0 M84.8 130.0 L84.1 139.0 M84.1 139.0 L83.4 148.0 M83.4 148.0 L73.5 148.0 M74.2 139.0 L74.9 130.0 M74.2 139.0 L84.1 139.0" stroke="#3e3570" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M88.4 130.0 L98.3 130.0 M87.7 139.0 L88.4 130.0 M87.7 139.0 L97.6 139.0 M87.0 148.0 L87.7 139.0 M96.9 148.0 L87.0 148.0 M97.6 139.0 L96.9 148.0" stroke="#3e3570" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M101.9 130.0 L111.8 130.0 M111.8 130.0 L111.1 139.0 M111.1 139.0 L110.4 148.0 M110.4 148.0 L100.5 148.0 M100.5 148.0 L101.2 139.0 M101.2 139.0 L101.9 130.0" stroke="#3e3570" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

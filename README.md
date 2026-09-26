@@ -7,13 +7,14 @@ A cozy 2D escape-room puzzle game. Juliette inherits the house by the sea of her
 Made with [Godot 4.7](https://godotengine.org). The Windows version is built automatically on every push (see *Automatic builds* below).
 
 ## What's in the game
-- **30 sunrises** in Mamie's Sunrise Book: 3 rooms (Sunrise Lounge, Kitchen & Bar, Henri's Study) × 10 difficulty tiers. Each room comes back harder.
+- **One route through the whole house**: kitchen → hall → bedroom → living room → garden → shed → front garden. Each room's door leads to the next, and each room is one period of Céline's life, going back in time from her last years to her childhood. The sun rises over the whole walk and clears the sea as you open the front garden gate.
+- **Three walks**: Mamie's last treasure hunt (the story), then two harder walks with her old treasure hunts from the shoebox. Every room comes back harder.
 - **Puzzles that make you think**: number codes, symbol tunes, clocks, lamps, things to put in order, little 4×4 number squares, "what comes next?" patterns, turning-tile and sliding-tile pictures, keys, tools and item combinations. From level 2 on no code is written out: Mamie's notes are riddles (count the shells in the jar, sums, patterns, logic), and one puzzle often gives the answer to the next. Keys are always the reward for a solved puzzle.
 - **The sunrise is your progress bar**: every solved step brightens the sky.
-- **Replay** any room with a fresh puzzle, and **Endless Sunrise** after the book is finished.
+- **Replay** any room with a fresh puzzle, and **Endless Sunrise** (round and round the house) after the three walks.
 - **Daily Sunrise**: one puzzle a day (the same for everyone), a streak with a free weekly sleep-in, and a calendar that paints each finished day in its sky colours.
 - **The sunroom**: earn seashells and make the house yours with 24 pieces of decor from the Saturday market.
-- **Céline's scrapbook**: five hidden postcards from her life. Find them all for her last letter.
+- **Céline's scrapbook**: one page per chapter of her life, with the postcards and memories you found; her last letter at the end.
 - **Stars**: finish (★), use at most one hint (★★), beat the par time (★★★).
 
 ## How to play
@@ -64,7 +65,8 @@ Follow [`docs/SUNO_PROMPTS.md`](docs/SUNO_PROMPTS.md): make a track in Suno, nam
 - Menu and button text: `i18n/strings.csv` (the `en` column). Add a column to translate the game.
 
 ### Rooms
-Each room is `data/rooms/<room>.json`: its pictures, where furniture stands, which furniture spots can hold locks or clues, and where props and items can be placed. Room pictures are 2400×1440 with the playable 1920×1080 in the middle. Windows are see-through holes, and the sunrise sky is drawn behind them.
+Each room is `data/rooms/<room>.json`: its pictures, where furniture stands, which furniture spots can hold locks or clues, and where props and items can be placed. Room pictures are 2400×1440 with the playable 1920×1080 in the middle. Windows are see-through holes, and the sunrise sky is drawn behind them (outdoors: the whole sky). The drawings were first made by the scripts in `tools/art/` (one per room: `kitchen.mjs`, `hall.mjs`, `bedroom.mjs`, `garden.mjs`, `shed.mjs`, `front_garden.mjs`); after that the SVG files are the real art, so edit them in Inkscape.
+The order of the rooms, the walks and which postcard sits where are in `data/campaign.json`; the chapter titles and lines of Céline's life in `data/story.json`.
 
 ---
 

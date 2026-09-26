@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 700" width="820" height="700">
+  <!-- Stairs going up to the right, with a white banister and a little cupboard underneath. -->
+  <ellipse cx="300" cy="694" rx="290" ry="8" fill="#3b2e3a" opacity="0.18"/>
+  <path d="M0 690 L820 690 L820 90 Z" fill="#b7cfc8"/>
+  <path d="M40 690 L820 690 L820 150 Z" fill="#a6c2ba"/>
+  <!-- cupboard under the stairs -->
+  <path d="M70 688 V520 L230 400 V688 Z" fill="#8a6446"/>
+  <path d="M84 678 V527 L216 428 V678 Z" fill="#6f4f38"/>
+  <circle cx="200" cy="590" r="7" fill="#d4a24c"/>
+  <path d="M112 640 Q150 620 190 640" stroke="#3b2e3a" stroke-width="2" opacity="0.3" fill="none"/>
+  <rect x="30" y="618" width="790" height="16" fill="#a8744a"/><rect x="30" y="618" width="790" height="5" fill="#dbb286"/><rect x="30" y="634" width="790" height="46" fill="#fff4e2"/><rect x="90" y="556" width="730" height="16" fill="#a8744a"/><rect x="90" y="556" width="730" height="5" fill="#dbb286"/><rect x="90" y="572" width="730" height="46" fill="#fff4e2"/><rect x="150" y="494" width="670" height="16" fill="#a8744a"/><rect x="150" y="494" width="670" height="5" fill="#dbb286"/><rect x="150" y="510" width="670" height="46" fill="#fff4e2"/><rect x="210" y="432" width="610" height="16" fill="#a8744a"/><rect x="210" y="432" width="610" height="5" fill="#dbb286"/><rect x="210" y="448" width="610" height="46" fill="#fff4e2"/><rect x="270" y="370" width="550" height="16" fill="#a8744a"/><rect x="270" y="370" width="550" height="5" fill="#dbb286"/><rect x="270" y="386" width="550" height="46" fill="#fff4e2"/><rect x="330" y="308" width="490" height="16" fill="#a8744a"/><rect x="330" y="308" width="490" height="5" fill="#dbb286"/><rect x="330" y="324" width="490" height="46" fill="#fff4e2"/><rect x="390" y="246" width="430" height="16" fill="#a8744a"/><rect x="390" y="246" width="430" height="5" fill="#dbb286"/><rect x="390" y="262" width="430" height="46" fill="#fff4e2"/><rect x="450" y="184" width="370" height="16" fill="#a8744a"/><rect x="450" y="184" width="370" height="5" fill="#dbb286"/><rect x="450" y="200" width="370" height="46" fill="#fff4e2"/><rect x="510" y="122" width="310" height="16" fill="#a8744a"/><rect x="510" y="122" width="310" height="5" fill="#dbb286"/><rect x="510" y="138" width="310" height="46" fill="#fff4e2"/>
+  <path d="M0 690 L820 40" stroke="#7a5134" stroke-width="28" stroke-linecap="round"/>
+  <rect x="54" y="468" width="7" height="150" rx="3" fill="#fffbf5"/><rect x="114" y="406" width="7" height="150" rx="3" fill="#fffbf5"/><rect x="174" y="344" width="7" height="150" rx="3" fill="#fffbf5"/><rect x="234" y="282" width="7" height="150" rx="3" fill="#fffbf5"/><rect x="294" y="220" width="7" height="150" rx="3" fill="#fffbf5"/><rect x="354" y="158" width="7" height="150" rx="3" fill="#fffbf5"/><rect x="414" y="96" width="7" height="150" rx="3" fill="#fffbf5"/><rect x="474" y="34" width="7" height="150" rx="3" fill="#fffbf5"/><rect x="534" y="-28" width="7" height="150" rx="3" fill="#fffbf5"/>
+  <path d="M20 510 L820 0" stroke="#a8744a" stroke-width="18" stroke-linecap="round"/>
+  <path d="M20 504 L820 -6" stroke="#dbb286" stroke-width="5" stroke-linecap="round"/>
+  <rect x="6" y="480" width="30" height="210" rx="6" fill="#a8744a"/><circle cx="21" cy="474" r="18" fill="#c99a6b"/>
+</svg>

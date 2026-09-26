@@ -27,7 +27,7 @@ func test_star_and_note_sounds_exist() -> void:
 
 func test_music_tracks_are_listed_in_suno_doc() -> void:
 	var doc := FileAccess.get_file_as_string("res://docs/SUNO_PROMPTS.md")
-	for track in ["menu_theme", "hub_penthouse", "level_lounge", "level_kitchen", "level_study", "daily_sunrise", "sunrise_stinger", "ambience_ocean"]:
+	for track in ["menu_theme", "hub_penthouse", "level_kitchen", "level_hall", "level_bedroom", "level_lounge", "level_garden", "level_shed", "level_front_garden", "daily_sunrise", "sunrise_stinger", "ambience_ocean"]:
 		assert_true(doc.contains("`%s`" % track), "%s is documented for the owner" % track)
 
 

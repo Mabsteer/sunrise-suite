@@ -21,54 +21,64 @@ func _finish(level_id: String, stars_target: int) -> Dictionary:
 
 
 func test_first_level_is_open_others_locked() -> void:
-	assert_true(GameState.is_level_unlocked("main_01"))
-	assert_false(GameState.is_level_unlocked("main_02"))
-	assert_eq(GameState.lock_reason("main_02"), "previous")
+	assert_true(GameState.is_level_unlocked("w1_kitchen"))
+	assert_false(GameState.is_level_unlocked("w1_hall"))
+	assert_eq(GameState.lock_reason("w1_hall"), "previous")
 
 
 func test_finishing_unlocks_next() -> void:
-	var result := _finish("main_01", 3)
+	var result := _finish("w1_kitchen", 3)
 	assert_eq(int(result["stars"]), 3)
-	assert_true(GameState.is_level_unlocked("main_02"))
+	assert_true(GameState.is_level_unlocked("w1_hall"))
 	assert_true((result["unlocks"] as Array).size() > 0, "tells the player the next level opened")
 
 
 func test_seashells_first_clear_and_replay() -> void:
-	var first := _finish("main_01", 1)
+	var first := _finish("w1_kitchen", 1)
 	assert_eq(int(first["seashells"]), GameState.SHELLS_FIRST_CLEAR + GameState.SHELLS_PER_NEW_STAR, "first clear + 1 new star")
-	var again := _finish("main_01", 3)
+	var again := _finish("w1_kitchen", 3)
 	assert_eq(int(again["seashells"]), GameState.SHELLS_REPLAY + 2 * GameState.SHELLS_PER_NEW_STAR)
-	assert_eq(GameState.level_stars("main_01"), 3, "best stars are kept")
-	var worse := _finish("main_01", 1)
-	assert_eq(GameState.level_stars("main_01"), 3, "a worse run doesn't lower stars")
+	assert_eq(GameState.level_stars("w1_kitchen"), 3, "best stars are kept")
+	var worse := _finish("w1_kitchen", 1)
+	assert_eq(GameState.level_stars("w1_kitchen"), 3, "a worse run doesn't lower stars")
 	assert_eq(int(worse["new_stars"]), 0)
 
 
-func test_star_gate_blocks_tier_four() -> void:
-	for i in 9:
-		_finish("main_%02d" % (i + 1), 1)
-	assert_eq(GameState.total_stars(), 9)
-	assert_false(GameState.is_level_unlocked("main_10"), "tier 4 needs 12 stars")
-	assert_eq(GameState.lock_reason("main_10"), "stars:12")
-	_finish("main_01", 3)
-	_finish("main_02", 3)
+func test_star_gate_blocks_walk_two() -> void:
+	for e in Campaign.levels():
+		if int(e["walk"]) == 1:
+			_finish(str(e["id"]), 1)
+	assert_eq(GameState.total_stars(), 7)
+	assert_false(GameState.is_level_unlocked("w2_kitchen"), "walk 2 needs 12 stars")
+	assert_eq(GameState.lock_reason("w2_kitchen"), "stars:12")
+	_finish("w1_kitchen", 3)
+	_finish("w1_hall", 3)
+	_finish("w1_bedroom", 3)
 	assert_eq(GameState.total_stars(), 13)
-	assert_true(GameState.is_level_unlocked("main_10"))
+	assert_true(GameState.is_level_unlocked("w2_kitchen"))
+
+
+func test_walk_levels_share_one_morning() -> void:
+	var a := Campaign.build("w1_kitchen")
+	var b := Campaign.build("w1_front_garden")
+	assert_between(float(a["sunrise_range"][0]), 0.0, 0.2, "the first room starts before dawn")
+	assert_eq(float(b["sunrise_range"][1]), 1.0, "the last room ends with the sun up")
+	assert_true(bool(b.get("finale", false)), "the front garden is the finale")
 
 
 func test_current_level_moves_on() -> void:
-	assert_eq(GameState.current_level_id(), "main_01")
-	_finish("main_01", 2)
-	assert_eq(GameState.current_level_id(), "main_02")
-	assert_eq(GameState.next_level_id("main_29"), "main_30")
-	assert_eq(GameState.next_level_id("main_30"), "")
+	assert_eq(GameState.current_level_id(), "w1_kitchen")
+	_finish("w1_kitchen", 2)
+	assert_eq(GameState.current_level_id(), "w1_hall")
+	assert_eq(GameState.next_level_id("w3_shed"), "w3_front_garden")
+	assert_eq(GameState.next_level_id("w3_front_garden"), "")
 
 
 func test_new_best_time_only_when_faster() -> void:
-	var first := _finish("main_01", 1)
+	var first := _finish("w1_kitchen", 1)
 	assert_false(bool(first["new_best_time"]), "the first clear has nothing to beat")
-	var faster := _finish("main_01", 3)
+	var faster := _finish("w1_kitchen", 3)
 	assert_true(bool(faster["new_best_time"]))
-	var slower := _finish("main_01", 1)
+	var slower := _finish("w1_kitchen", 1)
 	assert_false(bool(slower["new_best_time"]))
-	assert_eq(float(GameState.level_record("main_01")["best_time"]), 100.0)
+	assert_eq(float(GameState.level_record("w1_kitchen")["best_time"]), 100.0)

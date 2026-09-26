@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 310" width="290" height="310">
+  <!-- Two wooden shelves with paint cans, jars and seed packets. -->
+  <rect x="6" y="10" width="284" height="300" rx="4" fill="#3b2e3a" opacity="0.12"/>
+  <rect x="0" y="120" width="290" height="14" rx="4" fill="#7a5134"/><rect x="0" y="250" width="290" height="14" rx="4" fill="#7a5134"/>
+  <path d="M20 134 L40 180 M270 134 L250 180 M20 264 L40 310 M270 264 L250 310" stroke="#5e3e28" stroke-width="8"/>
+  <!-- paint cans and jars -->
+  <rect x="20" y="70" width="56" height="50" rx="6" fill="#6cc2be"/><rect x="18" y="64" width="60" height="10" rx="4" fill="#c9d0d6"/><path d="M26 90 L70 90" stroke="#2e8c8c" stroke-width="6"/>
+  <rect x="200" y="84" width="40" height="36" rx="5" fill="#fff4e2" opacity="0.9"/><rect x="198" y="78" width="44" height="10" rx="4" fill="#a8744a"/>
+  <rect x="230" y="200" width="44" height="50" rx="6" fill="#ee7b6b"/><rect x="228" y="194" width="48" height="10" rx="4" fill="#c9d0d6"/>
+  <rect x="20" y="206" width="30" height="44" rx="5" fill="#f6c453"/><rect x="56" y="214" width="26" height="36" rx="5" fill="#8faf8a"/>
+</svg>

@@ -1,0 +1,56 @@
+{
+  "_help": "Room template. See docs/DATA_FORMAT.md. pos/size in stage pixels; spot rects in the furniture's own coordinates. The bedroom: 'Henri' (docs/STORY.md).",
+  "id": "bedroom",
+  "name": "The bedroom",
+  "background": "rooms/bedroom_bg.svg",
+  "light": "rooms/bedroom_light.svg",
+  "view_far": "rooms/view_far.svg",
+  "horizon_y": 330,
+  "sun_x": 890,
+  "sky_rect": [690, 110, 400, 320],
+  "music": "level_bedroom",
+  "door": {"name": "the door to the living room", "rect": [1640, 190, 230, 580]},
+  "dog_spot": [1480, 900],
+  "furniture": [
+    {"id": "wardrobe", "name": "the wardrobe", "sprite": "props/bedroom/wardrobe.svg", "pos": [40, 150], "size": [300, 620],
+     "spots": [
+       {"id": "suitcase", "name": "the old suitcase", "rect": [40, 0, 200, 110], "locks": ["combo", "key"]},
+       {"id": "doors", "name": "the wardrobe", "rect": [20, 140, 260, 440], "locks": ["key", "combo", "hidden"], "tools": [null], "reveal": "something folded between Henri's shirts"}
+     ],
+     "flavor": "Henri's shirts on the left, Mamie's dresses on the right. Neither of them ever moved them."},
+    {"id": "dressing_table", "name": "the dressing table", "sprite": "props/bedroom/dressing_table.svg", "pos": [360, 410], "size": [230, 360],
+     "spots": [
+       {"id": "jewellery_box", "name": "the jewellery box", "rect": [134, 146, 90, 56], "locks": ["sequence"]},
+       {"id": "drawers", "name": "the dressing table drawers", "rect": [20, 226, 192, 50], "locks": ["combo", "key", "pattern"]},
+       {"id": "mirror", "name": "the mirror", "rect": [44, 8, 142, 142], "clue": true}
+     ],
+     "flavor": "Perfume, hairpins and a coral jewellery box that plays a tune when you open it."},
+    {"id": "bed", "name": "the bed", "sprite": "props/bedroom/bed.svg", "pos": [600, 430], "size": [620, 500],
+     "spots": [
+       {"id": "under_bed", "name": "under the bed", "rect": [20, 460, 580, 40], "locks": ["hidden"], "tools": [null, "flashlight"], "reveal": "something that rolled all the way under the bed"},
+       {"id": "pillows", "name": "the pillows", "rect": [90, 150, 440, 80], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "something tucked under Henri's pillow"}
+     ],
+     "flavor": "The quilt is made from their old shirts. The blue squares were Henri's favourite."},
+    {"id": "wedding_photo", "name": "the wedding photo", "sprite": "props/bedroom/wedding_photo.svg", "pos": [1245, 160], "size": [190, 170],
+     "spots": [{"id": "photo", "name": "the wedding photo", "rect": [2, 2, 180, 156], "clue": true}],
+     "flavor": "Henri and Céline under a lemon tree so small it needed a stick to stand up."},
+    {"id": "nightstand", "name": "the nightstand", "sprite": "props/bedroom/nightstand.svg", "pos": [1250, 450], "size": [160, 330],
+     "spots": [
+       {"id": "drawer", "name": "the nightstand drawer", "rect": [26, 172, 108, 56], "locks": ["combo", "key", "sudoku"]},
+       {"id": "cupboard", "name": "the nightstand cupboard", "rect": [26, 238, 108, 60], "locks": ["key", "combo"]}
+     ],
+     "flavor": "Henri's side. His reading glasses are still here."}
+  ],
+  "wall_slots": [
+    {"id": "wall_dresser", "rect": [385, 170, 180, 180], "accepts": ["wall", "wall_small"]},
+    {"id": "wall_right", "rect": [1450, 160, 160, 160], "accepts": ["wall", "wall_small"]},
+    {"id": "wall_switch", "rect": [1500, 390, 64, 104], "accepts": ["wall_small"]}
+  ],
+  "surface_slots": [
+    {"id": "dresser_1", "anchor": [440, 610], "max": [100, 100], "name": "the dressing table"},
+    {"id": "sill", "anchor": [890, 440], "max": [130, 90], "name": "the window sill"},
+    {"id": "quilt_1", "anchor": [770, 800], "max": [130, 110], "name": "the quilt"},
+    {"id": "quilt_2", "anchor": [1060, 800], "max": [130, 110], "name": "the quilt"},
+    {"id": "floor_1", "anchor": [1500, 930], "max": [120, 110], "name": "the floor by the door"}
+  ]
+}

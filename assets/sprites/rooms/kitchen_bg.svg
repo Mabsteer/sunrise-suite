@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-240 -180 2400 1440" width="2400" height="1440">
-  <!-- Kitchen & Bar background. Window over the sink and the balcony door (left) are transparent holes. -->
+  <!-- Kitchen background. The window over the sink is a transparent hole; the door to the hall (left) is solid. -->
   <defs>
     <linearGradient id="ceiling" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ead5b6"/><stop offset="1" stop-color="#f6e7cf"/></linearGradient>
     <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff4e2"/><stop offset="1" stop-color="#f4e0c2"/></linearGradient>
@@ -182,7 +182,7 @@
   <rect x="-240" y="1258" width="2400" height="3" fill="#c8674a" opacity="0.5"/>
   </g>
   <rect x="-240" y="770" width="2400" height="490" fill="url(#floorShade)"/>
-  <path fill="url(#wall)" fill-rule="evenodd" d="M-240 70 H2160 V770 H-240 Z M760 160 H1160 V520 H760 Z M170 110 H430 V770 H170 Z"/>
+  <path fill="url(#wall)" fill-rule="evenodd" d="M-240 70 H2160 V770 H-240 Z M760 160 H1160 V520 H760 Z"/>
   <!-- backsplash -->
   <rect x="468" y="328" width="274" height="222" fill="#fffbf5"/>
   <rect x="1178" y="328" width="464" height="222" fill="#fffbf5"/>
@@ -371,18 +371,22 @@
   <!-- herbs on the sill -->
   <rect x="770" y="480" width="44" height="40" rx="6" fill="#c8674a"/><rect x="766" y="476" width="52" height="10" rx="5" fill="#e08e6d"/>
   <ellipse cx="782" cy="462" rx="12" ry="18" fill="#5e7f5e"/><ellipse cx="800" cy="458" rx="12" ry="22" fill="#8faf8a"/><ellipse cx="792" cy="448" rx="9" ry="16" fill="#a9c7a3"/>
-  <!-- balcony door (left) -->
+  <!-- the door to the hall (left): wood, with a little frosted window -->
   <path fill="#3b2e3a" opacity="0.07" fill-rule="evenodd" d="M160 100 H460 V800 H160 Z M170 110 H430 V770 H170 Z"/>
   <path fill="#fffbf5" fill-rule="evenodd" d="M150 90 H450 V790 H150 Z M170 110 H430 V770 H170 Z"/>
   <rect x="427" y="110" width="3" height="660" fill="#e9d6b8"/>
-  <rect x="170" y="110" width="260" height="12" fill="#fffbf5"/>
-  <rect x="170" y="110" width="14" height="660" fill="#fffbf5"/>
-  <rect x="416" y="110" width="14" height="660" fill="#fffbf5"/>
-  <polygon points="196,110 232.4,110 170,347.6 170,242" fill="#fffbf5" opacity="0.13"/>
-  <polygon points="357.2,110 378,110 289.6,506 268.8,506" fill="#fffbf5" opacity="0.08"/>
-  <rect x="402" y="384" width="12" height="136" rx="6" fill="#a87a2e"/>
-  <rect x="403" y="386" width="5" height="130" rx="2" fill="#f0c877" opacity="0.8"/>
-  <rect x="146" y="758" width="308" height="16" rx="3" fill="#a87a2e"/>
+  <rect x="170" y="110" width="260" height="660" fill="#b88558"/>
+  <rect x="194" y="134" width="212" height="200" rx="10" fill="#e9f1f0"/>
+  <rect x="295" y="134" width="10" height="200" fill="#b88558"/>
+  <rect x="194" y="230" width="212" height="10" fill="#b88558"/>
+  <path d="M210 150 L260 150 L210 210 Z" fill="#fffbf5" opacity="0.6"/>
+  <rect x="194" y="370" width="212" height="360" rx="10" fill="#a8744a"/>
+  <rect x="200" y="376" width="12" height="348" rx="5" fill="#fffbf5" opacity="0.18"/>
+  <circle cx="396" cy="390" r="12" fill="#d4a24c"/><circle cx="393" cy="387" r="4" fill="#fbe3a0"/>
+  <!-- Chloé's lead on a hook, and her empty bowl -->
+  <path d="M474 330 L474 346" stroke="#d4a24c" stroke-width="6" stroke-linecap="round"/>
+  <path d="M474 346 C450 420 500 460 474 520" stroke="#ee7b6b" stroke-width="6" fill="none"/>
+  <ellipse cx="500" cy="800" rx="40" ry="12" fill="#ee7b6b"/><ellipse cx="500" cy="796" rx="30" ry="7" fill="#c95b52"/>
   <!-- pendant lights -->
   <rect x="797" y="-180" width="6" height="250" fill="#7a5134"/>
   <path d="M760 110 C760 80 780 66 800 66 C820 66 840 80 840 110 Z" fill="url(#brass)"/>

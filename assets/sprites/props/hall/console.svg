@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 240" width="260" height="240">
+  <!-- Console table with a drawer, a bowl of shells and a basket of flip-flops. -->
+  <ellipse cx="130" cy="234" rx="124" ry="7" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="24" y="40" width="10" height="190" rx="4" fill="#7a5134"/><rect x="226" y="40" width="10" height="190" rx="4" fill="#7a5134"/>
+  <rect x="44" y="150" width="172" height="10" rx="4" fill="#a8744a"/>
+  <rect x="8" y="20" width="244" height="26" rx="6" fill="#c99a6b"/><rect x="8" y="20" width="244" height="6" rx="3" fill="#fffbf5" opacity="0.4"/>
+  <rect x="30" y="46" width="200" height="54" rx="6" fill="#b88558"/><rect x="104" y="66" width="52" height="10" rx="5" fill="#d4a24c"/>
+  <!-- bowl of shells and keys -->
+  <path d="M150 20 C150 4 214 4 214 20 Z" fill="#6cc2be"/><circle cx="170" cy="8" r="7" fill="#f9b98a"/><circle cx="188" cy="6" r="6" fill="#fffbf5"/><circle cx="200" cy="10" r="5" fill="#ee7b6b"/>
+  <!-- basket of flip-flops underneath -->
+  <rect x="60" y="176" width="140" height="54" rx="10" fill="#e9c98a"/><path d="M60 190 H200 M60 204 H200 M60 218 H200" stroke="#c99a6b" stroke-width="3"/>
+  <ellipse cx="96" cy="176" rx="24" ry="8" fill="#ee7b6b"/><ellipse cx="160" cy="176" rx="24" ry="8" fill="#2e8c8c"/>
+</svg>

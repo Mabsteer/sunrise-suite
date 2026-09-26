@@ -22,8 +22,8 @@ func test_five_postcards_with_levels() -> void:
 
 
 func test_campaign_levels_hide_their_postcard() -> void:
-	var level := Campaign.build("main_03")
-	assert_eq(str((level.get("postcard", {}) as Dictionary).get("id", "")), "lisbon")
+	var level := Campaign.build("w1_hall")
+	assert_eq(str((level.get("postcard", {}) as Dictionary).get("id", "")), "reykjavik", "the hall hides the Reykjavik postcard")
 	var session := LevelSession.new(level)
 	var reachable := false
 	for step in 80:

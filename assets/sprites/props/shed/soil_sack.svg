@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 180" width="160" height="180">
+  <!-- An open sack of potting soil with a little plant printed on it. -->
+  <ellipse cx="80" cy="172" rx="70" ry="7" fill="#3b2e3a" opacity="0.2"/>
+  <path d="M20 40 C30 20 130 20 140 40 L150 160 C120 176 40 176 10 160 Z" fill="#c9b48f"/>
+  <path d="M20 40 C40 60 120 60 140 40 C130 30 30 30 20 40 Z" fill="#6b4a36"/>
+  <path d="M40 100 C60 92 100 92 120 100" stroke="#8faf8a" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="80" cy="120" r="14" fill="#8faf8a"/>
+  <path d="M110 30 L124 -2" stroke="#7a5134" stroke-width="8" stroke-linecap="round"/>
+</svg>

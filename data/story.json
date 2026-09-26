@@ -1,0 +1,26 @@
+{
+  "_help": "The chapters of Céline's life, one per room, in route order (docs/STORY.md). title and years show on the chapter card when a story room starts and on the scrapbook pages. intro: one line on the chapter card. outro: shown on the way to the next room.",
+  "chapters": [
+    {"room": "kitchen", "title": "Mornings with Chloé", "years": "2015 - 2025",
+     "intro": "Mamie's last years: the sunrise walk, the market, coffee at this table.",
+     "outro": "The door to the hall swings open. Somewhere a floorboard creaks."},
+    {"room": "hall", "title": "The summers with Juliette", "years": "2001 - 2013",
+     "intro": "Every July: a bucket, the 7:15 bus, and a pencil mark on the door frame.",
+     "outro": "Chloé trots ahead to the bedroom door, looking back to see if you follow."},
+    {"room": "bedroom", "title": "Henri", "years": "1981 - 2001",
+     "intro": "The house was quiet again. Number puzzles, dancing in socks, and trips at last.",
+     "outro": "Down to the living room, where the records are."},
+    {"room": "lounge", "title": "Margot", "years": "1963 - 1981",
+     "intro": "The family years: Sunday records, birthday cakes and stories under the lamp.",
+     "outro": "The garden doors open onto dew and birdsong."},
+    {"room": "garden", "title": "The first years", "years": "1960 - 1963",
+     "intro": "A wedding under a lemon tree so small it needed a stick to stand up.",
+     "outro": "The blue shed smells of wood and old flowers."},
+    {"room": "shed", "title": "The girl at the flower stall", "years": "1955 - 1960",
+     "intro": "One sunflower, every Saturday, for a whole year.",
+     "outro": "The side door leads round to the front of the house, where it all began."},
+    {"room": "front_garden", "title": "Where it began", "years": "1938 - 1955",
+     "intro": "A little girl ran down this path every morning to wave at her father's boat.",
+     "outro": "The gate opens. The sun is up."}
+  ]
+}

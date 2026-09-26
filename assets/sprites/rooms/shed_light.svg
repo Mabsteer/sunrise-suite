@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-240 -180 2400 1440" width="2400" height="1440">
+  <!-- A dusty sunbeam through the little shed window. -->
+  <defs>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe3a0" stop-opacity="0.55"/><stop offset="1" stop-color="#fbe3a0" stop-opacity="0"/></linearGradient>
+    <radialGradient id="pool" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#f9b98a" stop-opacity="0.5"/><stop offset="1" stop-color="#f9b98a" stop-opacity="0"/></radialGradient>
+  </defs>
+  <polygon points="300,350 520,350 900,1100 420,1100" fill="url(#beam)"/>
+  <ellipse cx="640" cy="940" rx="320" ry="90" fill="url(#pool)" opacity="0.9"/>
+  <ellipse cx="960" cy="60" rx="120" ry="60" fill="url(#pool)" opacity="0.4"/>
+</svg>

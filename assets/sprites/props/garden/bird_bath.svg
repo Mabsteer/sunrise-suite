@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 220" width="150" height="220">
+  <!-- Stone bird bath with a lavender bird on the rim. -->
+  <ellipse cx="75" cy="212" rx="60" ry="7" fill="#3b2e3a" opacity="0.18"/>
+  <path d="M60 80 L90 80 L96 200 L54 200 Z" fill="#e3d3b5"/>
+  <rect x="40" y="196" width="70" height="18" rx="6" fill="#cdb996"/>
+  <ellipse cx="75" cy="70" rx="70" ry="22" fill="#e9dcc2"/>
+  <ellipse cx="75" cy="64" rx="60" ry="15" fill="#6cc2be"/>
+  <ellipse cx="60" cy="60" rx="18" ry="4" fill="#fffbf5" opacity="0.6"/>
+  <g transform="translate(112 44)"><ellipse cx="0" cy="0" rx="12" ry="9" fill="#9c8ac4"/><circle cx="9" cy="-8" r="6" fill="#9c8ac4"/><path d="M14 -9 L20 -8 L14 -6 Z" fill="#f6c453"/></g>
+</svg>

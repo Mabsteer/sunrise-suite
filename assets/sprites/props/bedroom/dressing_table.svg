@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 360" width="230" height="360">
+  <!-- White dressing table with a round mirror, perfume bottles and a coral jewellery box that plays a tune. -->
+  <ellipse cx="115" cy="352" rx="108" ry="7" fill="#3b2e3a" opacity="0.18"/>
+  <!-- round mirror -->
+  <circle cx="115" cy="80" r="74" fill="#d4a24c"/><circle cx="115" cy="80" r="64" fill="#cfe3e6"/>
+  <path d="M80 40 L120 20 L70 90 Z" fill="#fffbf5" opacity="0.5"/>
+  <rect x="108" y="150" width="14" height="50" fill="#d4a24c"/>
+  <!-- perfume bottles and the jewellery box -->
+  <rect x="22" y="170" width="20" height="30" rx="5" fill="#c9bde3"/><circle cx="32" cy="164" r="7" fill="#d4a24c"/>
+  <rect x="48" y="178" width="16" height="22" rx="4" fill="#fcd9b8"/><circle cx="56" cy="173" r="5" fill="#d4a24c"/>
+  <rect x="140" y="164" width="76" height="36" rx="6" fill="#ee7b6b"/><rect x="136" y="156" width="84" height="14" rx="6" fill="#c95b52"/>
+  <circle cx="178" cy="182" r="6" fill="#f6c453"/><path d="M204 160 L214 146" stroke="#d4a24c" stroke-width="4" stroke-linecap="round"/>
+  <!-- table -->
+  <rect x="4" y="200" width="222" height="20" rx="6" fill="#fffbf5"/>
+  <rect x="14" y="220" width="202" height="60" rx="6" fill="#e9dff0"/>
+  <rect x="24" y="230" width="84" height="40" rx="5" fill="#fff4e2"/><rect x="122" y="230" width="84" height="40" rx="5" fill="#fff4e2"/>
+  <circle cx="66" cy="250" r="5" fill="#d4a24c"/><circle cx="164" cy="250" r="5" fill="#d4a24c"/>
+  <path d="M24 280 C20 310 18 330 16 350 M206 280 C210 310 212 330 214 350" stroke="#e9dff0" stroke-width="12" stroke-linecap="round"/>
+</svg>

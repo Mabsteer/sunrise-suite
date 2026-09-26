@@ -33,6 +33,7 @@ var _pause_menu: Control
 var _results: Control
 var _paused := false
 var _background := false
+var _letter_open := false
 var _pending_from := Vector2.INF
 var _props_layer: Node2D
 var _spots_layer: Node2D
@@ -62,7 +63,7 @@ func start(level_data: Dictionary) -> void:
 	room_view = RoomView.new()
 	add_child(room_view)
 	room_view.setup(str(level.get("room", "lounge")))
-	room_view.sunrise_t = 0.0
+	room_view.sunrise_t = sky_t(0.0)
 	room_view.settle_in()
 	text = LevelText.new(session, room_view.room)
 	_props_layer = room_view.props_layer
@@ -84,6 +85,31 @@ func start(level_data: Dictionary) -> void:
 	session.completed.connect(_on_completed)
 	AudioManager.play_music("daily_sunrise" if mode == "daily" else str(room_view.room.get("music", "level_lounge")))
 	AudioManager.play_ambience("ambience_ocean")
+	if mode == "main" and level.has("chapter"):
+		_show_chapter_card()
+
+
+## Walk levels share one morning: each room brightens its own slice of the sunrise.
+func sky_t(progress: float) -> float:
+	var r: Array = level.get("sunrise_range", [0.0, 1.0])
+	return lerpf(float(r[0]), float(r[1]), progress)
+
+
+## The chapter card at the start of a story room: which part of Céline's life this room is.
+func _show_chapter_card() -> void:
+	var c := Campaign.chapter(str(level.get("chapter", "")))
+	if c.is_empty():
+		return
+	_paused = true
+	var card := UIKit.dialog(ui, tr(str(c.get("title", ""))), "", [[tr("CHAPTER_START"), func() -> void: _paused = false, true]])
+	var body: VBoxContainer = card.get_meta("body")
+	var top := UIKit.label(tr("CHAPTER_OF") % (int(level.get("step", 0)) + 1) + "   ·   " + str(c.get("years", "")), 28, Palette.color("coral_dark"))
+	body.add_child(top)
+	body.move_child(top, 0)
+	var intro := UIKit.handwriting(tr(str(c.get("intro", ""))), 42)
+	intro.custom_minimum_size.x = 820
+	body.add_child(intro)
+	body.move_child(intro, 2)
 
 
 func _process(delta: float) -> void:
@@ -401,8 +427,8 @@ func _on_lock_opened(lock_id: String) -> void:
 	AudioManager.play_sfx("lock_open")
 	if not bool(lock.get("is_door", false)):
 		AudioManager.play_sfx("step_solved", 0.0, -4.0)
-		room_view.animate_sunrise_to(session.sunrise_t(), 2.2)
-	Events.sunrise_changed.emit(session.sunrise_t())
+		room_view.animate_sunrise_to(sky_t(session.sunrise_t()), 2.2)
+	Events.sunrise_changed.emit(sky_t(session.sunrise_t()))
 	var key := "lock:" + lock_id
 	var host: Dictionary = lock.get("host", {})
 	if host_sprites.has(key) and str(host.get("kind", "")) == "prop":
@@ -459,12 +485,23 @@ func _on_completed() -> void:
 	_hint_panel.visible = false
 	AudioManager.play_sfx("door_open")
 	AudioManager.play_stinger("sunrise_stinger")
-	room_view.animate_sunrise_to(1.12, 3.0)
+	# The room's slice of the morning brightens a little past its end; the last room sees the sun rise.
+	var r: Array = level.get("sunrise_range", [0.0, 1.0])
+	room_view.animate_sunrise_to(1.12 if float(r[1]) >= 1.0 else float(r[1]) + 0.04, 3.0)
 	_open_door_glow()
 	var result := GameState.record_level_result(level, record_id, mode, session)
 	finished_level.emit(result)
 	await get_tree().create_timer(2.6 if not bool(SaveManager.settings.get("reduce_motion", false)) else 0.6).timeout
 	AudioManager.play_sfx("level_complete")
+	if mode == "main" and bool(level.get("finale", false)):
+		# The end of Mamie's treasure hunt: her last letter, then the results.
+		_letter_open = true
+		GameState.mark_final_letter_read()
+		var letter: Dictionary = Data.get_dict("postcards").get("final_letter", {})
+		UIKit.letter(ui, str(letter.get("title", "")), str(letter.get("text", "")), func() -> void:
+			_letter_open = false
+			_show_results(result))
+		return
 	_show_results(result)
 
 
@@ -684,7 +721,7 @@ func _nothing_here() -> void:
 
 
 func _toggle_pause() -> void:
-	if _results:
+	if _results or _letter_open:
 		return
 	_paused = not _paused
 	if _pause_menu:
@@ -771,6 +808,14 @@ func _show_results(result: Dictionary) -> void:
 		var ul := UIKit.label(unlock, 30, Palette.color("sea_deep"))
 		body.add_child(ul)
 		body.move_child(ul, body.get_child_count() - 2)
+	# In the story walk: a line on the way to the next room.
+	if mode == "main" and level.has("chapter"):
+		var outro := str(Campaign.chapter(str(level["chapter"])).get("outro", ""))
+		if outro != "":
+			var ol := UIKit.handwriting(tr(outro), 34)
+			ol.custom_minimum_size.x = 680
+			body.add_child(ol)
+			body.move_child(ol, next_index + 1)
 
 
 
@@ -797,6 +842,8 @@ func _mode_caption() -> String:
 			return tr("MODE_DAILY")
 		"endless":
 			return tr("MODE_ENDLESS") % int(level.get("tier", 1))
+	if level.has("walk"):
+		return tr("MODE_WALK") % [tr(str(Campaign.walk(int(level["walk"])).get("title", ""))), int(level.get("step", 0)) + 1]
 	return tr("MODE_TIER") % int(level.get("tier", 1))
 
 

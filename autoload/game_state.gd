@@ -43,7 +43,8 @@ func total_stars() -> int:
 	return total
 
 
-## Is a main level playable? Level 1 always; later ones once the previous level is done and the tier's star gate is met.
+## Is a main level playable? The first always; later ones once the previous level is done and the
+## walk's star gate is met.
 func is_level_unlocked(level_id: String) -> bool:
 	var idx := Campaign.index_of(level_id)
 	if idx <= 0:
@@ -51,7 +52,7 @@ func is_level_unlocked(level_id: String) -> bool:
 	var list := Campaign.levels()
 	if not is_level_completed(str(list[idx - 1]["id"])):
 		return false
-	return total_stars() >= Campaign.star_gate(int(list[idx]["tier"]))
+	return total_stars() >= Campaign.star_gate_for(level_id)
 
 
 ## Why a level is locked ("" if it isn't): "previous" or "stars:<needed>".
@@ -62,7 +63,7 @@ func lock_reason(level_id: String) -> String:
 	var list := Campaign.levels()
 	if not is_level_completed(str(list[idx - 1]["id"])):
 		return "previous"
-	var need := Campaign.star_gate(int(list[idx]["tier"]))
+	var need := Campaign.star_gate_for(level_id)
 	if total_stars() < need:
 		return "stars:%d" % need
 	return ""
@@ -234,6 +235,33 @@ func postcards_found_count() -> int:
 
 func all_postcards_found() -> bool:
 	return postcards_found_count() >= postcard_list().size() and not postcard_list().is_empty()
+
+
+## Is Mamie's last treasure hunt (walk 1) finished? Then her last letter can be read in the scrapbook.
+func story_finished() -> bool:
+	for e in Campaign.levels():
+		if bool(e.get("finale", false)):
+			return is_level_completed(str(e["id"]))
+	return false
+
+
+func mark_final_letter_read() -> void:
+	SaveManager.data["final_letter_read"] = true
+	SaveManager.save_game()
+
+
+## Memories: story notes the player has read (collected in the scrapbook, see data/story.json).
+func has_memory(id: String) -> bool:
+	return (SaveManager.data.get("memories", []) as Array).has(id)
+
+
+func collect_memory(id: String) -> bool:
+	if id == "" or has_memory(id):
+		return false
+	var list: Array = SaveManager.data.get("memories", [])
+	list.append(id)
+	SaveManager.data["memories"] = list
+	return true
 
 
 ## The main level that hides a postcard ("" if none).
@@ -477,11 +505,11 @@ func record_level_result(level: Dictionary, record_id: String, mode: String, ses
 	if mode == "main" or mode == "replay":
 		var nxt := next_level_id(id)
 		if first_clear and nxt != "" and is_level_unlocked(nxt):
-			unlocks.append(tr("UNLOCK_NEXT"))
-		for tier in [4, 7, 10]:
-			var need := Campaign.star_gate(tier)
+			unlocks.append(tr("UNLOCK_NEXT") % tr(str(Data.get_dict("rooms/" + str(Campaign.entry(nxt).get("room", ""))).get("name", ""))))
+		for w in Campaign.walks():
+			var need := int(w.get("star_gate", 0))
 			if need > 0 and stars_before < need and total_stars() >= need:
-				unlocks.append(tr("UNLOCK_GATE") % tier)
+				unlocks.append(tr("UNLOCK_WALK") % tr(str(w.get("title", ""))))
 		if first_clear and nxt == "" and Campaign.index_of(id) >= 0:
 			unlocks.append(tr("UNLOCK_ENDLESS"))
 		if first_clear:

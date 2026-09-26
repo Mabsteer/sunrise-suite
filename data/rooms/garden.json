@@ -1,0 +1,52 @@
+{
+  "_help": "Room template. See docs/DATA_FORMAT.md. pos/size in stage pixels; spot rects in the furniture's own coordinates. The back garden: 'the first years' (docs/STORY.md). Outdoor: the whole sky is visible above the garden wall.",
+  "id": "garden",
+  "name": "The garden",
+  "background": "rooms/garden_bg.svg",
+  "light": "rooms/garden_light.svg",
+  "view_far": "rooms/view_far.svg",
+  "horizon_y": 440,
+  "sun_x": 1100,
+  "sky_rect": [-240, -180, 2400, 700],
+  "music": "level_garden",
+  "outdoor": true,
+  "door": {"name": "the shed door", "rect": [1600, 380, 200, 320]},
+  "dog_spot": [980, 960],
+  "furniture": [
+    {"id": "bird_bath", "name": "the bird bath", "sprite": "props/garden/bird_bath.svg", "pos": [60, 640], "size": [150, 220],
+     "spots": [{"id": "water", "name": "the bird bath", "rect": [6, 40, 140, 50], "locks": ["hidden"], "tools": [null, "fishing_magnet"], "reveal": "something shiny at the bottom of the water"}],
+     "flavor": "A little bird is having a very serious bath."},
+    {"id": "flower_bed", "name": "the rose bed", "sprite": "props/garden/flower_bed.svg", "pos": [230, 470], "size": [380, 160],
+     "spots": [{"id": "soil", "name": "the soil under the roses", "rect": [0, 90, 380, 70], "locks": ["hidden"], "tools": [null, "trowel"], "reveal": "something buried under the roses"}],
+     "flavor": "Red roses from cuttings of Rose's roses by the front gate."},
+    {"id": "lemon_tree", "name": "the lemon tree", "sprite": "props/garden/lemon_tree.svg", "pos": [420, 90], "size": [500, 640],
+     "spots": [
+       {"id": "branches", "name": "the lemon tree's branches", "rect": [60, 20, 380, 360], "clue": true},
+       {"id": "trunk", "name": "the old stick on the trunk", "rect": [200, 380, 110, 250], "locks": ["hidden"], "tools": [null], "reveal": "something tied to the old stick"}
+     ],
+     "flavor": "In 1960 it needed a stick to stand up. The stick is still there."},
+    {"id": "veg_bed", "name": "the vegetable bed", "sprite": "props/garden/veg_bed.svg", "pos": [700, 640], "size": [540, 220],
+     "spots": [
+       {"id": "rows", "name": "the rows of vegetables", "rect": [40, 50, 470, 130], "locks": ["pattern", "hidden"], "tools": [null, "trowel"], "clue": true, "reveal": "something between the carrots"},
+       {"id": "edge", "name": "the edge of the vegetable bed", "rect": [6, 184, 528, 30], "clue": true}
+     ],
+     "flavor": "Lettuce, carrots, tomatoes. Henri dug this bed the week after the wedding."},
+    {"id": "sundial", "name": "the sundial", "sprite": "props/garden/sundial.svg", "pos": [370, 700], "size": [170, 230],
+     "spots": [{"id": "dial", "name": "the sundial", "rect": [4, 20, 162, 80], "locks": ["clock"]}],
+     "flavor": "Henri set it 'to our time'. It's always a little bit wrong. Nobody minds."},
+    {"id": "garden_table", "name": "the garden table", "sprite": "props/garden/garden_table.svg", "pos": [1120, 470], "size": [340, 250],
+     "spots": [{"id": "drawer", "name": "the garden table drawer", "rect": [118, 112, 104, 32], "locks": ["combo", "key", "sudoku"]}],
+     "flavor": "Breakfast in the garden: this table has seen a thousand croissants."}
+  ],
+  "wall_slots": [
+    {"id": "trellis", "rect": [40, 320, 150, 150], "accepts": ["wall", "wall_small"]},
+    {"id": "shed_wall", "rect": [1480, 290, 110, 130], "accepts": ["wall", "wall_small"]}
+  ],
+  "surface_slots": [
+    {"id": "table_1", "anchor": [1250, 566], "max": [110, 90], "name": "the garden table"},
+    {"id": "table_2", "anchor": [1340, 566], "max": [110, 90], "name": "the garden table"},
+    {"id": "wall_top", "anchor": [1040, 494], "max": [120, 100], "name": "the garden wall"},
+    {"id": "terrace_1", "anchor": [640, 990], "max": [130, 110], "name": "the terrace"},
+    {"id": "terrace_2", "anchor": [1520, 990], "max": [130, 110], "name": "the terrace"}
+  ]
+}

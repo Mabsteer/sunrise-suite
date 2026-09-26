@@ -1,4 +1,4 @@
-// Generates the Kitchen & Bar art (background, light layer, furniture). The SVG files are the editable source;
+// Generates the kitchen art (background, light layer, furniture). The SVG files are the editable source;
 // re-running this overwrites them:  node tools/art/kitchen.mjs
 import { save, svg, roomSvg, checkerFloor, wallWithHoles, frame, glassReflections, lightLayer, rng } from "./room_kit.mjs";
 
@@ -37,7 +37,7 @@ const bg = roomSvg(`  <defs>
   ${checkerFloor(FLOOR_Y, 1260, "#f3ddb3", "#e59a7c", "#c8674a")}
   </g>
   <rect x="-240" y="${FLOOR_Y}" width="2400" height="490" fill="url(#floorShade)"/>
-  ${wallWithHoles(-240, 70, 2160, FLOOR_Y, [WINDOW, DOOR], "url(#wall)")}
+  ${wallWithHoles(-240, 70, 2160, FLOOR_Y, [WINDOW], "url(#wall)")}
   <!-- backsplash -->
   <rect x="468" y="328" width="274" height="222" fill="#fffbf5"/>
   <rect x="1178" y="328" width="464" height="222" fill="#fffbf5"/>
@@ -52,15 +52,20 @@ const bg = roomSvg(`  <defs>
   <!-- herbs on the sill -->
   <rect x="770" y="480" width="44" height="40" rx="6" fill="#c8674a"/><rect x="766" y="476" width="52" height="10" rx="5" fill="#e08e6d"/>
   <ellipse cx="782" cy="462" rx="12" ry="18" fill="#5e7f5e"/><ellipse cx="800" cy="458" rx="12" ry="22" fill="#8faf8a"/><ellipse cx="792" cy="448" rx="9" ry="16" fill="#a9c7a3"/>
-  <!-- balcony door (left) -->
+  <!-- the door to the hall (left): wood, with a little frosted window -->
   ${frame(DOOR, 20, "#fffbf5")}
-  <rect x="${DOOR[0]}" y="${DOOR[1]}" width="${DOOR[2]}" height="12" fill="#fffbf5"/>
-  <rect x="${DOOR[0]}" y="${DOOR[1]}" width="14" height="${DOOR[3]}" fill="#fffbf5"/>
-  <rect x="${DOOR[0] + DOOR[2] - 14}" y="${DOOR[1]}" width="14" height="${DOOR[3]}" fill="#fffbf5"/>
-  ${glassReflections(DOOR)}
-  <rect x="402" y="384" width="12" height="136" rx="6" fill="#a87a2e"/>
-  <rect x="403" y="386" width="5" height="130" rx="2" fill="#f0c877" opacity="0.8"/>
-  <rect x="146" y="${FLOOR_Y - 12}" width="308" height="16" rx="3" fill="#a87a2e"/>
+  <rect x="${DOOR[0]}" y="${DOOR[1]}" width="${DOOR[2]}" height="${DOOR[3]}" fill="#b88558"/>
+  <rect x="${DOOR[0] + 24}" y="${DOOR[1] + 24}" width="${DOOR[2] - 48}" height="200" rx="10" fill="#e9f1f0"/>
+  <rect x="${DOOR[0] + DOOR[2] / 2 - 5}" y="${DOOR[1] + 24}" width="10" height="200" fill="#b88558"/>
+  <rect x="${DOOR[0] + 24}" y="${DOOR[1] + 120}" width="${DOOR[2] - 48}" height="10" fill="#b88558"/>
+  <path d="M${DOOR[0] + 40} ${DOOR[1] + 40} L${DOOR[0] + 90} ${DOOR[1] + 40} L${DOOR[0] + 40} ${DOOR[1] + 100} Z" fill="#fffbf5" opacity="0.6"/>
+  <rect x="${DOOR[0] + 24}" y="${DOOR[1] + 260}" width="${DOOR[2] - 48}" height="360" rx="10" fill="#a8744a"/>
+  <rect x="${DOOR[0] + 30}" y="${DOOR[1] + 266}" width="12" height="348" rx="5" fill="#fffbf5" opacity="0.18"/>
+  <circle cx="${DOOR[0] + DOOR[2] - 34}" cy="${DOOR[1] + 280}" r="12" fill="#d4a24c"/><circle cx="${DOOR[0] + DOOR[2] - 37}" cy="${DOOR[1] + 277}" r="4" fill="#fbe3a0"/>
+  <!-- Chloé's lead on a hook, and her empty bowl -->
+  <path d="M${DOOR[0] + DOOR[2] + 44} 330 L${DOOR[0] + DOOR[2] + 44} 346" stroke="#d4a24c" stroke-width="6" stroke-linecap="round"/>
+  <path d="M${DOOR[0] + DOOR[2] + 44} 346 C${DOOR[0] + DOOR[2] + 20} 420 ${DOOR[0] + DOOR[2] + 70} 460 ${DOOR[0] + DOOR[2] + 44} 520" stroke="#ee7b6b" stroke-width="6" fill="none"/>
+  <ellipse cx="${DOOR[0] + DOOR[2] + 70}" cy="${FLOOR_Y + 30}" rx="40" ry="12" fill="#ee7b6b"/><ellipse cx="${DOOR[0] + DOOR[2] + 70}" cy="${FLOOR_Y + 26}" rx="30" ry="7" fill="#c95b52"/>
   <!-- pendant lights -->
   <rect x="797" y="-180" width="6" height="250" fill="#7a5134"/>
   <path d="M760 110 C760 80 780 66 800 66 C820 66 840 80 840 110 Z" fill="url(#brass)"/>
@@ -72,13 +77,13 @@ const bg = roomSvg(`  <defs>
   <rect x="-240" y="${FLOOR_Y - 24}" width="390" height="24" fill="#fffbf5"/>
   <rect x="450" y="${FLOOR_Y - 24}" width="30" height="24" fill="#fffbf5"/>
   <rect x="1640" y="${FLOOR_Y - 24}" width="520" height="24" fill="#fffbf5"/>
-  <rect x="-240" y="${FLOOR_Y}" width="2400" height="10" fill="#3b2e3a" opacity="0.12"/>`, "Kitchen & Bar background. Window over the sink and the balcony door (left) are transparent holes.");
+  <rect x="-240" y="${FLOOR_Y}" width="2400" height="10" fill="#3b2e3a" opacity="0.12"/>`, "Kitchen background. The window over the sink is a transparent hole; the door to the hall (left) is solid.");
 save("rooms/kitchen_bg.svg", bg);
 
 save("rooms/kitchen_light.svg", lightLayer(
-  ["760,520 952,520 880,1100 520,1100", "968,520 1160,520 1420,1100 1060,1100", "184,770 416,770 520,1150 120,1150"],
-  [[960, 860, 520, 110, 1], [300, 900, 220, 70, 0.7]],
-  "Sunbeams through the kitchen window and balcony door (additive, strength follows the sunrise)."));
+  ["760,520 952,520 880,1100 520,1100", "968,520 1160,520 1420,1100 1060,1100"],
+  [[960, 860, 520, 110, 1]],
+  "Sunbeams through the kitchen window (additive, strength follows the sunrise)."));
 
 // ---------------------------------------------------------------- furniture
 const shadow = (cx, cy, rx, ry, op = 0.18) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="#3b2e3a" opacity="${op}"/>`;

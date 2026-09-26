@@ -172,6 +172,48 @@ static func dialog(parent: Node, title: String, body: String, buttons: Array) ->
 	return overlay
 
 
+## A handwritten letter on paper, scrolling if it's long, with a close button. `on_close` runs after.
+static func letter(parent: Node, title: String, body: String, on_close: Callable = Callable()) -> Control:
+	var overlay := Control.new()
+	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	var dim := ColorRect.new()
+	dim.color = Color(0.169, 0.137, 0.314, 0.6)
+	dim.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.add_child(dim)
+	var center := CenterContainer.new()
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay.add_child(center)
+	var paper_card := PanelContainer.new()
+	paper_card.add_theme_stylebox_override("panel", paper(50))
+	paper_card.custom_minimum_size = Vector2(1100, 0)
+	center.add_child(paper_card)
+	var v := VBoxContainer.new()
+	v.add_theme_constant_override("separation", 16)
+	paper_card.add_child(v)
+	v.add_child(label(title, 44, Palette.color("coral_dark")))
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.custom_minimum_size = Vector2(1000, 640)
+	v.add_child(scroll)
+	var text := handwriting(body, 38)
+	text.custom_minimum_size.x = 960
+	text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(text)
+	var close := text_button(TranslationServer.translate("CLOSE"), Vector2(260, 90))
+	close.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	close.pressed.connect(func() -> void:
+		AudioManager.play_sfx("ui_back")
+		overlay.queue_free()
+		if on_close.is_valid():
+			on_close.call())
+	v.add_child(close)
+	parent.add_child(overlay)
+	pop_in(paper_card)
+	AudioManager.play_sfx("postcard_found")
+	return overlay
+
+
 ## Seashell + star counters for screen headers.
 static func counters() -> HBoxContainer:
 	var row := HBoxContainer.new()

@@ -1,0 +1,251 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-240 -180 2400 1440" width="2400" height="1440">
+  <!-- Hall background. The fanlight above the front door and the stair window are transparent holes. -->
+  <defs>
+    <linearGradient id="ceiling" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9d6bd"/><stop offset="1" stop-color="#f6e9d5"/></linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff4e2"/><stop offset="1" stop-color="#f6e4c8"/></linearGradient>
+    <linearGradient id="floorShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b2e3a" stop-opacity="0.22"/><stop offset="0.35" stop-color="#3b2e3a" stop-opacity="0"/><stop offset="1" stop-color="#3b2e3a" stop-opacity="0.18"/></linearGradient>
+    <linearGradient id="door" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2e8c8c"/><stop offset="1" stop-color="#1f5f6b"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c99a6b"/><stop offset="1" stop-color="#a8744a"/></linearGradient>
+  </defs>
+  <rect x="-240" y="-180" width="2400" height="250" fill="url(#ceiling)"/>
+  <rect x="-240" y="48" width="2400" height="16" fill="#fffbf5"/>
+  <rect x="-240" y="64" width="2400" height="10" fill="#3b2e3a" opacity="0.06"/>
+  <g>
+  <rect x="-240" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="-152" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="-64" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="24" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="112" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="200" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="288" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="376" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="464" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="552" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="640" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="728" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="816" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="904" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="992" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="1080" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="1168" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="1256" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="1344" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="1432" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="1520" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="1608" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="1696" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="1784" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="1872" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="1960" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="2048" y="770" width="88" height="22" fill="#9fb9b2"/>
+  <rect x="2136" y="770" width="88" height="22" fill="#ecdcbf"/>
+  <rect x="-240" y="790" width="2400" height="3" fill="#6b8f88" opacity="0.5"/>
+  <rect x="-288" y="792" width="97" height="26" fill="#ecdcbf"/>
+  <rect x="-191" y="792" width="97" height="26" fill="#9fb9b2"/>
+  <rect x="-94" y="792" width="97" height="26" fill="#ecdcbf"/>
+  <rect x="3" y="792" width="97" height="26" fill="#9fb9b2"/>
+  <rect x="100" y="792" width="97" height="26" fill="#ecdcbf"/>
+  <rect x="197" y="792" width="97" height="26" fill="#9fb9b2"/>
+  <rect x="294" y="792" width="97" height="26" fill="#ecdcbf"/>
+  <rect x="391" y="792" width="97" height="26" fill="#9fb9b2"/>
+  <rect x="488" y="792" width="97" height="26" fill="#ecdcbf"/>
+  <rect x="585" y="792" width="97" height="26" fill="#9fb9b2"/>
+  <rect x="682" y="792" width="97" height="26" fill="#ecdcbf"/>
+  <rect x="779" y="792" width="97" height="26" fill="#9fb9b2"/>
+  <rect x="876" y="792" width="97" height="26" fill="#ecdcbf"/>
+  <rect x="973" y="792" width="97" height="26" fill="#9fb9b2"/>
+  <rect x="1070" y="792" width="97" height="26" fill="#ecdcbf"/>
+  <rect x="1167" y="792" width="97" height="26" fill="#9fb9b2"/>
+  <rect x="1264" y="792" width="97" height="26" fill="#ecdcbf"/>
+  <rect x="1361" y="792" width="97" height="26" fill="#9fb9b2"/>
+  <rect x="1458" y="792" width="97" height="26" fill="#ecdcbf"/>
+  <rect x="1555" y="792" width="97" height="26" fill="#9fb9b2"/>
+  <rect x="1652" y="792" width="97" height="26" fill="#ecdcbf"/>
+  <rect x="1749" y="792" width="97" height="26" fill="#9fb9b2"/>
+  <rect x="1846" y="792" width="97" height="26" fill="#ecdcbf"/>
+  <rect x="1943" y="792" width="97" height="26" fill="#9fb9b2"/>
+  <rect x="2040" y="792" width="97" height="26" fill="#ecdcbf"/>
+  <rect x="2137" y="792" width="97" height="26" fill="#9fb9b2"/>
+  <rect x="-240" y="816" width="2400" height="3" fill="#6b8f88" opacity="0.5"/>
+  <rect x="-240" y="818" width="110" height="32" fill="#9fb9b2"/>
+  <rect x="-130" y="818" width="110" height="32" fill="#ecdcbf"/>
+  <rect x="-20" y="818" width="110" height="32" fill="#9fb9b2"/>
+  <rect x="90" y="818" width="110" height="32" fill="#ecdcbf"/>
+  <rect x="200" y="818" width="110" height="32" fill="#9fb9b2"/>
+  <rect x="310" y="818" width="110" height="32" fill="#ecdcbf"/>
+  <rect x="420" y="818" width="110" height="32" fill="#9fb9b2"/>
+  <rect x="530" y="818" width="110" height="32" fill="#ecdcbf"/>
+  <rect x="640" y="818" width="110" height="32" fill="#9fb9b2"/>
+  <rect x="750" y="818" width="110" height="32" fill="#ecdcbf"/>
+  <rect x="860" y="818" width="110" height="32" fill="#9fb9b2"/>
+  <rect x="970" y="818" width="110" height="32" fill="#ecdcbf"/>
+  <rect x="1080" y="818" width="110" height="32" fill="#9fb9b2"/>
+  <rect x="1190" y="818" width="110" height="32" fill="#ecdcbf"/>
+  <rect x="1300" y="818" width="110" height="32" fill="#9fb9b2"/>
+  <rect x="1410" y="818" width="110" height="32" fill="#ecdcbf"/>
+  <rect x="1520" y="818" width="110" height="32" fill="#9fb9b2"/>
+  <rect x="1630" y="818" width="110" height="32" fill="#ecdcbf"/>
+  <rect x="1740" y="818" width="110" height="32" fill="#9fb9b2"/>
+  <rect x="1850" y="818" width="110" height="32" fill="#ecdcbf"/>
+  <rect x="1960" y="818" width="110" height="32" fill="#9fb9b2"/>
+  <rect x="2070" y="818" width="110" height="32" fill="#ecdcbf"/>
+  <rect x="-240" y="848" width="2400" height="3" fill="#6b8f88" opacity="0.5"/>
+  <rect x="-303" y="850" width="126" height="39" fill="#ecdcbf"/>
+  <rect x="-177" y="850" width="126" height="39" fill="#9fb9b2"/>
+  <rect x="-51" y="850" width="126" height="39" fill="#ecdcbf"/>
+  <rect x="75" y="850" width="126" height="39" fill="#9fb9b2"/>
+  <rect x="201" y="850" width="126" height="39" fill="#ecdcbf"/>
+  <rect x="327" y="850" width="126" height="39" fill="#9fb9b2"/>
+  <rect x="453" y="850" width="126" height="39" fill="#ecdcbf"/>
+  <rect x="579" y="850" width="126" height="39" fill="#9fb9b2"/>
+  <rect x="705" y="850" width="126" height="39" fill="#ecdcbf"/>
+  <rect x="831" y="850" width="126" height="39" fill="#9fb9b2"/>
+  <rect x="957" y="850" width="126" height="39" fill="#ecdcbf"/>
+  <rect x="1083" y="850" width="126" height="39" fill="#9fb9b2"/>
+  <rect x="1209" y="850" width="126" height="39" fill="#ecdcbf"/>
+  <rect x="1335" y="850" width="126" height="39" fill="#9fb9b2"/>
+  <rect x="1461" y="850" width="126" height="39" fill="#ecdcbf"/>
+  <rect x="1587" y="850" width="126" height="39" fill="#9fb9b2"/>
+  <rect x="1713" y="850" width="126" height="39" fill="#ecdcbf"/>
+  <rect x="1839" y="850" width="126" height="39" fill="#9fb9b2"/>
+  <rect x="1965" y="850" width="126" height="39" fill="#ecdcbf"/>
+  <rect x="2091" y="850" width="126" height="39" fill="#9fb9b2"/>
+  <rect x="-240" y="887" width="2400" height="3" fill="#6b8f88" opacity="0.5"/>
+  <rect x="-240" y="889" width="146" height="48" fill="#9fb9b2"/>
+  <rect x="-94" y="889" width="146" height="48" fill="#ecdcbf"/>
+  <rect x="52" y="889" width="146" height="48" fill="#9fb9b2"/>
+  <rect x="198" y="889" width="146" height="48" fill="#ecdcbf"/>
+  <rect x="344" y="889" width="146" height="48" fill="#9fb9b2"/>
+  <rect x="490" y="889" width="146" height="48" fill="#ecdcbf"/>
+  <rect x="636" y="889" width="146" height="48" fill="#9fb9b2"/>
+  <rect x="782" y="889" width="146" height="48" fill="#ecdcbf"/>
+  <rect x="928" y="889" width="146" height="48" fill="#9fb9b2"/>
+  <rect x="1074" y="889" width="146" height="48" fill="#ecdcbf"/>
+  <rect x="1220" y="889" width="146" height="48" fill="#9fb9b2"/>
+  <rect x="1366" y="889" width="146" height="48" fill="#ecdcbf"/>
+  <rect x="1512" y="889" width="146" height="48" fill="#9fb9b2"/>
+  <rect x="1658" y="889" width="146" height="48" fill="#ecdcbf"/>
+  <rect x="1804" y="889" width="146" height="48" fill="#9fb9b2"/>
+  <rect x="1950" y="889" width="146" height="48" fill="#ecdcbf"/>
+  <rect x="2096" y="889" width="146" height="48" fill="#9fb9b2"/>
+  <rect x="-240" y="935" width="2400" height="3" fill="#6b8f88" opacity="0.5"/>
+  <rect x="-325" y="937" width="170" height="59" fill="#ecdcbf"/>
+  <rect x="-155" y="937" width="170" height="59" fill="#9fb9b2"/>
+  <rect x="15" y="937" width="170" height="59" fill="#ecdcbf"/>
+  <rect x="185" y="937" width="170" height="59" fill="#9fb9b2"/>
+  <rect x="355" y="937" width="170" height="59" fill="#ecdcbf"/>
+  <rect x="525" y="937" width="170" height="59" fill="#9fb9b2"/>
+  <rect x="695" y="937" width="170" height="59" fill="#ecdcbf"/>
+  <rect x="865" y="937" width="170" height="59" fill="#9fb9b2"/>
+  <rect x="1035" y="937" width="170" height="59" fill="#ecdcbf"/>
+  <rect x="1205" y="937" width="170" height="59" fill="#9fb9b2"/>
+  <rect x="1375" y="937" width="170" height="59" fill="#ecdcbf"/>
+  <rect x="1545" y="937" width="170" height="59" fill="#9fb9b2"/>
+  <rect x="1715" y="937" width="170" height="59" fill="#ecdcbf"/>
+  <rect x="1885" y="937" width="170" height="59" fill="#9fb9b2"/>
+  <rect x="2055" y="937" width="170" height="59" fill="#ecdcbf"/>
+  <rect x="-240" y="994" width="2400" height="3" fill="#6b8f88" opacity="0.5"/>
+  <rect x="-240" y="996" width="196" height="71" fill="#9fb9b2"/>
+  <rect x="-44" y="996" width="196" height="71" fill="#ecdcbf"/>
+  <rect x="152" y="996" width="196" height="71" fill="#9fb9b2"/>
+  <rect x="348" y="996" width="196" height="71" fill="#ecdcbf"/>
+  <rect x="544" y="996" width="196" height="71" fill="#9fb9b2"/>
+  <rect x="740" y="996" width="196" height="71" fill="#ecdcbf"/>
+  <rect x="936" y="996" width="196" height="71" fill="#9fb9b2"/>
+  <rect x="1132" y="996" width="196" height="71" fill="#ecdcbf"/>
+  <rect x="1328" y="996" width="196" height="71" fill="#9fb9b2"/>
+  <rect x="1524" y="996" width="196" height="71" fill="#ecdcbf"/>
+  <rect x="1720" y="996" width="196" height="71" fill="#9fb9b2"/>
+  <rect x="1916" y="996" width="196" height="71" fill="#ecdcbf"/>
+  <rect x="2112" y="996" width="196" height="71" fill="#9fb9b2"/>
+  <rect x="-240" y="1065" width="2400" height="3" fill="#6b8f88" opacity="0.5"/>
+  <rect x="-355" y="1067" width="231" height="87" fill="#ecdcbf"/>
+  <rect x="-124" y="1067" width="231" height="87" fill="#9fb9b2"/>
+  <rect x="107" y="1067" width="231" height="87" fill="#ecdcbf"/>
+  <rect x="338" y="1067" width="231" height="87" fill="#9fb9b2"/>
+  <rect x="569" y="1067" width="231" height="87" fill="#ecdcbf"/>
+  <rect x="800" y="1067" width="231" height="87" fill="#9fb9b2"/>
+  <rect x="1031" y="1067" width="231" height="87" fill="#ecdcbf"/>
+  <rect x="1262" y="1067" width="231" height="87" fill="#9fb9b2"/>
+  <rect x="1493" y="1067" width="231" height="87" fill="#ecdcbf"/>
+  <rect x="1724" y="1067" width="231" height="87" fill="#9fb9b2"/>
+  <rect x="1955" y="1067" width="231" height="87" fill="#ecdcbf"/>
+  <rect x="-240" y="1152" width="2400" height="3" fill="#6b8f88" opacity="0.5"/>
+  <rect x="-240" y="1154" width="273" height="106" fill="#9fb9b2"/>
+  <rect x="33" y="1154" width="273" height="106" fill="#ecdcbf"/>
+  <rect x="306" y="1154" width="273" height="106" fill="#9fb9b2"/>
+  <rect x="579" y="1154" width="273" height="106" fill="#ecdcbf"/>
+  <rect x="852" y="1154" width="273" height="106" fill="#9fb9b2"/>
+  <rect x="1125" y="1154" width="273" height="106" fill="#ecdcbf"/>
+  <rect x="1398" y="1154" width="273" height="106" fill="#9fb9b2"/>
+  <rect x="1671" y="1154" width="273" height="106" fill="#ecdcbf"/>
+  <rect x="1944" y="1154" width="273" height="106" fill="#9fb9b2"/>
+  <rect x="-240" y="1258" width="2400" height="3" fill="#6b8f88" opacity="0.5"/>
+  </g>
+  <rect x="-240" y="770" width="2400" height="490" fill="url(#floorShade)"/>
+  <!-- runner rug -->
+  <path d="M160 810 L1340 810 L1500 1250 L0 1250 Z" fill="#c8674a"/>
+  <path d="M190 828 L1312 828 L1452 1230 L48 1230 Z" fill="#e08e6d"/>
+  <path d="M230 850 L1270 850 M200 950 L1330 950 M150 1090 L1390 1090" stroke="#f6c453" stroke-width="6" opacity="0.7"/>
+  <path fill="url(#wall)" fill-rule="evenodd" d="M-240 60 H2160 V770 H-240 Z M127 250 A118 118 0 0 1 363 250 Z M1520 110 H1700 V360 H1520 Z"/>
+  <rect x="-240" y="480" width="2400" height="290" fill="#b7cfc8"/>
+  <rect x="-240" y="472" width="2400" height="14" fill="#fffbf5"/>
+  <rect x="-220" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="-220" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="-70" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="-70" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="80" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="80" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="230" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="230" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="380" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="380" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="530" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="530" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="680" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="680" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="830" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="830" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="980" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="980" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="1130" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="1130" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="1280" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="1280" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="1430" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="1430" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="1580" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="1580" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="1730" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="1730" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="1880" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="1880" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <rect x="2030" y="510" width="120" height="220" rx="6" fill="#a6c2ba"/><rect x="2030" y="510" width="120" height="6" fill="#fffbf5" opacity="0.4"/>
+  <!-- fanlight above the front door -->
+  <path d="M109 250 A136 136 0 0 1 381 250 L363 250 A118 118 0 0 0 127 250 Z" fill="#fffbf5"/>
+  <line x1="245" y1="250" x2="142.8" y2="191.0" stroke="#fffbf5" stroke-width="8"/><line x1="245" y1="250" x2="186.0" y2="147.8" stroke="#fffbf5" stroke-width="8"/><line x1="245" y1="250" x2="245.0" y2="132.0" stroke="#fffbf5" stroke-width="8"/><line x1="245" y1="250" x2="304.0" y2="147.8" stroke="#fffbf5" stroke-width="8"/><line x1="245" y1="250" x2="347.2" y2="191.0" stroke="#fffbf5" stroke-width="8"/>
+  <circle cx="245" cy="250" r="26" fill="#fffbf5"/>
+  <!-- front door (closed; not part of the hunt) -->
+  <path fill="#3b2e3a" opacity="0.07" fill-rule="evenodd" d="M110 240 H400 V800 H110 Z M120 250 H370 V770 H120 Z"/>
+  <path fill="#fffbf5" fill-rule="evenodd" d="M100 230 H390 V790 H100 Z M120 250 H370 V770 H120 Z"/>
+  <rect x="367" y="250" width="3" height="520" fill="#e9d6b8"/>
+  <rect x="120" y="250" width="250" height="520" fill="url(#door)"/>
+  <rect x="146" y="280" width="198" height="170" rx="10" fill="#2e8c8c"/>
+  <rect x="160" y="294" width="50" height="140" rx="6" fill="#f6c453" opacity="0.75"/><rect x="218" y="294" width="50" height="140" rx="6" fill="#ee7b6b" opacity="0.75"/><rect x="276" y="294" width="50" height="140" rx="6" fill="#6cc2be" opacity="0.75"/>
+  <rect x="146" y="480" width="198" height="260" rx="10" fill="#2a7d7d"/>
+  <circle cx="334" cy="530" r="11" fill="#d4a24c"/>
+  <rect x="215" y="456" width="60" height="14" rx="5" fill="#d4a24c"/>
+  <rect x="110" y="762" width="270" height="12" rx="3" fill="#a87a2e"/>
+  <!-- stair window -->
+  <path fill="#3b2e3a" opacity="0.07" fill-rule="evenodd" d="M1514 104 H1726 V386 H1514 Z M1520 110 H1700 V360 H1520 Z"/>
+  <path fill="#fffbf5" fill-rule="evenodd" d="M1504 94 H1716 V376 H1504 Z M1520 110 H1700 V360 H1520 Z"/>
+  <rect x="1697" y="110" width="3" height="250" fill="#e9d6b8"/>
+  <rect x="1603" y="110" width="14" height="250" fill="#fffbf5"/>
+  <rect x="1520" y="228" width="180" height="14" fill="#fffbf5"/>
+  <polygon points="1538,110 1563.2,110 1520,200 1520,160" fill="#fffbf5" opacity="0.13"/>
+  <polygon points="1649.6,110 1664,110 1602.8,260 1588.4,260" fill="#fffbf5" opacity="0.08"/>
+  <!-- bedroom door (the way on) -->
+  <path fill="#3b2e3a" opacity="0.07" fill-rule="evenodd" d="M864 174 H1156 V806 H864 Z M880 190 H1120 V770 H880 Z"/>
+  <path fill="#fffbf5" fill-rule="evenodd" d="M854 164 H1146 V796 H854 Z M880 190 H1120 V770 H880 Z"/>
+  <rect x="1117" y="190" width="3" height="580" fill="#e9d6b8"/>
+  <rect x="880" y="190" width="240" height="580" fill="url(#wood)"/>
+  <rect x="906" y="216" width="188" height="230" rx="8" fill="#b88558"/>
+  <rect x="906" y="480" width="188" height="260" rx="8" fill="#b88558"/>
+  <rect x="912" y="222" width="12" height="218" rx="5" fill="#fffbf5" opacity="0.2"/>
+  <circle cx="1088" cy="480" r="12" fill="#d4a24c"/><circle cx="1085" cy="477" r="4" fill="#fbe3a0"/>
+  <rect x="1080" y="500" width="16" height="30" rx="4" fill="#a87a2e"/>
+  <!-- light switch by the door -->
+  <rect x="1162" y="420" width="30" height="46" rx="5" fill="#fffbf5"/><rect x="1172" y="430" width="10" height="16" rx="3" fill="#d9c6a6"/>
+  <!-- ceiling lamp -->
+  <rect x="757" y="-180" width="6" height="210" fill="#7a5134"/>
+  <path d="M722 70 C722 38 740 24 760 24 C780 24 798 38 798 70 Z" fill="#f6c453"/>
+  <ellipse cx="760" cy="72" rx="38" ry="6" fill="#fbe3a0"/>
+  <!-- baseboards -->
+  <rect x="-240" y="748" width="2400" height="22" fill="#fffbf5"/>
+  <rect x="-240" y="770" width="2400" height="10" fill="#3b2e3a" opacity="0.12"/>
+</svg>

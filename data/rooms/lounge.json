@@ -1,7 +1,7 @@
 {
   "_help": "Room template. pos/size in stage pixels (1920x1080). Furniture spots are rects in the furniture's own coordinates. locks: lock types the spot can host. tools: for hidden spots, which tool is needed (null = just search). clue: the spot can carry a clue. See docs/DATA_FORMAT.md.",
   "id": "lounge",
-  "name": "Sunrise Lounge",
+  "name": "The living room",
   "background": "rooms/lounge_bg.svg",
   "light": "rooms/lounge_light.svg",
   "view_far": "rooms/view_far.svg",
@@ -10,7 +10,8 @@
   "sun_x": 980,
   "sky_rect": [520, 70, 1260, 720],
   "music": "level_lounge",
-  "door": {"name": "the balcony door", "rect": [1480, 110, 260, 650]},
+  "door": {"name": "the garden doors", "rect": [1480, 110, 260, 650]},
+  "dog_spot": [1300, 930],
   "furniture": [
     {"id": "rug", "name": "the rug", "sprite": "props/lounge/rug.svg", "pos": [510, 870], "size": [900, 170],
      "spots": [{"id": "rug", "name": "under the rug", "rect": [120, 30, 660, 110], "locks": ["hidden"], "tools": [null], "reveal": "a loose floorboard"}],

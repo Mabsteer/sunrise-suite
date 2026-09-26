@@ -1,0 +1,59 @@
+{
+  "_help": "Room template. See docs/DATA_FORMAT.md. pos/size in stage pixels; spot rects in the furniture's own coordinates. The shed: 'the girl at the flower stall' (docs/STORY.md).",
+  "id": "shed",
+  "name": "The shed",
+  "background": "rooms/shed_bg.svg",
+  "light": "rooms/shed_light.svg",
+  "view_far": "rooms/view_far.svg",
+  "horizon_y": 290,
+  "sun_x": 410,
+  "sky_rect": [290, 150, 240, 210],
+  "music": "level_shed",
+  "door": {"name": "the side door", "rect": [1660, 200, 220, 580]},
+  "dog_spot": [980, 940],
+  "furniture": [
+    {"id": "flower_cart", "name": "the flower cart", "sprite": "props/shed/flower_cart.svg", "pos": [40, 360], "size": [560, 430],
+     "spots": [
+       {"id": "drawer", "name": "the flower cart's drawer", "rect": [190, 326, 180, 46], "locks": ["combo", "key", "pattern", "order"]},
+       {"id": "buckets", "name": "the flower buckets", "rect": [30, 176, 500, 114], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "something tucked between the buckets"},
+       {"id": "sign", "name": "the painted sign", "rect": [150, 100, 260, 70], "clue": true}
+     ],
+     "flavor": "Rose's flower cart from the market. It still smells a little of sweet peas."},
+    {"id": "pegboard", "name": "the pegboard", "sprite": "props/shed/pegboard.svg", "pos": [670, 160], "size": [580, 290],
+     "spots": [
+       {"id": "tools", "name": "the tools on the pegboard", "rect": [0, 0, 400, 280], "clue": true},
+       {"id": "outline", "name": "the empty wrench outline", "rect": [410, 30, 80, 200], "locks": ["hidden"], "tools": [null], "reveal": "something behind the pegboard"}
+     ],
+     "flavor": "Every tool has its painted outline. Céline's father was very particular."},
+    {"id": "workbench", "name": "the workbench", "sprite": "props/shed/workbench.svg", "pos": [650, 440], "size": [620, 340],
+     "spots": [
+       {"id": "left_drawer", "name": "the workbench's left drawer", "rect": [60, 100, 240, 60], "locks": ["combo", "key", "sudoku"]},
+       {"id": "right_drawer", "name": "the workbench's right drawer", "rect": [320, 100, 240, 60], "locks": ["key", "combo", "pattern"]},
+       {"id": "scales", "name": "the old scales", "rect": [200, 0, 290, 70], "clue": true}
+     ],
+     "flavor": "Maman weighed everything twice. The customers loved her for it."},
+    {"id": "shelves", "name": "the shelves", "sprite": "props/shed/shelves.svg", "pos": [1320, 150], "size": [290, 310],
+     "spots": [{"id": "jar", "name": "the jar on the shelf", "rect": [190, 70, 60, 60], "locks": ["hidden"], "tools": [null, "fishing_magnet"], "reveal": "something at the bottom of the jar of screws"}],
+     "flavor": "Paint for the shed: blue, always blue."},
+    {"id": "bicycle", "name": "the bicycle", "sprite": "props/shed/bicycle.svg", "pos": [1300, 500], "size": [340, 290],
+     "spots": [
+       {"id": "lock", "name": "the bicycle lock", "rect": [140, 196, 80, 56], "locks": ["combo"]},
+       {"id": "basket", "name": "the bicycle basket", "rect": [232, 40, 90, 88], "clue": true}
+     ],
+     "flavor": "Céline delivered bouquets on this bicycle all over town. Henri once chased it for two streets."},
+    {"id": "soil_sack", "name": "the sack of soil", "sprite": "props/shed/soil_sack.svg", "pos": [1140, 780], "size": [160, 180],
+     "spots": [{"id": "soil", "name": "the sack of soil", "rect": [10, 20, 140, 150], "locks": ["hidden"], "tools": [null, "trowel"], "reveal": "something buried in the soil"}],
+     "flavor": "Potting soil for the tomatoes. Mamie always said: talk to them, they grow faster."}
+  ],
+  "wall_slots": [
+    {"id": "wall_left", "rect": [60, 170, 170, 160], "accepts": ["wall", "wall_small"]},
+    {"id": "wall_mid", "rect": [530, 180, 130, 150], "accepts": ["wall", "wall_small"]}
+  ],
+  "surface_slots": [
+    {"id": "bench_1", "anchor": [770, 500], "max": [110, 100], "name": "the workbench"},
+    {"id": "bench_2", "anchor": [1150, 500], "max": [110, 100], "name": "the workbench"},
+    {"id": "shelf_top", "anchor": [1400, 270], "max": [90, 90], "name": "the shelf"},
+    {"id": "cart_top", "anchor": [320, 650], "max": [120, 100], "name": "the flower cart"},
+    {"id": "floor_1", "anchor": [900, 950], "max": [120, 110], "name": "the shed floor"}
+  ]
+}

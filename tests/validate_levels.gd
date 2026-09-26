@@ -107,7 +107,7 @@ func _print_level(level: Dictionary) -> void:
 
 static func available_rooms() -> Array[String]:
 	var rooms: Array[String] = []
-	for r in ["lounge", "kitchen", "study"]:
+	for r in Campaign.ROUTE:
 		if ResourceLoader.exists("res://data/rooms/%s.json" % r) or FileAccess.file_exists("res://data/rooms/%s.json" % r):
 			rooms.append(r)
 	return rooms

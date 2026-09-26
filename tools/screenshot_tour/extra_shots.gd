@@ -54,8 +54,8 @@ static func fake_postcards(count: int) -> void:
 
 func shots() -> Array[Dictionary]:
 	return [
-		{"name": "tutorial_start", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("main_01"), "mode": "main", "record_id": "main_01"}, "frames": 60},
-		{"name": "tutorial_combine", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("main_01"), "mode": "main", "record_id": "main_01"}, "action": func(s: Node) -> void:
+		{"name": "tutorial_start", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_kitchen"), "mode": "main", "record_id": "w1_kitchen"}, "frames": 60},
+		{"name": "tutorial_combine", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_kitchen"), "mode": "main", "record_id": "w1_kitchen"}, "action": func(s: Node) -> void:
 			var session: LevelSession = s.get("session")
 			session.see_clue("c_welcome")
 			session.submit_answer("drawers", "714")
@@ -69,6 +69,18 @@ func shots() -> Array[Dictionary]:
 					break
 				LevelSolver.apply_goal(session, session.next_goal()), "frames": 110},
 		{"name": "settings", "screen": "main_menu", "action": func(s: Node) -> void: s.add_child(SettingsPanel.new()), "frames": 30},
+		{"name": "chapter_card", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "main", "record_id": "w1_hall"}, "frames": 40},
+		{"name": "room_hall_start", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "test"}, "frames": 40},
+		{"name": "finale_letter", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_front_garden"), "mode": "main", "record_id": "w1_front_garden"}, "action": func(s: Node) -> void:
+			for c in s.get("ui").find_children("*", "Button", true, false):
+				if (c as Button).text == TranslationServer.translate("CHAPTER_START"):
+					(c as Button).pressed.emit()
+			var session: LevelSession = s.get("session")
+			for i in 120:
+				if session.finished:
+					break
+				LevelSolver.apply_goal(session, session.next_goal()), "frames": 300},
+		{"name": "scrapbook_chapter", "screen": "scrapbook", "setup": func() -> void: fake_postcards(3), "action": func(s: Node) -> void: s.call("show_chapter", "hall"), "frames": 30},
 		{"name": "scrapbook_empty", "screen": "scrapbook", "frames": 30},
 		{"name": "scrapbook_some", "screen": "scrapbook", "setup": func() -> void: fake_postcards(3), "frames": 30},
 		{"name": "scrapbook_card", "screen": "scrapbook", "setup": func() -> void: fake_postcards(3), "action": func(s: Node) -> void: s.call("show_postcard", "kyoto"), "frames": 30},
@@ -80,7 +92,7 @@ func shots() -> Array[Dictionary]:
 					(b as Button).pressed.emit()
 					break, "frames": 40},
 		{"name": "scrapbook_letter", "screen": "scrapbook", "setup": func() -> void: fake_postcards(5), "action": func(s: Node) -> void: s.call("show_letter"), "frames": 30},
-		{"name": "level_postcard", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("main_09"), "mode": "main", "record_id": "main_09"}, "action": func(s: Node) -> void:
+		{"name": "level_postcard", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "main", "record_id": "w1_hall"}, "action": func(s: Node) -> void:
 			var session: LevelSession = s.get("session")
 			var pc: Dictionary = session.level["postcard"]
 			while not session.accessible(str(pc["location"])):
@@ -126,8 +138,11 @@ func shots() -> Array[Dictionary]:
 		{"name": "gen_lounge_t5", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 5, 55)}},
 		{"name": "gen_lounge_t10", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 10, 1010)}},
 		{"name": "gen_kitchen_t8", "screen": "level", "params": {"level": LevelGenerator.generate("kitchen", 8, 808)}},
-		{"name": "gen_study_t9", "screen": "level", "params": {"level": LevelGenerator.generate("study", 9, 909)}},
-		{"name": "gen_study_t2", "screen": "level", "params": {"level": LevelGenerator.generate("study", 2, 202)}},
+		{"name": "gen_shed_t9", "screen": "level", "params": {"level": LevelGenerator.generate("shed", 9, 909)}},
+		{"name": "gen_garden_t4", "screen": "level", "params": {"level": LevelGenerator.generate("garden", 4, 404)}},
+		{"name": "gen_hall_t6", "screen": "level", "params": {"level": LevelGenerator.generate("hall", 6, 606)}},
+		{"name": "gen_bedroom_t8", "screen": "level", "params": {"level": LevelGenerator.generate("bedroom", 8, 808)}},
+		{"name": "gen_front_garden_t10", "screen": "level", "params": {"level": LevelGenerator.generate("front_garden", 10, 1001)}},
 		{"name": "level_inventory", "screen": "level", "params": TEST_LEVEL, "action": func(s: Node) -> void:
 			s.call("tap", "item:i_flashlight_empty")
 			s.call("select_item", "i_flashlight_empty"), "frames": 60},

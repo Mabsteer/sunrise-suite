@@ -2,9 +2,6 @@ keys,en
 TITLE,Sunrise Suite
 SUBTITLE,Mamie Céline's house by the sea
 COMING_SOON,"The sun is almost up... more rooms arrive every day."
-Sunrise Lounge,Sunrise Lounge
-Kitchen & Bar,Kitchen & Bar
-Henri's Study,Henri's Study
 MODE_TIER,Sunrise %d
 MODE_DAILY,Daily Sunrise
 MODE_ENDLESS,Endless Sunrise %d
@@ -57,8 +54,8 @@ RESULTS_SHELLS,+%d seashells
 CONTINUE,Continue
 REPLAY,Play again
 MENU_TRY_ROOM,Try the test room
-MENU_PLAY,Start your first sunrise
-MENU_CONTINUE,Mamie's Sunrise Book
+MENU_PLAY,Start Mamie's treasure hunt
+MENU_CONTINUE,Céline's house
 MENU_DAILY,Daily Sunrise
 MENU_DAILY_DONE,Daily Sunrise (done today!)
 MENU_PENTHOUSE,The sunroom
@@ -67,29 +64,29 @@ MENU_SETTINGS,Settings
 BACK,Back
 OK,OK
 CANCEL,Never mind
-BOOK_TITLE,Mamie's Sunrise Book
+BOOK_TITLE,Céline's house
 TIER_TITLE,Sunrise %d
-GATE_NEEDS,Needs %d stars
+GATE_NEEDS,Opens with %d stars
 LOCKED_TITLE,Not yet!
-LOCKED_PREVIOUS,Finish the sunrise before this one first.
-LOCKED_STARS,"This page opens with %d stars. Replay earlier rooms for more stars: finish quickly, and ask for 1 hint or fewer."
+LOCKED_PREVIOUS,Finish the room before this one first.
+LOCKED_STARS,"This walk opens with %d stars. Replay earlier rooms for more stars: finish quickly, and ask for 1 hint or fewer."
 LOCKED_SOON,This room is still being decorated. Check back soon!
-LEVEL_POPUP_TITLE,Sunrise %d
+LEVEL_POPUP_TITLE,%s
 LEVEL_POPUP_TEXT,"Play the same puzzle again, or one of Mamie's other riddles in this room?"
 PLAY_AGAIN_SAME,Same puzzle again
 PLAY_FRESH,A fresh puzzle
 POSTCARD_HERE,A postcard is hidden in this room!
 ENDLESS_TITLE,Endless Sunrise
-ENDLESS_LOCKED,Finish all 30 sunrises to unlock endless puzzles that keep getting trickier.
-ENDLESS_READY,Puzzles that keep getting trickier. How far can you go?
+ENDLESS_LOCKED,Finish all three walks to unlock an endless hunt round the house that keeps getting trickier.
+ENDLESS_READY,"The hunt keeps going round the house, trickier every room. How far can you go?"
 ENDLESS_BEST,Best so far: Sunrise %d
 ENDLESS_PLAY,Play Endless
-UNLOCK_NEXT,The next sunrise is unlocked!
+UNLOCK_NEXT,The way to %s is open!
 UNLOCK_GATE,Sunrise %d is open now!
-UNLOCK_ENDLESS,You've finished Mamie's book! Endless Sunrise is open.
-NEXT_LEVEL,Next sunrise
+UNLOCK_ENDLESS,You've done every hunt in the shoebox! Endless Sunrise is open.
+NEXT_LEVEL,Next room
 NEXT_ENDLESS,Next endless sunrise
-BACK_TO_BOOK,Back to the book
+BACK_TO_BOOK,Back to the house
 HUB_TITLE,The sunroom
 HUB_TIP,"This is your sunroom now. Tap Decorate to make it yours, and spend seashells at the Saturday market!"
 DECORATE,Decorate
@@ -108,7 +105,7 @@ DECOR_BOUGHT,"%s is yours! Use Decorate to place it."
 DECOR_LOCKED,Earn it
 CATALOG_BUTTON,Saturday market
 CATALOG_TITLE,The Saturday market
-REWARD_LEVEL,Finish sunrise %d to earn this.
+REWARD_LEVEL,Finish %s to earn this.
 REWARD_STREAK,Play the Daily Sunrise %d days in a row to earn this.
 REWARD_POSTCARDS,Find all the postcards from Mamie's life to earn this.
 REWARD_SECRET,A secret reward...
@@ -151,13 +148,13 @@ CALENDAR_HELP,Every sunrise you finish paints its day in the calendar.
 DAILY_STREAK,"Daily streak: %d days!"
 DAILY_SLEEP_IN_USED,You slept in - your weekly sleep-in kept the streak going.
 BACK_TO_CALENDAR,Back to the calendar
-POSTCARD_ALL_FOUND,You found every postcard! Mamie's last letter is in the scrapbook.
+POSTCARD_ALL_FOUND,You found every postcard from Céline's life!
 SCRAPBOOK_TITLE,Céline's scrapbook
 SCRAPBOOK_COUNT,%d of %d postcards
-SCRAPBOOK_LETTER,Read Mamie's last letter
-SCRAPBOOK_LETTER_LOCKED,Find all the postcards to read Mamie's last letter
-SCRAPBOOK_MISSING,A postcard is still hidden somewhere...
-SCRAPBOOK_HINT,Hidden somewhere in Sunrise %d
+SCRAPBOOK_LETTER,Mamie's last letter
+SCRAPBOOK_LETTER_LOCKED,Finish Mamie's treasure hunt to read her last letter
+SCRAPBOOK_MISSING,The postcard is still hidden
+SCRAPBOOK_HINT,Still hidden in %s
 POSTCARD_TURN,Turn it over
 SETTINGS_MASTER,Everything
 SETTINGS_MUSIC,Music
@@ -180,7 +177,7 @@ ROTATE_HINT,Turn your phone sideways for the best sunrise view.
 ROTATE_OK,Play like this anyway
 STEPS_INFO,%d of %d steps
 RESULTS_NEW_BEST,New best time!
-MENU_NEXT,Next sunrise: %d
+MENU_NEXT,Next: %s
 DIFF_EASY,Gentle
 DIFF_MEDIUM,Medium
 DIFF_HARD,Tricky
@@ -189,3 +186,23 @@ ORDER_HELP,"Tap two things to swap them. When the order is right, tap Open."
 SUDOKU_HELP,"Tap an empty square to write 1, 2, 3 or 4. Every row, column and box needs each number once."
 PATTERN_HELP,"What comes next? Tap a gap, then fill it in."
 ROTATE_HELP,Tap a tile to turn it. Turn them all the right way up.
+WALK_1_TITLE,Mamie's last treasure hunt
+WALK_1_SUBTITLE,"Through the house, and back through her life."
+WALK_2_TITLE,The shoebox: when you were small
+WALK_2_SUBTITLE,The treasure hunts Mamie made for you every summer.
+WALK_3_TITLE,The shoebox: when you were big
+WALK_3_SUBTITLE,"The trickiest hunts, from your last summers here."
+UNLOCK_WALK,%s is open now!
+MODE_WALK,%s · %d of 7
+CHAPTER_OF,Chapter %d of 7
+CHAPTER_START,Begin
+The kitchen,The kitchen
+The hall,The hall
+The bedroom,The bedroom
+The living room,The living room
+The garden,The garden
+The shed,The shed
+The front garden,The front garden
+SCRAPBOOK_MEMORIES,%d of %d memories
+SCRAPBOOK_NO_MEMORIES,Memories from this time
+SCRAPBOOK_MEMORY_WAITING,A memory is still waiting in this room

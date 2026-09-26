@@ -27,7 +27,7 @@ The owner's playtest feedback changes the direction: difficulty must come from t
   - A key is always the reward of a solved puzzle, never lying around.
   - Hiding is no longer a difficulty knob: at most one search spot per level, never holding a key.
   - `tiers.json` reworked around thinking: number of puzzles, which puzzle types, riddle depth, chaining, puzzle size. Validator, solver, hints, autoplay and par-time model updated. `DATA_FORMAT.md` documents every new lock.
-- [ ] **F4 The house route**
+- [x] **F4 The house route**
   - Seven rooms in one route: kitchen → hall → bedroom → living room → garden → shed → front garden. Five new rooms (hall, bedroom, garden, shed, front garden) with their own art, furniture and puzzle flavours; the kitchen and living room are adapted; the study retires.
   - The campaign becomes walks through the house: walk 1 is the story, walks 2 and 3 are Mamie's old treasure hunts (generated, harder). Each room's exit leads to the next room, and the sunrise spans the whole walk.
   - Level select shows the route; chapter cards at the start and end of each story room; the scrapbook becomes Céline's life (memories and postcards per period, the last letter at the end).
@@ -40,7 +40,7 @@ The owner's playtest feedback changes the direction: difficulty must come from t
 - [ ] **F8 Polish and summary**
 
 ## Next
-- F4: the house route (new rooms, walks, level select, scrapbook).
+- F5: Chloé (sprites, finding her in the hall, dog actions and care tasks).
 
 ## Known issues
 - Portrait phones show a "turn your phone sideways" card (it can be dismissed); the game is designed for landscape.

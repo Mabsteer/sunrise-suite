@@ -46,7 +46,7 @@ static func week_key(key: String) -> String:
 ## Returns { "day": key, "room": room_id, "tier": int, "seed": int } for the given day.
 func level_for(key: String) -> Dictionary:
 	var cfg := Data.get_dict("daily")
-	var rooms: Array = cfg.get("rooms", ["lounge", "kitchen", "study"])
+	var rooms: Array = cfg.get("rooms", Array(Campaign.ROUTE))
 	var weekday_tiers: Array = cfg.get("weekday_tiers", [4, 2, 3, 4, 5, 6, 7])
 	var date := parse_key(key)
 	var weekday := int(date.get("weekday", 0))

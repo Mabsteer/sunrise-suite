@@ -1,0 +1,51 @@
+{
+  "_help": "Room template. See docs/DATA_FORMAT.md. pos/size in stage pixels; spot rects in the furniture's own coordinates. The front garden: 'where it began' (docs/STORY.md). Outdoor: sky and sea are visible over the street; the sun rises above the gate.",
+  "id": "front_garden",
+  "name": "The front garden",
+  "background": "rooms/front_garden_bg.svg",
+  "light": "rooms/front_garden_light.svg",
+  "horizon_y": 428,
+  "sun_x": 960,
+  "sky_rect": [-240, -180, 2400, 660],
+  "music": "level_front_garden",
+  "outdoor": true,
+  "door": {"name": "the garden gate", "rect": [860, 450, 200, 160]},
+  "dog_spot": [1240, 920],
+  "furniture": [
+    {"id": "roses", "name": "Rose's roses", "sprite": "props/front_garden/roses.svg", "pos": [60, 470], "size": [430, 280],
+     "spots": [
+       {"id": "soil", "name": "the soil under the roses", "rect": [0, 236, 430, 44], "locks": ["hidden"], "tools": [null, "trowel"], "reveal": "something buried under the rose bush"},
+       {"id": "flowers", "name": "the roses", "rect": [20, 40, 390, 190], "clue": true}
+     ],
+     "flavor": "Rose planted these the year Céline was born. They still come back every June."},
+    {"id": "bench", "name": "the bench", "sprite": "props/front_garden/bench.svg", "pos": [180, 760], "size": [300, 170],
+     "spots": [{"id": "under", "name": "under the bench", "rect": [20, 100, 260, 60], "locks": ["hidden"], "tools": [null], "reveal": "something tucked under the bench"}],
+     "flavor": "Mamie's morning bench. Coffee, the newspaper, and a wave for everyone going to the market."},
+    {"id": "hopscotch", "name": "the hopscotch", "sprite": "props/front_garden/hopscotch.svg", "pos": [760, 690], "size": [400, 280],
+     "spots": [{"id": "squares", "name": "the chalk hopscotch", "rect": [100, 20, 200, 250], "locks": ["sequence", "pattern"], "clue": true}],
+     "flavor": "Chalk squares on the path. Someone has been playing hopscotch here very recently. Juliette? Mamie?"},
+    {"id": "letterbox", "name": "the letterbox", "sprite": "props/front_garden/letterbox.svg", "pos": [1110, 400], "size": [120, 270],
+     "spots": [
+       {"id": "box", "name": "the letterbox", "rect": [10, 16, 100, 86], "locks": ["combo", "key"]},
+       {"id": "number", "name": "the house number", "rect": [30, 108, 60, 38], "clue": true}
+     ],
+     "flavor": "Number 12. The postman still says good morning to it."},
+    {"id": "pine", "name": "the old pine", "sprite": "props/front_garden/pine.svg", "pos": [1460, -40], "size": [460, 820],
+     "spots": [
+       {"id": "hollow", "name": "the hollow in the pine", "rect": [200, 480, 54, 80], "locks": ["hidden"], "tools": [null, "flashlight"], "reveal": "something deep in the hollow"},
+       {"id": "swing", "name": "the swing", "rect": [310, 590, 130, 50], "clue": true}
+     ],
+     "flavor": "Céline's father hung this swing in 1944. The ropes have been replaced four times. The seat never."}
+  ],
+  "wall_slots": [
+    {"id": "fence_right", "rect": [1270, 470, 150, 120], "accepts": ["wall", "wall_small"]},
+    {"id": "fence_left", "rect": [560, 470, 150, 120], "accepts": ["wall", "wall_small"]}
+  ],
+  "surface_slots": [
+    {"id": "bench_1", "anchor": [280, 840], "max": [110, 100], "name": "the bench"},
+    {"id": "bench_2", "anchor": [390, 840], "max": [110, 100], "name": "the bench"},
+    {"id": "letterbox_top", "anchor": [1170, 414], "max": [90, 80], "name": "the top of the letterbox"},
+    {"id": "swing_seat", "anchor": [1831, 574], "max": [100, 80], "name": "the swing"},
+    {"id": "path", "anchor": [1200, 1000], "max": [130, 110], "name": "the garden path"}
+  ]
+}

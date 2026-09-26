@@ -17,7 +17,7 @@ func _shots() -> Array[Dictionary]:
 	var list: Array[Dictionary] = [
 		{"name": "main_menu", "screen": "main_menu"},
 	]
-	for room in ["lounge", "kitchen", "study"]:
+	for room in Campaign.ROUTE:
 		if not ResourceLoader.exists("res://data/rooms/%s.json" % room):
 			continue
 		for t in [0.0, 0.5, 1.0]:

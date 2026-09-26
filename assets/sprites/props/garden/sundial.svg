@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 230" width="170" height="230">
+  <!-- Stone sundial that Henri set 'to our time'. -->
+  <ellipse cx="85" cy="222" rx="70" ry="8" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="50" y="90" width="70" height="120" rx="8" fill="#e3d3b5"/>
+  <rect x="42" y="200" width="86" height="20" rx="6" fill="#cdb996"/>
+  <rect x="38" y="80" width="94" height="18" rx="6" fill="#cdb996"/>
+  <ellipse cx="85" cy="62" rx="80" ry="28" fill="#d4a24c"/>
+  <ellipse cx="85" cy="58" rx="72" ry="23" fill="#f0c877"/>
+  <path d="M143.0 58.0 L151.0 58.0" stroke="#a87a2e" stroke-width="3"/><path d="M135.2 67.0 L142.2 68.3" stroke="#a87a2e" stroke-width="3"/><path d="M114.0 73.6 L118.0 75.8" stroke="#a87a2e" stroke-width="3"/><path d="M85.0 76.0 L85.0 78.5" stroke="#a87a2e" stroke-width="3"/><path d="M56.0 73.6 L52.0 75.8" stroke="#a87a2e" stroke-width="3"/><path d="M34.8 67.0 L27.8 68.3" stroke="#a87a2e" stroke-width="3"/><path d="M27.0 58.0 L19.0 58.0" stroke="#a87a2e" stroke-width="3"/><path d="M34.8 49.0 L27.8 47.8" stroke="#a87a2e" stroke-width="3"/><path d="M56.0 42.4 L52.0 40.2" stroke="#a87a2e" stroke-width="3"/><path d="M85.0 40.0 L85.0 37.5" stroke="#a87a2e" stroke-width="3"/><path d="M114.0 42.4 L118.0 40.2" stroke="#a87a2e" stroke-width="3"/><path d="M135.2 49.0 L142.2 47.7" stroke="#a87a2e" stroke-width="3"/>
+  <path d="M85 58 L85 22 L120 58 Z" fill="#a87a2e"/>
+  <path d="M85 58 L40 70" stroke="#7a5134" stroke-width="5" opacity="0.4"/>
+</svg>

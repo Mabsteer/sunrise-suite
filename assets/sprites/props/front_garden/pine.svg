@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 820" width="460" height="820">
+  <!-- The old pine with a hollow in its trunk and Céline's childhood swing hanging from a branch. -->
+  <ellipse cx="230" cy="806" rx="150" ry="14" fill="#3b2e3a" opacity="0.22"/>
+  <path d="M200 810 C196 600 190 400 206 180 L246 180 C252 400 250 600 262 810 Z" fill="#7a5134"/>
+  <path d="M210 800 C208 600 206 420 214 220" stroke="#a8744a" stroke-width="8" fill="none" opacity="0.6"/>
+  <path d="M230 330 C300 300 360 300 430 320" stroke="#7a5134" stroke-width="22" fill="none" stroke-linecap="round"/>
+  <ellipse cx="230" cy="120" rx="210" ry="110" fill="#3f6a52"/><ellipse cx="160" cy="200" rx="150" ry="70" fill="#4f7a5e"/>
+  <ellipse cx="330" cy="200" rx="130" ry="64" fill="#4f7a5e"/><ellipse cx="230" cy="70" rx="130" ry="60" fill="#5e8a68"/>
+  <ellipse cx="400" cy="300" rx="70" ry="36" fill="#4f7a5e"/>
+  <!-- hollow in the trunk -->
+  <ellipse cx="226" cy="520" rx="18" ry="30" fill="#3b2e3a"/><ellipse cx="226" cy="520" rx="12" ry="24" fill="#5e3e28"/>
+  <!-- the swing -->
+  <path d="M330 318 L330 620 M410 322 L410 620" stroke="#e9dcc2" stroke-width="5"/>
+  <rect x="316" y="614" width="110" height="18" rx="6" fill="#c8674a"/><rect x="316" y="614" width="110" height="5" rx="2" fill="#e08e6d"/>
+</svg>

@@ -78,6 +78,23 @@ export function frame([x, y, w, h], fw, fill, shade = "#e9d6b8") {
   <rect x="${x + w - 3}" y="${y}" width="3" height="${h}" fill="${shade}"/>`;
 }
 
+// A handwritten-looking digit (0-9) drawn with strokes (SVG text isn't allowed). (x, y) = top-left.
+const SEGMENTS = { 0: "abcdef", 1: "bc", 2: "abged", 3: "abgcd", 4: "fgbc", 5: "afgcd", 6: "afgedc", 7: "abc", 8: "abcdefg", 9: "abcdfg" };
+export function digit(d, x, y, h, color, width = 3) {
+  const w = h * 0.55, s = h * 0.08; // slant
+  const P = { tl: [x + s, y], tr: [x + w + s, y], ml: [x + s / 2, y + h / 2], mr: [x + w + s / 2, y + h / 2], bl: [x, y + h], br: [x + w, y + h] };
+  const seg = { a: ["tl", "tr"], b: ["tr", "mr"], c: ["mr", "br"], d: ["br", "bl"], e: ["bl", "ml"], f: ["ml", "tl"], g: ["ml", "mr"] };
+  const parts = (d === 1 ? "bc" : SEGMENTS[d]).split("").map((k) => {
+    const [p, q] = seg[k];
+    return `M${P[p][0].toFixed(1)} ${P[p][1].toFixed(1)} L${P[q][0].toFixed(1)} ${P[q][1].toFixed(1)}`;
+  });
+  return `<path d="${parts.join(" ")}" stroke="${color}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`;
+}
+
+export function number(n, x, y, h, color, width = 3) {
+  return String(n).split("").map((ch, i) => digit(Number(ch), x + i * h * 0.75, y, h, color, width)).join("");
+}
+
 export function glassReflections([x, y, w, h]) {
   return `<polygon points="${x + w * 0.1},${y} ${x + w * 0.24},${y} ${x},${y + h * 0.36} ${x},${y + h * 0.2}" fill="#fffbf5" opacity="0.13"/>
   <polygon points="${x + w * 0.72},${y} ${x + w * 0.8},${y} ${x + w * 0.46},${y + h * 0.6} ${x + w * 0.38},${y + h * 0.6}" fill="#fffbf5" opacity="0.08"/>`;
