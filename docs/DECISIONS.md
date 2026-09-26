@@ -90,3 +90,8 @@ One line per decision: what, and why.
 - Story-level par times are about 1.5-2x the solver's estimate (the same margin as the generated tiers); validate_levels fails a hand-made level whose par is under its estimate + 10%.
 - The pencil marks in the hall now read 5-15 (Juliette first came at five, STORY.md), so the console code is 579.
 - Keys stay rewards in the story levels too, so the story sometimes bends: Gaston is behind the summer photos, the leash is kept in the letterbox ("Maman kept the leash for her old dog in the letterbox. So do I."), Henri's newspaper is in his wedding jacket.
+- Zoom (F7) is a player view on top of the room (RoomView.view_zoom / view_center), separate from the small camera moves (settle in, lean toward the door), so both can work at once. Up to 2.5x; at 1x the room is exactly as before.
+- Gestures never steal taps: a press only becomes a look-around drag after 24 px (a tap allows 40 px of wobble), a drag or pinch swallows its release so nothing opens by accident, and dragging an item from the bag never pans. Zoom is off while a close-up, dialog or the pause menu is open.
+- Double-tap zooms in on empty spots only: tapping furniture already opens its close-up, which is the "look closer" for things you can use. Double-tap again (or the minus button) goes back to the whole room.
+- The + / - buttons sit bottom-left, away from the bag, for mouse players and anyone who doesn't pinch. When the door opens the view eases back to the whole room so the sunrise moment is always seen in full.
+- Zoomed in, the view may go a little past the top and bottom of the stage so things behind the top bar or the bag can be brought into the open.

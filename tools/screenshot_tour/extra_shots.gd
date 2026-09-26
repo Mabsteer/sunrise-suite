@@ -170,6 +170,7 @@ func shots() -> Array[Dictionary]:
 		{"name": "art_chloe", "screen": "art_sheet", "params": {"dirs": ["props/chloe"], "scale": 1.6}},
 		{"name": "art_puzzle_props", "screen": "art_sheet", "params": {"dirs": ["props/puzzles"], "scale": 1.3}},
 		{"name": "level_start", "screen": "level", "params": TEST_LEVEL},
+		{"name": "level_zoomed", "screen": "level", "params": TEST_LEVEL, "action": func(s: Node) -> void: (s.get("room_zoom") as RoomZoom).animate_to(2.0, Vector2(560, 560), 0.0), "frames": 30},
 		{"name": "gen_lounge_t1", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 1, 11)}},
 		{"name": "gen_lounge_t5", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 5, 55)}},
 		{"name": "gen_lounge_t10", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 10, 1010)}},

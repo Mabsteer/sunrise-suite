@@ -40,6 +40,14 @@ var zoom := 1.0:
 		zoom = value
 		_center_stage()
 var zoom_focus := Vector2(960, 540)
+## The player's own view (pinch, wheel, drag): how far zoomed in, and which stage point is in the
+## middle of the screen. 1 = the whole room. The camera-like `zoom` above works on top of it.
+var view_zoom := 1.0
+var view_center := STAGE_SIZE / 2.0
+## How far the view may go past the top and bottom of the stage when zoomed in (screen pixels),
+## so things behind the top bar and the inventory bar can be brought into view.
+const VIEW_MARGIN_TOP := 130.0
+const VIEW_MARGIN_BOTTOM := 190.0
 
 
 func _ready() -> void:
@@ -165,6 +173,36 @@ func animate_sunrise_to(target: float, seconds: float = 2.5) -> void:
 	_sunrise_tween.tween_property(self, "sunrise_t", target, seconds).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 
+## Zooms the player's view to `z`, keeping the stage point under `screen_pos` where it is.
+func zoom_view_at(screen_pos: Vector2, z: float) -> void:
+	var p := to_stage(screen_pos)
+	view_zoom = clampf(z, 1.0, 4.0)
+	view_center = zoom_focus - (screen_pos - _viewport_size() / 2.0) / view_zoom + zoom * (p - zoom_focus)
+	_clamp_view()
+	_center_stage()
+
+
+## Moves the player's view by a screen distance (dragging the room along with the finger).
+func pan_view(screen_delta: Vector2) -> void:
+	view_center -= screen_delta / view_zoom
+	_clamp_view()
+	_center_stage()
+
+
+## Keeps the view on the stage: at zoom 1 it is always centred.
+func _clamp_view() -> void:
+	var half := _viewport_size() / (2.0 * view_zoom)
+	var extra := 1.0 - 1.0 / view_zoom
+	var lo := Vector2(half.x, half.y - VIEW_MARGIN_TOP * extra)
+	var hi := Vector2(STAGE_SIZE.x - half.x, STAGE_SIZE.y - half.y + VIEW_MARGIN_BOTTOM * extra)
+	view_center.x = clampf(view_center.x, lo.x, hi.x) if lo.x <= hi.x else STAGE_SIZE.x / 2.0
+	view_center.y = clampf(view_center.y, lo.y, hi.y) if lo.y <= hi.y else STAGE_SIZE.y / 2.0
+
+
+func _viewport_size() -> Vector2:
+	return get_viewport().get_visible_rect().size if is_inside_tree() else STAGE_SIZE
+
+
 ## Converts a viewport position (e.g. from a touch) into stage coordinates.
 func to_stage(viewport_pos: Vector2) -> Vector2:
 	return stage.get_global_transform_with_canvas().affine_inverse() * viewport_pos if stage else viewport_pos
@@ -246,9 +284,15 @@ func _center_stage() -> void:
 	if stage == null or not is_inside_tree():
 		return
 	var vp := get_viewport().get_visible_rect().size
-	var base := ((vp - STAGE_SIZE) / 2.0).floor()
-	stage.scale = Vector2(zoom, zoom)
-	stage.position = base + zoom_focus * (1.0 - zoom)
+	if view_zoom <= 1.0:
+		var base := ((vp - STAGE_SIZE) / 2.0).floor()
+		stage.scale = Vector2(zoom, zoom)
+		stage.position = base + zoom_focus * (1.0 - zoom)
+		return
+	# The player's view (centre point in the middle of the screen), then the camera zoom around zoom_focus.
+	_clamp_view()
+	stage.scale = Vector2.ONE * view_zoom * zoom
+	stage.position = (vp / 2.0 + view_zoom * (zoom_focus - view_center) - zoom * view_zoom * zoom_focus).floor()
 
 
 static func _ramp(colors: Array[Color], t: float) -> Color:

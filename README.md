@@ -8,7 +8,8 @@ Made with [Godot 4.7](https://godotengine.org). The Windows version is built aut
 
 ## What's in the game
 - **One route through the whole house**: kitchen → hall → bedroom → living room → garden → shed → front garden. Each room's door leads to the next, and each room is one period of Céline's life, going back in time from her last years to her childhood. The sun rises over the whole walk and clears the sea as you open the front garden gate.
-- **Three walks**: Mamie's last treasure hunt (the story), then two harder walks with her old treasure hunts from the shoebox. Every room comes back harder.
+- **Chloé**, Mamie's little white Maltese: she hides in the hall, and once Juliette finds her she follows her into every room. She fetches things from under furniture, digs in soft soil, follows a scent you give her, and barks at what matters. Some things she only does when she's happy: breakfast, water, her leash, her brush, Gaston the squeaky seagull.
+- **Three walks**: Mamie's last treasure hunt (the story, seven hand-made rooms whose notes are her memories and riddles at once), then two harder walks with her old treasure hunts from the shoebox. Every room comes back harder.
 - **Puzzles that make you think**: number codes, symbol tunes, clocks, lamps, things to put in order, little 4×4 number squares, "what comes next?" patterns, turning-tile and sliding-tile pictures, keys, tools and item combinations. From level 2 on no code is written out: Mamie's notes are riddles (count the shells in the jar, sums, patterns, logic), and one puzzle often gives the answer to the next. Keys are always the reward for a solved puzzle.
 - **The sunrise is your progress bar**: every solved step brightens the sky.
 - **Replay** any room with a fresh puzzle, and **Endless Sunrise** (round and round the house) after the three walks.
@@ -22,6 +23,8 @@ Tap (or click) things in the room to look closer. Things you pick up go into you
 - Tap an item in the bag to select it, then tap something in the room to use it.
 - Tap the selected item again to look at it.
 - With one item selected, tap another to combine them (or drag one onto the other).
+- Chloé: tap her to see what she needs, or she trots over and barks at what matters now. Select something in the bag and tap her to give it to her. In a spot with a paw badge, ask her to fetch or dig.
+- Look closer: pinch (or use the mouse wheel, or the + and - buttons bottom left) to zoom in, drag to look around, and double-tap an empty spot to zoom in there or back out.
 - Stuck? Mamie's notebook (top right) gives hints that get more specific each time.
 - Keyboard: Esc closes things or pauses.
 
@@ -60,7 +63,8 @@ Follow [`docs/SUNO_PROMPTS.md`](docs/SUNO_PROMPTS.md): make a track in Suno, nam
 
 ### Edit story text
 - Postcards and Mamie's last letter: `data/postcards.json` (`\n` starts a new line).
-- Clue wording and decoy notes: `data/clues.json`.
+- Mamie's memories (the story notes in walk 1): `data/story.json`, under each chapter's `memories`. The story levels themselves are `data/levels/story_<room>.json`; if you change a riddle's answer there, change the memory text too. The whole story is in `docs/STORY.md`.
+- Clue wording and decoy notes of the generated levels: `data/clues.json`.
 - Tutorial guide bubbles: `data/tutorial.json`. The tutorial level itself: `data/levels/tutorial.json`.
 - Menu and button text: `i18n/strings.csv` (the `en` column). Add a column to translate the game.
 

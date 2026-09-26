@@ -36,11 +36,11 @@ The owner's playtest feedback changes the direction: difficulty must come from t
   - White Maltese sprites (sit, walk, sniff, dig, sleep). She is found in the hall, then follows Juliette and is visible in every later room (and in the sunroom).
   - Dog actions in levels: fetch (under furniture, through small gaps), dig, sniff (give her a scent to follow), bark at what matters, and care tasks (food, water, leash, her toy). Generator support and `DATA_FORMAT.md`.
 - [x] **F6 Story levels**: the seven hand-made story levels with the memories and riddles from `STORY.md`, a new kitchen tutorial, postcards in rooms 2–6, and the last letter at the front garden gate.
-- [ ] **F7 Zoom**: pinch and mouse-wheel zoom, drag to pan, zoom buttons, double-tap to zoom in on a spot.
+- [x] **F7 Zoom**: pinch and mouse-wheel zoom, drag to pan, zoom buttons, double-tap to zoom in on a spot.
 - [ ] **F8 Polish and summary**
 
 ## Next
-- F7: zoom (pinch and mouse wheel, drag to pan, zoom buttons, double-tap to zoom in on a spot).
+- F8: polish and the v2 summary (play the whole story walk, check the phone layout, tidy the docs).
 
 ## Known issues
 - Portrait phones show a "turn your phone sideways" card (it can be dismissed); the game is designed for landscape.

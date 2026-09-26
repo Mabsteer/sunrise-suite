@@ -20,6 +20,8 @@ var record_id := ""
 var inventory: InventoryBar
 var closeup: CloseupPanel
 var ui: CanvasLayer
+var room_zoom: RoomZoom
+var _zoom_out_button: Button
 var hotspots: Dictionary = {}
 var host_sprites: Dictionary = {}
 
@@ -145,6 +147,8 @@ func _notification(what: int) -> void:
 ## Handles a tap on something in the room (or in a close-up) by its key, e.g. "lock:safe", "item:i_key".
 func tap(key: String) -> void:
 	if session.finished:
+		return
+	if room_zoom and room_zoom.swallow_tap():
 		return
 	var kind := key.get_slice(":", 0)
 	var id := key.substr(kind.length() + 1)
@@ -562,6 +566,32 @@ func _build_ui() -> void:
 	_timer_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(_timer_label)
 
+	# Zoom buttons (bottom left) and the pinch / wheel / drag / double-tap handling.
+	var zoom_box := VBoxContainer.new()
+	zoom_box.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT)
+	zoom_box.offset_left = 28
+	zoom_box.offset_top = -236
+	zoom_box.offset_bottom = -24
+	zoom_box.add_theme_constant_override("separation", 12)
+	root.add_child(zoom_box)
+	var zoom_in := UIKit.icon_button("ui/zoom_in.svg", 96, tr("ZOOM_IN"))
+	zoom_box.add_child(zoom_in)
+	_zoom_out_button = UIKit.icon_button("ui/zoom_out.svg", 96, tr("ZOOM_OUT"))
+	zoom_box.add_child(_zoom_out_button)
+	room_zoom = RoomZoom.new(room_view)
+	room_zoom.name = "RoomZoom"
+	add_child(room_zoom)
+	room_zoom.blocked = func() -> bool: return closeup.is_open() or session.finished or _letter_open or get_tree().paused or _results != null
+	room_zoom.over_ui = _over_ui
+	room_zoom.zoom_changed.connect(func(_z: float) -> void: _update_zoom_buttons())
+	zoom_in.pressed.connect(func() -> void:
+		AudioManager.play_sfx("ui_click")
+		room_zoom.zoom_in())
+	_zoom_out_button.pressed.connect(func() -> void:
+		AudioManager.play_sfx("ui_click")
+		room_zoom.zoom_out())
+	_update_zoom_buttons()
+
 	# Close-up (below the inventory so items stay usable)
 	closeup = CloseupPanel.new()
 	root.add_child(closeup)
@@ -627,6 +657,26 @@ func _build_ui() -> void:
 	hv.add_child(hclose)
 
 
+func _update_zoom_buttons() -> void:
+	if _zoom_out_button:
+		_zoom_out_button.disabled = room_zoom.zoom() <= 1.001
+		_zoom_out_button.modulate.a = 0.45 if _zoom_out_button.disabled else 1.0
+
+
+## True when a screen position is over a button, the inventory bar or a dialog (not the room).
+func _over_ui(at: Vector2) -> bool:
+	for layer_child in ui.get_children():
+		var list: Array[Node] = [layer_child]
+		list.append_array(layer_child.get_children())
+		for n in list:
+			var c := n as Control
+			if c == null or not c.is_visible_in_tree() or c.mouse_filter == Control.MOUSE_FILTER_IGNORE:
+				continue
+			if c.get_global_rect().has_point(at):
+				return true
+	return false
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
@@ -657,6 +707,7 @@ func _open_door_glow() -> void:
 	var t := glow.create_tween()
 	t.tween_property(glow, "modulate:a", 0.45, 1.4).set_trans(Tween.TRANS_SINE)
 	t.tween_property(glow, "modulate:a", 0.25, 1.6).set_trans(Tween.TRANS_SINE)
+	room_zoom.reset(0.5)
 	room_view.lean_toward(rect.get_center(), 1.05, 2.8)
 	_sparkle_at(_hotspot_center("lock:" + session.door_id()), 4)
 

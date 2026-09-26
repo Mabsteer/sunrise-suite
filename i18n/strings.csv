@@ -227,3 +227,5 @@ DOG_PET,Chloé leans against your leg. Good girl.
 DOG_FOUND_IT,Chloé found something at %s!
 HUB_CHLOE,Chloé is asleep where the sun falls on the floor.
 MEMORY_KEPT,A memory for the scrapbook.
+ZOOM_IN,Zoom in
+ZOOM_OUT,Zoom out
