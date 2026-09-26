@@ -22,7 +22,7 @@ The owner's third playtest: a linear story over three chapters (days) of seven h
 - [x] **G0** Plan in PROGRESS.md and DECISIONS.md
 - [x] **G1** Sound: resume audio on the first tap (web), audio status, test-sound button
 - [x] **G2** Dev mode (tap the version 5 times in Settings)
-- [ ] **G3** Helpers off by default ("Show helpers" setting)
+- [x] **G3** Helpers off by default ("Show helpers" setting)
 - [ ] **G4** See-through, collapsible bag and Mamie's notebook (notes are taken along)
 - [ ] **G5** Chloé the new way: tap her, then a spot; hidden in the hall; care through behaviour
 - [ ] **G6** Walking from room to room: exits with a view of the next room, new hall stairs, toast per room

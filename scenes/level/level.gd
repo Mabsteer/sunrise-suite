@@ -327,9 +327,10 @@ func _place_host(key: String, host: Dictionary, _open: bool) -> void:
 				(hotspots[flavor_key] as Node).queue_free()
 				hotspots.erase(flavor_key)
 			_add_hotspot(key, rect, room_view.furniture_nodes.get(str(host.get("furniture", ""))))
-			# A little badge shows that this part of the furniture is locked, a puzzle, or needs a tool
-			# (the one search spot stays a secret).
-			if key.begins_with("lock:") and session.lock_type(key.substr(5)) not in ["hidden", "sniff"] and not session.finds_dog(key.substr(5)):
+			# With "Show helpers" on, a little badge shows that this part of the furniture is locked, a
+			# puzzle, or needs a tool (the one search spot stays a secret). Off by default: finding out
+			# what opens is part of the game.
+			if helpers_on() and key.begins_with("lock:") and session.lock_type(key.substr(5)) not in ["hidden", "sniff"] and not session.finds_dog(key.substr(5)):
 				var badge := Sprite2D.new()
 				badge.texture = UIKit.texture(_badge_for(session.lock_type(key.substr(5))))
 				badge.scale = Vector2(0.7, 0.7)
@@ -362,7 +363,9 @@ func _place_item(item_id: String, slot: String) -> void:
 	_props_layer.add_child(sprite)
 	host_sprites["item:" + item_id] = sprite
 	_add_hotspot("item:" + item_id, rect.grow(8), sprite)
-	# A tiny sparkle so loose items are noticeable.
+	# With "Show helpers" on, a tiny sparkle makes loose items easy to notice.
+	if not helpers_on():
+		return
 	var sparkle := Sprite2D.new()
 	sparkle.texture = UIKit.texture("ui/sparkle.svg")
 	sparkle.scale = Vector2(0.4, 0.4)
@@ -373,6 +376,12 @@ func _place_item(item_id: String, slot: String) -> void:
 		var t := sparkle.create_tween().set_loops()
 		t.tween_property(sparkle, "modulate:a", 0.2, 1.1).set_trans(Tween.TRANS_SINE)
 		t.tween_property(sparkle, "modulate:a", 1.0, 1.1).set_trans(Tween.TRANS_SINE)
+
+
+## "Show helpers" (Settings, off by default): badges on things that open, sparkles on loose
+## items, and Chloé barking at the next thing to do.
+static func helpers_on() -> bool:
+	return bool(SaveManager.settings.get("show_helpers", false))
 
 
 static func _badge_for(type: String) -> String:
@@ -1024,7 +1033,7 @@ func _tap_chloe() -> void:
 			AudioManager.play_sfx("dog_bark")
 			closeup.show_lock(id)
 			return
-	var target := _goal_hotspot(session.next_goal())
+	var target := _goal_hotspot(session.next_goal()) if helpers_on() else ""
 	if target == "" or not hotspots.has(target) or _chloe_busy:
 		AudioManager.play_sfx("dog_happy")
 		toast(tr("DOG_PET"))

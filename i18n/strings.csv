@@ -162,7 +162,7 @@ SETTINGS_SFX,Sound effects
 SETTINGS_AMBIENCE,Room sounds
 SETTINGS_TEST_SOUND,Play a test sound
 SETTINGS_FULLSCREEN,Full screen
-SETTINGS_TIMER,Show a timer in rooms
+SETTINGS_TIMER,Timer in rooms
 SETTINGS_REDUCE_MOTION,Reduce motion
 SETTINGS_TEXT_SIZE,Text size
 SETTINGS_TEXT_NOTE,Takes effect on the next screen.
@@ -230,7 +230,7 @@ HUB_CHLOE,Chloé is asleep where the sun falls on the floor.
 MEMORY_KEPT,A memory for the scrapbook.
 ZOOM_IN,Zoom in
 ZOOM_OUT,Zoom out
-SETTINGS_HELPERS,Show helpers (easier)
+SETTINGS_HELPERS,Show helpers
 SETTINGS_VERSION,Version %s
 SETTINGS_DEV,Dev
 DEV_ON,Dev mode on

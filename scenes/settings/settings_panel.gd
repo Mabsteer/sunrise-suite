@@ -49,10 +49,18 @@ func _ready() -> void:
 	var s := SaveManager.settings
 	for entry: Array in SLIDERS:
 		v.add_child(_slider_row(tr(str(entry[0])), str(entry[1]), float(s.get(str(entry[1]), 0.8))))
+	var toggles := GridContainer.new()
+	toggles.columns = 2
+	toggles.add_theme_constant_override("h_separation", 14)
+	toggles.add_theme_constant_override("v_separation", 14)
+	v.add_child(toggles)
 	if not OS.has_feature("mobile"):
-		v.add_child(_toggle_row(tr("SETTINGS_FULLSCREEN"), "fullscreen", func() -> void: SaveManager.apply_display()))
-	v.add_child(_toggle_row(tr("SETTINGS_TIMER"), "show_timer"))
-	v.add_child(_toggle_row(tr("SETTINGS_REDUCE_MOTION"), "reduce_motion"))
+		toggles.add_child(_toggle_row(tr("SETTINGS_FULLSCREEN"), "fullscreen", func() -> void: SaveManager.apply_display()))
+	toggles.add_child(_toggle_row(tr("SETTINGS_TIMER"), "show_timer"))
+	toggles.add_child(_toggle_row(tr("SETTINGS_REDUCE_MOTION"), "reduce_motion"))
+	toggles.add_child(_toggle_row(tr("SETTINGS_HELPERS"), "show_helpers"))
+	for c in toggles.get_children():
+		(c as Control).size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	v.add_child(_text_size_row())
 
 	var buttons := HBoxContainer.new()
