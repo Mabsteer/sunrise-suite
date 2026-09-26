@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 210" width="270" height="210">
+  <!-- Fishing net with a starfish and shells. -->
+  <path d="M10 10 C80 40 190 40 260 10 L240 200 H30 Z" fill="none" stroke="#c99a6b" stroke-width="4"/>
+  <path d="M30 24 L40 200" stroke="#c99a6b" stroke-width="2.5"/><path d="M72 32 L78 200" stroke="#c99a6b" stroke-width="2.5"/><path d="M114 32 L116 200" stroke="#c99a6b" stroke-width="2.5"/><path d="M156 32 L154 200" stroke="#c99a6b" stroke-width="2.5"/><path d="M198 32 L192 200" stroke="#c99a6b" stroke-width="2.5"/><path d="M240 24 L230 200" stroke="#c99a6b" stroke-width="2.5"/>
+  <path d="M27 60 H243" stroke="#c99a6b" stroke-width="2.5"/><path d="M30.333333333333336 100 H239.66666666666666" stroke="#c99a6b" stroke-width="2.5"/><path d="M33.666666666666664 140 H236.33333333333334" stroke="#c99a6b" stroke-width="2.5"/><path d="M37 180 H233" stroke="#c99a6b" stroke-width="2.5"/>
+  <path d="M90 90 L96 104 L112 106 L100 116 L104 132 L90 124 L76 132 L80 116 L68 106 L84 104 Z" fill="#ee7b6b"/>
+  <path d="M170 140 C154 132 154 112 170 108 C186 112 186 132 170 140 Z" fill="#fcd9b8"/>
+  <path d="M170 140 L162 112 M170 140 L170 108 M170 140 L178 112" stroke="#e08e6d" stroke-width="2"/>
+  <ellipse cx="130" cy="160" rx="14" ry="9" fill="#9c8ac4"/>
+</svg>

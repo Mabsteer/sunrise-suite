@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 430" width="150" height="430">
+  <!-- Retro surfboard leaning on the wall. -->
+  <ellipse cx="80" cy="424" rx="56" ry="6" fill="#3b2e3a" opacity="0.18"/>
+  <path d="M75 6 C130 60 136 300 110 424 H44 C18 300 22 60 75 6 Z" fill="#6cc2be"/>
+  <path d="M75 20 C112 70 118 250 100 410 H52 C36 250 40 70 75 20 Z" fill="#fff4e2"/>
+  <path d="M42 160 C70 150 90 150 116 160" stroke="#ee7b6b" stroke-width="14" fill="none"/><path d="M40 200 C70 190 90 190 118 200" stroke="#f6c453" stroke-width="14" fill="none"/>
+  <path d="M75 20 V400" stroke="#2e8c8c" stroke-width="3" opacity="0.5"/>
+</svg>

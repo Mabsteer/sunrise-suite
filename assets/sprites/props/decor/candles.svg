@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 120" width="140" height="120">
+  <!-- Three candles on a brass tray. -->
+  <ellipse cx="70" cy="114" rx="62" ry="5" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="10" y="100" width="120" height="14" rx="6" fill="#d4a24c"/>
+  <rect x="24" y="50" width="26" height="54" rx="6" fill="#fff4e2"/><rect x="58" y="30" width="26" height="74" rx="6" fill="#fcd9b8"/><rect x="92" y="60" width="26" height="44" rx="6" fill="#fff4e2"/>
+  <path d="M37 40 C30 32 37 20 37 20 C37 20 44 32 37 40 Z" fill="#f6c453"/><path d="M71 20 C64 12 71 0 71 0 C71 0 78 12 71 20 Z" fill="#f6c453"/><path d="M105 50 C98 42 105 30 105 30 C105 30 112 42 105 50 Z" fill="#f6c453"/>
+</svg>

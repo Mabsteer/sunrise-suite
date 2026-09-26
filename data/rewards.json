@@ -1,0 +1,15 @@
+{
+  "_help": "Decor you can only earn. levels: finishing a main level for the first time. streak: Daily Sunrise streak length. postcards_all: finding all of Grandma's postcards. Item ids are from decor.json.",
+  "levels": {
+    "main_03": "mango_cat",
+    "main_12": "sunburst_mirror",
+    "main_21": "telescope",
+    "main_30": "golden_sun"
+  },
+  "streak": {
+    "3": "shell_lamp",
+    "7": "hanging_egg_chair",
+    "14": "sea_glass_mobile"
+  },
+  "postcards_all": "grandma_portrait"
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 190" width="250" height="190">
+  <!-- Big seascape painting in a white frame. -->
+  <rect x="8" y="10" width="242" height="180" rx="6" fill="#3b2e3a" opacity="0.15"/>
+  <rect x="0" y="0" width="242" height="180" rx="6" fill="#fffbf5"/>
+  <rect x="14" y="14" width="214" height="152" fill="#fcd9b8"/><rect x="14" y="14" width="214" height="60" fill="#c9bde3"/>
+  <circle cx="160" cy="92" r="24" fill="#f9b98a"/><rect x="14" y="98" width="214" height="68" fill="#6cc2be"/>
+  <path d="M14 120 C60 110 100 130 150 118 S210 122 228 116 V166 H14 Z" fill="#2e8c8c"/>
+  <path d="M14 146 C80 136 140 152 228 140 V166 H14 Z" fill="#f3ddb3"/>
+</svg>

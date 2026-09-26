@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 430" width="280" height="430">
+  <!-- Hanging rattan egg chair. -->
+  <ellipse cx="140" cy="424" rx="110" ry="7" fill="#3b2e3a" opacity="0.18"/>
+  <path d="M140 10 C230 10 240 120 220 160" stroke="#7a5134" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M220 160 V420 M180 420 H260" stroke="#7a5134" stroke-width="12" stroke-linecap="round"/>
+  <path d="M140 110 V150" stroke="#a8744a" stroke-width="4"/>
+  <path d="M60 260 C60 170 100 140 140 140 C180 140 220 170 220 260 C220 330 180 360 140 360 C100 360 60 330 60 260 Z" fill="#d9b07e"/>
+  <path d="M78 262 C78 184 110 160 140 160 C170 160 202 184 202 262 C202 320 170 342 140 342 C110 342 78 320 78 262 Z" fill="#e6c496"/>
+  <rect x="84" y="270" width="112" height="56" rx="24" fill="#fff4e2"/><rect x="110" y="220" width="60" height="50" rx="18" fill="#6cc2be"/>
+</svg>

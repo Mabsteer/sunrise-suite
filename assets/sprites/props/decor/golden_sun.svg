@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 160" width="150" height="160">
+  <!-- Golden sun sculpture: for finishing Grandma's book. -->
+  <ellipse cx="75" cy="154" rx="56" ry="5" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="40" y="130" width="70" height="24" rx="6" fill="#7a5134"/>
+  <line x1="109.0" y1="68.0" x2="133.0" y2="68.0" stroke="#f6c453" stroke-width="8" stroke-linecap="round"/><line x1="104.4" y1="85.0" x2="125.2" y2="97.0" stroke="#f6c453" stroke-width="8" stroke-linecap="round"/><line x1="92.0" y1="97.4" x2="104.0" y2="118.2" stroke="#f6c453" stroke-width="8" stroke-linecap="round"/><line x1="75.0" y1="102.0" x2="75.0" y2="126.0" stroke="#f6c453" stroke-width="8" stroke-linecap="round"/><line x1="58.0" y1="97.4" x2="46.0" y2="118.2" stroke="#f6c453" stroke-width="8" stroke-linecap="round"/><line x1="45.6" y1="85.0" x2="24.8" y2="97.0" stroke="#f6c453" stroke-width="8" stroke-linecap="round"/><line x1="41.0" y1="68.0" x2="17.0" y2="68.0" stroke="#f6c453" stroke-width="8" stroke-linecap="round"/><line x1="45.6" y1="51.0" x2="24.8" y2="39.0" stroke="#f6c453" stroke-width="8" stroke-linecap="round"/><line x1="58.0" y1="38.6" x2="46.0" y2="17.8" stroke="#f6c453" stroke-width="8" stroke-linecap="round"/><line x1="75.0" y1="34.0" x2="75.0" y2="10.0" stroke="#f6c453" stroke-width="8" stroke-linecap="round"/><line x1="92.0" y1="38.6" x2="104.0" y2="17.8" stroke="#f6c453" stroke-width="8" stroke-linecap="round"/><line x1="104.4" y1="51.0" x2="125.2" y2="39.0" stroke="#f6c453" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="75" cy="68" r="34" fill="#f6c453"/><circle cx="66" cy="58" r="10" fill="#fbe3a0"/>
+  <rect x="70" y="100" width="10" height="32" fill="#d4a24c"/>
+</svg>

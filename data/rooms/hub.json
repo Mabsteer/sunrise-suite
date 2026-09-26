@@ -1,0 +1,28 @@
+{
+  "_help": "The penthouse hub. decor_slots: where decor can go. anchor = bottom-centre for floor/table/rug slots, centre for wall slots. max = largest size shown (bigger items are scaled down).",
+  "id": "hub",
+  "name": "Grandma's Penthouse",
+  "background": "rooms/hub_bg.svg",
+  "light": "rooms/hub_light.svg",
+  "view_far": "rooms/view_far.svg",
+  "balcony": "rooms/balcony.svg",
+  "horizon_y": 450,
+  "sun_x": 960,
+  "sunrise": 0.88,
+  "music": "hub_penthouse",
+  "furniture": [],
+  "decor_slots": [
+    {"id": "rug_center", "type": "rug", "anchor": [960, 1030], "max": [820, 170]},
+    {"id": "wall_left", "type": "wall", "anchor": [165, 300], "max": [260, 260]},
+    {"id": "wall_right", "type": "wall", "anchor": [1755, 300], "max": [260, 260]},
+    {"id": "sill_left", "type": "table", "anchor": [490, 640], "max": [170, 170]},
+    {"id": "sill_right", "type": "table", "anchor": [1430, 640], "max": [170, 170]},
+    {"id": "corner_left", "type": "floor_small", "anchor": [120, 820], "max": [230, 440]},
+    {"id": "corner_right", "type": "floor_small", "anchor": [1810, 820], "max": [230, 440]},
+    {"id": "between_left", "type": "floor_small", "anchor": [725, 800], "max": [150, 300]},
+    {"id": "between_right", "type": "floor_small", "anchor": [1195, 800], "max": [150, 300]},
+    {"id": "floor_left", "type": "floor_large", "anchor": [380, 960], "max": [470, 440]},
+    {"id": "floor_right", "type": "floor_large", "anchor": [1540, 960], "max": [470, 440]},
+    {"id": "floor_center", "type": "floor_large", "anchor": [960, 985], "max": [470, 440]}
+  ]
+}

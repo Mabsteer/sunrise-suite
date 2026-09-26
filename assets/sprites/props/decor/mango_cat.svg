@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 130" width="190" height="130">
+  <!-- Mango, Grandma's sleepy ginger cat. -->
+  <ellipse cx="95" cy="124" rx="80" ry="6" fill="#3b2e3a" opacity="0.18"/>
+  <ellipse cx="96" cy="88" rx="78" ry="36" fill="#f6c453"/>
+  <path d="M30 84 C20 60 40 44 60 50 L64 36 L74 52 C84 50 96 56 98 70" fill="#f6c453"/>
+  <path d="M60 50 L64 36 L72 50 Z" fill="#e0a92e"/>
+  <path d="M46 70 C50 66 54 66 58 70 M70 70 C74 66 78 66 82 70" stroke="#3b2e3a" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <circle cx="64" cy="78" r="3" fill="#ee7b6b"/>
+  <path d="M110 70 C130 74 150 70 160 80 M100 100 C120 96 140 100 150 104" stroke="#e0a92e" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <path d="M170 94 C188 80 186 60 170 54" stroke="#f6c453" stroke-width="14" fill="none" stroke-linecap="round"/>
+
+</svg>

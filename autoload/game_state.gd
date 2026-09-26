@@ -104,6 +104,169 @@ func endless_next() -> int:
 	return int((SaveManager.data.get("endless", {}) as Dictionary).get("cleared", 0)) + 1
 
 
+# ================================================================== decor
+
+func decor_items() -> Dictionary:
+	return Data.get_dict("decor").get("items", {})
+
+
+func decor(id: String) -> Dictionary:
+	return decor_items().get(id, {})
+
+
+func owned_decor() -> Dictionary:
+	ensure_starter_decor()
+	return SaveManager.data.get("decor_owned", {})
+
+
+func placed_decor() -> Dictionary:
+	ensure_starter_decor()
+	return SaveManager.data.get("decor_placed", {})
+
+
+func owned_count(id: String) -> int:
+	return int(owned_decor().get(id, 0))
+
+
+func placed_count(id: String) -> int:
+	var n := 0
+	for slot: String in placed_decor().keys():
+		if str((placed_decor()[slot] as Dictionary).get("id", "")) == id:
+			n += 1
+	return n
+
+
+## How many of this item are owned but not placed.
+func available_count(id: String) -> int:
+	return owned_count(id) - placed_count(id)
+
+
+func decor_price(id: String) -> int:
+	var p: Variant = decor(id).get("price", null)
+	return -1 if p == null else int(p)
+
+
+func can_buy_decor(id: String) -> bool:
+	var price := decor_price(id)
+	return price >= 0 and seashells() >= price
+
+
+func buy_decor(id: String) -> bool:
+	if not can_buy_decor(id):
+		return false
+	add_seashells(-decor_price(id))
+	_add_owned(id)
+	SaveManager.save_game()
+	Events.decor_changed.emit()
+	return true
+
+
+## Gives an earned (reward) item. Returns false if it was already owned.
+func grant_decor(id: String) -> bool:
+	if decor(id).is_empty() or owned_count(id) > 0:
+		return false
+	_add_owned(id)
+	SaveManager.save_game()
+	Events.decor_changed.emit()
+	return true
+
+
+## Puts an owned item on a hub slot (replacing what was there, which goes back to storage).
+func place_decor(slot_id: String, id: String) -> bool:
+	if available_count(id) <= 0 and str((placed_decor().get(slot_id, {}) as Dictionary).get("id", "")) != id:
+		return false
+	if hub_slot(slot_id).get("type", "") != decor(id).get("slot", "?"):
+		return false
+	placed_decor()[slot_id] = {"id": id, "flipped": false}
+	SaveManager.save_game()
+	Events.decor_changed.emit()
+	return true
+
+
+func move_decor(from_slot: String, to_slot: String) -> bool:
+	var placed := placed_decor()
+	if not placed.has(from_slot) or placed.has(to_slot):
+		return false
+	var entry: Dictionary = placed[from_slot]
+	if hub_slot(to_slot).get("type", "") != decor(str(entry["id"])).get("slot", "?"):
+		return false
+	placed.erase(from_slot)
+	placed[to_slot] = entry
+	SaveManager.save_game()
+	Events.decor_changed.emit()
+	return true
+
+
+func flip_decor(slot_id: String) -> void:
+	var placed := placed_decor()
+	if placed.has(slot_id):
+		(placed[slot_id] as Dictionary)["flipped"] = not bool((placed[slot_id] as Dictionary).get("flipped", false))
+		SaveManager.save_game()
+		Events.decor_changed.emit()
+
+
+func store_decor(slot_id: String) -> void:
+	placed_decor().erase(slot_id)
+	SaveManager.save_game()
+	Events.decor_changed.emit()
+
+
+func hub_slot(slot_id: String) -> Dictionary:
+	for s: Dictionary in Data.get_dict("rooms/hub").get("decor_slots", []):
+		if str(s["id"]) == slot_id:
+			return s
+	return {}
+
+
+## First visit: own and place the starter decor from decor.json.
+func ensure_starter_decor() -> void:
+	if bool(SaveManager.data.get("starter_decor_given", false)):
+		return
+	SaveManager.data["starter_decor_given"] = true
+	var starter: Dictionary = Data.get_dict("decor").get("starter", {})
+	var owned: Dictionary = SaveManager.data.get("decor_owned", {})
+	var placed: Dictionary = SaveManager.data.get("decor_placed", {})
+	for slot: String in starter.keys():
+		if slot.begins_with("_"):
+			continue
+		var id := str(starter[slot])
+		owned[id] = int(owned.get(id, 0)) + 1
+		if not placed.has(slot):
+			placed[slot] = {"id": id, "flipped": false}
+	SaveManager.data["decor_owned"] = owned
+	SaveManager.data["decor_placed"] = placed
+
+
+func _add_owned(id: String) -> void:
+	var owned := owned_decor()
+	owned[id] = int(owned.get(id, 0)) + 1
+	SaveManager.data["decor_owned"] = owned
+
+
+## Grants earned decor for an event. Returns the names of new items (for "you got..." messages).
+func grant_rewards(event: String, key: String = "") -> Array[String]:
+	var rewards := Data.get_dict("rewards")
+	var ids: Array[String] = []
+	match event:
+		"level":
+			var levels: Dictionary = rewards.get("levels", {})
+			if levels.has(key):
+				ids.append(str(levels[key]))
+		"streak":
+			var streak: Dictionary = rewards.get("streak", {})
+			for k: String in streak.keys():
+				if not k.begins_with("_") and int(key) >= int(k):
+					ids.append(str(streak[k]))
+		"postcards_all":
+			if rewards.has("postcards_all"):
+				ids.append(str(rewards["postcards_all"]))
+	var names: Array[String] = []
+	for id in ids:
+		if grant_decor(id):
+			names.append(str(decor(id).get("name", id)))
+	return names
+
+
 ## Stars for a finished session: 1 for finishing, +1 for using at most one hint, +1 for beating par time.
 static func stars_for(session: LevelSession, par_time: float) -> int:
 	var stars := 1
@@ -159,5 +322,8 @@ func record_level_result(level: Dictionary, record_id: String, mode: String, ses
 				unlocks.append(tr("UNLOCK_GATE") % tier)
 		if first_clear and nxt == "" and Campaign.index_of(id) >= 0:
 			unlocks.append(tr("UNLOCK_ENDLESS"))
+		if first_clear:
+			for decor_name in grant_rewards("level", id):
+				unlocks.append(tr("UNLOCK_DECOR") % decor_name)
 	SaveManager.save_game()
 	return {"stars": stars, "seashells": shells, "first_clear": first_clear, "new_stars": new_stars, "unlocks": unlocks, "record_id": id}

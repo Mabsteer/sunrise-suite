@@ -15,8 +15,32 @@ static func fake_progress(count: int) -> void:
 	SaveManager.data["seashells"] = 145
 
 
+## Pretend the player owns and placed lots of decor.
+static func fake_decor() -> void:
+	GameState.ensure_starter_decor()
+	var owned: Dictionary = SaveManager.data["decor_owned"]
+	for id in ["rattan_chair", "hammock", "fiddle_leaf", "surfboard", "string_lanterns", "seascape_painting", "ceramic_vases", "candles", "jute_rug", "mango_cat", "shell_lamp", "record_crate"]:
+		owned[id] = 1
+	SaveManager.data["decor_placed"] = {
+		"floor_center": {"id": "linen_sofa", "flipped": false}, "corner_right": {"id": "fiddle_leaf", "flipped": false},
+		"corner_left": {"id": "surfboard", "flipped": false}, "floor_left": {"id": "rattan_chair", "flipped": false},
+		"floor_right": {"id": "hammock", "flipped": true}, "wall_left": {"id": "seascape_painting", "flipped": false},
+		"wall_right": {"id": "string_lanterns", "flipped": false}, "sill_left": {"id": "ceramic_vases", "flipped": false},
+		"sill_right": {"id": "shell_lamp", "flipped": false}, "rug_center": {"id": "jute_rug", "flipped": false},
+		"between_left": {"id": "mango_cat", "flipped": false}, "between_right": {"id": "record_crate", "flipped": false},
+	}
+	SaveManager.data["seashells"] = 320
+
+
 func shots() -> Array[Dictionary]:
 	return [
+		{"name": "hub_start", "screen": "hub", "frames": 40},
+		{"name": "hub_decorated", "screen": "hub", "setup": fake_decor, "frames": 40},
+		{"name": "hub_decorate_mode", "screen": "hub", "action": func(s: Node) -> void: s.call("toggle_decorate"), "frames": 30},
+		{"name": "hub_catalog", "screen": "hub", "setup": func() -> void: SaveManager.data["seashells"] = 130, "action": func(s: Node) -> void: s.call("_open_catalog", "Grandma's Catalog", s.call("_all_ids")), "frames": 30},
+		{"name": "hub_picker", "screen": "hub", "setup": func() -> void: SaveManager.data["seashells"] = 130, "action": func(s: Node) -> void:
+			s.call("toggle_decorate")
+			s.call("_open_picker", "wall_left"), "frames": 30},
 		{"name": "menu_new", "screen": "main_menu", "frames": 30},
 		{"name": "menu_returning", "screen": "main_menu", "setup": func() -> void: fake_progress(8), "frames": 30},
 		{"name": "select_start", "screen": "level_select", "frames": 30},

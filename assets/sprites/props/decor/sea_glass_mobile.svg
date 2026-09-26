@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <!-- Mobile of sea glass pieces. -->
+  <path d="M20 30 H180" stroke="#a8744a" stroke-width="6" stroke-linecap="round"/>
+  <path d="M100 0 V30" stroke="#7a5134" stroke-width="3"/>
+  <path d="M30 30 V120" stroke="#7a5134" stroke-width="2"/><path d="M30 120 L44 138 L30 158 L16 138 Z" fill="#6cc2be" opacity="0.85"/><path d="M65 30 V180" stroke="#7a5134" stroke-width="2"/><path d="M65 180 L79 198 L65 218 L51 198 Z" fill="#9c8ac4" opacity="0.85"/><path d="M100 30 V140" stroke="#7a5134" stroke-width="2"/><path d="M100 140 L114 158 L100 178 L86 158 Z" fill="#8faf8a" opacity="0.85"/><path d="M135 30 V200" stroke="#7a5134" stroke-width="2"/><path d="M135 200 L149 218 L135 238 L121 218 Z" fill="#f9b98a" opacity="0.85"/><path d="M170 30 V110" stroke="#7a5134" stroke-width="2"/><path d="M170 110 L184 128 L170 148 L156 128 Z" fill="#6cc2be" opacity="0.85"/>
+</svg>

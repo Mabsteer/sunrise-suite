@@ -89,3 +89,26 @@ UNLOCK_ENDLESS,You've finished Grandma's book! Endless Sunrise is open.
 NEXT_LEVEL,Next sunrise
 NEXT_ENDLESS,Next endless sunrise
 BACK_TO_BOOK,Back to the book
+HUB_TITLE,Grandma's Penthouse
+HUB_TIP,"This is Grandma's penthouse. Tap Decorate to make it yours, and spend seashells in her catalog!"
+DECORATE,Decorate
+DECORATE_DONE,Done
+DECORATE_HINT,"Tap a + to place something, or tap your decor to move, flip or put it away."
+DECOR_MOVE,Move it
+DECOR_MOVE_HINT,Tap an empty spot to move it there.
+DECOR_FLIP,Flip it
+DECOR_STORE,Put it away
+DECOR_PICK_TITLE,What goes here?
+DECOR_OWNED,You have %d (%d to place)
+DECOR_PRICE,%d seashells
+DECOR_PLACE,Place it
+DECOR_BUY,Buy for %d
+DECOR_BOUGHT,"%s is yours! Use Decorate to place it."
+DECOR_LOCKED,Earn it
+CATALOG_BUTTON,Grandma's Catalog
+CATALOG_TITLE,Grandma's Catalog
+REWARD_LEVEL,Finish sunrise %d to earn this.
+REWARD_STREAK,Play the Daily Sunrise %d days in a row to earn this.
+REWARD_POSTCARDS,Find all of Grandma's postcards to earn this.
+REWARD_SECRET,A secret reward...
+UNLOCK_DECOR,New for the penthouse: %s!

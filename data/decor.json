@@ -1,0 +1,34 @@
+{
+  "_help": "Decor for the penthouse hub. slot: which kind of hub slot it fits (floor_large, floor_small, wall, table, rug). price: seashells (null = can only be earned, see rewards.json). size: sprite size in stage pixels. To add an item: draw assets/sprites/props/decor/<id>.svg and add an entry here.",
+  "items": {
+    "linen_sofa": {"name": "Linen sofa", "sprite": "props/decor/linen_sofa.svg", "size": [420, 230], "slot": "floor_large", "price": 150, "text": "Deep, soft and perfect for sunrise naps."},
+    "potted_palm": {"name": "Potted palm", "sprite": "props/decor/potted_palm.svg", "size": [180, 300], "slot": "floor_small", "price": 40, "text": "A little palm that dreams of the beach."},
+    "rattan_chair": {"name": "Peacock chair", "sprite": "props/decor/rattan_chair.svg", "size": [280, 320], "slot": "floor_large", "price": 120, "text": "A grand rattan chair for grand thoughts."},
+    "hammock": {"name": "Striped hammock", "sprite": "props/decor/hammock.svg", "size": [460, 260], "slot": "floor_large", "price": 160, "text": "Swing gently. Nap deeply."},
+    "fiddle_leaf": {"name": "Fiddle-leaf fig", "sprite": "props/decor/fiddle_leaf.svg", "size": [200, 420], "slot": "floor_small", "price": 70, "text": "Dramatic, leafy and a little bit fussy."},
+    "surfboard": {"name": "Retro surfboard", "sprite": "props/decor/surfboard.svg", "size": [150, 430], "slot": "floor_small", "price": 90, "text": "Grandma surfed Biarritz in 1978. Allegedly."},
+    "record_crate": {"name": "Record crate", "sprite": "props/decor/record_crate.svg", "size": [220, 190], "slot": "floor_small", "price": 80, "text": "Bossa nova, jazz and one mysterious polka record."},
+    "cushion_pile": {"name": "Floor cushions", "sprite": "props/decor/cushion_pile.svg", "size": [230, 150], "slot": "floor_small", "price": 50, "text": "For friends, cats and afternoon reading."},
+    "floor_lamp": {"name": "Rattan floor lamp", "sprite": "props/decor/floor_lamp.svg", "size": [170, 430], "slot": "floor_small", "price": 70, "text": "A warm glow for after the sun goes down."},
+    "string_lanterns": {"name": "Paper lanterns", "sprite": "props/decor/string_lanterns.svg", "size": [380, 130], "slot": "wall", "price": 80, "text": "Six little lanterns in sunrise colours."},
+    "seascape_painting": {"name": "Seascape painting", "sprite": "props/decor/seascape_painting.svg", "size": [250, 190], "slot": "wall", "price": 100, "text": "Painted by Grandma on a very windy afternoon."},
+    "fishing_net": {"name": "Fishing net", "sprite": "props/decor/fishing_net.svg", "size": [270, 210], "slot": "wall", "price": 60, "text": "Full of shells, a starfish and good memories."},
+    "ceramic_vases": {"name": "Ceramic vases", "sprite": "props/decor/ceramic_vases.svg", "size": [160, 150], "slot": "table", "price": 45, "text": "Handmade, slightly wonky, much loved."},
+    "candles": {"name": "Candle tray", "sprite": "props/decor/candles.svg", "size": [140, 120], "slot": "table", "price": 30, "text": "Smells like vanilla and sea salt."},
+    "jute_rug": {"name": "Round jute rug", "sprite": "props/decor/jute_rug.svg", "size": [800, 160], "slot": "rug", "price": 100, "text": "Soft under bare feet."},
+    "striped_rug": {"name": "Striped rug", "sprite": "props/decor/striped_rug.svg", "size": [780, 150], "slot": "rug", "price": 90, "text": "Cheerful stripes in all of Grandma's colours."},
+    "mango_cat": {"name": "Mango the cat", "sprite": "props/decor/mango_cat.svg", "size": [190, 130], "slot": "floor_small", "price": null, "text": "Grandma's ginger cat. Sleeps 20 hours a day, purrs the other 4."},
+    "sunburst_mirror": {"name": "Sunburst mirror", "sprite": "props/decor/sunburst_mirror.svg", "size": [230, 230], "slot": "wall", "price": null, "text": "Catches the first light every morning."},
+    "hanging_egg_chair": {"name": "Hanging egg chair", "sprite": "props/decor/hanging_egg_chair.svg", "size": [280, 430], "slot": "floor_large", "price": null, "text": "The cosiest seat in the penthouse."},
+    "shell_lamp": {"name": "Shell lamp", "sprite": "props/decor/shell_lamp.svg", "size": [130, 170], "slot": "table", "price": null, "text": "A seashell that glows."},
+    "telescope": {"name": "Brass telescope", "sprite": "props/decor/telescope.svg", "size": [210, 370], "slot": "floor_small", "price": null, "text": "For spotting boats, whales and the first sunbeam."},
+    "grandma_portrait": {"name": "Grandma's portrait", "sprite": "props/decor/grandma_portrait.svg", "size": [210, 250], "slot": "wall", "price": null, "text": "Grandma June in her famous sun hat."},
+    "golden_sun": {"name": "Golden sun", "sprite": "props/decor/golden_sun.svg", "size": [150, 160], "slot": "table", "price": null, "text": "For finishing every page of Grandma's Sunrise Book."},
+    "sea_glass_mobile": {"name": "Sea glass mobile", "sprite": "props/decor/sea_glass_mobile.svg", "size": [200, 280], "slot": "wall", "price": null, "text": "Chimes softly in the morning breeze."}
+  },
+  "starter": {
+    "_help": "Decor the player owns and sees placed on day one (slot id -> item id).",
+    "floor_center": "linen_sofa",
+    "corner_right": "potted_palm"
+  }
+}

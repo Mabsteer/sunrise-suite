@@ -37,5 +37,8 @@ One line per decision: what, and why.
 - Unlock rule: finish the previous level. Soft star gates: tier 4 needs 12 stars, tier 7 needs 24, tier 10 needs 40 (at least 9/18/27 are guaranteed by then). Gates live in campaign.json.
 - Replays of a main level (same or fresh puzzle) count toward that level's best stars, so replaying is the way to open star gates.
 - Room thumbnails reuse each room's background art over a sunrise gradient (no extra art to maintain).
+- Hub decor uses typed slots (rug, wall, table, floor_small, floor_large) instead of free placement: works well with touch, never overlaps badly, and stays easy to describe in data/rooms/hub.json.
+- Starter decor (sofa + palm) is given on first visit via a save flag, so older saves get it too.
+- Earned-only decor (price null) lives in rewards.json: level milestones, streak lengths, all postcards.
 - Doc and data edits containing apostrophes go through the editor tool, not quoted shell one-liners.
 - Campaign levels are generated from data/campaign.json (room, tier, fixed seed) instead of stored as big level files, so levels can be tuned by changing one seed.

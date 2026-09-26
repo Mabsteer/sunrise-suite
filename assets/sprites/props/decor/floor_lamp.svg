@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 430" width="170" height="430">
+  <!-- Rattan floor lamp. -->
+  <ellipse cx="85" cy="424" rx="60" ry="6" fill="#3b2e3a" opacity="0.18"/>
+  <path d="M85 150 V410" stroke="#a8744a" stroke-width="8"/>
+  <path d="M40 420 H130" stroke="#a8744a" stroke-width="10" stroke-linecap="round"/>
+  <path d="M20 150 C20 60 150 60 150 150 Z" fill="#e6c496"/>
+  <path d="M40 146 L85 70" stroke="#c99a6b" stroke-width="3"/><path d="M64 146 L85 70" stroke="#c99a6b" stroke-width="3"/><path d="M88 146 L85 70" stroke="#c99a6b" stroke-width="3"/><path d="M112 146 L85 70" stroke="#c99a6b" stroke-width="3"/><path d="M136 146 L85 70" stroke="#c99a6b" stroke-width="3"/>
+  <ellipse cx="85" cy="150" rx="66" ry="10" fill="#fbe3a0"/>
+</svg>

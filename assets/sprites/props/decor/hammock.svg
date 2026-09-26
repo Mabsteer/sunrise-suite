@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 260" width="460" height="260">
+  <!-- Striped hammock on a wooden stand. -->
+  <ellipse cx="230" cy="252" rx="220" ry="8" fill="#3b2e3a" opacity="0.18"/>
+  <path d="M20 250 L60 40 M440 250 L400 40" stroke="#a8744a" stroke-width="14" stroke-linecap="round"/>
+  <path d="M20 250 H440" stroke="#a8744a" stroke-width="12" stroke-linecap="round"/>
+  <path d="M60 60 C140 200 320 200 400 60" stroke="#fff4e2" stroke-width="40" fill="none"/>
+  <path d="M60 60 C140 200 320 200 400 60" stroke="#ee7b6b" stroke-width="8" fill="none" stroke-dasharray="18 14"/>
+  <path d="M90 120 C150 190 310 190 370 120" stroke="#f6c453" stroke-width="6" fill="none"/>
+</svg>

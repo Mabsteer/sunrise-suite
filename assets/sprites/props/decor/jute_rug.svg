@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 160" width="800" height="160">
+  <!-- Round jute rug. -->
+  <ellipse cx="400" cy="84" rx="396" ry="74" fill="#3b2e3a" opacity="0.1"/>
+  <ellipse cx="400" cy="80" rx="390" ry="72" fill="#e3c393"/>
+  <ellipse cx="400" cy="80" rx="330" ry="59.4" fill="none" stroke="#c99a6b" stroke-width="10"/><ellipse cx="400" cy="80" rx="270" ry="48.6" fill="none" stroke="#d4b07e" stroke-width="10"/><ellipse cx="400" cy="80" rx="210" ry="37.8" fill="none" stroke="#c99a6b" stroke-width="10"/><ellipse cx="400" cy="80" rx="150" ry="27" fill="none" stroke="#d4b07e" stroke-width="10"/>
+</svg>
