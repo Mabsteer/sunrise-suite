@@ -40,5 +40,9 @@ One line per decision: what, and why.
 - Hub decor uses typed slots (rug, wall, table, floor_small, floor_large) instead of free placement: works well with touch, never overlaps badly, and stays easy to describe in data/rooms/hub.json.
 - Starter decor (sofa + palm) is given on first visit via a save flag, so older saves get it too.
 - Earned-only decor (price null) lives in rewards.json: level milestones, streak lengths, all postcards.
+- Daily streak: consecutive days +1. Each missed day can be covered by that week's free sleep-in (Monday-based weeks). The streak shown today is 0 once it can no longer be saved.
+- Daily seashells: 15 + 2 per streak day (up to +14). Replaying the same day improves its stars only.
+- tests/smoke_screens opens every screen twice (fresh save and with progress), so runtime script errors in UI code fail the gate. Test runners that change screens must run from a node attached to the root.
+- Every check.sh step runs under a timeout (STEP_TIMEOUT, default 900 s), so a hung Godot run fails instead of blocking.
 - Doc and data edits containing apostrophes go through the editor tool, not quoted shell one-liners.
 - Campaign levels are generated from data/campaign.json (room, tier, fixed seed) instead of stored as big level files, so levels can be tuned by changing one seed.

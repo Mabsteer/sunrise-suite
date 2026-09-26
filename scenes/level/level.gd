@@ -628,6 +628,10 @@ func _show_results(result: Dictionary) -> void:
 		"endless":
 			card_items.append([tr("NEXT_ENDLESS"), func() -> void: Launcher.play_endless(), true])
 			card_items.append([tr("BACK_TO_BOOK"), func() -> void: Router.goto("level_select")])
+		"daily":
+			card_items.append([tr("BACK_TO_CALENDAR"), func() -> void: Router.goto(_exit_screen()), true])
+			if Router.has_screen("hub"):
+				card_items.append([tr("MENU_PENTHOUSE"), func() -> void: Router.goto("hub")])
 		_:
 			card_items.append([tr("CONTINUE"), func() -> void: Router.goto(_exit_screen()), true])
 			card_items.append([tr("REPLAY"), func() -> void: Router.goto("level", Router.params)])

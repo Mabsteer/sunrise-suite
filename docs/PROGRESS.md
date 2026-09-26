@@ -10,13 +10,13 @@ Live build: https://mabsteer.github.io/sunrise-suite/
 - [x] **M4 Rooms**: Kitchen & Bar (zellige backsplash, mint fridge, sage counter, island, espresso, spice rack, fruit bowl) and Grandma's Study (French doors, velvet curtains, world map, grandfather clock, desk + typewriter, globe, bookcase, trunk). 6000 levels validate, 62 autoplay
 - [x] **M5 Progression**: main menu (play/continue, daily, counters), Grandma's Sunrise Book level select (10 tier rows x 3 room cards with room thumbnails, stars, padlocks, postcard stamps, star gates), replay (same or fresh puzzle), Endless Sunrise, results with Next sunrise / unlock messages, progression tests
 - [x] **M6 Hub & decorating**: airy penthouse hub (arched windows, beams), 24 decor items (16 buyable, 8 earned), 12 decor slots, Decorate mode (place, buy, move, flip, put away), Grandma's Catalog, starter decor, level rewards (mango cat, sunburst mirror, telescope, golden sun), decor tests
-- [ ] M7 Daily Sunrise
+- [x] **M7 Daily Sunrise**: UTC-date seeded daily level (room rotation + weekday difficulty), streaks with one free sleep-in per week (several weeks can each cover a missed day), streak rewards (3/7/14 days), Sunrise Calendar with sky-painted day tiles, daily results; screen smoke test added to the gate
 - [ ] M8 Story
 - [ ] M9 Audio
 - [ ] M10 Onboarding & polish
 
 ## Next
-- M7: Daily Sunrise: date seed (done), streak + weekly sleep-in, Sunrise Calendar screen, streak rewards, daily results.
+- M8: Grandma's postcards: 5 postcard fronts (illustrated places) + texts, scrapbook screen, postcard hotspot pick-up flow (already placed by the generator), final letter + portrait reward.
 
 ## Known issues
 - Portrait phones show the room small with empty bands above and below. Plan: "rotate your phone" hint (M10).

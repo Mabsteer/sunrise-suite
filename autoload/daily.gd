@@ -18,6 +18,13 @@ static func parse_key(key: String) -> Dictionary:
 	return Time.get_datetime_dict_from_unix_time(unix)
 
 
+static func days_in_month(year: int, month: int) -> int:
+	if month == 2:
+		var leap := (year % 4 == 0 and year % 100 != 0) or year % 400 == 0
+		return 29 if leap else 28
+	return 30 if month in [4, 6, 9, 11] else 31
+
+
 ## Deterministic seed for a day. Same key -> same seed on every device.
 static func seed_for(key: String) -> int:
 	return absi(("sunrise-suite-daily-" + key).hash()) + 1

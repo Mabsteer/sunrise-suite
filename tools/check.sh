@@ -39,7 +39,7 @@ step() {
   local name="$1"; shift
   local log="$LOG_DIR/$name.log"
   local start=$SECONDS
-  "$@" 2>&1 | strip_ansi > "$log"
+  timeout "${STEP_TIMEOUT:-900}" "$@" 2>&1 | strip_ansi > "$log"
   local code=${PIPESTATUS[0]}
   local found
   found="$(problems "$log")"
@@ -53,7 +53,7 @@ step() {
     exit 1
   fi
   local summary
-  summary="$(grep -E '^(TESTS|LOAD_ALL|VALIDATOR|AUTOPLAY):' "$log" | tail -1)"
+  summary="$(grep -E '^(TESTS|LOAD_ALL|VALIDATOR|AUTOPLAY|SCREENS):' "$log" | tail -1)"
   echo "  ok    $name ($((SECONDS - start))s) ${summary}"
 }
 
@@ -68,6 +68,7 @@ fi
 step import "${GODOT[@]}" --headless --path . --import
 step load_all "${GODOT[@]}" --headless --path . res://tests/load_all.tscn
 step unit_tests "${GODOT[@]}" --headless --path . res://tests/test_runner.tscn
+step screens "${GODOT[@]}" --headless --path . res://tests/smoke_screens.tscn
 if scene_exists res://tests/validate_levels.tscn; then
   step validator "${GODOT[@]}" --headless --path . res://tests/validate_levels.tscn
 fi

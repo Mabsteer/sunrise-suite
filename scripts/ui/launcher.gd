@@ -32,7 +32,7 @@ static func play_daily() -> void:
 	var level := Campaign.build_daily(key)
 	if level.is_empty():
 		return
-	Router.goto("level", {"level": level, "mode": "daily", "day": key, "record_id": "daily_" + key, "exit_to": "main_menu"})
+	Router.goto("level", {"level": level, "mode": "daily", "day": key, "record_id": "daily_" + key, "exit_to": "calendar"})
 
 
 static func _fresh_seed() -> int:

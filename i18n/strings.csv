@@ -112,3 +112,41 @@ REWARD_STREAK,Play the Daily Sunrise %d days in a row to earn this.
 REWARD_POSTCARDS,Find all of Grandma's postcards to earn this.
 REWARD_SECRET,A secret reward...
 UNLOCK_DECOR,New for the penthouse: %s!
+WEEKDAY_0,Sunday
+WEEKDAY_1,Monday
+WEEKDAY_2,Tuesday
+WEEKDAY_3,Wednesday
+WEEKDAY_4,Thursday
+WEEKDAY_5,Friday
+WEEKDAY_6,Saturday
+WEEKDAY_SHORT_0,Sun
+WEEKDAY_SHORT_1,Mon
+WEEKDAY_SHORT_2,Tue
+WEEKDAY_SHORT_3,Wed
+WEEKDAY_SHORT_4,Thu
+WEEKDAY_SHORT_5,Fri
+WEEKDAY_SHORT_6,Sat
+MONTH_1,January
+MONTH_2,February
+MONTH_3,March
+MONTH_4,April
+MONTH_5,May
+MONTH_6,June
+MONTH_7,July
+MONTH_8,August
+MONTH_9,September
+MONTH_10,October
+MONTH_11,November
+MONTH_12,December
+DAILY_TODAY,Today's sunrise (%s)
+DAILY_PLAY,Play today's sunrise
+DAILY_PLAY_AGAIN,Play it again (just for fun)
+DAILY_DONE_TEXT,Done for today with %d stars. See you tomorrow!
+DAILY_STREAK_LABEL,%d-day streak   (best: %d)
+DAILY_SLEEP_IN_FREE,"Weekly sleep-in: free. Miss a day this week and your streak still counts."
+DAILY_SLEEP_IN_TAKEN,Weekly sleep-in: used this week. It comes back on Monday.
+DAILY_NEXT_REWARD,%d more days for: %s
+CALENDAR_HELP,Every sunrise you finish paints its day in the calendar.
+DAILY_STREAK,"Daily streak: %d days!"
+DAILY_SLEEP_IN_USED,You slept in - your weekly sleep-in kept the streak going.
+BACK_TO_CALENDAR,Back to the calendar

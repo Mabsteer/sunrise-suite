@@ -32,8 +32,23 @@ static func fake_decor() -> void:
 	SaveManager.data["seashells"] = 320
 
 
+## Pretend the player did the Daily Sunrise on most of the last two weeks.
+static func fake_daily() -> void:
+	var today := Daily.day_number(Daily.today_key())
+	var completed := {}
+	for back in range(14, 0, -1):
+		if back in [9, 10]:
+			continue
+		var key := Daily.date_key(Time.get_date_dict_from_unix_time((today - back) * 86400 + 43200))
+		completed[key] = {"stars": 1 + (back % 3), "time": 200.0}
+	SaveManager.data["daily"] = {"completed": completed, "streak": 8, "best_streak": 8,
+		"last_day": Daily.date_key(Time.get_date_dict_from_unix_time((today - 1) * 86400 + 43200)), "sleep_ins": {}}
+
+
 func shots() -> Array[Dictionary]:
 	return [
+		{"name": "calendar_new", "screen": "calendar", "frames": 30},
+		{"name": "calendar_streak", "screen": "calendar", "setup": fake_daily, "frames": 30},
 		{"name": "hub_start", "screen": "hub", "frames": 40},
 		{"name": "hub_decorated", "screen": "hub", "setup": fake_decor, "frames": 40},
 		{"name": "hub_decorate_mode", "screen": "hub", "action": func(s: Node) -> void: s.call("toggle_decorate"), "frames": 30},

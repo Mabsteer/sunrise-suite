@@ -104,6 +104,106 @@ func endless_next() -> int:
 	return int((SaveManager.data.get("endless", {}) as Dictionary).get("cleared", 0)) + 1
 
 
+# ================================================================== daily sunrise
+
+func daily_data() -> Dictionary:
+	var d: Dictionary = SaveManager.data.get("daily", {})
+	SaveManager.data["daily"] = d
+	return d
+
+
+func daily_done(day: String) -> bool:
+	return (daily_data().get("completed", {}) as Dictionary).has(day)
+
+
+func daily_stars(day: String) -> int:
+	return int(((daily_data().get("completed", {}) as Dictionary).get(day, {}) as Dictionary).get("stars", 0))
+
+
+## The streak as the player should see it today (0 if it's already broken).
+func current_streak(today: String = "") -> int:
+	if today == "":
+		today = Daily.today_key()
+	var d := daily_data()
+	var last := str(d.get("last_day", ""))
+	if last == "":
+		return 0
+	var gap := Daily.day_number(today) - Daily.day_number(last)
+	if gap <= 1:
+		return int(d.get("streak", 0))
+	# Missed days can still be covered by unused weekly sleep-ins until today is played.
+	var missed := _missed_days(last, today)
+	return int(d.get("streak", 0)) if _sleep_ins_cover(missed, d) else 0
+
+
+## Is this week's free sleep-in still unused?
+func sleep_in_available(today: String = "") -> bool:
+	if today == "":
+		today = Daily.today_key()
+	return not (daily_data().get("sleep_ins", {}) as Dictionary).has(Daily.week_key(today))
+
+
+## Records a finished Daily Sunrise. Returns { "streak", "first_time", "sleep_in_used", "rewards": Array[String], "shells" }.
+func record_daily(day: String, stars: int, time: float) -> Dictionary:
+	var d := daily_data()
+	var completed: Dictionary = d.get("completed", {})
+	var first_time := not completed.has(day)
+	var result := {"streak": int(d.get("streak", 0)), "first_time": first_time, "sleep_in_used": false, "rewards": [], "shells": 0}
+	if not first_time:
+		var rec: Dictionary = completed[day]
+		rec["stars"] = maxi(int(rec.get("stars", 0)), stars)
+		rec["time"] = minf(float(rec.get("time", time)), time)
+		return result
+	completed[day] = {"stars": stars, "time": time}
+	d["completed"] = completed
+	var last := str(d.get("last_day", ""))
+	var streak := 1
+	if last != "":
+		var gap := Daily.day_number(day) - Daily.day_number(last)
+		if gap == 1:
+			streak = int(d.get("streak", 0)) + 1
+		elif gap > 1:
+			var missed := _missed_days(last, day)
+			if _sleep_ins_cover(missed, d):
+				var sleep_ins: Dictionary = d.get("sleep_ins", {})
+				for m in missed:
+					sleep_ins[Daily.week_key(m)] = true
+				d["sleep_ins"] = sleep_ins
+				streak = int(d.get("streak", 0)) + 1
+				result["sleep_in_used"] = true
+		elif gap <= 0:
+			streak = int(d.get("streak", 1))
+	if last == "" or Daily.day_number(day) > Daily.day_number(last):
+		d["last_day"] = day
+	d["streak"] = streak
+	d["best_streak"] = maxi(int(d.get("best_streak", 0)), streak)
+	result["streak"] = streak
+	var shells := SHELLS_DAILY + mini(streak, 7) * 2
+	result["shells"] = shells
+	result["rewards"] = grant_rewards("streak", str(streak))
+	return result
+
+
+func _missed_days(last: String, today: String) -> Array[String]:
+	var out: Array[String] = []
+	var start := Daily.day_number(last) + 1
+	var end := Daily.day_number(today)
+	for n in range(start, end):
+		out.append(Daily.date_key(Time.get_date_dict_from_unix_time(n * 86400 + 43200)))
+	return out
+
+
+## Every missed day needs its own week's unused sleep-in.
+func _sleep_ins_cover(missed: Array[String], d: Dictionary) -> bool:
+	var used: Dictionary = (d.get("sleep_ins", {}) as Dictionary).duplicate()
+	for m in missed:
+		var wk := Daily.week_key(m)
+		if used.has(wk):
+			return false
+		used[wk] = true
+	return true
+
+
 # ================================================================== decor
 
 func decor_items() -> Dictionary:
@@ -287,8 +387,11 @@ func record_level_result(level: Dictionary, record_id: String, mode: String, ses
 	var shells := 0
 	var first_clear := false
 	var new_stars := 0
+	var daily_result := {}
 	if mode == "daily":
-		shells = SHELLS_DAILY
+		var day := id.trim_prefix("daily_")
+		daily_result = record_daily(day, stars, session.elapsed)
+		shells = int(daily_result.get("shells", 0))
 	elif mode == "endless":
 		shells = SHELLS_ENDLESS_BASE + int(level.get("tier", 1))
 		var endless: Dictionary = SaveManager.data.get("endless", {})
@@ -325,5 +428,12 @@ func record_level_result(level: Dictionary, record_id: String, mode: String, ses
 		if first_clear:
 			for decor_name in grant_rewards("level", id):
 				unlocks.append(tr("UNLOCK_DECOR") % decor_name)
+	if mode == "daily" and not daily_result.is_empty():
+		if bool(daily_result.get("first_time", false)):
+			unlocks.append(tr("DAILY_STREAK") % int(daily_result["streak"]))
+		if bool(daily_result.get("sleep_in_used", false)):
+			unlocks.append(tr("DAILY_SLEEP_IN_USED"))
+		for decor_name: String in daily_result.get("rewards", []):
+			unlocks.append(tr("UNLOCK_DECOR") % decor_name)
 	SaveManager.save_game()
 	return {"stars": stars, "seashells": shells, "first_clear": first_clear, "new_stars": new_stars, "unlocks": unlocks, "record_id": id}
