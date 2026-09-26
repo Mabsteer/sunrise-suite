@@ -9,4 +9,6 @@ func _ready() -> void:
 		var tour: Node = (load("res://tools/screenshot_tour/screenshot_tour.gd") as GDScript).new()
 		get_tree().root.add_child.call_deferred(tour)
 		return
+	if not OS.has_feature("web") and DisplayServer.get_name() != "headless":
+		SaveManager.apply_display()
 	Router.goto.call_deferred("main_menu", {}, false)

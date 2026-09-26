@@ -12,11 +12,11 @@ Live build: https://mabsteer.github.io/sunrise-suite/
 - [x] **M6 Hub & decorating**: airy penthouse hub (arched windows, beams), 24 decor items (16 buyable, 8 earned), 12 decor slots, Decorate mode (place, buy, move, flip, put away), Grandma's Catalog, starter decor, level rewards (mango cat, sunburst mirror, telescope, golden sun), decor tests
 - [x] **M7 Daily Sunrise**: UTC-date seeded daily level (room rotation + weekday difficulty), streaks with one free sleep-in per week (several weeks can each cover a missed day), streak rewards (3/7/14 days), Sunrise Calendar with sky-painted day tiles, daily results; screen smoke test added to the gate
 - [x] **M8 Story**: 5 illustrated postcards (Lisbon, Kyoto, Santorini, Marrakech, Reykjavik) with Grandma June's messages, postcard pickup in levels 3/9/15/21/27, scrapbook with flip-over backs, final letter, Grandma's portrait reward; autoplay also collects postcards through the UI
-- [ ] M9 Audio
+- [x] **M9 Audio**: 37 jsfxr sounds (music-box notes per symbol, clock ticks, switches, tiles, key/tool/search, purchase, streak...), music per screen (menu, rooms, hub, daily), one-shot sunrise stinger that ducks the music, Settings panel (4 volume sliders, fullscreen, timer, reduce motion, text size, credits, start over) from the menu and pause menu; audio test checks every sound name used in code exists
 - [ ] M10 Onboarding & polish
 
 ## Next
-- M9: audio (complete SFX list for every interaction, AudioManager hooks, music per screen, buses) and the Settings panel (volumes, fullscreen, text size, reduce motion, timer, reset).
+- M10: tutorial in level 1 (click, inspect, inventory, combine, hints), juice (dust motes, unlock sparkles, door opening), rotate-your-phone hint, accessibility + web performance passes, README with recipes.
 
 ## Known issues
 - Portrait phones show the room small with empty bands above and below. Plan: "rotate your phone" hint (M10).

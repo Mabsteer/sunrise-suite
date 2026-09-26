@@ -7,6 +7,9 @@ const TEST_DIR := "res://tests/unit/"
 
 func _ready() -> void:
 	SaveManager.persist = false
+	get_tree().create_timer(300.0).timeout.connect(func() -> void:
+		printerr("FAIL tests timed out")
+		get_tree().quit(1))
 	AudioManager.enabled = false
 	_run.call_deferred()
 

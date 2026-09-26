@@ -294,6 +294,197 @@
         "p_vib_strength": 0.12,
         "p_vib_speed": 0.5
       }
+    },
+    "note_sun": {
+      "note": "Sequence lock symbol button: sun, C5 (music-box note).",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.3837,
+        "p_env_attack": 0,
+        "p_env_sustain": 0.05,
+        "p_env_decay": 0.32,
+        "p_env_punch": 0.35,
+        "p_vib_strength": 0.06,
+        "p_vib_speed": 0.5
+      }
+    },
+    "note_shell": {
+      "note": "Sequence lock symbol button: shell, D5 (music-box note).",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.4078,
+        "p_env_attack": 0,
+        "p_env_sustain": 0.05,
+        "p_env_decay": 0.32,
+        "p_env_punch": 0.35,
+        "p_vib_strength": 0.06,
+        "p_vib_speed": 0.5
+      }
+    },
+    "note_wave": {
+      "note": "Sequence lock symbol button: wave, E5 (music-box note).",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.4311,
+        "p_env_attack": 0,
+        "p_env_sustain": 0.05,
+        "p_env_decay": 0.32,
+        "p_env_punch": 0.35,
+        "p_vib_strength": 0.06,
+        "p_vib_speed": 0.5
+      }
+    },
+    "note_star": {
+      "note": "Sequence lock symbol button: star, G5 (music-box note).",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.4703,
+        "p_env_attack": 0,
+        "p_env_sustain": 0.05,
+        "p_env_decay": 0.32,
+        "p_env_punch": 0.35,
+        "p_vib_strength": 0.06,
+        "p_vib_speed": 0.5
+      }
+    },
+    "note_leaf": {
+      "note": "Sequence lock symbol button: leaf, A5 (music-box note).",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.4991,
+        "p_env_attack": 0,
+        "p_env_sustain": 0.05,
+        "p_env_decay": 0.32,
+        "p_env_punch": 0.35,
+        "p_vib_strength": 0.06,
+        "p_vib_speed": 0.5
+      }
+    },
+    "note_heart": {
+      "note": "Sequence lock symbol button: heart, C6 (music-box note).",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.5439,
+        "p_env_attack": 0,
+        "p_env_sustain": 0.05,
+        "p_env_decay": 0.32,
+        "p_env_punch": 0.35,
+        "p_vib_strength": 0.06,
+        "p_vib_speed": 0.5
+      }
+    },
+    "clock_tick": {
+      "note": "Clock hands move.",
+      "volume": 0.14,
+      "overrides": {
+        "wave_type": 3,
+        "p_base_freq": 0.8,
+        "p_env_sustain": 0.01,
+        "p_env_decay": 0.07,
+        "p_lpf_freq": 0.55,
+        "p_hpf_freq": 0.25
+      }
+    },
+    "switch_toggle": {
+      "note": "A light switch flips.",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 0,
+        "p_base_freq": 0.36,
+        "p_duty": 0.5,
+        "p_env_sustain": 0.02,
+        "p_env_decay": 0.1,
+        "p_lpf_freq": 0.35,
+        "p_freq_ramp": -0.2
+      }
+    },
+    "slider_move": {
+      "note": "A sliding tile moves.",
+      "volume": 0.16,
+      "overrides": {
+        "wave_type": 3,
+        "p_base_freq": 0.35,
+        "p_env_attack": 0.04,
+        "p_env_sustain": 0.06,
+        "p_env_decay": 0.1,
+        "p_lpf_freq": 0.3,
+        "p_hpf_freq": 0.05
+      }
+    },
+    "key_turn": {
+      "note": "A key turns in a lock: click-clack.",
+      "volume": 0.22,
+      "overrides": {
+        "wave_type": 3,
+        "p_base_freq": 0.6,
+        "p_env_sustain": 0.02,
+        "p_env_decay": 0.12,
+        "p_lpf_freq": 0.5,
+        "p_hpf_freq": 0.15,
+        "p_repeat_speed": 0.62
+      }
+    },
+    "tool_use": {
+      "note": "Using a tool (flashlight click, trowel dig, screwdriver).",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 3,
+        "p_base_freq": 0.3,
+        "p_freq_ramp": -0.1,
+        "p_env_attack": 0.03,
+        "p_env_sustain": 0.1,
+        "p_env_decay": 0.18,
+        "p_lpf_freq": 0.28,
+        "p_repeat_speed": 0.55
+      }
+    },
+    "search": {
+      "note": "Rummaging under a cushion / behind books.",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 3,
+        "p_base_freq": 0.45,
+        "p_env_attack": 0.08,
+        "p_env_sustain": 0.18,
+        "p_env_decay": 0.2,
+        "p_lpf_freq": 0.35,
+        "p_lpf_ramp": 0.1,
+        "p_hpf_freq": 0.1
+      }
+    },
+    "purchase": {
+      "note": "Buying something from Grandma's Catalog.",
+      "volume": 0.2,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.4311,
+        "p_arp_mod": 0.608,
+        "p_arp_speed": 0.45,
+        "p_env_sustain": 0.08,
+        "p_env_decay": 0.35,
+        "p_env_punch": 0.4,
+        "p_repeat_speed": 0.55
+      }
+    },
+    "streak": {
+      "note": "Daily streak grows.",
+      "volume": 0.22,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.4703,
+        "p_arp_mod": 0.528,
+        "p_arp_speed": 0.55,
+        "p_env_sustain": 0.12,
+        "p_env_decay": 0.4,
+        "p_vib_strength": 0.1,
+        "p_vib_speed": 0.6
+      }
     }
   }
 }

@@ -74,7 +74,7 @@ func start(level_data: Dictionary) -> void:
 	session.item_consumed.connect(func(id: String) -> void: inventory.remove_item(id))
 	session.items_combined.connect(_on_items_combined)
 	session.completed.connect(_on_completed)
-	AudioManager.play_music(str(room_view.room.get("music", "level_lounge")))
+	AudioManager.play_music("daily_sunrise" if mode == "daily" else str(room_view.room.get("music", "level_lounge")))
 	AudioManager.play_ambience("ambience_ocean")
 
 
@@ -142,7 +142,7 @@ func use_selected_on(lock_id: String) -> void:
 	var result := session.use_item(item, lock_id)
 	match result:
 		"opened":
-			AudioManager.play_sfx("lock_open")
+			AudioManager.play_sfx("key_turn" if session.lock_type(lock_id) == "key" else "tool_use")
 		"wrong":
 			AudioManager.play_sfx("item_fail")
 			toast(tr("ITEM_WRONG") % text.item_name(item))
@@ -156,6 +156,7 @@ func use_selected_on(lock_id: String) -> void:
 func submit(lock_id: String, answer: String) -> bool:
 	var ok := false
 	if answer == "search":
+		AudioManager.play_sfx("search")
 		ok = session.search(lock_id)
 	else:
 		ok = session.submit_answer(lock_id, answer)
@@ -414,7 +415,7 @@ func _on_completed() -> void:
 	closeup.close()
 	_hint_panel.visible = false
 	AudioManager.play_sfx("door_open")
-	AudioManager.play_music("sunrise_stinger")
+	AudioManager.play_stinger("sunrise_stinger")
 	room_view.animate_sunrise_to(1.12, 3.0)
 	var result := GameState.record_level_result(level, record_id, mode, session)
 	finished_level.emit(result)
@@ -615,6 +616,12 @@ func _toggle_pause() -> void:
 	AudioManager.play_sfx("ui_click")
 	_pause_menu = UIKit.dialog(ui, tr("PAUSE_TITLE"), "", [
 		[tr("RESUME"), _toggle_pause, true],
+		[tr("MENU_SETTINGS"), func() -> void:
+			var panel := SettingsPanel.new()
+			panel.closed.connect(func() -> void:
+				_paused = false
+				_timer_label.visible = bool(SaveManager.settings.get("show_timer", false)))
+			ui.add_child(panel)],
 		[tr("RESTART"), func() -> void: Router.goto("level", Router.params)],
 		[tr("LEAVE"), func() -> void: Router.goto(_exit_screen())],
 	])

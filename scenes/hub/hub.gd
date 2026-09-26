@@ -266,7 +266,7 @@ func _decor_card(id: String, slot_id: String, overlay: Control) -> Control:
 		button.disabled = not GameState.can_buy_decor(id)
 		button.pressed.connect(func() -> void:
 			if GameState.buy_decor(id):
-				AudioManager.play_sfx("seashell_gain")
+				AudioManager.play_sfx("purchase")
 				if slot_id != "":
 					GameState.place_decor(slot_id, id)
 					AudioManager.play_sfx("decor_place")

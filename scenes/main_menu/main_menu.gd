@@ -32,17 +32,17 @@ func _ready() -> void:
 	column.offset_top = 90
 	column.add_theme_constant_override("separation", 14)
 	add_child(column)
-	var title := UIKit.label(tr("TITLE"), 148, Palette.color("white_warm"))
+	var title := UIKit.label(tr("TITLE"), 132, Palette.color("white_warm"))
 	title.add_theme_color_override("font_shadow_color", Color(0.169, 0.137, 0.314, 0.45))
 	title.add_theme_constant_override("shadow_offset_y", 6)
 	column.add_child(title)
 	column.add_child(UIKit.label(tr("SUBTITLE"), 46, Palette.color("cream")))
 	var spacer := Control.new()
-	spacer.custom_minimum_size.y = 36
+	spacer.custom_minimum_size.y = 20
 	column.add_child(spacer)
 
 	var buttons := VBoxContainer.new()
-	buttons.add_theme_constant_override("separation", 16)
+	buttons.add_theme_constant_override("separation", 12)
 	buttons.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	column.add_child(buttons)
 	var play_caption := tr("MENU_PLAY") if GameState.completed_count() == 0 else tr("MENU_CONTINUE")
@@ -51,19 +51,19 @@ func _ready() -> void:
 	play.pressed.connect(_on_play)
 	buttons.add_child(play)
 	if Campaign.room_available("lounge"):
-		var daily := UIKit.text_button(_daily_caption(), Vector2(520, 96))
+		var daily := UIKit.text_button(_daily_caption(), Vector2(520, 88))
 		daily.pressed.connect(_on_daily)
 		buttons.add_child(daily)
 	for entry in [["hub", "MENU_PENTHOUSE"], ["scrapbook", "MENU_SCRAPBOOK"]]:
 		if Router.has_screen(str(entry[0])):
-			var b := UIKit.text_button(tr(str(entry[1])), Vector2(520, 96))
+			var b := UIKit.text_button(tr(str(entry[1])), Vector2(520, 88))
 			var screen := str(entry[0])
 			b.pressed.connect(func() -> void:
 				AudioManager.play_sfx("ui_click")
 				Router.goto(screen))
 			buttons.add_child(b)
 	if ResourceLoader.exists("res://scenes/settings/settings_panel.gd"):
-		var s := UIKit.text_button(tr("MENU_SETTINGS"), Vector2(520, 96))
+		var s := UIKit.text_button(tr("MENU_SETTINGS"), Vector2(520, 88))
 		s.pressed.connect(_on_settings)
 		buttons.add_child(s)
 
@@ -109,5 +109,6 @@ func _on_daily() -> void:
 
 func _on_settings() -> void:
 	AudioManager.play_sfx("ui_click")
-	var panel: Control = (load("res://scenes/settings/settings_panel.gd") as GDScript).new()
+	var panel := SettingsPanel.new()
+	panel.closed.connect(func() -> void: Router.goto("main_menu", {}, false))
 	add_child(panel)

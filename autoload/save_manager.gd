@@ -79,6 +79,15 @@ func migrate_save(save: Dictionary) -> Dictionary:
 	return merged
 
 
+## Applies window settings (fullscreen). On the web this only works from a button press.
+func apply_display() -> void:
+	var want := bool(settings.get("fullscreen", false))
+	var mode := DisplayServer.window_get_mode()
+	var is_full := mode == DisplayServer.WINDOW_MODE_FULLSCREEN or mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
+	if want != is_full:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN if want else DisplayServer.WINDOW_MODE_WINDOWED)
+
+
 func save_game() -> void:
 	_write_json(SAVE_PATH, data)
 

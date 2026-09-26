@@ -96,9 +96,11 @@ func _stepper(caption: String, change: Callable) -> Control:
 	l.custom_minimum_size.x = 150
 	down.pressed.connect(func() -> void:
 		change.call(-1)
+		AudioManager.play_sfx("clock_tick", 0.05)
 		_refresh())
 	up.pressed.connect(func() -> void:
 		change.call(1)
+		AudioManager.play_sfx("clock_tick", 0.05)
 		_refresh())
 	box.add_child(down)
 	box.add_child(l)
@@ -111,4 +113,3 @@ func _refresh() -> void:
 	_face.hour = _hour
 	_face.minute = _minute
 	_face.update_hands()
-	AudioManager.play_sfx("lock_digit", 0.1, -6.0)

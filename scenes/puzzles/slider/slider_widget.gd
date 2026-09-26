@@ -88,7 +88,7 @@ func _tap(cell: int) -> void:
 		return
 	_tiles[gap] = _tiles[cell]
 	_tiles[cell] = -1
-	AudioManager.play_sfx("lock_digit", 0.1)
+	AudioManager.play_sfx("slider_move", 0.1)
 	_refresh()
 	if _is_solved():
 		_done = true

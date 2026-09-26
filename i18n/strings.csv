@@ -158,3 +158,20 @@ SCRAPBOOK_LETTER_LOCKED,Find all the postcards to read Grandma's letter
 SCRAPBOOK_MISSING,A postcard is still hidden somewhere...
 SCRAPBOOK_HINT,Hidden somewhere in Sunrise %d
 POSTCARD_TURN,Turn it over
+SETTINGS_MASTER,Everything
+SETTINGS_MUSIC,Music
+SETTINGS_SFX,Sound effects
+SETTINGS_AMBIENCE,Ocean sounds
+SETTINGS_FULLSCREEN,Full screen
+SETTINGS_TIMER,Show a timer in rooms
+SETTINGS_REDUCE_MOTION,Reduce motion
+SETTINGS_TEXT_SIZE,Text size
+SETTINGS_TEXT_NOTE,Takes effect on the next screen.
+SETTINGS_CREDITS,Credits
+SETTINGS_RESET,Start over...
+SETTINGS_DONE,Done
+CREDITS_TEXT,"Sunrise Suite - made with Godot Engine.\nArt and sound effects made for this game (sounds with jsfxr).\nMusic made with Suno.\nFonts: Nunito and Caveat (SIL Open Font License)."
+RESET_TITLE,Start over?
+RESET_TEXT,"This erases your stars, seashells, decor, postcards and streak. It can't be undone."
+RESET_YES,"Yes, start over"
+RESET_NO,"No, keep my progress"

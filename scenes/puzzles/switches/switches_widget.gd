@@ -60,7 +60,7 @@ func set_answer(pattern: String) -> void:
 
 func _flip(i: int) -> void:
 	_states[i] = not _states[i]
-	AudioManager.play_sfx("ui_click", 0.1)
+	AudioManager.play_sfx("switch_toggle", 0.08)
 	_refresh()
 
 

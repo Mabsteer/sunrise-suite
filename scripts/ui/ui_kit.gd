@@ -63,7 +63,7 @@ static func icon_button(icon_path: String, size: float = 96.0, tooltip: String =
 static func label(text: String, size: int = 34, color: Color = Color(0.231, 0.18, 0.227), align: HorizontalAlignment = HORIZONTAL_ALIGNMENT_CENTER) -> Label:
 	var l := Label.new()
 	l.text = text
-	l.add_theme_font_size_override("font_size", size)
+	l.add_theme_font_size_override("font_size", int(size * text_scale()))
 	l.add_theme_color_override("font_color", color)
 	l.horizontal_alignment = align
 	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -77,7 +77,7 @@ static func handwriting(bbcode: String, size: int = 46) -> RichTextLabel:
 	r.fit_content = true
 	r.scroll_active = false
 	r.add_theme_font_override("normal_font", HANDWRITING)
-	r.add_theme_font_size_override("normal_font_size", size)
+	r.add_theme_font_size_override("normal_font_size", int(size * text_scale()))
 	r.add_theme_color_override("default_color", Palette.color("ink"))
 	r.text = bbcode
 	r.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -125,6 +125,7 @@ static func text_button(caption: String, min_size: Vector2 = Vector2(420, 96)) -
 	b.text = caption
 	b.custom_minimum_size = min_size
 	b.focus_mode = Control.FOCUS_NONE
+	b.add_theme_font_size_override("font_size", int(34 * text_scale()))
 	return b
 
 

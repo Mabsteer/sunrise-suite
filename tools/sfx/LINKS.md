@@ -31,3 +31,17 @@ after `#` into that sound's `"b58"` field in `tools/sfx/sfx.json` (remove `prese
 | `page_turn` | noise | 0.13 s | 45% | [sfxr.me](https://sfxr.me/#8LRswEemj7eck4y4stUHsaPecrtgeuCKXgCxvGBZ5Gds7gw7yN2EVrkmyMf8c2SGpQAsWnsKuvfHKV7etNZJQcJg5ffvEkgKDy6rrd89sH4quQxkzBN8TfdD9) |
 | `level_complete` | sine | 0.89 s | 89% | [sfxr.me](https://sfxr.me/#57uBnWdB7rJg35yGDyUMNBXhi9DFKfRRd3hhiJgWtwyo6LJZTv6Zi7hdiUkxiJucmi1MMJ21gDpp6yGF1fEcPAWDTHiq8Qy6PMzQx1uycvvZtK3TJiWTnBsom) |
 | `daily_unlock` | sine | 0.55 s | 54% | [sfxr.me](https://sfxr.me/#57uBnWgprtjHyTUMDt3L5YTMfmbk3zTXWixbDMRoY3emND1CCn2embR2k42onwLjG1vRsoD3up3Svd7zHG8Kvptvc9Eb17y3hojyEYZp1mrd5yxyhbw3ZWMq9) |
+| `note_sun` | sine | 0.24 s | 73% | [sfxr.me](https://sfxr.me/#57uBnWgprtjFk26xCjhss27MmigHe5mZZDjYGudx8ZAL2Rv51uUeW8yc7Kg4n7HQXJwBwCvJJLW2ossb8k1MecSWX7ojaGbfnEn3Fn3tp2bNVD4aXfcAN2ie3) |
+| `note_shell` | sine | 0.24 s | 73% | [sfxr.me](https://sfxr.me/#57uBnWgprtjFk26xCjhss26k79v8ZZsgbzc7MZA1Az2r9oXKYKhKnVaMUxErjYi9syzSKqtb8K3BXj898K1NvqGL9W6tNYJLDPpiYry99CVvYfgoqUUKjFrbR) |
+| `note_wave` | sine | 0.24 s | 73% | [sfxr.me](https://sfxr.me/#57uBnWgprtjFk26xCjhss26eukXCDs6hpWbdBR9ZZitrkLZ6kA4465QtJGmmJ3xXwvrtUQE1Wx3JjrzBCWxsE4tuHeUVo6Md3YcnMV9dRgnvxcLPabVMASmNP) |
+| `note_star` | sine | 0.24 s | 73% | [sfxr.me](https://sfxr.me/#57uBnWgprtjFk26xCjhss26k7BKh2kxSvkuFYRN37whT2wcZkjSKSNbeas3BrRbKRA2D44rEV4bY3KV3KNSnjLVaSuYB2T9eEt4BMYWeVNwKxEUhkvmqHbyi7) |
+| `note_leaf` | sine | 0.24 s | 74% | [sfxr.me](https://sfxr.me/#57uBnWgprtjFk26xCjhss26GVfoJcy2yQ22kimXD4bnC3d8RfC5NQfceR6CCgTgzSqUjabBB4zxW5KGof9q7GxjvXenSSxE3rsyetZ6inrgWM59kJHmsWRuDh) |
+| `note_heart` | sine | 0.24 s | 74% | [sfxr.me](https://sfxr.me/#57uBnWgprtjFk26xCjhss26EXF3cLJGsxjEwgwPJ14DT47yGSFdxAbSSdJ1qwzXhM4HhYBH61VkXNfGHeA81o3v8GQ82gtyQSopNsDG8UQhYQ2rP3Zosu6ubu) |
+| `clock_tick` | noise | 0.01 s | 25% | [sfxr.me](https://sfxr.me/#7BMHBGAc8o7dNx5jWjJsMKUidUyWMAQBoCPCBhXrS2TQFFS6qwgfUU9WTfa8KCBTkdEjb5tHZroscx4JhBNiUB4KEssY1zXVrvg7fp2cWdYMqG1GEJh31CCzK) |
+| `switch_toggle` | square | 0.02 s | 27% | [sfxr.me](https://sfxr.me/#11111mqnbcUGfL5yUzoxxi5bKQk3AKAoxSxbQwaU5Y2dTGVVM5Jg3A3YePjww7BFTRyUnCkyKN9pXYXbRitquN8VevvgNGRDmefYdPqNaxtfUChYrAxFT6w) |
+| `slider_move` | noise | 0.03 s | 37% | [sfxr.me](https://sfxr.me/#7GQejs75NA8pY5PLtYv8huzsZJ94G9boieAf7fWPus4r3TaJ8wqLiYMXLrEerg7LD7Zd5qU7h6uZMZdT3bKZvcbGkdCXS3mcpPi3AjnrpJr1MEPeEApq8giwy) |
+| `key_turn` | noise | 0.03 s | 41% | [sfxr.me](https://sfxr.me/#7BMHBGAc9GHfqEF56X3rc3KxvZzWz9d7S1wFC6ivzc9FGSUvPLJ8zFxhP36tkeDwnMCZjfBk7ZBqoVbo8BMV7u3sPuCkedHgyYSyJCEcC8wFPZv56PQvhFfAF) |
+| `tool_use` | noise | 0.10 s | 45% | [sfxr.me](https://sfxr.me/#8LRswEemj7eck4y4szNEBxCukGVLqEHRwqgwXDtXDrVJMwiBpQChWgQ7v9Fx8vd8Qum7fDu1t63HwG6d8dc2g7aWE3DEpGMokmAefEhCR1xAnPB72mL9RUgzb) |
+| `search` | noise | 0.18 s | 53% | [sfxr.me](https://sfxr.me/#7GQhogHPCW1v1mxKHFKAxaYwFsUou4sQSg7Bei2Z7jZityz2ftSCAvdpNrpjyaETiFXKgiBjA8fMkyhwREqcqdfaAoewmsDfWiYYvcxoDfCJDrbSQzNp3X9gT) |
+| `purchase` | sine | 0.29 s | 79% | [sfxr.me](https://sfxr.me/#57uBnWSzi74QQ9TTkiVGe9WDwCZzdyaBPG3uMPoDTmHQExCEFmFQfpwPeGXBhBaJSHASCvTyFbpzFtGYpdbpSvtA3ZFbQTDe3gtyhkffwQH3JK6hDfr4JbsR9) |
+| `streak` | sine | 0.40 s | 49% | [sfxr.me](https://sfxr.me/#57uBnWcURsYKtmkuFSr5cyXq6ML15o6NYWzxP8j6v8XwAcSwCSUhR9ifDdKbkTgqne3k6EcZtzVdVupkHdVL3MbEbP2waaDCGShzFYJjnFRM82dn2BJAgCs59) |

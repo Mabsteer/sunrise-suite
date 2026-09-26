@@ -44,5 +44,9 @@ One line per decision: what, and why.
 - Daily seashells: 15 + 2 per streak day (up to +14). Replaying the same day improves its stars only.
 - tests/smoke_screens opens every screen twice (fresh save and with progress), so runtime script errors in UI code fail the gate. Test runners that change screens must run from a node attached to the root.
 - Every check.sh step runs under a timeout (STEP_TIMEOUT, default 900 s), so a hung Godot run fails instead of blocking.
+- Sequence-lock symbols each play a music-box note (sun C5, shell D5, wave E5, star G5, leaf A5, heart C6), so entering a sequence sounds like a tiny tune.
+- The sunrise stinger plays on its own player once, while the room music dips, instead of replacing the music.
+- Text size scales every label, handwriting and button made through UIKit (1.0 / 1.15 / 1.3). It applies to the next screen that opens.
+- Router.goto always waits a frame after changing scenes, so current_scene is valid for callers. Test runners have watchdog timers so script errors can't hang the gate.
 - Doc and data edits containing apostrophes go through the editor tool, not quoted shell one-liners.
 - Campaign levels are generated from data/campaign.json (room, tier, fixed seed) instead of stored as big level files, so levels can be tuned by changing one seed.

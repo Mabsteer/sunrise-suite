@@ -49,7 +49,7 @@ func _add(symbol: String) -> void:
 		return
 	_chosen.append(symbol)
 	_sockets[_chosen.size() - 1].texture = UIKit.texture(str((Data.get_dict("symbols").get(symbol, {}) as Dictionary).get("sprite", "")))
-	AudioManager.play_sfx("lock_digit", 0.1)
+	AudioManager.play_sfx("note_" + symbol)
 	if _chosen.size() == _length:
 		submitted.emit(",".join(_chosen))
 

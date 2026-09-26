@@ -127,6 +127,13 @@ ui("close", `  <path d="M18 18 L46 46 M46 18 L18 46" stroke="#3b2e3a" stroke-wid
 ui("pause", `  <rect x="18" y="14" width="10" height="36" rx="5" fill="#3b2e3a"/><rect x="36" y="14" width="10" height="36" rx="5" fill="#3b2e3a"/>`, "Pause.");
 ui("back", `  <path d="M38 14 L20 32 L38 50" stroke="#3b2e3a" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`, "Back.");
 ui("forward", `  <path d="M26 14 L44 32 L26 50" stroke="#3b2e3a" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`, "Forward.");
+ui("grabber", `  <circle cx="32" cy="32" r="26" fill="#3b2e3a" opacity="0.15"/>
+  <circle cx="32" cy="30" r="24" fill="#ee7b6b"/>
+  <circle cx="32" cy="30" r="10" fill="#fffbf5"/>`, "Slider handle.");
+ui("toggle_on", `  <rect x="4" y="6" width="88" height="44" rx="22" fill="#ee7b6b"/>
+  <circle cx="70" cy="28" r="18" fill="#fffbf5"/>`, "Toggle switch: on.", 96, 56);
+ui("toggle_off", `  <rect x="4" y="6" width="88" height="44" rx="22" fill="#c9bde3"/>
+  <circle cx="26" cy="28" r="18" fill="#fffbf5"/>`, "Toggle switch: off.", 96, 56);
 ui("star_full", `  <path d="M32 4 L40 23 L61 24 L45 37 L51 58 L32 46 L13 58 L19 37 L3 24 L24 23 Z" fill="#f6c453"/>
   <path d="M32 12 L36 24 L28 24 Z" fill="#fbe3a0"/>`, "Earned star.");
 ui("star_empty", `  <path d="M32 4 L40 23 L61 24 L45 37 L51 58 L32 46 L13 58 L19 37 L3 24 L24 23 Z" fill="#fffbf5" fill-opacity="0.35" stroke="#c9bde3" stroke-width="3" stroke-linejoin="round"/>`, "Star not earned yet.");

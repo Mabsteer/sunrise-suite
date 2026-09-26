@@ -13,6 +13,9 @@ func _ready() -> void:
 	SaveManager.persist = false
 	AudioManager.enabled = false
 	SaveManager.settings["reduce_motion"] = true
+	get_tree().create_timer(800.0).timeout.connect(func() -> void:
+		printerr("FAIL autoplay timed out")
+		get_tree().quit(1))
 	_run.call_deferred()
 
 

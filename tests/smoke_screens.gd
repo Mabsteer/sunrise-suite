@@ -14,8 +14,12 @@ func _ready() -> void:
 		return
 	SaveManager.persist = false
 	AudioManager.enabled = false
+	get_tree().create_timer(180.0).timeout.connect(func() -> void:
+		printerr("FAIL smoke test timed out")
+		get_tree().quit(1))
 	_screens = [
 		{"screen": "main_menu"},
+		{"screen": "main_menu", "overlay": "settings"},
 		{"screen": "level_select"},
 		{"screen": "hub"},
 		{"screen": "calendar"},
@@ -38,6 +42,8 @@ func _run() -> void:
 			if not ok:
 				printerr("FAIL could not open ", s["screen"])
 				continue
+			if str(s.get("overlay", "")) == "settings":
+				get_tree().current_scene.add_child(SettingsPanel.new())
 			for i in 12:
 				await get_tree().process_frame
 			opened += 1

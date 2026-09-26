@@ -25,6 +25,7 @@ var _music_track := ""
 var _music_fading := false
 var _ambience_player: AudioStreamPlayer
 var _ambience_track := ""
+var _stinger: AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -41,6 +42,9 @@ func _ready() -> void:
 		m.volume_db = -80.0
 		add_child(m)
 		_music_players.append(m)
+	_stinger = AudioStreamPlayer.new()
+	_stinger.bus = "Music"
+	add_child(_stinger)
 	_ambience_player = AudioStreamPlayer.new()
 	_ambience_player.bus = "Ambience"
 	add_child(_ambience_player)
@@ -118,6 +122,24 @@ func stop_all() -> void:
 
 func current_music() -> String:
 	return _music_track
+
+
+## Plays a short music piece once (e.g. the sunrise fanfare) while the current music dips.
+func play_stinger(track: String) -> void:
+	if not enabled:
+		return
+	var stream := _load_stream(MUSIC_DIR, track, true)
+	if stream == null:
+		return
+	_disable_native_loop(stream)
+	_stinger.stream = stream
+	_stinger.play()
+	var music := _music_players[_music_active]
+	var length := maxf(stream.get_length(), 1.0)
+	var t := create_tween()
+	t.tween_property(music, "volume_db", -16.0, 0.4)
+	t.tween_interval(maxf(length - 0.8, 0.2))
+	t.tween_property(music, "volume_db", 0.0, 1.2)
 
 
 ## Loops an ambience layer (e.g. "ambience_ocean") if the file exists.

@@ -57,8 +57,9 @@ func goto(screen: String, screen_params: Dictionary = {}, fade: bool = true) -> 
 	if err != OK:
 		push_error("Router: could not open %s (error %d)" % [screen, err])
 	current = screen
+	# The scene change happens at the end of the frame; wait so current_scene is ready for callers.
+	await get_tree().process_frame
 	if fade and not reduce_motion:
-		await get_tree().process_frame
 		var t_in := create_tween()
 		t_in.tween_property(_fade_rect, "color:a", 0.0, FADE_SECONDS)
 		await t_in.finished
