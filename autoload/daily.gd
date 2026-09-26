@@ -59,6 +59,15 @@ func level_for(key: String) -> Dictionary:
 	}
 
 
+## A friendly word for how hard a day is (the weekday picks the tier).
+static func difficulty_label(tier: int) -> String:
+	if tier <= 3:
+		return TranslationServer.translate("DIFF_EASY")
+	if tier <= 5:
+		return TranslationServer.translate("DIFF_MEDIUM")
+	return TranslationServer.translate("DIFF_HARD")
+
+
 func today_level() -> Dictionary:
 	return level_for(today_key())
 

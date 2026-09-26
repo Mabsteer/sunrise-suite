@@ -581,6 +581,7 @@ func _fill(template: String, lock: Dictionary, part: String) -> String:
 			out = out.replace("{time_words}", _time_words(h, m))
 			var before := h - 1 if h > 1 else 12
 			out = out.replace("{time_before}", "%d:%02d" % [before, m])
+			out = out.replace("{time_after}", "%d:%02d" % [h + 1 if h < 12 else 1, m])
 		"switches":
 			out = out.replace("{on}", _tokens(_switch_symbols(lock, "1")))
 			out = out.replace("{off}", _tokens(_switch_symbols(lock, "0")))

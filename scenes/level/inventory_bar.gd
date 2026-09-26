@@ -121,6 +121,11 @@ func _fly_in(slot: Control, from_global: Vector2) -> void:
 	add_child(ghost)
 	ghost.global_position = from_global - ghost.size / 2.0
 	await get_tree().process_frame
+	if not is_instance_valid(slot) or not is_instance_valid(ghost):
+		# The item was used up right away (the bar was rebuilt): no flight.
+		if is_instance_valid(ghost):
+			ghost.queue_free()
+		return
 	var target := slot.global_position
 	var t := ghost.create_tween().set_parallel(true)
 	t.tween_property(ghost, "global_position", target, 0.45).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)

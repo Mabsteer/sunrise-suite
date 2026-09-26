@@ -51,6 +51,7 @@ func _run() -> void:
 			if not filter.is_empty() and not _matches(shot_name, filter):
 				continue
 			SaveManager.data = SaveManager.default_save()
+			SaveManager.settings = SaveManager.default_settings()
 			if shot.has("setup"):
 				(shot["setup"] as Callable).call()
 			var params: Variant = shot.get("params", {})

@@ -26,6 +26,7 @@ func _run() -> void:
 			var cfg := LevelGenerator.tier_config(tier)
 			var steps_sum := 0
 			var tier_ms := 0.0
+			var estimates: Array[float] = []
 			for s in seeds:
 				var seed_value := 1000 + s * 97 + tier
 				var t0 := Time.get_ticks_usec()
@@ -42,7 +43,15 @@ func _run() -> void:
 				if not bool(report["ok"]):
 					failures.append("%s t%d seed %d: %s" % [room, tier, seed_value, ", ".join(report["errors"])])
 				steps_sum += int(report["steps"])
-			print("  %-8s tier %2d: avg %.1f steps, %.1f ms/level" % [room, tier, float(steps_sum) / seeds, tier_ms / seeds])
+				estimates.append(float(report.get("estimate", 0.0)))
+			estimates.sort()
+			var median := estimates[estimates.size() / 2] if not estimates.is_empty() else 0.0
+			var p90 := estimates[int(estimates.size() * 0.9)] if not estimates.is_empty() else 0.0
+			var par := float(cfg.get("par_time", 600))
+			print("  %-8s tier %2d: avg %.1f steps, %.1f ms/level, time estimate median %ds / p90 %ds, par %ds" % [room, tier, float(steps_sum) / seeds, tier_ms / seeds, median, p90, par])
+			# Par-time sanity: a careful player without hints should usually beat par.
+			if par < p90:
+				failures.append("%s tier %d: par_time %ds is below the p90 time estimate %ds (raise it in tiers.json)" % [room, tier, par, p90])
 	# Endless tiers and determinism.
 	for tier in [11, 14, 20]:
 		var a := LevelGenerator.generate(rooms[0], tier, 42)

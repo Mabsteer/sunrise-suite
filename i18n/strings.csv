@@ -177,3 +177,10 @@ RESET_YES,"Yes, start over"
 RESET_NO,"No, keep my progress"
 ROTATE_HINT,Turn your phone sideways for the best sunrise view.
 ROTATE_OK,Play like this anyway
+STEPS_INFO,%d of %d steps
+RESULTS_NEW_BEST,New best time!
+MENU_NEXT,Next sunrise: %d
+DIFF_EASY,Gentle
+DIFF_MEDIUM,Medium
+DIFF_HARD,Tricky
+BEST_TIME,Best %s

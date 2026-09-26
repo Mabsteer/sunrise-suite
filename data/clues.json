@@ -1,34 +1,140 @@
 {
-  "_help": "Clue text templates, picked at random by the generator. Levels 0-3 = how indirect the clue is (see tiers.json 'indirection'). Split clues use 'first'/'last'. Placeholders: {lock} name of the lock, {code} 4 7 2, {part} part of a code, {words} four, seven, two, {reversed} 2 7 4, {seq} symbols, {seq_reversed}, {time} 7:30, {time_words} half past seven, {time_before} 6:30, {on} symbols switched on, {off} symbols switched off. Write {sun} etc. for symbol icons.",
+  "_help": "Clue text templates, picked at random by the generator. Levels 0-3 = how indirect the clue is (see tiers.json 'indirection'). Split clues use 'first'/'last'. Placeholders: {lock} name of the lock, {code} 4 7 2, {part} part of a code, {words} four, seven, two, {reversed} 2 7 4, {seq} symbols, {seq_reversed}, {time} 7:30, {time_words} half past seven, {time_before} 6:30 (one hour earlier), {time_after} 8:30 (one hour later), {on} symbols switched on, {off} symbols switched off. Write {sun} etc. for symbol icons. The level validator fails if a placeholder is misspelled.",
   "combo": {
-    "0": ["The code for {lock} is {code}.", "{lock} opens with {code}. Love, G.", "Note to self: {lock} is {code}."],
-    "1": ["Grandma's lucky number: {code}.", "Don't forget: {code}!", "Our old house number was {code}.", "Locker number at the beach club: {code}."],
-    "2": ["{words}. Say it out loud!", "Read it backwards: {reversed}."],
-    "first": ["The code starts with {part}...", "First the {part}..."],
-    "last": ["...and it ends with {part}.", "...then finish with {part}."],
-    "3": ["Backwards, it goes {reversed}.", "In words: {words}."]
+    "0": [
+      "The code for {lock} is {code}.",
+      "{lock} opens with {code}. Love, G.",
+      "Note to self: {lock} is {code}.",
+      "{lock}: {code}. Don't tell the cat.",
+      "Darling, {lock} is {code}. Hugs, Grandma J."
+    ],
+    "1": [
+      "Grandma's lucky number: {code}.",
+      "Don't forget: {code}!",
+      "Our old house number was {code}.",
+      "Locker number at the beach club: {code}.",
+      "Table {code} at the seafood place. Best view in town.",
+      "My bingo numbers, in order: {code}.",
+      "Seat number on the night train to Porto: {code}.",
+      "Scribbled on a sugar packet: {code}."
+    ],
+    "2": [
+      "{words}. Say it out loud!",
+      "Read it backwards: {reversed}.",
+      "Count them out: {words}.",
+      "Mango kept stepping on the keys: {words}.",
+      "I always write it the wrong way round: {reversed}."
+    ],
+    "first": [
+      "The code starts with {part}...",
+      "First the {part}...",
+      "Begin with {part}, dear...",
+      "(torn note) ...a code that opens with {part}..."
+    ],
+    "last": [
+      "...and it ends with {part}.",
+      "...then finish with {part}.",
+      "...the last bit is {part}. Clever you!",
+      "(other half of a torn note) ...and closes with {part}."
+    ],
+    "3": [
+      "Backwards, it goes {reversed}.",
+      "In words: {words}.",
+      "Hold this up to a mirror: {reversed}.",
+      "Whisper it like a secret: {words}."
+    ]
   },
   "sequence": {
-    "0": ["{lock} plays: {seq}.", "The tune for {lock}: {seq}."],
-    "1": ["My favourite tune goes {seq}.", "Hum it like the morning: {seq}."],
-    "2": ["The tune, but backwards: {seq_reversed}."],
-    "first": ["The tune begins {part}...", "It starts with {part}..."],
-    "last": ["...and ends {part}.", "...then {part} to finish."],
-    "3": ["Play it from the end to the start: {seq_reversed}."]
+    "0": [
+      "{lock} plays: {seq}.",
+      "The tune for {lock}: {seq}.",
+      "{lock} only answers to {seq}."
+    ],
+    "1": [
+      "My favourite tune goes {seq}.",
+      "Hum it like the morning: {seq}.",
+      "The song the fishermen whistle: {seq}.",
+      "Our wedding waltz: {seq}.",
+      "The ice-cream van plays {seq}."
+    ],
+    "2": [
+      "The tune, but backwards: {seq_reversed}.",
+      "I learned it upside down: {seq_reversed}. Turn it round!",
+      "Walk the notes back from the end: {seq_reversed}."
+    ],
+    "first": [
+      "The tune begins {part}...",
+      "It starts with {part}...",
+      "(half a music sheet) ...first come {part}..."
+    ],
+    "last": [
+      "...and ends {part}.",
+      "...then {part} to finish.",
+      "(other half of the sheet) ...and it ends on {part}."
+    ],
+    "3": [
+      "Play it from the end to the start: {seq_reversed}.",
+      "The gulls sing it backwards: {seq_reversed}."
+    ]
   },
   "clock": {
-    "0": ["Set {lock} to {time}.", "{lock} likes to show {time}."],
-    "1": ["Breakfast on the balcony at {time}. Don't be late! - J.", "Morning swim at {time} sharp.", "Yoga on the sand at {time}."],
-    "2": ["Tea at {time_words}, as always.", "Sunrise walk at {time_words}."],
-    "3": ["One hour after my {time_before} coffee.", "An hour after the {time_before} ferry."]
+    "0": [
+      "Set {lock} to {time}.",
+      "{lock} likes to show {time}.",
+      "{lock} should say {time}. It's always right twice a day."
+    ],
+    "1": [
+      "Breakfast on the balcony at {time}. Don't be late! - J.",
+      "Morning swim at {time} sharp.",
+      "Yoga on the sand at {time}.",
+      "Fresh croissants at the bakery from {time}.",
+      "The fish market opens at {time}. Bring the big basket.",
+      "Kayak lesson at {time}. Wear the silly hat."
+    ],
+    "2": [
+      "Tea at {time_words}, as always.",
+      "Sunrise walk at {time_words}.",
+      "Feed Mango at {time_words}. She WILL remind you.",
+      "The bells ring at {time_words}."
+    ],
+    "3": [
+      "One hour after my {time_before} coffee.",
+      "An hour after the {time_before} ferry.",
+      "An hour before the {time_after} tram.",
+      "One hour before my {time_after} nap. Naps are sacred."
+    ]
   },
   "switches": {
-    "0": ["Switch on: {on}. Everything else off.", "Lamps on: {on}."],
-    "1": ["Only the lamps with the {on} should glow.", "Light up {on} - leave the rest dark."],
-    "2": ["Everything on except {off}.", "Leave {off} off, turn on the others."],
-    "first": ["Turn on {part}...", "The {part} lamp stays on..."],
-    "last": ["...and {part} too. The rest off.", "...plus {part}. Nothing else."],
-    "3": ["All lamps on, apart from {off}."]
+    "0": [
+      "Switch on: {on}. Everything else off.",
+      "Lamps on: {on}.",
+      "{lock}: only {on} on."
+    ],
+    "1": [
+      "Only the lamps with the {on} should glow.",
+      "Light up {on} - leave the rest dark.",
+      "For a cozy evening: just {on}.",
+      "Reading light: {on}. The rest stays off."
+    ],
+    "2": [
+      "Everything on except {off}.",
+      "Leave {off} off, turn on the others.",
+      "{off} hurts my eyes. Every other lamp on, please."
+    ],
+    "first": [
+      "Turn on {part}...",
+      "The {part} lamp stays on...",
+      "(a note on the light switch) {part} on..."
+    ],
+    "last": [
+      "...and {part} too. The rest off.",
+      "...plus {part}. Nothing else.",
+      "...and {part}, then all the others off."
+    ],
+    "3": [
+      "All lamps on, apart from {off}.",
+      "Light everything but {off}. Moths love it."
+    ]
   },
   "decoys": [
     "Grocery list: 3 lemons, 12 eggs, 1 very large pineapple.",
@@ -42,7 +148,16 @@
     "Recipe: 250 g flour, 3 eggs, a pinch of cinnamon.",
     "Tide table: high tide at 5:40, low tide at 11:55.",
     "Pilates moved to Wednesdays at 6.",
-    "The ferry leaves from pier 9."
+    "The ferry leaves from pier 9.",
+    "Mango's vet: Dr. Okafor, Tuesday at 10:30.",
+    "Buy stamps. At least 20. Postcards don't send themselves.",
+    "Surf report: waves 1.5 m, wind from the west.",
+    "Library books due on the 3rd. (The one about octopuses is overdue. Oops.)",
+    "Birthday cake for Rosa: 8 candles, not 80. She will count.",
+    "Wi-Fi password is on the fridge. No, the OTHER fridge.",
+    "Knitting pattern: knit 2, purl 2, repeat until happy.",
+    "Flight home: gate 42, seat 17C. Window seat next time!",
+    "Tango class, Saturday 7 pm. Borrow Mr. Pereira's shoes."
   ],
   "time_words": {
     "0": "{h} o'clock",

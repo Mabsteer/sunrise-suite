@@ -32,6 +32,7 @@ var _timer_label: Label
 var _pause_menu: Control
 var _results: Control
 var _paused := false
+var _background := false
 var _pending_from := Vector2.INF
 var _props_layer: Node2D
 var _spots_layer: Node2D
@@ -86,10 +87,28 @@ func start(level_data: Dictionary) -> void:
 
 
 func _process(delta: float) -> void:
-	if session and not session.finished and not _paused:
-		session.elapsed += delta
-		if _timer_label and _timer_label.visible:
-			_timer_label.text = _format_time(session.elapsed)
+	if session and not session.finished and not _paused and not _background:
+		# Clamp: browsers stop frames in hidden tabs, and the first frame back can have a huge delta.
+		session.elapsed += minf(delta, 0.25)
+	_update_info()
+
+
+## The small line under the title: steps solved, plus the time if the player turned the timer on.
+func _update_info() -> void:
+	if _timer_label == null or session == null:
+		return
+	var info := tr("STEPS_INFO") % [session.solved_steps, session.total_steps]
+	if bool(SaveManager.settings.get("show_timer", false)):
+		info += "   ·   " + _format_time(session.elapsed)
+	_timer_label.text = info
+
+
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_APPLICATION_FOCUS_OUT, NOTIFICATION_WM_WINDOW_FOCUS_OUT, NOTIFICATION_APPLICATION_PAUSED:
+			_background = true
+		NOTIFICATION_APPLICATION_FOCUS_IN, NOTIFICATION_WM_WINDOW_FOCUS_IN, NOTIFICATION_APPLICATION_RESUMED:
+			_background = false
 
 
 # ======================================================================= controller API
@@ -473,12 +492,13 @@ func _build_ui() -> void:
 	title.add_theme_constant_override("shadow_offset_y", 3)
 	title.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(title)
-	_timer_label = UIKit.label("0:00", 30, Palette.color("white_warm"))
+	_timer_label = UIKit.label("", 26, Palette.color("cream"))
 	_timer_label.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
-	_timer_label.offset_left = -200
-	_timer_label.offset_right = 200
+	_timer_label.offset_left = -300
+	_timer_label.offset_right = 300
 	_timer_label.offset_top = 74
-	_timer_label.visible = bool(SaveManager.settings.get("show_timer", false))
+	_timer_label.add_theme_color_override("font_shadow_color", Color(0.169, 0.137, 0.314, 0.6))
+	_timer_label.add_theme_constant_override("shadow_offset_y", 2)
 	_timer_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(_timer_label)
 
@@ -669,8 +689,7 @@ func _toggle_pause() -> void:
 		[tr("MENU_SETTINGS"), func() -> void:
 			var panel := SettingsPanel.new()
 			panel.closed.connect(func() -> void:
-				_paused = false
-				_timer_label.visible = bool(SaveManager.settings.get("show_timer", false)))
+				_paused = false)
 			ui.add_child(panel)],
 		[tr("RESTART"), func() -> void: Router.goto("level", Router.params)],
 		[tr("LEAVE"), func() -> void: Router.goto(_exit_screen())],
@@ -727,18 +746,36 @@ func _show_results(result: Dictionary) -> void:
 	var info := UIKit.label("\n".join(lines), 32, Palette.color("ink_soft"))
 	body.add_child(info)
 	body.move_child(info, 2)
+	var next_index := 3
+	if bool(result.get("new_best_time", false)):
+		var best := UIKit.label(tr("RESULTS_NEW_BEST"), 30, Palette.color("sea_deep"))
+		body.add_child(best)
+		body.move_child(best, next_index)
+		next_index += 1
 	var shells := int(result.get("seashells", 0))
 	if shells > 0:
-		var sh := UIKit.label(tr("RESULTS_SHELLS") % shells, 36, Palette.color("coral_dark"))
+		var sh := UIKit.label(tr("RESULTS_SHELLS") % 0, 36, Palette.color("coral_dark"))
 		body.add_child(sh)
-		body.move_child(sh, 3)
-		AudioManager.play_sfx("seashell_gain")
+		body.move_child(sh, next_index)
+		_count_up(sh, shells, 0.35 + stars * 0.35)
 	for unlock: String in result.get("unlocks", []):
 		var ul := UIKit.label(unlock, 30, Palette.color("sea_deep"))
 		body.add_child(ul)
 		body.move_child(ul, body.get_child_count() - 2)
 
 
+
+
+## Seashells tick up after the stars have popped in, with a soft sound at the start.
+func _count_up(label: Label, total: int, delay: float) -> void:
+	if bool(SaveManager.settings.get("reduce_motion", false)):
+		label.text = tr("RESULTS_SHELLS") % total
+		AudioManager.play_sfx("seashell_gain")
+		return
+	var t := label.create_tween()
+	t.tween_interval(delay)
+	t.tween_callback(func() -> void: AudioManager.play_sfx("seashell_gain"))
+	t.tween_method(func(v: float) -> void: label.text = tr("RESULTS_SHELLS") % roundi(v), 0.0, float(total), clampf(total / 40.0, 0.4, 1.0)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 
 
 func _exit_screen() -> String:

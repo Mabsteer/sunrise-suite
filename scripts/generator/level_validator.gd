@@ -109,6 +109,19 @@ static func validate(level: Dictionary, tier_cfg: Dictionary = {}) -> Dictionary
 				errors.append("%s: slot %s used twice" % [i.get("id", "?"), slot])
 			used_slots[slot] = true
 
+	# --- clue text: every placeholder was filled in (symbol icons like {sun} stay)
+	var symbols := Data.get_dict("symbols")
+	for c: Dictionary in level.get("clues", []):
+		var text := str(c.get("text", ""))
+		var at := text.find("{")
+		while at >= 0:
+			var close := text.find("}", at)
+			var token := text.substr(at + 1, close - at - 1) if close > at else ""
+			if not symbols.has(token) or token.begins_with("_"):
+				errors.append("%s: unfilled placeholder in %s" % [c.get("id", "?"), text])
+				break
+			at = text.find("{", close)
+
 	# --- lock requirements make sense
 	for l: Dictionary in level.get("locks", []):
 		var t := str(l.get("type", ""))
@@ -145,7 +158,8 @@ static func validate(level: Dictionary, tier_cfg: Dictionary = {}) -> Dictionary
 		var r: Array = tier_cfg["steps"]
 		if steps < int(r[0]) or steps > int(r[1]) + 1:
 			errors.append("%d steps, tier wants %d-%d" % [steps, int(r[0]), int(r[1])])
-	return {"ok": errors.is_empty(), "errors": errors, "steps": steps}
+	var estimate := LevelSolver.estimate_seconds(level, result["actions"], int(tier_cfg.get("indirection", 0)))
+	return {"ok": errors.is_empty(), "errors": errors, "steps": steps, "estimate": estimate}
 
 
 static func _spot(room: Dictionary, furniture_id: String, spot_id: String) -> Dictionary:

@@ -66,7 +66,7 @@ func _today_panel() -> Control:
 	var thumb := RoomThumb.new(str(info["room"]), 0.55)
 	thumb.custom_minimum_size = Vector2(0, 280)
 	v.add_child(thumb)
-	v.add_child(UIKit.label("%s  ·  %s" % [tr(str(room.get("name", ""))), tr("TIER_TITLE") % int(info["tier"])], 34, Palette.color("ink_soft")))
+	v.add_child(UIKit.label("%s  ·  %s" % [tr(str(room.get("name", ""))), Daily.difficulty_label(int(info["tier"]))], 34, Palette.color("ink_soft")))
 	var done := GameState.daily_done(today)
 	var play := UIKit.text_button(tr("DAILY_PLAY_AGAIN") if done else tr("DAILY_PLAY"), Vector2(520, 110))
 	if not done:

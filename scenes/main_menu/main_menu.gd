@@ -45,23 +45,32 @@ func _ready() -> void:
 	buttons.add_theme_constant_override("separation", 12)
 	buttons.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	column.add_child(buttons)
-	var play_caption := tr("MENU_PLAY") if GameState.completed_count() == 0 else tr("MENU_CONTINUE")
-	var play := UIKit.primary(UIKit.text_button(play_caption, Vector2(520, 110)))
-	play.add_theme_font_size_override("font_size", 42)
+	var play := UIKit.primary(UIKit.text_button(_play_caption(), Vector2(520, 110)))
+	play.add_theme_font_size_override("font_size", roundi(42 * UIKit.text_scale()))
 	play.pressed.connect(_on_play)
 	buttons.add_child(play)
+	if GameState.completed_count() > 0 and _quick_play() != "book":
+		var book := UIKit.text_button(tr("MENU_CONTINUE"), Vector2(520, 88))
+		book.pressed.connect(func() -> void:
+			AudioManager.play_sfx("ui_click")
+			Router.goto("level_select"))
+		buttons.add_child(book)
 	if Campaign.room_available("lounge"):
 		var daily := UIKit.text_button(_daily_caption(), Vector2(520, 88))
 		daily.pressed.connect(_on_daily)
 		buttons.add_child(daily)
+	var pair := HBoxContainer.new()
+	pair.add_theme_constant_override("separation", 12)
+	buttons.add_child(pair)
 	for entry in [["hub", "MENU_PENTHOUSE"], ["scrapbook", "MENU_SCRAPBOOK"]]:
 		if Router.has_screen(str(entry[0])):
-			var b := UIKit.text_button(tr(str(entry[1])), Vector2(520, 88))
+			var b := UIKit.text_button(tr(str(entry[1])), Vector2(254, 88))
+			b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			var screen := str(entry[0])
 			b.pressed.connect(func() -> void:
 				AudioManager.play_sfx("ui_click")
 				Router.goto(screen))
-			buttons.add_child(b)
+			pair.add_child(b)
 	if ResourceLoader.exists("res://scenes/settings/settings_panel.gd"):
 		var s := UIKit.text_button(tr("MENU_SETTINGS"), Vector2(520, 88))
 		s.pressed.connect(_on_settings)
@@ -91,12 +100,37 @@ func _daily_caption() -> String:
 	return tr("MENU_DAILY_DONE") if done.has(Daily.today_key()) else tr("MENU_DAILY")
 
 
+## First launch: start the tutorial. Later: jump straight into the next unfinished sunrise
+## (or Endless Sunrise once the book is done). The book has its own button.
+## What the big button does: "first", "next", "endless", or "book" (the next level waits behind a star gate).
+func _quick_play() -> String:
+	if GameState.completed_count() == 0:
+		return "first"
+	if GameState.campaign_finished():
+		return "endless"
+	return "next" if GameState.is_level_unlocked(GameState.current_level_id()) else "book"
+
+
+func _play_caption() -> String:
+	match _quick_play():
+		"first":
+			return tr("MENU_PLAY")
+		"endless":
+			return tr("ENDLESS_PLAY")
+		"book":
+			return tr("MENU_CONTINUE")
+	return tr("MENU_NEXT") % (Campaign.index_of(GameState.current_level_id()) + 1)
+
+
 func _on_play() -> void:
 	AudioManager.play_sfx("ui_click")
-	if GameState.completed_count() == 0:
-		Launcher.play_main(GameState.current_level_id())
-	else:
-		Router.goto("level_select")
+	match _quick_play():
+		"endless":
+			Launcher.play_endless()
+		"book":
+			Router.goto("level_select")
+		_:
+			Launcher.play_main(GameState.current_level_id())
 
 
 func _on_daily() -> void:

@@ -444,6 +444,7 @@ func record_level_result(level: Dictionary, record_id: String, mode: String, ses
 	var shells := 0
 	var first_clear := false
 	var new_stars := 0
+	var new_best_time := false
 	var daily_result := {}
 	if mode == "daily":
 		var day := id.trim_prefix("daily_")
@@ -464,6 +465,7 @@ func record_level_result(level: Dictionary, record_id: String, mode: String, ses
 		shells = (SHELLS_FIRST_CLEAR if first_clear else SHELLS_REPLAY) + new_stars * SHELLS_PER_NEW_STAR
 		rec["stars"] = maxi(old_stars, stars)
 		rec["completions"] = int(rec.get("completions", 0)) + 1
+		new_best_time = rec.has("best_time") and session.elapsed < float(rec["best_time"])
 		rec["best_time"] = minf(float(rec.get("best_time", INF)), session.elapsed) if rec.has("best_time") else session.elapsed
 		rec["fewest_hints"] = mini(int(rec.get("fewest_hints", 999)), session.hints_used)
 		levels[id] = rec
@@ -493,4 +495,4 @@ func record_level_result(level: Dictionary, record_id: String, mode: String, ses
 		for decor_name: String in daily_result.get("rewards", []):
 			unlocks.append(tr("UNLOCK_DECOR") % decor_name)
 	SaveManager.save_game()
-	return {"stars": stars, "seashells": shells, "first_clear": first_clear, "new_stars": new_stars, "unlocks": unlocks, "record_id": id}
+	return {"stars": stars, "seashells": shells, "first_clear": first_clear, "new_stars": new_stars, "unlocks": unlocks, "record_id": id, "new_best_time": new_best_time}

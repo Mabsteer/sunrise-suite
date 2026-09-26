@@ -50,3 +50,10 @@ One line per decision: what, and why.
 - Router.goto always waits a frame after changing scenes, so current_scene is valid for callers. Test runners have watchdog timers so script errors can't hang the gate.
 - Doc and data edits containing apostrophes go through the editor tool, not quoted shell one-liners.
 - Campaign levels are generated from data/campaign.json (room, tier, fixed seed) instead of stored as big level files, so levels can be tuned by changing one seed.
+- The level timer stops while the window or browser tab is in the background, and one frame can add at most 0.25 s, so the third star stays fair after switching apps.
+- The small line under the room title always shows "N of M steps"; the time is added only when the player turns on the timer (no visible timer by default).
+- The main menu's big button jumps straight into the next unfinished sunrise ("Next sunrise: N"). It opens the book instead when that level waits behind a star gate, and starts Endless once the book is done.
+- Daily difficulty is shown as a word (Gentle / Medium / Tricky) instead of a tier number.
+- Par-time sanity check: LevelSolver.estimate_seconds models a careful player who uses no hints (finding things, reading, working out answers, sliding puzzles). The validator prints the median and 90th percentile per room × tier and fails if a tier's par_time is below the 90th percentile. Tiers 9-10 were raised to 960 s / 1020 s.
+- Hub decor can have an "idle" loop in decor.json (breathe / sway). It's skipped with Reduce motion.
+- The web loading screen is styled through the export preset's head_include (CSS over Godot's default shell) instead of a custom HTML shell, so engine upgrades keep working.

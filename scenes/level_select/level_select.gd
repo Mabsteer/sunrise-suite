@@ -151,6 +151,15 @@ func _level_card(e: Dictionary, current: String) -> Control:
 		stamp.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		stamp.tooltip_text = tr("POSTCARD_HERE")
 		button.add_child(stamp)
+	if done and rec_time(id) > 0.0:
+		var pill := PanelContainer.new()
+		pill.add_theme_stylebox_override("panel", UIKit.box(Color(0.169, 0.137, 0.314, 0.62), 16, Color.TRANSPARENT, 0, 6))
+		pill.position = Vector2(26, 150)
+		pill.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		var best := UIKit.label(tr("BEST_TIME") % LevelScene._format_time(rec_time(id)), 22, Palette.color("white_warm"))
+		best.autowrap_mode = TextServer.AUTOWRAP_OFF
+		pill.add_child(best)
+		button.add_child(pill)
 	if not unlocked:
 		var veil := ColorRect.new()
 		veil.color = Color(0.231, 0.18, 0.227, 0.45)
@@ -166,6 +175,10 @@ func _level_card(e: Dictionary, current: String) -> Control:
 		button.add_child(lock)
 	button.pressed.connect(_on_card.bind(id, unlocked, done))
 	return button
+
+
+func rec_time(id: String) -> float:
+	return float((GameState.level_record(id)).get("best_time", 0.0))
 
 
 func _endless_row() -> Control:

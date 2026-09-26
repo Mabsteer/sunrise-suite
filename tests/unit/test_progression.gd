@@ -62,3 +62,13 @@ func test_current_level_moves_on() -> void:
 	assert_eq(GameState.current_level_id(), "main_02")
 	assert_eq(GameState.next_level_id("main_29"), "main_30")
 	assert_eq(GameState.next_level_id("main_30"), "")
+
+
+func test_new_best_time_only_when_faster() -> void:
+	var first := _finish("main_01", 1)
+	assert_false(bool(first["new_best_time"]), "the first clear has nothing to beat")
+	var faster := _finish("main_01", 3)
+	assert_true(bool(faster["new_best_time"]))
+	var slower := _finish("main_01", 1)
+	assert_false(bool(slower["new_best_time"]))
+	assert_eq(float(GameState.level_record("main_01")["best_time"]), 100.0)

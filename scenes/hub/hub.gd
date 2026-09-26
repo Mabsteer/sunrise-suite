@@ -80,10 +80,36 @@ func refresh() -> void:
 				sprite.flip_h = true
 			_decor_layer.add_child(sprite)
 			_sprites[slot_id] = sprite
+			_add_idle(sprite, str(item.get("idle", "")), rect, slots.find(s))
 		else:
 			var max_size: Vector2 = _max_size(s)
 			rect = slot_rect(s, Vector2(minf(max_size.x, 200), minf(max_size.y, 200)))
 		_add_spot(s, rect, placed.has(slot_id))
+
+
+## Small signs of life (decor.json "idle"): "breathe" (a sleeping cat), "sway" (lanterns, a hanging chair).
+## The sprite moves into a pivot node so it breathes from the floor or swings from its hook.
+func _add_idle(sprite: Sprite2D, idle: String, rect: Rect2, index: int) -> void:
+	if idle == "" or bool(SaveManager.settings.get("reduce_motion", false)):
+		return
+	var pivot := Node2D.new()
+	pivot.position = rect.position + Vector2(rect.size.x / 2.0, rect.size.y if idle == "breathe" else 0.0)
+	_decor_layer.add_child(pivot)
+	_decor_layer.move_child(pivot, sprite.get_index())  # keep the draw order
+	sprite.reparent(pivot, false)
+	sprite.position = rect.position - pivot.position
+	var t := pivot.create_tween().set_loops()
+	t.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	var phase := 0.37 * index
+	match idle:
+		"breathe":
+			t.tween_property(pivot, "scale", Vector2(1.006, 1.03), 1.7 + phase * 0.1)
+			t.tween_property(pivot, "scale", Vector2.ONE, 1.9)
+		"sway":
+			var amp := deg_to_rad(1.4)
+			pivot.rotation = -amp * (0.5 - fmod(phase, 1.0))
+			t.tween_property(pivot, "rotation", amp, 2.6 + fmod(phase, 0.6))
+			t.tween_property(pivot, "rotation", -amp, 2.6 + fmod(phase, 0.6))
 
 
 ## Where an item of `item_size` goes in a slot (scaled down to the slot's max size).

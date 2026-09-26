@@ -45,6 +45,7 @@ All art is SVG (vector) in `assets/sprites/`: `rooms/`, `props/`, `items/`, `pro
 ### Make levels easier or harder
 Edit `data/tiers.json`. Each tier sets the number of steps, parallel puzzle chains, decoy notes, how cryptic clues are (`indirection` 0-3), which lock types appear, code length and `par_time` (seconds for the third star).
 To change one specific main level, give it a different `seed` in `data/campaign.json`.
+The checks print a time estimate per tier (how long a careful player needs without hints) and fail if a `par_time` is set below it, so the third star always stays within reach.
 
 ### Change a sound effect
 Sounds are made with **jsfxr** from `tools/sfx/sfx.json`.

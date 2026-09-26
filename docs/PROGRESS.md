@@ -16,21 +16,34 @@ Live build: https://mabsteer.github.io/sunrise-suite/
 - [x] **M10 Onboarding & polish**: hand-made tutorial level 1 with a step-by-step guide (data/tutorial.json), dust motes in the sunbeams, settle-in zoom, door glow + lean toward the door on completion, bouncing boxes, rotate-your-phone hint, Esc everywhere, sky shader limited to window areas (web performance), README with recipes
 
 ## Next
-- Work through the polish backlog below.
+- v1 is done (see the summary at the end). Ideas for later: more rooms, a proper Suno soundtrack (docs/SUNO_PROMPTS.md), more postcards.
 
 ## Known issues
 - Portrait phones show a "turn your phone sideways" card (it can be dismissed); the game is designed for landscape.
 
 ## Polish backlog
-- [ ] Pause the level timer while the browser tab or window is in the background (fair third star).
-- [ ] Small step counter under the room title ("2 of 6"), next to the sunrise.
-- [ ] Results: seashells count up, "new best time" note.
-- [ ] Main menu: "Next sunrise" quick button that jumps straight into the current level.
-- [ ] Level book: show best time on finished cards; daily card shows an easy/medium/hard label.
-- [ ] More clue template variety in clues.json (more phrasings per level).
-- [ ] Hub life: Mango the cat breathes, the lanterns sway gently.
-- [ ] Par-time sanity check: measure the autoplay step count per tier against par_time.
-- [ ] Custom web loading screen colours (sunrise gradient instead of plain background).
+- [x] Pause the level timer while the browser tab or window is in the background (fair third star).
+- [x] Small step counter under the room title ("2 of 6"), next to the sunrise.
+- [x] Results: seashells count up, "new best time" note.
+- [x] Main menu: "Next sunrise" quick button that jumps straight into the current level.
+- [x] Level book: show best time on finished cards; daily card shows an easy/medium/hard label.
+- [x] More clue template variety in clues.json (more phrasings per level).
+- [x] Hub life: Mango the cat breathes, the lanterns sway gently.
+- [x] Par-time sanity check: measure the autoplay step count per tier against par_time.
+- [x] Custom web loading screen colours (sunrise gradient instead of plain background).
 
 ## Blocked
 - (none)
+
+## Summary (v1 done)
+Sunrise Suite v1 is complete: every milestone (M0-M10) and the whole polish backlog are done, the checks are green, and every push deploys to https://mabsteer.github.io/sunrise-suite/.
+
+- **Game:** 30 main levels (3 rooms × 10 tiers) generated from fixed seeds, a hand-made tutorial level, Replay (same or fresh puzzle), Endless Sunrise, and a Daily Sunrise with streaks and a calendar. 8 lock types, item combinations, 3-step hints, stars and seashells.
+- **Reasons to come back:** decorating the penthouse (24 decor items, 12 slots), the daily streak, 5 postcards + Grandma's final letter, 3-star ratings with soft star gates.
+- **Editable:** all art is SVG (one file per object, drawn by scripts in `tools/art/` or by hand in Inkscape). All content is JSON in `data/`, sounds come from `tools/sfx/sfx.json` (jsfxr, 37 sounds), music slots wait for Suno tracks (`docs/SUNO_PROMPTS.md`). README has step-by-step recipes.
+- **Safety net:** `bash tools/check.sh` (also run by GitHub Actions on every push):
+  - import, load every script, 48 unit tests, and open all 16 screens;
+  - validate 6000 generated levels (plus campaign, daily and a par-time check);
+  - a bot plays 68 levels through the real UI;
+  - Web and Windows exports.
+- **What needs a human:** the Suno music tracks (the game is quiet until they're added), and playtesting the feel on a real phone.

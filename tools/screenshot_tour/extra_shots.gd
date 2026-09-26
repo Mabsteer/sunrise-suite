@@ -97,6 +97,22 @@ func shots() -> Array[Dictionary]:
 			s.call("_open_picker", "wall_left"), "frames": 30},
 		{"name": "menu_new", "screen": "main_menu", "frames": 30},
 		{"name": "menu_returning", "screen": "main_menu", "setup": func() -> void: fake_progress(8), "frames": 30},
+		{"name": "menu_gated", "screen": "main_menu", "setup": func() -> void:
+			fake_progress(9)
+			for id: String in SaveManager.data["levels"]:
+				SaveManager.data["levels"][id]["stars"] = 1, "frames": 30},
+		{"name": "level_timer", "screen": "level", "setup": func() -> void: SaveManager.settings["show_timer"] = true, "params": TEST_LEVEL, "action": func(s: Node) -> void:
+			var session: LevelSession = s.get("session")
+			session.elapsed = 83.0
+			LevelSolver.apply_goal(session, session.next_goal()), "frames": 30},
+		{"name": "results_best", "screen": "level", "setup": func() -> void:
+			SaveManager.data["levels"] = {"main_02": {"stars": 1, "completions": 1, "best_time": 9000.0}}
+			SaveManager.data["levels"]["main_01"] = {"stars": 3, "completions": 1, "best_time": 100.0}, "params": func() -> Dictionary: return {"level": Campaign.build("main_02"), "mode": "main", "record_id": "main_02"}, "action": func(s: Node) -> void:
+			var session: LevelSession = s.get("session")
+			for i in 80:
+				if session.finished:
+					break
+				LevelSolver.apply_goal(session, session.next_goal()), "frames": 260},
 		{"name": "select_start", "screen": "level_select", "frames": 30},
 		{"name": "select_progress", "screen": "level_select", "setup": func() -> void: fake_progress(11), "frames": 40},
 		{"name": "select_popup", "screen": "level_select", "setup": func() -> void: fake_progress(11), "action": func(s: Node) -> void: s.call("_on_card", "main_02", true, true), "frames": 30},
