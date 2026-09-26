@@ -76,7 +76,7 @@ The order of the rooms, the walks and which postcard sits where are in `data/cam
 
 ## Running it yourself
 - **Play in the editor:** install Godot 4.7.2 (`winget install GodotEngine.GodotEngine`), open `project.godot`, press **F5**.
-- **Run all checks** (what the automatic build runs), from Git Bash in this folder: `bash tools/check.sh`
+- **Run all checks** (what the automatic build runs), from Git Bash in this folder: `bash tools/check.sh`. It checks 2,100 generated puzzles locally; the automatic build checks 14,000 (`VALIDATE_SEEDS=200`).
   - This imports assets, loads every script, runs the unit tests, opens every screen, generates and solves 6000 levels, lets a bot play 68 levels through the real UI, and exports the Web and Windows builds.
 - **Screenshots of every screen:** `bash tools/tour.sh`, then look in `tests/screenshots/`.
 - **Test the web build locally:** after `bash tools/check.sh`, run `node tools/serve_web.mjs` and open http://localhost:8060.

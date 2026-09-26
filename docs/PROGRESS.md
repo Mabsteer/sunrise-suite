@@ -28,7 +28,7 @@ The owner's third playtest: a linear story over three chapters (days) of seven h
 - [ ] **G6** Walking from room to room: exits with a view of the next room, new hall stairs, toast per room
 - [ ] **G7** Lights (and things only visible in the dark)
 - [ ] **G8** Generated room ambience
-- [ ] **G9** Faster local check (30 seeds locally, 200 in CI)
+- [x] **G9** Faster local check (30 seeds locally, 200 in CI)
 - [ ] **Playtest checkpoint 1**
 
 ### Phase B: structure and chapter 1

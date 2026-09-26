@@ -70,7 +70,8 @@ step load_all "${GODOT[@]}" --headless --path . res://tests/load_all.tscn
 step unit_tests "${GODOT[@]}" --headless --path . res://tests/test_runner.tscn
 step screens "${GODOT[@]}" --headless --path . res://tests/smoke_screens.tscn
 if scene_exists res://tests/validate_levels.tscn; then
-  step validator "${GODOT[@]}" --headless --path . res://tests/validate_levels.tscn
+  # Locally 30 seeds per room and tier (2,100 levels, fast); CI sets VALIDATE_SEEDS=200 (14,000).
+  step validator "${GODOT[@]}" --headless --path . res://tests/validate_levels.tscn -- --seeds="${VALIDATE_SEEDS:-30}"
 fi
 if scene_exists res://tests/autoplay.tscn; then
   step autoplay "${GODOT[@]}" --headless --path . res://tests/autoplay.tscn

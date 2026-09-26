@@ -16,6 +16,8 @@ concurrency:
 
 env:
   GODOT_VERSION: "4.7.2"
+  # The full generator check: 200 seeds per room and tier = 14,000 levels (locally it is 30).
+  VALIDATE_SEEDS: "200"
 
 jobs:
   build:
