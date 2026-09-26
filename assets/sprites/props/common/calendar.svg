@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 96" width="60" height="96">
+  <!-- Small wall calendar with a circled date. -->
+  <rect x="4" y="6" width="54" height="88" rx="4" fill="#3b2e3a" opacity="0.15"/>
+  <rect x="2" y="4" width="54" height="88" rx="4" fill="#fffbf5"/>
+  <rect x="2" y="4" width="54" height="22" rx="4" fill="#ee7b6b"/>
+  <circle cx="16" cy="6" r="3" fill="#6b5a66"/><circle cx="42" cy="6" r="3" fill="#6b5a66"/>
+  <g fill="#c9bde3"><rect x="8" y="34" width="8" height="6"/><rect x="20" y="34" width="8" height="6"/><rect x="32" y="34" width="8" height="6"/><rect x="44" y="34" width="8" height="6"/>
+  <rect x="8" y="46" width="8" height="6"/><rect x="20" y="46" width="8" height="6"/><rect x="32" y="46" width="8" height="6"/><rect x="44" y="46" width="8" height="6"/>
+  <rect x="8" y="58" width="8" height="6"/><rect x="20" y="58" width="8" height="6"/><rect x="44" y="58" width="8" height="6"/>
+  <rect x="8" y="70" width="8" height="6"/><rect x="20" y="70" width="8" height="6"/><rect x="32" y="70" width="8" height="6"/></g>
+  <circle cx="36" cy="61" r="8" fill="none" stroke="#ee7b6b" stroke-width="2.5"/>
+</svg>

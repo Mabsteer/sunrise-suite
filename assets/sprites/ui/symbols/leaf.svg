@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Leaf symbol (sage). -->
+  <path d="M10 54 C8 28 26 10 54 8 C56 36 38 56 10 54 Z" fill="#8faf8a"/>
+  <path d="M12 52 C24 40 36 28 50 12" stroke="#5e7f5e" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M26 38 L22 26 M34 30 L44 30 M22 44 L32 46" stroke="#5e7f5e" stroke-width="2" stroke-linecap="round"/>
+</svg>

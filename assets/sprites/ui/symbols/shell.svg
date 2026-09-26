@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Scallop shell symbol (coral). -->
+  <path d="M32 54 C14 50 6 34 12 20 C20 10 44 10 52 20 C58 34 50 50 32 54 Z" fill="#ee7b6b"/>
+  <path d="M32 54 L20 16 M32 54 L32 12 M32 54 L44 16 M32 54 L12 26 M32 54 L52 26" stroke="#c95b52" stroke-width="3" stroke-linecap="round"/>
+  <rect x="24" y="50" width="16" height="8" rx="3" fill="#c95b52"/>
+</svg>

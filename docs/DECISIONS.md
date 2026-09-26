@@ -19,3 +19,11 @@ One line per decision: what, and why.
 - Outside silhouettes (palms, headland) are drawn white and tinted in code, so they follow the sunrise colours.
 - Screenshot tour sizes are 1600x900 and 1560x720 (16:9 and ~20:9) instead of full 1920/2340 widths, so the window always fits on the monitor.
 - tools/tour.sh re-imports before the tour, because running the game directly uses stale imported textures after an SVG edit.
+- Level rules live in LevelSession (no nodes). The level scene, the solver/validator and the autoplay bot all use the same API, so tests exercise real game logic.
+- Hints come from LevelSession.next_goal(), the same function the solver follows. If the solver can finish a level, the hints can always guide a player through it.
+- Lock UIs are code-built widgets (LockWidget subclasses) rather than .tscn files: they are data-driven (digit count, symbols, grid size) and easy to restyle in one place.
+- Room hotspots are Controls inside the stage Node2D, so they follow the stage transform and still get GUI input and drag-and-drop.
+- Use set_anchors_and_offsets_preset (not set_anchors_preset) for code-built UI; the latter keeps a zero-size rect.
+- Items and parts are consumed when used; each item is needed exactly once per level, which keeps the bag tidy.
+- Stars: finish (1), at most one hint (2), under par time (3). Seashells: 10 first clear, 5 per new star, 3 per replay.
+- Prop and item SVGs were first drawn by tools/art/*.mjs; the SVG files are the source of truth, and the scripts are only kept for re-generation.

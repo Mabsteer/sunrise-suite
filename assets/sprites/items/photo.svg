@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- A photo taped back together. -->
+  <g transform="translate(18 26) rotate(-4)"><rect x="0" y="0" width="92" height="72" fill="#fffbf5"/><rect x="6" y="6" width="80" height="60" fill="#6cc2be"/><rect x="6" y="6" width="80" height="26" fill="#f9b98a"/><circle cx="46" cy="30" r="10" fill="#f6c453"/><rect x="6" y="40" width="80" height="26" fill="#2e8c8c"/><path d="M20 58 L36 58 L32 64 L24 64 Z" fill="#fff4e2"/><rect x="36" y="-6" width="20" height="84" fill="#fbe3a0" opacity="0.6"/></g>
+</svg>

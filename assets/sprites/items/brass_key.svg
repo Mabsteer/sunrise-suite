@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Brass key with a sun-shaped bow. -->
+  <g transform="rotate(-20 64 64)">
+  <rect x="50" y="58" width="66" height="12" rx="6" fill="#d4a24c"/>
+  <rect x="50" y="58" width="66" height="4" rx="2" fill="#fffbf5" opacity="0.4"/>
+  <rect x="90" y="68" width="9" height="16" rx="2" fill="#a87a2e"/>
+  <rect x="104" y="68" width="9" height="22" rx="2" fill="#a87a2e"/>
+  <line x1="52.0" y1="64.0" x2="62.0" y2="64.0" stroke="#d4a24c" stroke-width="6" stroke-linecap="round"/><line x1="48.6" y1="74.6" x2="56.7" y2="80.5" stroke="#d4a24c" stroke-width="6" stroke-linecap="round"/><line x1="39.6" y1="81.1" x2="42.7" y2="90.6" stroke="#d4a24c" stroke-width="6" stroke-linecap="round"/><line x1="28.4" y1="81.1" x2="25.3" y2="90.6" stroke="#d4a24c" stroke-width="6" stroke-linecap="round"/><line x1="19.4" y1="74.6" x2="11.3" y2="80.5" stroke="#d4a24c" stroke-width="6" stroke-linecap="round"/><line x1="16.0" y1="64.0" x2="6.0" y2="64.0" stroke="#d4a24c" stroke-width="6" stroke-linecap="round"/><line x1="19.4" y1="53.4" x2="11.3" y2="47.5" stroke="#d4a24c" stroke-width="6" stroke-linecap="round"/><line x1="28.4" y1="46.9" x2="25.3" y2="37.4" stroke="#d4a24c" stroke-width="6" stroke-linecap="round"/><line x1="39.6" y1="46.9" x2="42.7" y2="37.4" stroke="#d4a24c" stroke-width="6" stroke-linecap="round"/><line x1="48.6" y1="53.4" x2="56.7" y2="47.5" stroke="#d4a24c" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="34" cy="64" r="19" fill="#d4a24c"/>
+  <circle cx="34" cy="64" r="8" fill="#fff4e2"/>
+  <circle cx="28" cy="57" r="4" fill="#fbe3a0"/>
+  </g>
+</svg>

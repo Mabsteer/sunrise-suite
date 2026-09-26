@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 104" width="64" height="104">
+  <!-- Switch panel swung open, showing a hollow. -->
+  <rect x="4" y="4" width="56" height="96" rx="10" fill="#3b2e3a"/>
+  <rect x="8" y="50" width="48" height="4" fill="#6b5a66"/>
+  <path d="M4 4 L1 10 L1 96 L4 100 Z" fill="#d4a24c"/>
+</svg>

@@ -1,0 +1,20 @@
+{
+  "_help": "Props that levels place on wall slots (place: wall / wall_small) or surface slots (place: surface), or inside opened containers. locks: lock types the prop can host. tools: for hidden props, the tool needed. clue: can carry a clue. size in stage pixels.",
+  "wall_safe": {"name": "the wall safe", "sprite": "props/common/wall_safe.svg", "sprite_open": "props/common/wall_safe_open.svg", "size": [150, 150], "place": "wall", "locks": ["combo", "key"]},
+  "wall_clock": {"name": "the wall clock", "sprite": "props/common/wall_clock.svg", "sprite_open": "props/common/wall_clock_open.svg", "size": [150, 150], "place": "wall", "locks": ["clock"]},
+  "painting": {"name": "the sea painting", "sprite": "props/common/painting.svg", "sprite_open": "props/common/painting_open.svg", "size": [160, 130], "place": "wall", "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "a little niche behind the painting"},
+  "switch_panel": {"name": "the light switches", "sprite": "props/common/switch_panel.svg", "sprite_open": "props/common/switch_panel_open.svg", "size": [64, 104], "place": "wall_small", "locks": ["switches"]},
+  "vent": {"name": "the air vent", "sprite": "props/common/vent.svg", "sprite_open": "props/common/vent_open.svg", "size": [130, 90], "place": "wall", "locks": ["hidden"], "tools": ["screwdriver"], "reveal": "something taped inside the vent"},
+  "photo_frame": {"name": "the framed photo", "sprite": "props/common/photo_frame.svg", "size": [130, 150], "place": "wall", "clue": true},
+  "corkboard": {"name": "the corkboard", "sprite": "props/common/corkboard.svg", "size": [160, 130], "place": "wall", "clue": true},
+  "calendar": {"name": "the calendar", "sprite": "props/common/calendar.svg", "size": [60, 96], "place": "wall_small", "clue": true},
+  "lockbox": {"name": "the lockbox", "sprite": "props/common/lockbox.svg", "sprite_open": "props/common/lockbox_open.svg", "size": [120, 90], "place": "surface", "locks": ["combo", "key"]},
+  "tin_box": {"name": "the biscuit tin", "sprite": "props/common/tin_box.svg", "sprite_open": "props/common/tin_box_open.svg", "size": [110, 80], "place": "surface", "locks": ["key"]},
+  "music_box": {"name": "the music box", "sprite": "props/common/music_box.svg", "sprite_open": "props/common/music_box_open.svg", "size": [110, 90], "place": "surface", "locks": ["sequence"]},
+  "puzzle_box": {"name": "the puzzle box", "sprite": "props/common/puzzle_box.svg", "sprite_open": "props/common/puzzle_box_open.svg", "size": [110, 100], "place": "surface", "locks": ["slider"]},
+  "jar": {"name": "the tall jar", "sprite": "props/common/jar.svg", "size": [80, 120], "place": "surface", "locks": ["hidden"], "tools": ["fishing_magnet"], "reveal": "something shiny at the bottom"},
+  "note": {"name": "the note", "sprite": "props/common/note.svg", "size": [90, 60], "place": "surface", "clue": true},
+  "open_book": {"name": "the open book", "sprite": "props/common/open_book.svg", "size": [130, 60], "place": "surface", "clue": true},
+  "photo_stand": {"name": "the photo", "sprite": "props/common/photo_stand.svg", "size": [80, 100], "place": "surface", "clue": true},
+  "postcard": {"name": "a postcard", "sprite": "props/common/postcard_small.svg", "size": [70, 50], "place": "surface"}
+}

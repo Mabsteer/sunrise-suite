@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 92" width="120" height="92">
+  <!-- Coral lockbox with a brass lock plate. -->
+  <ellipse cx="60" cy="86" rx="56" ry="5" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="6" y="30" width="108" height="56" rx="8" fill="#c95b52"/>
+  <rect x="6" y="30" width="108" height="8" fill="#3b2e3a" opacity="0.12"/>
+  <rect x="2" y="18" width="116" height="20" rx="8" fill="#ee7b6b"/>
+  <rect x="8" y="21" width="60" height="4" rx="2" fill="#fffbf5" opacity="0.4"/>
+  <rect x="46" y="34" width="28" height="30" rx="5" fill="#d4a24c"/>
+  <circle cx="60" cy="46" r="5" fill="#7a5134"/><rect x="58" y="48" width="4" height="10" rx="2" fill="#7a5134"/>
+</svg>

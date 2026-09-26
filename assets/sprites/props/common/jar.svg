@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 124" width="80" height="124">
+  <!-- Tall jar of sea glass and shells; something glints at the bottom. -->
+  <ellipse cx="40" cy="118" rx="36" ry="5" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="14" y="4" width="52" height="14" rx="5" fill="#a8744a"/>
+  <path d="M10 22 C10 16 70 16 70 22 L70 108 C70 116 64 120 56 120 L24 120 C16 120 10 116 10 108 Z" fill="#6cc2be" opacity="0.45"/>
+  <ellipse cx="30" cy="104" rx="10" ry="6" fill="#ee7b6b"/><ellipse cx="50" cy="108" rx="9" ry="6" fill="#fcd9b8"/><ellipse cx="40" cy="96" rx="7" ry="5" fill="#9c8ac4"/>
+  <circle cx="46" cy="112" r="4" fill="#f6c453"/><circle cx="45" cy="111" r="1.5" fill="#fffbf5"/>
+  <rect x="16" y="28" width="8" height="70" rx="4" fill="#fffbf5" opacity="0.5"/>
+</svg>

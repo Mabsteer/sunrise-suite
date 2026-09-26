@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 300" width="240" height="300">
+  <!-- Brass keyhole plate. -->
+  <rect x="10" y="14" width="224" height="282" rx="40" fill="#3b2e3a" opacity="0.2"/>
+  <rect x="4" y="4" width="224" height="282" rx="40" fill="#d4a24c"/>
+  <rect x="18" y="18" width="196" height="254" rx="30" fill="#e8bd62"/>
+  <rect x="18" y="18" width="196" height="30" rx="15" fill="#fbe3a0" opacity="0.5"/>
+  <circle cx="116" cy="118" r="34" fill="#3b2e3a"/>
+  <path d="M100 136 L132 136 L140 210 L92 210 Z" fill="#3b2e3a"/>
+  <circle cx="40" cy="40" r="7" fill="#a87a2e"/><circle cx="192" cy="40" r="7" fill="#a87a2e"/><circle cx="40" cy="250" r="7" fill="#a87a2e"/><circle cx="192" cy="250" r="7" fill="#a87a2e"/>
+</svg>

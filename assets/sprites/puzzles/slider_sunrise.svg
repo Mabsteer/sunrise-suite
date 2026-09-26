@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <!-- Sunrise picture used by the sliding-tile puzzle. -->
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3e3570"/><stop offset="0.5" stop-color="#9c8ac4"/><stop offset="1" stop-color="#f9b98a"/></linearGradient></defs>
+  <rect width="600" height="600" fill="url(#sky)"/>
+  <circle cx="300" cy="360" r="120" fill="#f6c453" opacity="0.25"/>
+  <circle cx="300" cy="360" r="86" fill="#f6c453"/>
+  <circle cx="276" cy="336" r="26" fill="#fbe3a0"/>
+  <g fill="#fffbf5" opacity="0.9"><circle cx="70" cy="70" r="4"/><circle cx="160" cy="40" r="3"/><circle cx="520" cy="60" r="4"/><circle cx="450" cy="120" r="3"/><circle cx="90" cy="170" r="3"/></g>
+  <path d="M90 140 C120 118 170 120 190 140 C210 128 250 132 262 150 H80 C80 146 84 142 90 140 Z" fill="#fcd9b8"/>
+  <path d="M380 200 C400 186 440 186 454 200 C470 194 494 198 500 210 H372 C372 206 376 202 380 200 Z" fill="#fcd9b8" opacity="0.8"/>
+  <path d="M170 250 C176 242 184 242 188 250 C192 242 200 242 206 250" stroke="#3b2e3a" stroke-width="5" fill="none"/>
+  <path d="M400 290 C404 284 410 284 414 290 C418 284 424 284 428 290" stroke="#3b2e3a" stroke-width="4" fill="none"/>
+  <rect y="400" width="600" height="200" fill="#2e8c8c"/>
+  <rect y="400" width="600" height="14" fill="#6cc2be"/>
+  <rect x="220" y="430" width="160" height="10" rx="5" fill="#fbe3a0"/><rect x="250" y="462" width="100" height="8" rx="4" fill="#fbe3a0" opacity="0.8"/><rect x="274" y="492" width="52" height="6" rx="3" fill="#fbe3a0" opacity="0.6"/>
+  <path d="M80 470 L180 470 L166 500 L94 500 Z" fill="#fff4e2"/><path d="M128 466 L128 350 L184 462 Z" fill="#fffbf5"/><path d="M124 470 L124 380 L84 462 Z" fill="#ee7b6b"/>
+  <path d="M470 600 C476 520 486 460 500 410 L512 412 C500 462 492 522 490 600 Z" fill="#1f5f6b"/>
+  <path d="M506 412 C470 390 432 396 410 420 C444 404 478 410 500 424 Z M506 412 C530 380 566 376 596 392 C562 392 534 404 512 426 Z M506 412 C500 380 510 350 532 334 C520 362 516 390 512 420 Z M506 412 C540 414 570 432 584 456 C560 438 532 430 508 428 Z" fill="#1f5f6b"/>
+  <rect y="560" width="600" height="40" fill="#1f5f6b" opacity="0.6"/>
+</svg>

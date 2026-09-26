@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Home / penthouse. -->
+  <path d="M8 32 L32 10 L56 32" stroke="#3b2e3a" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M16 30 V54 H48 V30" fill="#fffbf5" stroke="#3b2e3a" stroke-width="5" stroke-linejoin="round"/>
+  <rect x="27" y="38" width="10" height="16" rx="2" fill="#ee7b6b"/>
+</svg>

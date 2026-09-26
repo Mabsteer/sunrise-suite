@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 92" width="120" height="92">
+  <!-- Lockbox with its lid open. -->
+  <ellipse cx="60" cy="86" rx="56" ry="5" fill="#3b2e3a" opacity="0.18"/>
+  <path d="M8 22 L112 22 L104 4 L16 4 Z" fill="#ee7b6b"/>
+  <rect x="6" y="30" width="108" height="56" rx="8" fill="#c95b52"/>
+  <rect x="12" y="30" width="96" height="14" rx="4" fill="#5a2a2a"/>
+  <rect x="46" y="44" width="28" height="22" rx="5" fill="#d4a24c"/>
+</svg>

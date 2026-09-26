@@ -10,6 +10,7 @@ const SCREENS := {
 	"scrapbook": "res://scenes/scrapbook/scrapbook.tscn",
 	"calendar": "res://scenes/calendar/calendar.tscn",
 	"room_preview": "res://scenes/room/room_preview.tscn",
+	"art_sheet": "res://scenes/dev/art_sheet.tscn",
 }
 const FADE_SECONDS := 0.35
 
@@ -28,7 +29,7 @@ func _ready() -> void:
 	_fade_rect = ColorRect.new()
 	_fade_rect.color = Color(0.169, 0.137, 0.314, 0.0)
 	_fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	_fade_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_fade_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_fade_layer.add_child(_fade_rect)
 
 

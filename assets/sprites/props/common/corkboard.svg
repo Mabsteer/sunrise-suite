@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 130" width="160" height="130">
+  <!-- Corkboard with pinned notes and a polaroid. -->
+  <rect x="6" y="8" width="154" height="122" rx="8" fill="#3b2e3a" opacity="0.15"/>
+  <rect x="2" y="2" width="154" height="122" rx="8" fill="#a8744a"/>
+  <rect x="10" y="10" width="138" height="106" rx="4" fill="#d9b07e"/>
+  <g fill="#c99a6b" opacity="0.7"><circle cx="30" cy="30" r="2"/><circle cx="90" cy="20" r="2"/><circle cx="130" cy="60" r="2"/><circle cx="40" cy="100" r="2"/><circle cx="110" cy="100" r="2"/><circle cx="70" cy="70" r="2"/></g>
+  <rect x="20" y="22" width="50" height="40" fill="#fff4e2" transform="rotate(-6 45 42)"/>
+  <rect x="80" y="18" width="52" height="60" fill="#fffbf5" transform="rotate(5 106 48)"/>
+  <rect x="85" y="24" width="42" height="36" fill="#6cc2be" transform="rotate(5 106 48)"/>
+  <rect x="34" y="70" width="60" height="36" fill="#fcd9b8" transform="rotate(3 64 88)"/>
+  <circle cx="45" cy="24" r="4" fill="#ee7b6b"/><circle cx="106" cy="20" r="4" fill="#2e8c8c"/><circle cx="64" cy="72" r="4" fill="#f6c453"/>
+  <path d="M26 36 H62 M26 44 H56 M26 52 H60" stroke="#6b5a66" stroke-width="2" transform="rotate(-6 45 42)"/>
+</svg>

@@ -5,7 +5,7 @@ Live build: https://mabsteer.github.io/sunrise-suite/
 ## Milestones
 - [x] **M0 Scaffold & pipeline**: project, autoloads, export presets, `tools/check.sh`, test runner, CI + GitHub Pages
 - [x] **M1 Look & feel**: sunrise sky/sea shader, Sunrise Lounge art (room, balcony, view, 7 furniture pieces), RoomView, screenshot tour, title screen backdrop
-- [ ] M2 Escape-room core
+- [x] **M2 Escape-room core**: LevelSession (rules), LevelSolver, LevelText (names/hints), level scene with hotspots, close-ups, inventory (select/inspect/combine/drag), 8 lock widgets, 3-level hints, results + seashells, hand-made test level
 - [ ] M3 Generator
 - [ ] M4 Rooms
 - [ ] M5 Progression
@@ -16,10 +16,15 @@ Live build: https://mabsteer.github.io/sunrise-suite/
 - [ ] M10 Onboarding & polish
 
 ## Next
-- M2: level data model + LevelSession (logic), hotspots, close-ups, inventory, combining, 8 lock types, hints, hand-made test level.
+- M3: tiers.json, puzzle-chain generator (backwards DAG), clue templates, red herrings, validator scene, autoplay bot.
 
 ## Known issues
-- (none)
+- Portrait phones show the room small with empty bands above and below. Plan: "rotate your phone" hint (M10).
+- The title screen has a temporary "Try the test room" button until the real menu arrives (M5).
+
+## Polish backlog
+- Door visibly opening at the end of a level (slide/glow).
+- Rotate-your-phone hint in portrait.
 
 ## Blocked
 - (none)

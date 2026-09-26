@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Left half of a torn photo. -->
+  <g transform="translate(20 28) rotate(-6)"><path d="M0 0 H50 L44 12 L52 24 L44 36 L50 48 L44 60 L50 72 H0 Z" fill="#fffbf5"/><rect x="6" y="6" width="38" height="60" fill="#6cc2be"/><rect x="6" y="6" width="38" height="26" fill="#f9b98a"/><rect x="6" y="40" width="38" height="26" fill="#2e8c8c"/><path d="M20 58 L36 58 L32 64 L24 64 Z" fill="#fff4e2"/></g>
+</svg>

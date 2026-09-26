@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Key with a seashell charm. -->
+  <g transform="rotate(-20 64 64)">
+  <rect x="56" y="58" width="58" height="12" rx="6" fill="#c99a6b"/>
+  <rect x="56" y="58" width="58" height="4" rx="2" fill="#fffbf5" opacity="0.4"/>
+  <rect x="88" y="68" width="9" height="16" rx="2" fill="#a8744a"/>
+  <rect x="102" y="68" width="9" height="22" rx="2" fill="#a8744a"/>
+  <circle cx="50" cy="64" r="10" fill="#c99a6b"/><circle cx="50" cy="64" r="4" fill="#fff4e2"/>
+  <path d="M30 86 C14 80 12 60 26 50 C34 56 36 70 30 86 Z" fill="#ee7b6b"/>
+  <path d="M30 86 C24 76 22 64 26 54 M30 86 C28 76 30 66 32 58 M30 86 C20 78 16 70 18 62" stroke="#c95b52" stroke-width="2" fill="none"/>
+  <line x1="40" y1="64" x2="32" y2="56" stroke="#a8744a" stroke-width="3"/>
+  </g>
+</svg>

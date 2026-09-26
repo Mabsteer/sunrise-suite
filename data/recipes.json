@@ -1,0 +1,9 @@
+{
+  "_help": "Item combinations: combining a + b (in any order) gives result. All ids are from items.json.",
+  "recipes": [
+    {"a": "flashlight_empty", "b": "batteries", "result": "flashlight"},
+    {"a": "key_bow", "b": "key_blade", "result": "old_key"},
+    {"a": "string", "b": "magnet", "result": "fishing_magnet"},
+    {"a": "torn_photo_left", "b": "torn_photo_right", "result": "photo"}
+  ]
+}

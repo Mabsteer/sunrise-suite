@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" width="150" height="150">
+  <!-- Wall clock with its little compartment open. -->
+  <rect x="24" y="30" width="108" height="118" rx="10" fill="#3b2e3a" opacity="0.15"/>
+  <path d="M75 4 L142 52 L8 52 Z" fill="#7a5134"/>
+  <path d="M75 12 L130 50 L20 50 Z" fill="#a8744a"/>
+  <rect x="20" y="46" width="110" height="98" rx="8" fill="#c99a6b"/>
+  <rect x="20" y="46" width="110" height="8" fill="#3b2e3a" opacity="0.12"/>
+  <circle cx="75" cy="84" r="30" fill="#a87a2e"/>
+  <circle cx="75" cy="84" r="26" fill="#fff4e2"/>
+  <g stroke="#6b5a66" stroke-width="3" stroke-linecap="round">
+    <line x1="75" y1="61" x2="75" y2="66"/><line x1="98" y1="84" x2="93" y2="84"/><line x1="75" y1="107" x2="75" y2="102"/><line x1="52" y1="84" x2="57" y2="84"/>
+  </g>
+  <line x1="75" y1="84" x2="62" y2="74" stroke="#3b2e3a" stroke-width="4" stroke-linecap="round"/>
+  <line x1="75" y1="84" x2="90" y2="68" stroke="#3b2e3a" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="75" cy="84" r="4" fill="#ee7b6b"/>
+  <circle cx="75" cy="30" r="7" fill="#f6c453"/>
+  <rect x="52" y="118" width="46" height="24" rx="4" fill="#3b2e3a"/>
+  <path d="M52 118 L38 124 L38 146 L52 142 Z" fill="#a8744a"/>
+</svg>

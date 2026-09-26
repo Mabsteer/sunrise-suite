@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Grandma's notepad (hints). -->
+  <rect x="12" y="8" width="40" height="50" rx="6" fill="#fffbf5"/>
+  <rect x="12" y="8" width="40" height="10" rx="4" fill="#ee7b6b"/>
+  <g fill="#c95b52"><circle cx="20" cy="8" r="3"/><circle cx="32" cy="8" r="3"/><circle cx="44" cy="8" r="3"/></g>
+  <path d="M18 28 H44 M18 36 H40 M18 44 H34" stroke="#9c8ac4" stroke-width="3" stroke-linecap="round"/>
+  <path d="M40 58 L56 30 L62 34 L46 62 L38 64 Z" fill="#f6c453"/><path d="M38 64 L40 58 L46 62 Z" fill="#3b2e3a"/>
+</svg>

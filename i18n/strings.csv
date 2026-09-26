@@ -1,4 +1,58 @@
 keys,en
 TITLE,Sunrise Suite
 SUBTITLE,Grandma June's beachside penthouse
-COMING_SOON,The sun is almost up... new rooms arrive every day.
+COMING_SOON,"The sun is almost up... more rooms arrive every day."
+Sunrise Lounge,Sunrise Lounge
+Kitchen & Bar,Kitchen & Bar
+Grandma's Study,Grandma's Study
+MODE_TIER,Sunrise %d
+MODE_DAILY,Daily Sunrise
+MODE_ENDLESS,Endless Sunrise %d
+PAUSE,Pause
+HINT,Ask Grandma's notepad for a hint
+HINT_TITLE,Grandma's notepad
+HINT_THANKS,"Thanks, Grandma!"
+CLOSE,Close
+LOCK_OPEN,Open
+LOCK_CLEAR,Start over
+CLOCK_HOURS,Hours
+CLOCK_MINUTES,Minutes
+CLOCK_SET,Set the time
+SWITCHES_PULL,Pull the chain
+SWITCH_ON,On
+SWITCH_OFF,Off
+KEY_TEXT,It's locked. There's a little keyhole.
+TOOL_TEXT_FLASHLIGHT,It's too dark in there to see anything.
+TOOL_TEXT_TROWEL,The soil looks like someone dug here recently...
+TOOL_TEXT_SCREWDRIVER,The cover is screwed on tight.
+TOOL_TEXT_MAGNET,"Something shiny glints at the bottom, but it's out of reach."
+TOOL_TEXT_GENERIC,You'll need something to get at this.
+USE_ITEM_HELP,"Select an item in your bag, then tap here."
+SEARCH_TEXT,Grandma might have hidden something here.
+SEARCH,Search
+INSIDE,Inside you find:
+INSIDE_REVEAL,You find %s!
+INSIDE_EMPTY,Nothing else in here.
+NOTHING_HIDDEN,Nothing hidden here.
+POSTCARD,Postcard
+POSTCARD_FOUND_TITLE,A postcard from Grandma!
+POSTCARD_FOUND_TEXT,It's been added to your scrapbook.
+INVENTORY_EMPTY,Things you pick up will appear here.
+ITEM_SELECTED,"%s - tap where to use it, or tap it again to look."
+ITEM_WRONG,The %s doesn't work here.
+ITEM_NOTHING_HERE,Nothing to use that on here.
+PICKED_UP,You picked up the %s.
+COMBINE_OK,You made: %s!
+COMBINE_FAIL,Those don't go together.
+PAUSE_TITLE,Taking a breather
+RESUME,Back to it
+RESTART,Start this room again
+LEAVE,Leave the room
+RESULTS_TITLE,Good morning!
+RESULTS_TIME,Time: %s
+RESULTS_HINTS,Hints used: %d
+RESULTS_STAR_RULES,"Stars: finish, use 1 hint or fewer, finish under %s."
+RESULTS_SHELLS,+%d seashells
+CONTINUE,Continue
+REPLAY,Play again
+MENU_TRY_ROOM,Try the test room

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Seashell (currency). -->
+  <path d="M32 56 C12 52 4 34 10 20 C18 8 46 8 54 20 C60 34 52 52 32 56 Z" fill="#f9b98a"/>
+  <path d="M32 56 L20 14 M32 56 L32 10 M32 56 L44 14 M32 56 L10 24 M32 56 L54 24" stroke="#c8674a" stroke-width="3" stroke-linecap="round"/>
+  <rect x="24" y="52" width="16" height="8" rx="3" fill="#c8674a"/>
+</svg>

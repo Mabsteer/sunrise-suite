@@ -1,0 +1,55 @@
+{
+  "_help": "Hand-made test level using every lock type. Generated levels use exactly the same format (see docs/DATA_FORMAT.md).",
+  "id": "test_lounge",
+  "room": "lounge",
+  "tier": 3,
+  "seed": 1,
+  "par_time": 600,
+  "locks": [
+    {"id": "door", "type": "combo", "is_door": true, "host": {"kind": "door"}, "location": "room",
+     "answer": "4729", "clues": ["c_door_a", "c_door_b"], "config": {"digits": 4}},
+    {"id": "music_box", "type": "sequence", "host": {"kind": "prop", "prop": "music_box", "slot": "credenza_1"}, "location": "room",
+     "answer": "sun,shell,wave", "clues": ["c_seq"], "config": {"length": 3}},
+    {"id": "armchair", "type": "hidden", "host": {"kind": "furniture", "furniture": "armchair", "spot": "cushion"}, "location": "room",
+     "item": "i_flashlight"},
+    {"id": "credenza", "type": "key", "host": {"kind": "furniture", "furniture": "credenza", "spot": "left_door"}, "location": "room",
+     "item": "i_brass_key"},
+    {"id": "puzzle_box", "type": "slider", "host": {"kind": "prop", "prop": "puzzle_box"}, "location": "credenza",
+     "answer": "solved", "config": {"size": 3, "picture": "puzzles/slider_sunrise.svg", "scramble": 24}},
+    {"id": "clock", "type": "clock", "host": {"kind": "prop", "prop": "wall_clock", "slot": "wall_right"}, "location": "room",
+     "answer": "7:30", "clues": ["c_clock"]},
+    {"id": "pot", "type": "hidden", "host": {"kind": "furniture", "furniture": "monstera", "spot": "pot"}, "location": "room",
+     "item": "i_trowel"},
+    {"id": "lockbox", "type": "key", "host": {"kind": "prop", "prop": "lockbox", "slot": "credenza_2"}, "location": "room",
+     "item": "i_tiny_key"},
+    {"id": "switches", "type": "switches", "host": {"kind": "prop", "prop": "switch_panel", "slot": "wall_door"}, "location": "room",
+     "answer": "1010", "clues": ["c_switch"], "config": {"symbols": ["sun", "shell", "star", "wave"]}}
+  ],
+  "items": [
+    {"id": "i_flashlight_empty", "type": "flashlight_empty", "location": "room", "slot": "shelf_2"},
+    {"id": "i_batteries", "type": "batteries", "location": "music_box"},
+    {"id": "i_flashlight", "type": "flashlight", "location": "recipe"},
+    {"id": "i_brass_key", "type": "brass_key", "location": "armchair"},
+    {"id": "i_trowel", "type": "trowel", "location": "clock"},
+    {"id": "i_tiny_key", "type": "tiny_key", "location": "pot"}
+  ],
+  "recipes": [
+    {"a": "i_flashlight_empty", "b": "i_batteries", "result": "i_flashlight"}
+  ],
+  "clues": [
+    {"id": "c_seq", "host": {"kind": "prop", "prop": "photo_frame", "slot": "wall_left_top"}, "location": "room", "for": "music_box",
+     "text": "Grandma on the pier, laughing. On the back: \"My favourite tune goes {sun} {shell} {wave}.\""},
+    {"id": "c_clock", "host": {"kind": "prop", "prop": "note", "slot": "coffee_2"}, "location": "room", "for": "clock",
+     "text": "Breakfast on the balcony at half past seven. Don't be late! - J."},
+    {"id": "c_switch", "host": {"kind": "prop", "prop": "note"}, "location": "lockbox", "for": "switches",
+     "text": "Only the lamps with the {sun} and the {star} should glow."},
+    {"id": "c_door_a", "host": {"kind": "prop", "prop": "note"}, "location": "switches", "for": "door",
+     "text": "The balcony code starts with 4 7..."},
+    {"id": "c_door_b", "host": {"kind": "prop", "prop": "note"}, "location": "puzzle_box", "for": "door",
+     "text": "...and it ends with 2 9. Enjoy the sunrise, sweetheart!"}
+  ],
+  "decoys": [
+    {"id": "d_grocery", "host": {"kind": "prop", "prop": "note", "slot": "shelf_3"}, "location": "room",
+     "text": "Grocery list: 3 lemons, 12 eggs, 1 very large pineapple."}
+  ]
+}

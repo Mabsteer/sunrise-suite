@@ -1,4 +1,5 @@
 {
+  "_help": "Room template. pos/size in stage pixels (1920x1080). Furniture spots are rects in the furniture's own coordinates. locks: lock types the spot can host. tools: for hidden spots, which tool is needed (null = just search). clue: the spot can carry a clue. See docs/DATA_FORMAT.md.",
   "id": "lounge",
   "name": "Sunrise Lounge",
   "background": "rooms/lounge_bg.svg",
@@ -8,13 +9,53 @@
   "horizon_y": 450,
   "sun_x": 980,
   "music": "level_lounge",
+  "door": {"name": "the balcony door", "rect": [1480, 110, 260, 650]},
   "furniture": [
-    {"id": "rug", "name": "the rug", "sprite": "props/lounge/rug.svg", "pos": [510, 870], "size": [900, 170]},
-    {"id": "bookshelf", "name": "the bookshelf", "sprite": "props/lounge/bookshelf.svg", "pos": [30, 160], "size": [260, 610]},
-    {"id": "credenza", "name": "the credenza", "sprite": "props/lounge/credenza.svg", "pos": [600, 600], "size": [720, 170]},
-    {"id": "record_cabinet", "name": "the record player", "sprite": "props/lounge/record_cabinet.svg", "pos": [1250, 540], "size": [200, 250]},
-    {"id": "monstera", "name": "the monstera", "sprite": "props/lounge/monstera.svg", "pos": [1720, 420], "size": [220, 420]},
-    {"id": "coffee_table", "name": "the coffee table", "sprite": "props/lounge/coffee_table.svg", "pos": [660, 840], "size": [600, 150]},
-    {"id": "armchair", "name": "the armchair", "sprite": "props/lounge/armchair.svg", "pos": [80, 650], "size": [360, 340]}
+    {"id": "rug", "name": "the rug", "sprite": "props/lounge/rug.svg", "pos": [510, 870], "size": [900, 170],
+     "spots": [{"id": "rug", "name": "under the rug", "rect": [120, 30, 660, 110], "locks": ["hidden"], "tools": [null], "reveal": "a loose floorboard"}],
+     "flavor": "A soft jute rug with a sunrise woven into it."},
+    {"id": "bookshelf", "name": "the bookshelf", "sprite": "props/lounge/bookshelf.svg", "pos": [30, 160], "size": [260, 610],
+     "spots": [
+       {"id": "books", "name": "the books", "rect": [14, 14, 222, 420], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "a hollow book"},
+       {"id": "cabinet", "name": "the bookshelf cabinet", "rect": [14, 444, 222, 136], "locks": ["key", "combo"]}
+     ],
+     "flavor": "Grandma's travel books, sorted by colour, of course."},
+    {"id": "credenza", "name": "the credenza", "sprite": "props/lounge/credenza.svg", "pos": [600, 600], "size": [720, 170],
+     "spots": [
+       {"id": "left_door", "name": "the credenza's left door", "rect": [18, 36, 224, 88], "locks": ["key", "combo"]},
+       {"id": "drawers", "name": "the credenza drawers", "rect": [256, 36, 208, 88], "locks": ["combo", "key"]},
+       {"id": "right_door", "name": "the credenza's right door", "rect": [478, 36, 224, 88], "locks": ["key", "combo"]}
+     ],
+     "flavor": "A low credenza with cane doors. It smells faintly of cedar."},
+    {"id": "record_cabinet", "name": "the record player", "sprite": "props/lounge/record_cabinet.svg", "pos": [1250, 540], "size": [200, 250],
+     "spots": [
+       {"id": "records", "name": "the record sleeves", "rect": [12, 100, 176, 106], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "something tucked into a sleeve"},
+       {"id": "turntable", "name": "the record on the turntable", "rect": [8, 26, 184, 60], "clue": true}
+     ],
+     "flavor": "Grandma's record player. Bossa nova, mostly."},
+    {"id": "monstera", "name": "the monstera", "sprite": "props/lounge/monstera.svg", "pos": [1720, 420], "size": [220, 420],
+     "spots": [{"id": "pot", "name": "the monstera pot", "rect": [48, 300, 124, 114], "locks": ["hidden"], "tools": ["trowel"], "reveal": "something buried in the soil"}],
+     "flavor": "A very happy monstera. Grandma talks to it every morning."},
+    {"id": "coffee_table", "name": "the coffee table", "sprite": "props/lounge/coffee_table.svg", "pos": [660, 840], "size": [600, 150],
+     "spots": [{"id": "drawer", "name": "the coffee table drawer", "rect": [200, 40, 200, 40], "locks": ["key", "combo"]}],
+     "flavor": "A travertine coffee table. Coasters, always."},
+    {"id": "armchair", "name": "the armchair", "sprite": "props/lounge/armchair.svg", "pos": [80, 650], "size": [360, 340],
+     "spots": [{"id": "cushion", "name": "under the cushion", "rect": [60, 100, 240, 180], "locks": ["hidden"], "tools": [null, "flashlight"], "reveal": "something wedged under the cushion"}],
+     "flavor": "The comfiest rattan armchair in the world."}
+  ],
+  "wall_slots": [
+    {"id": "wall_left_top", "rect": [320, 180, 170, 170], "accepts": ["wall", "wall_small"]},
+    {"id": "wall_left_low", "rect": [320, 400, 170, 170], "accepts": ["wall", "wall_small"]},
+    {"id": "wall_right", "rect": [1765, 170, 150, 160], "accepts": ["wall", "wall_small"]},
+    {"id": "wall_door", "rect": [1386, 300, 68, 110], "accepts": ["wall_small"]}
+  ],
+  "surface_slots": [
+    {"id": "credenza_1", "anchor": [700, 610], "max": [150, 120], "name": "the credenza"},
+    {"id": "credenza_2", "anchor": [930, 610], "max": [150, 120], "name": "the credenza"},
+    {"id": "credenza_3", "anchor": [1170, 610], "max": [150, 120], "name": "the credenza"},
+    {"id": "coffee_1", "anchor": [800, 856], "max": [150, 110], "name": "the coffee table"},
+    {"id": "coffee_2", "anchor": [1120, 856], "max": [150, 110], "name": "the coffee table"},
+    {"id": "shelf_2", "anchor": [205, 452], "max": [110, 110], "name": "the bookshelf"},
+    {"id": "shelf_3", "anchor": [180, 592], "max": [100, 110], "name": "the bookshelf"}
   ]
 }

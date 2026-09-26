@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 84" width="110" height="84">
+  <!-- Biscuit tin with a little lock on the lid. -->
+  <ellipse cx="55" cy="78" rx="52" ry="5" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="6" y="26" width="98" height="52" rx="14" fill="#6cc2be"/>
+  <rect x="6" y="46" width="98" height="10" fill="#fff4e2" opacity="0.6"/>
+  <rect x="2" y="16" width="106" height="20" rx="10" fill="#2e8c8c"/>
+  <circle cx="30" cy="62" r="5" fill="#f6c453"/><circle cx="55" cy="66" r="5" fill="#ee7b6b"/><circle cx="80" cy="62" r="5" fill="#f6c453"/>
+  <rect x="49" y="18" width="12" height="16" rx="3" fill="#d4a24c"/><circle cx="55" cy="24" r="2.5" fill="#7a5134"/>
+</svg>

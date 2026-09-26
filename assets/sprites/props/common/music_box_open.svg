@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 92" width="110" height="92">
+  <!-- Music box with its lid up; a tiny golden sun spins inside. -->
+  <ellipse cx="55" cy="86" rx="52" ry="5" fill="#3b2e3a" opacity="0.18"/>
+  <path d="M4 30 L106 30 L100 2 L10 2 Z" fill="#c99a6b"/>
+  <rect x="10" y="6" width="90" height="20" rx="3" fill="#fbe3a0" opacity="0.5"/>
+  <rect x="6" y="30" width="98" height="56" rx="6" fill="#a8744a"/>
+  <rect x="12" y="30" width="86" height="12" rx="4" fill="#5a3a26"/>
+  <circle cx="55" cy="30" r="8" fill="#f6c453"/>
+</svg>

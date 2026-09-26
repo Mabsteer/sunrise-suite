@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 104" width="64" height="104">
+  <!-- Brass panel with four little switches. -->
+  <rect x="6" y="6" width="56" height="96" rx="10" fill="#3b2e3a" opacity="0.15"/>
+  <rect x="2" y="2" width="56" height="96" rx="10" fill="#d4a24c"/>
+  <rect x="2" y="2" width="56" height="8" rx="4" fill="#fbe3a0" opacity="0.6"/>
+  <rect x="14" y="15" width="32" height="14" rx="7" fill="#a87a2e"/>
+  <circle cx="24" cy="22" r="6" fill="#fff4e2"/>
+  <rect x="14" y="35" width="32" height="14" rx="7" fill="#a87a2e"/>
+  <circle cx="36" cy="42" r="6" fill="#fff4e2"/>
+  <rect x="14" y="55" width="32" height="14" rx="7" fill="#a87a2e"/>
+  <circle cx="24" cy="62" r="6" fill="#fff4e2"/>
+  <rect x="14" y="75" width="32" height="14" rx="7" fill="#a87a2e"/>
+  <circle cx="36" cy="82" r="6" fill="#fff4e2"/>
+</svg>

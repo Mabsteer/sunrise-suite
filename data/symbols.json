@@ -1,0 +1,9 @@
+{
+  "_help": "Symbols used by sequence locks, switch panels and clues. Every symbol has a colour AND a shape, so colour-blind players can play. Write {sun} in clue text to show the icon.",
+  "sun": {"name": "sun", "color": "gold", "sprite": "ui/symbols/sun.svg"},
+  "shell": {"name": "shell", "color": "coral", "sprite": "ui/symbols/shell.svg"},
+  "wave": {"name": "wave", "color": "sea_teal", "sprite": "ui/symbols/wave.svg"},
+  "star": {"name": "star", "color": "lavender", "sprite": "ui/symbols/star.svg"},
+  "leaf": {"name": "leaf", "color": "sage", "sprite": "ui/symbols/leaf.svg"},
+  "heart": {"name": "heart", "color": "terracotta", "sprite": "ui/symbols/heart.svg"}
+}

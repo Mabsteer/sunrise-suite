@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 130" width="160" height="130">
+  <!-- Sea painting swung aside, showing a niche in the wall. -->
+  <rect x="30" y="24" width="96" height="80" rx="6" fill="#6b5a66"/>
+  <rect x="36" y="30" width="84" height="68" rx="4" fill="#3b2e3a"/>
+  <g transform="translate(34 0) rotate(14 80 65)">
+    <rect x="6" y="8" width="152" height="120" rx="6" fill="#3b2e3a" opacity="0.18"/>
+    <rect x="2" y="2" width="152" height="120" rx="6" fill="#d4a24c"/>
+    <rect x="12" y="12" width="132" height="100" fill="#f9b98a"/>
+    <rect x="12" y="12" width="132" height="40" fill="#9c8ac4"/>
+    <rect x="12" y="44" width="132" height="18" fill="#ee7b6b" opacity="0.6"/>
+    <circle cx="96" cy="70" r="16" fill="#f6c453"/>
+    <rect x="12" y="70" width="132" height="42" fill="#2e8c8c"/>
+    <rect x="12" y="70" width="132" height="6" fill="#6cc2be"/>
+    <rect x="70" y="82" width="40" height="4" rx="2" fill="#fbe3a0" opacity="0.8"/>
+    <rect x="82" y="92" width="24" height="3" rx="1" fill="#fbe3a0" opacity="0.6"/>
+    <path d="M40 90 L60 90 L56 98 L44 98 Z" fill="#fff4e2"/>
+    <path d="M50 88 L50 64 L62 86 Z" fill="#fffbf5"/>
+    <path d="M30 34 C33 30 36 30 38 34 C40 30 43 30 46 34" stroke="#3b2e3a" stroke-width="2" fill="none"/>
+    <path d="M60 26 C62 23 64 23 66 26 C68 23 70 23 72 26" stroke="#3b2e3a" stroke-width="2" fill="none"/>
+    <path d="M112 30 C114 27 117 27 119 30 C121 27 124 27 126 30" stroke="#3b2e3a" stroke-width="2" fill="none"/>
+    <rect x="2" y="2" width="152" height="6" rx="3" fill="#fbe3a0" opacity="0.6"/>
+  </g>
+</svg>

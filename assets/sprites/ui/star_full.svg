@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Earned star. -->
+  <path d="M32 4 L40 23 L61 24 L45 37 L51 58 L32 46 L13 58 L19 37 L3 24 L24 23 Z" fill="#f6c453"/>
+  <path d="M32 12 L36 24 L28 24 Z" fill="#fbe3a0"/>
+</svg>

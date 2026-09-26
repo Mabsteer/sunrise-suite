@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Wave symbol (teal). -->
+  <path d="M4 44 C12 44 14 22 30 20 C44 18 52 30 46 38 C42 42 36 38 38 34 C28 32 26 46 36 50 C44 54 56 50 60 44 L60 56 L4 56 Z" fill="#2e8c8c"/>
+  <path d="M12 44 C18 36 22 28 30 26" stroke="#6cc2be" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

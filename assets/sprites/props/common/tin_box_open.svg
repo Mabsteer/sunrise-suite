@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 84" width="110" height="84">
+  <!-- Biscuit tin, lid off. -->
+  <ellipse cx="55" cy="78" rx="52" ry="5" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="6" y="26" width="98" height="52" rx="14" fill="#6cc2be"/>
+  <rect x="12" y="26" width="86" height="12" rx="6" fill="#1f5f6b"/>
+  <rect x="6" y="46" width="98" height="10" fill="#fff4e2" opacity="0.6"/>
+  <ellipse cx="92" cy="18" rx="18" ry="6" fill="#2e8c8c" transform="rotate(20 92 18)"/>
+</svg>
