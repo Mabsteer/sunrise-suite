@@ -9,7 +9,7 @@
   "sky_rect": [100, 60, 1660, 320],
   "music": "level_hall",
   "door": {"name": "the bedroom door", "rect": [880, 190, 240, 580]},
-  "dog_spot": [700, 930],
+  "dog_spot": [700, 885],
   "furniture": [
     {"id": "umbrella_stand", "name": "the umbrella stand", "sprite": "props/hall/umbrella_stand.svg", "pos": [24, 560], "size": [90, 220],
      "spots": [{"id": "umbrellas", "name": "the umbrella stand", "rect": [8, 20, 74, 190], "locks": ["hidden"], "tools": [null], "reveal": "something tucked between the umbrellas"}],
@@ -30,7 +30,7 @@
      "spots": [
        {"id": "drawer", "name": "the console drawer", "rect": [30, 46, 200, 54], "locks": ["combo", "key", "pattern", "sudoku"]},
        {"id": "bowl", "name": "the bowl of shells", "rect": [146, 0, 72, 24], "clue": true},
-       {"id": "basket", "name": "the basket of flip-flops", "rect": [60, 168, 140, 62], "locks": ["hidden"], "tools": [null], "reveal": "something under the flip-flops"}
+       {"id": "basket", "name": "the basket of flip-flops", "rect": [60, 168, 140, 62], "locks": ["hidden", "dog"], "tools": [null], "dog_action": "fetch", "reveal": "something under the flip-flops"}
      ],
      "flavor": "Keys, shells and sunglasses. Everything you need on the way out."},
     {"id": "height_marks", "name": "the door frame", "sprite": "props/hall/height_marks.svg", "pos": [828, 250], "size": [56, 520],
@@ -44,7 +44,7 @@
      "flavor": "Tick... tock... It has been two minutes slow since 1987. Nobody minds."},
     {"id": "stairs", "name": "the stairs", "sprite": "props/hall/stairs.svg", "pos": [1340, 80], "size": [820, 700],
      "spots": [
-       {"id": "cupboard", "name": "the cupboard under the stairs", "rect": [70, 400, 160, 290], "locks": ["key", "combo"]},
+       {"id": "cupboard", "name": "the cupboard under the stairs", "rect": [70, 400, 160, 290], "locks": ["key", "combo", "care"]},
        {"id": "treads", "name": "the stairs", "rect": [250, 180, 330, 300], "clue": true}
      ],
      "flavor": "The stairs creak on the fourth step. Juliette always jumped over it."}

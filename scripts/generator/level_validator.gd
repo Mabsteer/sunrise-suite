@@ -99,6 +99,9 @@ static func validate(level: Dictionary, tier_cfg: Dictionary = {}) -> Dictionary
 			"door":
 				if not lock_ids.has(tid):
 					errors.append("%s: only locks can be the door" % tid)
+			"dog":
+				if not lock_ids.has(tid) or str(t.get("type", "")) != "care":
+					errors.append("%s: only care locks can be on Chloé" % tid)
 			"":
 				if not item_ids.has(tid):
 					errors.append("%s has no host" % tid)
@@ -163,6 +166,20 @@ static func validate(level: Dictionary, tier_cfg: Dictionary = {}) -> Dictionary
 		var loc := str(i.get("location", "room"))
 		if not lock_ids.has(loc) or not LevelGenerator.REWARD_CONTAINERS.has(str((lock_ids[loc] as Dictionary).get("type", ""))):
 			errors.append("%s: a key must be the reward of a puzzle (it is in '%s')" % [i.get("id", "?"), loc])
+	# Chloé's locks need Chloé: in the room from the start, or found in this level.
+	var has_dog := str(level.get("companion", "")) == "chloe"
+	for l: Dictionary in level.get("locks", []):
+		if bool(l.get("finds_dog", false)):
+			has_dog = true
+	for l: Dictionary in level.get("locks", []):
+		var lt := str(l.get("type", ""))
+		if lt in LevelSession.DOG_TYPES and not bool(l.get("finds_dog", false)) and not has_dog:
+			errors.append("%s: a %s lock but Chloé isn't here" % [l.get("id", "?"), lt])
+		if lt == "sniff" or lt == "care":
+			var want := "scent" if lt == "sniff" else "care"
+			var it: Dictionary = item_ids.get(str(l.get("item", "")), {})
+			if str(items_db.get(str(it.get("type", "")), {}).get("kind", "")) != want:
+				errors.append("%s: a %s lock needs a %s item" % [l.get("id", "?"), lt, want])
 	# Searching is not a difficulty knob.
 	if tier_cfg.has("max_hidden"):
 		var hidden := 0
@@ -196,7 +213,7 @@ static func validate(level: Dictionary, tier_cfg: Dictionary = {}) -> Dictionary
 
 ## A spot or prop lists the lock types it can hold; "hidden" spots with tools also take "tool" locks.
 static func _host_takes(list: Array, type: String) -> bool:
-	return list.has(type) or (type == "tool" and list.has("hidden"))
+	return list.has(type) or ((type == "tool" or type == "sniff") and list.has("hidden"))
 
 
 ## Checks the data of the self-contained puzzles (and orders): they must have exactly one answer.

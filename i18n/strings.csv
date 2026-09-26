@@ -206,3 +206,23 @@ The front garden,The front garden
 SCRAPBOOK_MEMORIES,%d of %d memories
 SCRAPBOOK_NO_MEMORIES,Memories from this time
 SCRAPBOOK_MEMORY_WAITING,A memory is still waiting in this room
+DOG_NOT_HERE,If only you had a small dog with a very good nose...
+DOG_FETCH_TEXT,"It's much too narrow for your hand. But not for a small, fluffy dog."
+DOG_DIG_TEXT,The soil here is soft. Just right for small digging paws.
+DOG_FETCH,"Chloé, fetch!"
+DOG_DIG,"Chloé, dig!"
+DOG_SNIFF_TEXT,"Something smells interesting around here, but you can't find anything. Chloé's nose could, if she knew what to look for."
+DOG_HIDING,Two dark eyes blink at you from the dark. A very small growl. Someone is sleeping on Mamie's old cardigan and does not want to come out.
+DOG_NEEDS_FOOD,"Chloé looks at her empty bowl, then at you. Then at the bowl again."
+DOG_NEEDS_WATER,Chloé is panting. Her water bowl is dry.
+DOG_NEEDS_LEASH,Chloé sits by the door and won't take one step outside without her leash.
+DOG_NEEDS_BRUSH,Chloé's fringe is all over her eyes. She could do with a brush.
+DOG_NEEDS_TOY,"Chloé is looking everywhere for something, and not finding it."
+DOG_GIVE_HELP,"Select something in your bag, then tap Chloé."
+DOG_FOUND,"Chloé comes out, wagging her whole body. From now on she follows you everywhere."
+DOG_HAPPY,Chloé is delighted. She drops something at your feet.
+DOG_WRONG,"Chloé sniffs the %s and looks at you, puzzled."
+DOG_BARKS_AT,Chloé barks at %s!
+DOG_PET,Chloé leans against your leg. Good girl.
+DOG_FOUND_IT,Chloé found something at %s!
+HUB_CHLOE,Chloé is asleep where the sun falls on the floor.

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Chloé's brush. She pretends to hate it. -->
+  <rect x="20" y="40" width="70" height="36" rx="14" fill="#a8744a"/>
+  <path d="M28 76 L28 94" stroke="#fffbf5" stroke-width="4" stroke-linecap="round"/><path d="M36 76 L36 94" stroke="#fffbf5" stroke-width="4" stroke-linecap="round"/><path d="M44 76 L44 94" stroke="#fffbf5" stroke-width="4" stroke-linecap="round"/><path d="M52 76 L52 94" stroke="#fffbf5" stroke-width="4" stroke-linecap="round"/><path d="M60 76 L60 94" stroke="#fffbf5" stroke-width="4" stroke-linecap="round"/><path d="M68 76 L68 94" stroke="#fffbf5" stroke-width="4" stroke-linecap="round"/><path d="M76 76 L76 94" stroke="#fffbf5" stroke-width="4" stroke-linecap="round"/><path d="M84 76 L84 94" stroke="#fffbf5" stroke-width="4" stroke-linecap="round"/>
+  <rect x="84" y="50" width="34" height="16" rx="8" fill="#7a5134"/>
+</svg>

@@ -45,3 +45,8 @@ after `#` into that sound's `"b58"` field in `tools/sfx/sfx.json` (remove `prese
 | `search` | noise | 0.18 s | 53% | [sfxr.me](https://sfxr.me/#7GQhogHPCW1v1mxKHFKAxaYwFsUou4sQSg7Bei2Z7jZityz2ftSCAvdpNrpjyaETiFXKgiBjA8fMkyhwREqcqdfaAoewmsDfWiYYvcxoDfCJDrbSQzNp3X9gT) |
 | `purchase` | sine | 0.29 s | 79% | [sfxr.me](https://sfxr.me/#57uBnWSzi74QQ9TTkiVGe9WDwCZzdyaBPG3uMPoDTmHQExCEFmFQfpwPeGXBhBaJSHASCvTyFbpzFtGYpdbpSvtA3ZFbQTDe3gtyhkffwQH3JK6hDfr4JbsR9) |
 | `streak` | sine | 0.40 s | 49% | [sfxr.me](https://sfxr.me/#57uBnWcURsYKtmkuFSr5cyXq6ML15o6NYWzxP8j6v8XwAcSwCSUhR9ifDdKbkTgqne3k6EcZtzVdVupkHdVL3MbEbP2waaDCGShzFYJjnFRM82dn2BJAgCs59) |
+| `dog_bark` | square | 0.08 s | 56% | [sfxr.me](https://sfxr.me/#164RdQhmVEUbdqWqyXFGjmUxJLfrhLBUhuEVPnCKmTo8GqPu23zsbaNP6irH9MC9Za9ZoGDYYeMnFMnULMF9gShL1e6jSangMjbe8z5G83SeWDfCfob8MWUVu) |
+| `dog_squeak` | sine | 0.06 s | 35% | [sfxr.me](https://sfxr.me/#57uBnWSzi74NAi1vrdusP1E5fXvf43zrhzN9wkxbN1yuWLW1i4zMuG9sXxF24DYMx1dQv3kVvtsBqTMB8VAnzmiEuBu5ZqBa8Zbmg6DQmg8BRi5oJwMQDrZD1) |
+| `dog_dig` | noise | 0.11 s | 39% | [sfxr.me](https://sfxr.me/#7GQhofrboBLgtiKt9bx9JCuYdodK4SFoaNBbNwYBgpHHh7isb48hA2quKRJwb3xrzBvmo1jM4ypVZ8KD1jRUXAejGWBkfnB3QvuaQsE6xX4DgByPVXTBxZoBM) |
+| `dog_sniff` | noise | 0.03 s | 23% | [sfxr.me](https://sfxr.me/#8puhcUeyUqVjgViS6kBWDMdvKsckYRM6o16fbFWLh5LvGbwfofzddrHYncCCb1HocUpXFCirxjQ2Cpveg4KtAs8yGkJ4qD5RD4XKrKBwHrGNQcu1diwxuz1Lj) |
+| `dog_happy` | sine | 0.16 s | 39% | [sfxr.me](https://sfxr.me/#57uBnWgpsMuHdwLFN9uE7CA5bEXfzdCtCJ4zK46RQTEwT8BvGfCACk218AEjaiqwSUUbTJftj3MBhkVvn69Mq3rGu2jJUtrVVVJ5GiA82F6vcgEzFDKGTxyY3) |

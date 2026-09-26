@@ -11,10 +11,10 @@
   "sky_rect": [520, 70, 1260, 720],
   "music": "level_lounge",
   "door": {"name": "the garden doors", "rect": [1480, 110, 260, 650]},
-  "dog_spot": [1300, 930],
+  "dog_spot": [1300, 885],
   "furniture": [
     {"id": "rug", "name": "the rug", "sprite": "props/lounge/rug.svg", "pos": [510, 870], "size": [900, 170],
-     "spots": [{"id": "rug", "name": "under the rug", "rect": [120, 30, 660, 110], "locks": ["hidden"], "tools": [null], "reveal": "a loose floorboard"}],
+     "spots": [{"id": "rug", "name": "under the rug", "rect": [120, 30, 660, 110], "locks": ["hidden", "dog"], "tools": [null], "dog_action": "fetch", "reveal": "a loose floorboard"}],
      "flavor": "A soft jute rug with a sunrise woven into it."},
     {"id": "bookshelf", "name": "the bookshelf", "sprite": "props/lounge/bookshelf.svg", "pos": [30, 160], "size": [260, 610],
      "spots": [

@@ -13,11 +13,13 @@ extends RefCounted
 ## bigger. Keys are always the reward of a solved puzzle, and there is at most one search spot.
 
 const DOOR_TYPES: PackedStringArray = ["combo", "sequence", "clock", "key"]
-const CONTAINER_TYPES: PackedStringArray = ["combo", "sequence", "clock", "switches", "key", "hidden", "slider", "order", "sudoku", "pattern", "rotate"]
+const CONTAINER_TYPES: PackedStringArray = ["combo", "sequence", "clock", "switches", "key", "hidden", "slider", "order", "sudoku", "pattern", "rotate", "dog", "sniff", "care"]
+## Chloé's lock types; only in levels where she's with Juliette (options.companion).
+const DOG_TYPES: PackedStringArray = ["dog", "sniff", "care"]
 ## A key is only ever found inside one of these (a puzzle you solved), never lying around.
 const REWARD_CONTAINERS: PackedStringArray = ["combo", "sequence", "clock", "switches", "order", "sudoku", "pattern", "rotate", "slider", "tool", "care"]
-## Puzzles that need nothing from elsewhere: they're solved on the spot.
-const FREE_TYPES: PackedStringArray = ["slider", "sudoku", "pattern", "rotate"]
+## Puzzles that need nothing from elsewhere: they're solved on the spot (or Chloé just does it).
+const FREE_TYPES: PackedStringArray = ["slider", "sudoku", "pattern", "rotate", "dog"]
 const SUDOKU_PROPS: PackedStringArray = ["newspaper", "number_box"]
 const ROTATE_PICTURES: PackedStringArray = ["puzzles/slider_sunrise.svg", "puzzles/picture_lemon_tree.svg", "puzzles/picture_market.svg"]
 const KEY_TYPES: PackedStringArray = ["brass_key", "tiny_key", "shell_key", "old_key"]
@@ -106,14 +108,26 @@ func build(room_id: String, tier_cfg: Dictionary, seed_value: int, options: Dict
 	rng.seed = seed_value
 	if room.is_empty():
 		return {}
+	var companion := bool(options.get("companion", false))
+	if companion:
+		# Chloé is here: her locks join the tier's lock types.
+		cfg = cfg.duplicate(true)
+		var types: Array = cfg.get("types", [])
+		types.append_array(Array(DOG_TYPES))
+		cfg["types"] = types
 	var step_range: Array = cfg.get("steps", [3, 3])
 	var target := rng.randi_range(int(step_range[0]), int(step_range[1]))
 
-	var door_types := _allowed(DOOR_TYPES)
-	var door := _new_lock(_pick(door_types), {"kind": "door"}, "room")
-	door["is_door"] = true
-	steps = 1
-	_provide_requirements(door, target - 1)
+	if bool(options.get("find_dog", false)):
+		# Chloé is hiding: the door's key is in the pocket of the cardigan she's sleeping on.
+		if not _build_find_dog(target):
+			return {}
+	else:
+		var door_types := _allowed(DOOR_TYPES)
+		var door := _new_lock(_pick(door_types), {"kind": "door"}, "room")
+		door["is_door"] = true
+		steps = 1
+		_provide_requirements(door, target - 1)
 	if _failed:
 		return {}
 	_add_decoys(int(cfg.get("herrings", 0)))
@@ -133,7 +147,33 @@ func build(room_id: String, tier_cfg: Dictionary, seed_value: int, options: Dict
 		"clues": clues,
 		"decoys": decoys,
 		"postcard": _postcard,
+		"companion": "chloe" if companion else "",
 	}
+
+
+## Finding Chloé: a key door, the key in a care lock where she hides (a spot that takes "care"),
+## opened with Gaston, her squeaky seagull; Gaston itself comes from the rest of the level.
+func _build_find_dog(target: int) -> bool:
+	var spot_host := {}
+	for f: Dictionary in room.get("furniture", []):
+		for spot: Dictionary in f.get("spots", []):
+			if spot_host.is_empty() and (spot.get("locks", []) as Array).has("care"):
+				spot_host = {"kind": "furniture", "furniture": f["id"], "spot": spot["id"]}
+				used_spots["%s:%s" % [f["id"], spot["id"]]] = true
+	if spot_host.is_empty():
+		return false
+	var door := _new_lock("key", {"kind": "door"}, "room")
+	door["is_door"] = true
+	var key := _new_item(_unused_item_type(KEY_TYPES))
+	door["item"] = key["data"]["id"]
+	var hiding := _new_lock("care", spot_host, "room")
+	hiding["finds_dog"] = true
+	_put_inside(key, str(hiding["id"]))
+	var toy := _new_item("gaston")
+	hiding["item"] = toy["data"]["id"]
+	steps = 2
+	_provide_thing(toy, maxi(target - 2, 0))
+	return true
 
 
 # ================================================================== the recursive core
@@ -230,6 +270,21 @@ func _requirements(lock: Dictionary, budget: int = 0) -> Array[Dictionary]:
 			var key := _new_item(key_type)
 			lock["item"] = key["data"]["id"]
 			out.append(key)
+		"sniff", "care":
+			# Something for Chloé: a scent to follow, or her breakfast, water, leash, brush or Gaston.
+			var kind := "scent" if t == "sniff" else "care"
+			var pool: PackedStringArray = []
+			for id: String in items_db.keys():
+				if items_db[id] is Dictionary and str((items_db[id] as Dictionary).get("kind", "")) == kind and id != "gaston":
+					pool.append(id)
+			pool.sort()
+			var it_type := _unused_item_type(pool)
+			if it_type == "":
+				_failed = true
+				return out
+			var gift := _new_item(it_type)
+			lock["item"] = gift["data"]["id"]
+			out.append(gift)
 		"hidden", "tool":
 			var tool := str(lock.get("tool", ""))
 			if tool != "":
@@ -254,6 +309,13 @@ func _requirement_free(lock: Dictionary) -> bool:
 
 func _is_reward(thing: Dictionary) -> bool:
 	return str(thing["kind"]) == "item" and str(items_db.get(str(thing["data"]["type"]), {}).get("kind", "")) == "key"
+
+
+## Can a furniture spot hold a lock of type t? Sniffing works wherever something can be hidden.
+static func _spot_takes(list: Array, t: String) -> bool:
+	if t == "sniff":
+		return list.has("hidden") or list.has("sniff")
+	return list.has(t)
 
 
 func _count_type(type: String) -> int:
@@ -351,11 +413,18 @@ func _choose_container(after: int, thing: Dictionary, reward: bool = false) -> D
 			continue
 		if t == "key" and after <= 0:
 			continue # its key needs a step of its own
+		if t == "sniff" and _count_type("sniff") > 0:
+			continue # one sniffing trick per room is plenty
+		if t == "care":
+			# Chloé herself holds it (she drops it once she's happy); at most one per level.
+			if _count_type("care") == 0:
+				options.append({"type": "care", "tool": "", "weight": 2.5, "host": {"kind": "dog"}})
+			continue
 		# Furniture spots
 		for f: Dictionary in room.get("furniture", []):
 			for spot: Dictionary in f.get("spots", []):
 				var key := "%s:%s" % [f["id"], spot["id"]]
-				if used_spots.has(key) or used_spots.has(key + ":clue") or not (spot.get("locks", []) as Array).has(t):
+				if used_spots.has(key) or used_spots.has(key + ":clue") or not _spot_takes(spot.get("locks", []), t):
 					continue
 				var tool := _tool_for(spot.get("tools", [null]), t, search_ok, tool_ok)
 				if tool == "!":
@@ -363,14 +432,16 @@ func _choose_container(after: int, thing: Dictionary, reward: bool = false) -> D
 				var real := "tool" if tool != "" else t
 				if reward and not REWARD_CONTAINERS.has(real):
 					continue
-				options.append({"type": real, "tool": tool, "weight": 3.0,
-					"host": {"kind": "furniture", "furniture": f["id"], "spot": spot["id"]}, "spot_key": key})
+				var host := {"kind": "furniture", "furniture": f["id"], "spot": spot["id"]}
+				if t == "dog":
+					host["_dog_action"] = str(spot.get("dog_action", "fetch"))
+				options.append({"type": real, "tool": tool, "weight": 1.2 if t == "sniff" else 3.0, "host": host, "spot_key": key})
 		# Props
 		for prop_id: String in props_db.keys():
 			if prop_id.begins_with("_") or used_props.has(prop_id):
 				continue
 			var prop: Dictionary = props_db[prop_id]
-			if not (prop.get("locks", []) as Array).has(t):
+			if t in DOG_TYPES or not (prop.get("locks", []) as Array).has(t):
 				continue
 			var tool := _tool_for(prop.get("tools", [null]), t, search_ok, tool_ok)
 			if tool == "!":
@@ -551,9 +622,13 @@ func _new_lock(type: String, host: Dictionary, location: String) -> Dictionary:
 	var h := host.duplicate()
 	var tool := str(h.get("_tool", ""))
 	h.erase("_tool")
+	var dog_action := str(h.get("_dog_action", ""))
+	h.erase("_dog_action")
 	var lock := {"id": "l%d" % _next_id, "type": type, "host": h, "location": location}
 	if tool != "":
 		lock["tool"] = tool
+	if type == "dog":
+		lock["action"] = dog_action if dog_action != "" else "fetch"
 	match type:
 		"combo":
 			var n := int(cfg.get("digits", 3))

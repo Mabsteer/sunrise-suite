@@ -10,7 +10,7 @@
   "sky_rect": [290, 150, 240, 210],
   "music": "level_shed",
   "door": {"name": "the side door", "rect": [1660, 200, 220, 580]},
-  "dog_spot": [980, 940],
+  "dog_spot": [980, 885],
   "furniture": [
     {"id": "flower_cart", "name": "the flower cart", "sprite": "props/shed/flower_cart.svg", "pos": [40, 360], "size": [560, 430],
      "spots": [
@@ -29,6 +29,7 @@
      "spots": [
        {"id": "left_drawer", "name": "the workbench's left drawer", "rect": [60, 100, 240, 60], "locks": ["combo", "key", "sudoku"]},
        {"id": "right_drawer", "name": "the workbench's right drawer", "rect": [320, 100, 240, 60], "locks": ["key", "combo", "pattern"]},
+       {"id": "under", "name": "under the workbench", "rect": [40, 250, 540, 80], "locks": ["dog"], "dog_action": "fetch"},
        {"id": "scales", "name": "the old scales", "rect": [200, 0, 290, 70], "clue": true}
      ],
      "flavor": "Maman weighed everything twice. The customers loved her for it."},
@@ -42,7 +43,7 @@
      ],
      "flavor": "Céline delivered bouquets on this bicycle all over town. Henri once chased it for two streets."},
     {"id": "soil_sack", "name": "the sack of soil", "sprite": "props/shed/soil_sack.svg", "pos": [1140, 780], "size": [160, 180],
-     "spots": [{"id": "soil", "name": "the sack of soil", "rect": [10, 20, 140, 150], "locks": ["hidden"], "tools": [null, "trowel"], "reveal": "something buried in the soil"}],
+     "spots": [{"id": "soil", "name": "the sack of soil", "rect": [10, 20, 140, 150], "locks": ["hidden", "dog"], "tools": [null, "trowel"], "dog_action": "dig", "reveal": "something buried in the soil"}],
      "flavor": "Potting soil for the tomatoes. Mamie always said: talk to them, they grow faster."}
   ],
   "wall_slots": [

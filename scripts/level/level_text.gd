@@ -30,6 +30,8 @@ func host_name(host: Dictionary) -> String:
 			return str(furniture(str(host.get("furniture", ""))).get("name", "it"))
 		"prop":
 			return str(_props_db.get(str(host.get("prop", "")), {}).get("name", "it"))
+		"dog":
+			return "Chloé"
 	return "it"
 
 
@@ -69,7 +71,7 @@ func item_place(item_id: String) -> String:
 	var it: Dictionary = session.items[item_id]
 	var loc := str(it.get("location", "room"))
 	if loc != "room" and loc != "recipe":
-		return "inside " + lock_name(loc)
+		return _inside(loc)
 	return "on " + slot_name(str(it.get("slot", "")))
 
 
@@ -208,6 +210,33 @@ func _open_hints(lock_id: String) -> PackedStringArray:
 	var name := lock_name(lock_id)
 	var t := session.lock_type(lock_id)
 	var item := session.lock_item(lock_id)
+	if t == "dog":
+		var act := session.dog_action(lock_id)
+		return [
+			"Chloé could help with %s." % name,
+			"Tap %s and ask Chloé to %s." % [name, act],
+			"Tap %s, then \"Chloé, %s!\"" % [name, act],
+		]
+	if session.finds_dog(lock_id):
+		var toy := item_name(session._inventory_match(item) if session._inventory_match(item) != "" else item)
+		return [
+			"Someone small is hiding in %s." % name,
+			"Chloé won't come out for just anyone. Show her the %s." % toy,
+			"Select the %s in your bag, then tap %s." % [toy, name],
+		]
+	if session.given_to_dog(lock_id):
+		var gift := item_name(session._inventory_match(item) if session._inventory_match(item) != "" else item)
+		if t == "sniff":
+			return [
+				"Chloé's nose can find things you can't.",
+				"Let Chloé sniff the %s." % gift,
+				"Select the %s, then tap Chloé. She'll lead you to %s." % [gift, name],
+			]
+		return [
+			"Chloé keeps looking at you. She wants something.",
+			"Give Chloé the %s." % gift,
+			"Select the %s in your bag, then tap Chloé." % gift,
+		]
 	if session.needs_item(lock_id):
 		var held := session._inventory_match(item)
 		var what := item_name(held if held != "" else item)
@@ -262,8 +291,15 @@ func _thing_place(thing: Dictionary) -> String:
 	var host: Dictionary = thing.get("host", {})
 	var what := host_name(host) if not host.is_empty() else "a note"
 	if loc != "room":
-		return "%s inside %s" % [what, lock_name(loc)]
+		return "%s %s" % [what, _inside(loc)]
 	return what
+
+
+## "inside the drawer", or "with Chloé" for what she's guarding.
+func _inside(lock_id: String) -> String:
+	if session.locks.has(lock_id) and session.given_to_dog(lock_id):
+		return "with Chloé"
+	return "inside " + lock_name(lock_id)
 
 
 static func _cap(text: String) -> String:

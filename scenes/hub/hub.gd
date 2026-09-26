@@ -85,6 +85,7 @@ func refresh() -> void:
 			var max_size: Vector2 = _max_size(s)
 			rect = slot_rect(s, Vector2(minf(max_size.x, 200), minf(max_size.y, 200)))
 		_add_spot(s, rect, placed.has(slot_id))
+	_add_chloe()
 
 
 ## Small signs of life (decor.json "idle"): "breathe" (a sleeping cat), "sway" (lanterns, a hanging chair).
@@ -110,6 +111,41 @@ func _add_idle(sprite: Sprite2D, idle: String, rect: Rect2, index: int) -> void:
 			pivot.rotation = -amp * (0.5 - fmod(phase, 1.0))
 			t.tween_property(pivot, "rotation", amp, 2.6 + fmod(phase, 0.6))
 			t.tween_property(pivot, "rotation", -amp, 2.6 + fmod(phase, 0.6))
+
+
+## Once Chloé has been found she naps in the sunroom, in front of the decor. Tap her for a little wag.
+func _add_chloe() -> void:
+	if not GameState.chloe_found():
+		return
+	var spot: Array = room_view.room.get("dog_spot", [250, 1050])
+	var at := Vector2(float(spot[0]), float(spot[1]))
+	var sprite := Sprite2D.new()
+	sprite.texture = UIKit.texture("props/chloe/chloe_sleep.svg")
+	sprite.offset = Vector2(0, -sprite.texture.get_height() / 2.0)
+	sprite.position = at
+	_decor_layer.add_child(sprite)
+	_sprites["chloe"] = sprite
+	_add_idle_breath(sprite)
+	if decorating:
+		return
+	var tap := Control.new()
+	tap.position = at - Vector2(100, 130)
+	tap.size = Vector2(200, 140)
+	tap.mouse_filter = Control.MOUSE_FILTER_STOP
+	tap.gui_input.connect(func(e: InputEvent) -> void:
+		if e is InputEventMouseButton and (e as InputEventMouseButton).pressed and (e as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
+			AudioManager.play_sfx("dog_happy")
+			toast(tr("HUB_CHLOE")))
+	_spots.add_child(tap)
+
+
+func _add_idle_breath(sprite: Sprite2D) -> void:
+	if bool(SaveManager.settings.get("reduce_motion", false)):
+		return
+	var t := sprite.create_tween().set_loops()
+	t.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	t.tween_property(sprite, "scale", Vector2(1.01, 1.04), 1.8)
+	t.tween_property(sprite, "scale", Vector2.ONE, 2.0)
 
 
 ## Where an item of `item_size` goes in a slot (scaled down to the slot's max size).

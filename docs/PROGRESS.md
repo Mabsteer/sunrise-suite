@@ -32,7 +32,7 @@ The owner's playtest feedback changes the direction: difficulty must come from t
   - The campaign becomes walks through the house: walk 1 is the story, walks 2 and 3 are Mamie's old treasure hunts (generated, harder). Each room's exit leads to the next room, and the sunrise spans the whole walk.
   - Level select shows the route; chapter cards at the start and end of each story room; the scrapbook becomes Céline's life (memories and postcards per period, the last letter at the end).
   - Daily, Endless and Replay use all seven rooms. Save migration for old progress.
-- [ ] **F5 Chloé**
+- [x] **F5 Chloé**
   - White Maltese sprites (sit, walk, sniff, dig, sleep). She is found in the hall, then follows Juliette and is visible in every later room (and in the sunroom).
   - Dog actions in levels: fetch (under furniture, through small gaps), dig, sniff (give her a scent to follow), bark at what matters, and care tasks (food, water, leash, her toy). Generator support and `DATA_FORMAT.md`.
 - [ ] **F6 Story levels**: the seven hand-made story levels with the memories and riddles from `STORY.md`, a new kitchen tutorial, postcards in rooms 2–6, and the last letter at the front garden gate.
@@ -40,7 +40,7 @@ The owner's playtest feedback changes the direction: difficulty must come from t
 - [ ] **F8 Polish and summary**
 
 ## Next
-- F5: Chloé (sprites, finding her in the hall, dog actions and care tasks).
+- F6: the seven hand-made story levels (memories as riddles, postcards in rooms 2-6, the last letter at the front garden gate).
 
 ## Known issues
 - Portrait phones show a "turn your phone sideways" card (it can be dismissed); the game is designed for landscape.

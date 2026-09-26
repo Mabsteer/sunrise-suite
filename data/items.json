@@ -1,5 +1,5 @@
 {
-  "_help": "Inventory items. sprite is relative to assets/sprites/. kind: key (opens key locks), tool (reveals hidden spots), part (combines into something), clue (readable). Names are shown to the player.",
+  "_help": "Inventory items. sprite is relative to assets/sprites/. kind: key (opens key locks), tool (used on something you can see), part (combines into something), clue (readable), care (given to Chloé: food, water, leash, brush, Gaston), scent (Chloé sniffs it and finds a hidden spot). Names are shown to the player.",
   "brass_key": {"name": "brass key", "sprite": "items/brass_key.svg", "kind": "key", "text": "A shiny brass key with a sun-shaped bow."},
   "tiny_key": {"name": "tiny key", "sprite": "items/tiny_key.svg", "kind": "key", "text": "A tiny silver key. It must open something small."},
   "shell_key": {"name": "seashell key", "sprite": "items/shell_key.svg", "kind": "key", "text": "A key with a little seashell charm. Very Mamie."},
@@ -16,5 +16,13 @@
   "fishing_magnet": {"name": "magnet on a string", "sprite": "items/fishing_magnet.svg", "kind": "tool", "text": "Perfect for fishing things out of deep places."},
   "torn_photo_left": {"name": "torn photo (left)", "sprite": "items/torn_photo_left.svg", "kind": "part", "text": "Half of an old photo."},
   "torn_photo_right": {"name": "torn photo (right)", "sprite": "items/torn_photo_right.svg", "kind": "part", "text": "The other half of an old photo."},
-  "photo": {"name": "old photo", "sprite": "items/photo.svg", "kind": "clue", "text": "The photo, taped back together."}
+  "photo": {"name": "old photo", "sprite": "items/photo.svg", "kind": "clue", "text": "The photo, taped back together."},
+  "gaston": {"name": "Gaston the seagull", "sprite": "items/gaston.svg", "kind": "care", "text": "Chloé's squeaky toy seagull. Very chewed. Very loved."},
+  "kibble": {"name": "bag of kibble", "sprite": "items/kibble.svg", "kind": "care", "text": "Chloé's breakfast. She has opinions about it."},
+  "leash": {"name": "Chloé's leash", "sprite": "items/leash.svg", "kind": "care", "text": "A coral leash. Chloé only goes out the front with it on."},
+  "water_jug": {"name": "jug of water", "sprite": "items/water_jug.svg", "kind": "care", "text": "Fresh water for a thirsty dog."},
+  "dog_brush": {"name": "Chloé's brush", "sprite": "items/dog_brush.svg", "kind": "care", "text": "Chloé pretends to hate being brushed. She doesn't."},
+  "mamie_glove": {"name": "Mamie's gardening glove", "sprite": "items/mamie_glove.svg", "kind": "scent", "text": "It still smells of her. Chloé would know that smell anywhere."},
+  "henri_scarf": {"name": "Henri's scarf", "sprite": "items/henri_scarf.svg", "kind": "scent", "text": "Henri's old navy scarf. Mamie kept it in her drawer."},
+  "margot_teddy": {"name": "Margot's teddy", "sprite": "items/margot_teddy.svg", "kind": "scent", "text": "Margot's old teddy bear, with one ear chewed (not by Margot)."}
 }

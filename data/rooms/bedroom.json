@@ -10,7 +10,7 @@
   "sky_rect": [690, 110, 400, 320],
   "music": "level_bedroom",
   "door": {"name": "the door to the living room", "rect": [1640, 190, 230, 580]},
-  "dog_spot": [1480, 900],
+  "dog_spot": [1480, 885],
   "furniture": [
     {"id": "wardrobe", "name": "the wardrobe", "sprite": "props/bedroom/wardrobe.svg", "pos": [40, 150], "size": [300, 620],
      "spots": [
@@ -27,7 +27,7 @@
      "flavor": "Perfume, hairpins and a coral jewellery box that plays a tune when you open it."},
     {"id": "bed", "name": "the bed", "sprite": "props/bedroom/bed.svg", "pos": [600, 430], "size": [620, 500],
      "spots": [
-       {"id": "under_bed", "name": "under the bed", "rect": [20, 460, 580, 40], "locks": ["hidden"], "tools": [null, "flashlight"], "reveal": "something that rolled all the way under the bed"},
+       {"id": "under_bed", "name": "under the bed", "rect": [20, 460, 580, 40], "locks": ["hidden", "dog"], "tools": [null, "flashlight"], "dog_action": "fetch", "reveal": "something that rolled all the way under the bed"},
        {"id": "pillows", "name": "the pillows", "rect": [90, 150, 440, 80], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "something tucked under Henri's pillow"}
      ],
      "flavor": "The quilt is made from their old shirts. The blue squares were Henri's favourite."},

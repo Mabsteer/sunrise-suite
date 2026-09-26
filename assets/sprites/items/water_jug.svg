@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- A jug of fresh water. -->
+  <ellipse cx="64" cy="118" rx="36" ry="6" fill="#3b2e3a" opacity="0.18"/>
+  <path d="M40 20 L88 20 L96 110 L32 110 Z" fill="#cfeeea" opacity="0.8"/>
+  <path d="M42 52 L86 52 L94 108 L34 108 Z" fill="#6cc2be" opacity="0.8"/>
+  <path d="M88 32 C112 36 112 70 92 76" stroke="#6cc2be" stroke-width="8" fill="none"/>
+  <path d="M40 20 L88 20" stroke="#fffbf5" stroke-width="6"/>
+</svg>

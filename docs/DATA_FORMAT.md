@@ -15,7 +15,7 @@ Keys starting with `_` (like `_help`) are comments and are ignored.
 | `door` | `{ "name", "rect": [x, y, w, h] }`: the room's exit (to the next room on the route), the final lock of every level |
 | `dog_spot` | `[x, y]`: where Chloé sits in this room (bottom-centre) |
 | `furniture` | Always-present furniture: `{ id, name, sprite, pos: [x,y], size: [w,h], spots: [...], flavor }` |
-| `furniture[].spots` | Places on the furniture that can hold something: `{ id, name, rect: [x,y,w,h] (furniture-local), locks: [types], tools: [null or item type], clue: bool, reveal }` |
+| `furniture[].spots` | Places on the furniture that can hold something: `{ id, name, rect: [x,y,w,h] (furniture-local), locks: [types], tools: [null or item type], clue: bool, reveal, dog_action? }`. A spot that lists `"dog"` in its locks is a place where Chloé can help; `dog_action` says how: `"fetch"` (she crawls under or into it, the default) or `"dig"` (soft soil). A `"hidden"` spot can also hold a `"sniff"` lock (a smell only she can find). |
 | `wall_slots` | Where wall props go: `{ id, rect: [x,y,w,h], accepts: ["wall", "wall_small"] }` |
 | `surface_slots` | Where small props or items stand: `{ id, anchor: [x, y] (bottom-centre), max: [w, h], name }` |
 
@@ -24,7 +24,9 @@ Keys starting with `_` (like `_help`) are comments and are ignored.
 - **Counter props** (`shell_jar`, `daisy_vase`, `boat_photo`, `bird_picture`) show a number of things to count. They have `sprite_count` with `{n}` in it (`props/counters/shell_jar_{n}.svg`, n = 1-9); a level picks the number with `"count"` in the host. How riddles name them is in `data/clues.json` → `counters`.
 
 ## `data/items.json`: inventory items
-`{ name, sprite (128×128), kind: "key"|"tool"|"part"|"clue", text }`
+`{ name, sprite (128×128), kind: "key"|"tool"|"part"|"clue"|"care"|"scent", text }`
+- `care`: something Chloé needs (kibble, the water jug, her leash, her brush, Gaston the toy seagull). Given to her, not used on a spot.
+- `scent`: something that smells of someone (Mamie's gardening glove, Henri's scarf, Margot's teddy). Give it to Chloé and she follows the smell to a `sniff` lock.
 
 ## `data/recipes.json`: combinations
 `{ "recipes": [ { "a": item type, "b": item type, "result": item type } ] }`
@@ -64,10 +66,15 @@ Keys starting with `_` (like `_help`) are comments and are ignored.
   - `key`: needs `item` (a key)
   - `tool`: needs `item` (a tool: flashlight, trowel, screwdriver, magnet on a string). You can see it needs something.
   - `hidden`: nothing needed, just search. At most one per generated level.
+- **Chloé's locks** (only in levels with `"companion": "chloe"`; see the section below):
+  - `dog`: she fetches or digs something out, `"action": "fetch"|"dig"`. No item; you ask her in the close-up ("Chloé, fetch!").
+  - `care`: she needs something, host `{ "kind": "dog" }` (it's Chloé herself), `item` = a `care` item. You select it and tap her. When she's happy she drops what she was guarding. With `"finds_dog": true` the lock is her hiding place instead (host = a spot), and giving her Gaston brings her out.
+  - `sniff`: a spot with a smell, `item` = a `scent` item. Give her the scent and she runs to the spot and finds what's there. At most one per generated level.
 - **after**: this lock can only be used once all these locks are open (e.g. Chloé only helps after breakfast).
 - **Keys are rewards**: an item of kind `key` must be inside a puzzle (`combo`, `sequence`, `clock`, `switches`, `order`, `sudoku`, `pattern`, `rotate`, `slider`, `tool`, `care`), never in the room or a search spot. The validator checks this for every level.
 - **Clues** can be carried by an item (`"item"`). The clue is then read by looking at that item in the bag.
 - Every lock and every recipe is one **step**. The sunrise progress is `solved steps / all steps`.
+- **companion** (optional): `"chloe"` when Chloé is in the level. Without it, levels have no dog locks (the validator checks).
 - **riddle** (optional, hand-made levels): how hard the notes are, for the par-time check (generated levels take it from `tiers.json`).
 
 ## `data/campaign.json`: the walks through the house
@@ -77,6 +84,16 @@ Each walk lists the seven rooms in route order (kitchen, hall, bedroom, lounge =
 - `chapter`: shows that room's chapter card (from `data/story.json`) when the level starts.
 - `finale`: the end of the story; Mamie's last letter opens when it's finished.
 Walk levels share one morning: each room gets its own slice of the sunrise (`sunrise_range`, filled in by the game).
+
+- `find_dog`: Chloé is hiding in this room (walk 1: the hall). The level's key is in her hiding place; giving her Gaston (found in the level) brings her out.
+- `companion`: Chloé is with Juliette in this level (every room after the hall). Replays and Endless use her once she's been found.
+
+## Chloé, Mamie's Maltese
+Chloé is found in the hall in walk 1 and then follows Juliette. She sits at the room's `dog_spot` (and naps in the sunroom). The player can:
+- **tap her** with nothing selected: if she needs something, her care close-up opens; otherwise she trots to what matters now and barks at it (a free hint, it doesn't cost a star).
+- **tap her with an item selected**: gives it to her (a `care` item for a `care` lock, or a `scent` for a `sniff` lock).
+- **ask her** in a `dog` close-up: she fetches or digs.
+Everything she does is an ordinary lock in the level, so the solver, validator, hints and autoplay treat her like any other step. A paw badge marks the spots where she can help. Her sprites are in `assets/sprites/props/chloe/` (drawn by `tools/art/chloe.mjs`); her sounds are `dog_bark`, `dog_squeak`, `dog_dig`, `dog_sniff` and `dog_happy` in `tools/sfx/sfx.json`.
 
 ## `data/story.json`: the chapters of Céline's life
 `chapters`: one per room in route order, `{ "room", "title", "years", "intro", "outro", "memories"?: [ { "id", "title", "text" } ] }`. The scrapbook shows one page per chapter; `memories` are the story notes collected there (see docs/STORY.md).

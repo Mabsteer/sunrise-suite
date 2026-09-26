@@ -38,6 +38,8 @@ func default_save() -> Dictionary:
 		"postcards": [],
 		## memory ids from data/story.json the player has read
 		"memories": [],
+		## Chloé was found in the hall and follows Juliette
+		"chloe_found": false,
 		"final_letter_read": false,
 		"daily": {
 			## "YYYY-MM-DD" -> { "stars": int, "time": float }

@@ -110,8 +110,10 @@ static func build(level_id: String) -> Dictionary:
 		if level.is_empty():
 			return {}
 		level["id"] = level_id
+		if bool(e.get("companion", false)):
+			level["companion"] = "chloe"
 	else:
-		var options := {"id": level_id}
+		var options := {"id": level_id, "companion": bool(e.get("companion", false)), "find_dog": bool(e.get("find_dog", false))}
 		if e.has("postcard"):
 			options["postcard"] = str(e["postcard"])
 		level = LevelGenerator.generate(str(e["room"]), int(e["tier"]), int(e["seed"]), options)
@@ -138,7 +140,8 @@ static func build_replay(level_id: String, replay_seed: int) -> Dictionary:
 	var e := entry(level_id)
 	if e.is_empty():
 		return {}
-	return LevelGenerator.generate(str(e["room"]), int(e["tier"]), replay_seed, {"id": "%s_replay_%d" % [level_id, replay_seed]})
+	return LevelGenerator.generate(str(e["room"]), int(e["tier"]), replay_seed, {"id": "%s_replay_%d" % [level_id, replay_seed],
+		"companion": bool(e.get("companion", false)) or GameState.chloe_found(), "find_dog": bool(e.get("find_dog", false)) and not GameState.chloe_found()})
 
 
 static func build_daily(day_key: String) -> Dictionary:
@@ -153,7 +156,7 @@ static func build_daily(day_key: String) -> Dictionary:
 static func build_endless(n: int, seed_value: int) -> Dictionary:
 	var list := rooms()
 	var room := list[(n - 1) % list.size()]
-	return LevelGenerator.generate(room, 10 + n, seed_value, {"id": "endless_%d_%d" % [n, seed_value]})
+	return LevelGenerator.generate(room, 10 + n, seed_value, {"id": "endless_%d_%d" % [n, seed_value], "companion": true})
 
 
 static func clear_cache() -> void:

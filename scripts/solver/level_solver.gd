@@ -72,6 +72,10 @@ static func estimate_seconds(level: Dictionary, actions: Array, riddle: int) -> 
 					"rotate":
 						var r := int(cfg.get("size", 2))
 						t += 6.0 * r * r
+					"dog", "care":
+						t += 8.0
+					"sniff":
+						t += 12.0
 					_:
 						t += 5.0
 	return t
@@ -97,6 +101,11 @@ static func open_lock(s: LevelSession, lock_id: String) -> bool:
 	var t := s.lock_type(lock_id)
 	if t in LevelSession.KNOWLEDGE_TYPES or t in LevelSession.SELF_TYPES:
 		return s.submit_answer(lock_id, str(s.locks[lock_id].get("answer", "")))
+	if t == "dog":
+		return s.send_dog(lock_id)
+	if s.given_to_dog(lock_id):
+		var for_dog := s._inventory_match(s.lock_item(lock_id))
+		return for_dog != "" and s.give_to_dog(for_dog) == lock_id
 	if s.needs_item(lock_id):
 		var held := s._inventory_match(s.lock_item(lock_id))
 		return held != "" and s.use_item(held, lock_id) == "opened"

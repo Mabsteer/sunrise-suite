@@ -52,6 +52,25 @@ static func fake_postcards(count: int) -> void:
 	SaveManager.data["postcards"] = ids
 
 
+## A companion level with a lock of type `t` standing in the room from the start.
+static func _level_with(room: String, tier: int, t: String) -> Dictionary:
+	for seed_value in range(300, 400):
+		var level := LevelGenerator.generate(room, tier, seed_value, {"companion": true})
+		for l: Dictionary in level["locks"]:
+			if str(l["type"]) == t and str(l["location"]) == "room":
+				return level
+	return LevelGenerator.generate(room, tier, 300, {"companion": true})
+
+
+## Opens the close-up of the first lock of type `t` in the level (for the dog widget shots).
+static func _open_first(scene: Node, t: String) -> void:
+	var session: LevelSession = scene.get("session")
+	for id: String in LevelSession._sorted_keys(session.locks):
+		if session.lock_type(id) == t:
+			scene.get("closeup").call("show_lock", id)
+			return
+
+
 func shots() -> Array[Dictionary]:
 	return [
 		{"name": "tutorial_start", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_kitchen"), "mode": "main", "record_id": "w1_kitchen"}, "frames": 60},
@@ -132,6 +151,13 @@ func shots() -> Array[Dictionary]:
 		{"name": "art_items", "screen": "art_sheet", "params": {"dirs": ["items", "ui/symbols", "ui"], "scale": 0.9}},
 		{"name": "art_puzzles", "screen": "art_sheet", "params": {"dirs": ["puzzles"], "scale": 0.5}},
 		{"name": "art_counters", "screen": "art_sheet", "params": {"dirs": ["props/counters"], "scale": 1.0}},
+		{"name": "chloe_hall_hiding", "screen": "level", "params": func() -> Dictionary: return {"level": LevelGenerator.generate("hall", 2, 77, {"find_dog": true}), "mode": "test"}, "frames": 40},
+		{"name": "chloe_garden", "screen": "level", "params": func() -> Dictionary: return {"level": LevelGenerator.generate("garden", 6, 301, {"companion": true}), "mode": "test"}, "frames": 40},
+		{"name": "chloe_w_dog", "screen": "level", "params": func() -> Dictionary: return {"level": _level_with("garden", 6, "dog"), "mode": "test"}, "action": func(s: Node) -> void: _open_first(s, "dog"), "frames": 30},
+		{"name": "chloe_w_care", "screen": "level", "params": func() -> Dictionary: return {"level": _level_with("bedroom", 5, "care"), "mode": "test"}, "action": func(s: Node) -> void: _open_first(s, "care"), "frames": 30},
+		{"name": "chloe_w_sniff", "screen": "level", "params": func() -> Dictionary: return {"level": _level_with("lounge", 7, "sniff"), "mode": "test"}, "action": func(s: Node) -> void: _open_first(s, "sniff"), "frames": 30},
+		{"name": "hub_chloe", "screen": "hub", "setup": func() -> void: SaveManager.data["chloe_found"] = true, "frames": 40},
+		{"name": "art_chloe", "screen": "art_sheet", "params": {"dirs": ["props/chloe"], "scale": 1.6}},
 		{"name": "art_puzzle_props", "screen": "art_sheet", "params": {"dirs": ["props/puzzles"], "scale": 1.3}},
 		{"name": "level_start", "screen": "level", "params": TEST_LEVEL},
 		{"name": "gen_lounge_t1", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 1, 11)}},

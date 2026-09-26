@@ -245,6 +245,17 @@ func story_finished() -> bool:
 	return false
 
 
+## Has Juliette found Chloé (in the hall, in Mamie's treasure hunt)? From then on she follows along.
+func chloe_found() -> bool:
+	return bool(SaveManager.data.get("chloe_found", false))
+
+
+func set_chloe_found() -> void:
+	if not chloe_found():
+		SaveManager.data["chloe_found"] = true
+		SaveManager.save_game()
+
+
 func mark_final_letter_read() -> void:
 	SaveManager.data["final_letter_read"] = true
 	SaveManager.save_game()

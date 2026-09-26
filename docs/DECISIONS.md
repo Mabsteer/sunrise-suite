@@ -79,3 +79,9 @@ One line per decision: what, and why.
 - The scrapbook is organised by chapter (room/period) instead of a row of postcards; memories (story notes) get their own place per chapter (filled in F6).
 - Old saves (v1) keep seashells, decor, postcards and the daily streak, but level progress starts over, because the old main_XX levels no longer exist.
 - Digits in art (height marks, the wedding year, the house number, hopscotch) are drawn as strokes by a helper (room_kit.mjs digit/number), because SVG text isn't allowed.
+- Chloé (F5) is built from ordinary locks: `dog` (fetch/dig), `care` (give her something) and `sniff` (give her a scent). That keeps one set of rules for the solver, validator, hints, autoplay and par time, and her help is always a real step, not decoration.
+- Finding Chloé: in walk 1's hall she hides (a peeking face under the stairs) and the hall's key is in her hiding place, so finding her is the room's goal. Gaston, her squeaky toy seagull, brings her out. The game remembers she's found (save field `chloe_found`); from then on replays and Endless include her.
+- Tapping Chloé with nothing selected makes her bark at the next thing that matters. It's a free, gentle hint and doesn't count against the one-hint star, because it only points and doesn't solve.
+- Care tasks are *given to Chloé* (select item, tap her), not used on a spot, so she's the one who has to be looked after. Her care close-up says what she wants, and she drops what she was guarding once she's happy (care locks can hold keys: looking after her is a puzzle).
+- Sniff locks sit only on search spots (the smell is where you can't see anything), at most one per level, so they stay special.
+- Chloé never walks while "reduce motion" is on; she just stays in her spot and the result appears.

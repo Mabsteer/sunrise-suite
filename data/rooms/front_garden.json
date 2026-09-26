@@ -10,16 +10,16 @@
   "music": "level_front_garden",
   "outdoor": true,
   "door": {"name": "the garden gate", "rect": [860, 450, 200, 160]},
-  "dog_spot": [1240, 920],
+  "dog_spot": [1240, 885],
   "furniture": [
     {"id": "roses", "name": "Rose's roses", "sprite": "props/front_garden/roses.svg", "pos": [60, 470], "size": [430, 280],
      "spots": [
-       {"id": "soil", "name": "the soil under the roses", "rect": [0, 236, 430, 44], "locks": ["hidden"], "tools": [null, "trowel"], "reveal": "something buried under the rose bush"},
+       {"id": "soil", "name": "the soil under the roses", "rect": [0, 236, 430, 44], "locks": ["hidden", "dog"], "tools": [null, "trowel"], "dog_action": "dig", "reveal": "something buried under the rose bush"},
        {"id": "flowers", "name": "the roses", "rect": [20, 40, 390, 190], "clue": true}
      ],
      "flavor": "Rose planted these the year Céline was born. They still come back every June."},
     {"id": "bench", "name": "the bench", "sprite": "props/front_garden/bench.svg", "pos": [180, 760], "size": [300, 170],
-     "spots": [{"id": "under", "name": "under the bench", "rect": [20, 100, 260, 60], "locks": ["hidden"], "tools": [null], "reveal": "something tucked under the bench"}],
+     "spots": [{"id": "under", "name": "under the bench", "rect": [20, 100, 260, 60], "locks": ["hidden", "dog"], "tools": [null], "dog_action": "fetch", "reveal": "something tucked under the bench"}],
      "flavor": "Mamie's morning bench. Coffee, the newspaper, and a wave for everyone going to the market."},
     {"id": "hopscotch", "name": "the hopscotch", "sprite": "props/front_garden/hopscotch.svg", "pos": [760, 690], "size": [400, 280],
      "spots": [{"id": "squares", "name": "the chalk hopscotch", "rect": [100, 20, 200, 250], "locks": ["sequence", "pattern"], "clue": true}],

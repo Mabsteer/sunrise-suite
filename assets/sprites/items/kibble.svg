@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- A bag of Chloé's kibble. -->
+  <ellipse cx="64" cy="118" rx="40" ry="6" fill="#3b2e3a" opacity="0.18"/>
+  <path d="M26 30 L102 30 L108 114 L20 114 Z" fill="#e08e6d"/>
+  <path d="M26 30 L102 30 L96 18 L32 18 Z" fill="#c8674a"/>
+  <circle cx="64" cy="70" r="22" fill="#fffbf5"/>
+  <path d="M52 66 q12 -14 24 0 q-12 18 -24 0 Z" fill="#c8674a"/>
+  <circle cx="40" cy="100" r="5" fill="#a8744a"/><circle cx="52" cy="104" r="5" fill="#a8744a"/><circle cx="80" cy="102" r="5" fill="#a8744a"/><circle cx="92" cy="98" r="5" fill="#a8744a"/>
+</svg>

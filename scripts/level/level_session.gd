@@ -11,6 +11,10 @@ signal clue_seen(clue_id: String)
 signal items_combined(a: String, b: String, result: String)
 signal step_solved(solved: int, total: int)
 signal completed()
+## Chloé came out of her hiding place and now follows Juliette.
+signal dog_found()
+## Chloé did something for a lock ("fetch", "dig", "sniff", "care").
+signal dog_acted(lock_id: String, action: String)
 
 ## Locks opened with knowledge from clues (codes, tunes, times, lamps, orders).
 const KNOWLEDGE_TYPES: PackedStringArray = ["combo", "sequence", "clock", "switches", "order"]
@@ -18,7 +22,10 @@ const KNOWLEDGE_TYPES: PackedStringArray = ["combo", "sequence", "clock", "switc
 const SELF_TYPES: PackedStringArray = ["slider", "sudoku", "pattern", "rotate"]
 ## Locks opened by using an item on them (a key, or a tool on something you can see).
 const ITEM_TYPES: PackedStringArray = ["key", "tool"]
-const ALL_TYPES: PackedStringArray = ["combo", "sequence", "clock", "switches", "order", "key", "tool", "hidden", "slider", "sudoku", "pattern", "rotate"]
+## Chloé's locks: "dog" (she fetches or digs), "sniff" (give her a scent, she finds the spot),
+## "care" (give her something: breakfast, water, her leash, Gaston; or coax her out of hiding).
+const DOG_TYPES: PackedStringArray = ["dog", "sniff", "care"]
+const ALL_TYPES: PackedStringArray = ["combo", "sequence", "clock", "switches", "order", "key", "tool", "hidden", "slider", "sudoku", "pattern", "rotate", "dog", "sniff", "care"]
 
 var level: Dictionary
 var locks: Dictionary = {}
@@ -39,6 +46,8 @@ var hints_used := 0
 var elapsed := 0.0
 var finished := false
 var postcard_taken := false
+## Is Chloé with Juliette in this room? (From the start with "companion": "chloe", or once she's found.)
+var dog_present := false
 
 var _hint_target := ""
 var _hint_level := 0
@@ -46,6 +55,7 @@ var _hint_level := 0
 
 func _init(level_data: Dictionary) -> void:
 	level = level_data
+	dog_present = str(level.get("companion", "")) == "chloe"
 	for l: Dictionary in level.get("locks", []):
 		locks[str(l["id"])] = l
 	for i: Dictionary in level.get("items", []):
@@ -123,7 +133,30 @@ func lock_after(lock_id: String) -> Array[String]:
 
 func needs_item(lock_id: String) -> bool:
 	var t := lock_type(lock_id)
-	return t in ITEM_TYPES or (t == "hidden" and lock_item(lock_id) != "")
+	return t in ITEM_TYPES or t == "sniff" or t == "care" or (t == "hidden" and lock_item(lock_id) != "")
+
+
+## Is this lock done by giving something to Chloé (instead of using it on the lock itself)?
+func given_to_dog(lock_id: String) -> bool:
+	var t := lock_type(lock_id)
+	return t == "sniff" or (t == "care" and str((locks[lock_id].get("host", {}) as Dictionary).get("kind", "")) == "dog")
+
+
+## Is this where Chloé is hiding (a care lock you coax her out of)?
+func finds_dog(lock_id: String) -> bool:
+	return bool(locks[lock_id].get("finds_dog", false))
+
+
+## The dog action of a lock: "fetch", "dig", "sniff", "care" or "".
+func dog_action(lock_id: String) -> String:
+	match lock_type(lock_id):
+		"dog":
+			return str(locks[lock_id].get("action", "fetch"))
+		"sniff":
+			return "sniff"
+		"care":
+			return "care"
+	return ""
 
 
 ## True when the player has everything needed to open this lock right now.
@@ -137,6 +170,9 @@ func requirement_met(lock_id: String) -> bool:
 			if not clue_available(c):
 				return false
 		return true
+	if t == "dog" or given_to_dog(lock_id):
+		if not dog_present:
+			return false
 	if needs_item(lock_id):
 		return _has_item(lock_item(lock_id))
 	return true
@@ -208,15 +244,42 @@ func submit_answer(lock_id: String, answer: String) -> bool:
 
 
 ## Uses an inventory item on a lock. Returns "opened", "wrong" or "unavailable".
+## (Things for Chloé go through give_to_dog; her hiding place takes her toy here.)
 func use_item(item_id: String, lock_id: String) -> String:
-	if not inventory.has(item_id) or not _can_touch(lock_id):
+	if not inventory.has(item_id) or not _can_touch(lock_id) or given_to_dog(lock_id):
 		return "unavailable"
 	var needed := lock_item(lock_id)
 	if needed == "" or not _same_item(item_id, needed):
 		return "wrong"
 	_consume(item_id)
 	_open(lock_id)
+	if finds_dog(lock_id):
+		dog_present = true
+		dog_found.emit()
 	return "opened"
+
+
+## Gives an item to Chloé: her breakfast/water/leash/toy (a care lock on her), or a scent to follow
+## (a sniff lock somewhere in the room). Returns the lock id that opened, "wrong" or "unavailable".
+func give_to_dog(item_id: String) -> String:
+	if not dog_present or not inventory.has(item_id) or finished:
+		return "unavailable"
+	for id: String in _sorted_keys(locks):
+		if given_to_dog(id) and _can_touch(id) and _same_item(item_id, lock_item(id)):
+			_consume(item_id)
+			dog_acted.emit(id, dog_action(id))
+			_open(id)
+			return id
+	return "wrong"
+
+
+## Asks Chloé to fetch or dig at a "dog" lock. Returns true if it opened.
+func send_dog(lock_id: String) -> bool:
+	if not dog_present or not _can_touch(lock_id) or lock_type(lock_id) != "dog":
+		return false
+	dog_acted.emit(lock_id, dog_action(lock_id))
+	_open(lock_id)
+	return true
 
 
 ## Searches a hidden spot that needs no tool. Returns true if it opened.

@@ -11,7 +11,7 @@
   "sky_rect": [750, 150, 420, 380],
   "music": "level_kitchen",
   "door": {"name": "the door to the hall", "rect": [170, 110, 260, 660]},
-  "dog_spot": [420, 930],
+  "dog_spot": [420, 885],
   "furniture": [
     {"id": "counter", "name": "the kitchen counter", "sprite": "props/kitchen/counter.svg", "pos": [460, 488], "size": [1180, 300],
      "spots": [
@@ -35,6 +35,7 @@
     {"id": "island", "name": "the kitchen island", "sprite": "props/kitchen/island.svg", "pos": [520, 772], "size": [880, 230],
      "spots": [
        {"id": "left_drawer", "name": "the island's left drawer", "rect": [30, 46, 400, 52], "locks": ["key", "combo"]},
+       {"id": "under", "name": "the gap under the island", "rect": [20, 196, 840, 34], "locks": ["dog"], "dog_action": "fetch"},
        {"id": "right_drawer", "name": "the island's right drawer", "rect": [450, 46, 400, 52], "locks": ["combo", "key", "pattern"]}
      ],
      "flavor": "The island where breakfast happens."},

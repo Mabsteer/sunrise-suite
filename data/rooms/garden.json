@@ -11,13 +11,13 @@
   "music": "level_garden",
   "outdoor": true,
   "door": {"name": "the shed door", "rect": [1600, 380, 200, 320]},
-  "dog_spot": [980, 960],
+  "dog_spot": [1340, 885],
   "furniture": [
     {"id": "bird_bath", "name": "the bird bath", "sprite": "props/garden/bird_bath.svg", "pos": [60, 640], "size": [150, 220],
      "spots": [{"id": "water", "name": "the bird bath", "rect": [6, 40, 140, 50], "locks": ["hidden"], "tools": [null, "fishing_magnet"], "reveal": "something shiny at the bottom of the water"}],
      "flavor": "A little bird is having a very serious bath."},
     {"id": "flower_bed", "name": "the rose bed", "sprite": "props/garden/flower_bed.svg", "pos": [230, 470], "size": [380, 160],
-     "spots": [{"id": "soil", "name": "the soil under the roses", "rect": [0, 90, 380, 70], "locks": ["hidden"], "tools": [null, "trowel"], "reveal": "something buried under the roses"}],
+     "spots": [{"id": "soil", "name": "the soil under the roses", "rect": [0, 90, 380, 70], "locks": ["hidden", "dog"], "tools": [null, "trowel"], "dog_action": "dig", "reveal": "something buried under the roses"}],
      "flavor": "Red roses from cuttings of Rose's roses by the front gate."},
     {"id": "lemon_tree", "name": "the lemon tree", "sprite": "props/garden/lemon_tree.svg", "pos": [420, 90], "size": [500, 640],
      "spots": [
@@ -27,7 +27,7 @@
      "flavor": "In 1960 it needed a stick to stand up. The stick is still there."},
     {"id": "veg_bed", "name": "the vegetable bed", "sprite": "props/garden/veg_bed.svg", "pos": [700, 640], "size": [540, 220],
      "spots": [
-       {"id": "rows", "name": "the rows of vegetables", "rect": [40, 50, 470, 130], "locks": ["pattern", "hidden"], "tools": [null, "trowel"], "clue": true, "reveal": "something between the carrots"},
+       {"id": "rows", "name": "the rows of vegetables", "rect": [40, 50, 470, 130], "locks": ["pattern", "hidden", "dog"], "tools": [null, "trowel"], "dog_action": "dig", "clue": true, "reveal": "something between the carrots"},
        {"id": "edge", "name": "the edge of the vegetable bed", "rect": [6, 184, 528, 30], "clue": true}
      ],
      "flavor": "Lettuce, carrots, tomatoes. Henri dug this bed the week after the wedding."},

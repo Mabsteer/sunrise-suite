@@ -27,6 +27,7 @@ func _run() -> void:
 	var total := 0
 	var total_ms := 0.0
 	var worst_ms := 0.0
+	var type_counts := {}
 	for room in rooms:
 		for tier in range(1, 11):
 			var cfg := LevelGenerator.tier_config(tier)
@@ -36,7 +37,11 @@ func _run() -> void:
 			for s in seeds:
 				var seed_value := 1000 + s * 97 + tier
 				var t0 := Time.get_ticks_usec()
-				var level := LevelGenerator.generate(room, tier, seed_value)
+				# Every other level has Chloé along; some hall levels are the one where she's found.
+				var options := {"companion": s % 2 == 1}
+				if room == "hall" and s % 6 == 0:
+					options = {"find_dog": true}
+				var level := LevelGenerator.generate(room, tier, seed_value, options)
 				var ms := (Time.get_ticks_usec() - t0) / 1000.0
 				total += 1
 				total_ms += ms
@@ -49,6 +54,9 @@ func _run() -> void:
 				if not bool(report["ok"]):
 					failures.append("%s t%d seed %d: %s" % [room, tier, seed_value, ", ".join(report["errors"])])
 				steps_sum += int(report["steps"])
+				for l: Dictionary in level.get("locks", []):
+					var lt := str(l.get("type", ""))
+					type_counts[lt] = int(type_counts.get(lt, 0)) + 1
 				estimates.append(float(report.get("estimate", 0.0)))
 			estimates.sort()
 			var median := estimates[estimates.size() / 2] if not estimates.is_empty() else 0.0
@@ -82,6 +90,11 @@ func _run() -> void:
 		var key := Daily.date_key(Time.get_date_dict_from_unix_time(int(Time.get_unix_time_from_system()) + d * 86400))
 		if Campaign.build_daily(key).is_empty():
 			failures.append("daily %s failed" % key)
+	# Every lock type must actually turn up in generated levels.
+	for t in LevelSession.ALL_TYPES:
+		if int(type_counts.get(t, 0)) == 0:
+			failures.append("no generated level uses a %s lock" % t)
+	print("LOCK TYPES: %s" % str(type_counts))
 	for f in failures.slice(0, 30):
 		printerr("FAIL ", f)
 	var avg := total_ms / maxi(total, 1)

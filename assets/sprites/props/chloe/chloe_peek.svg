@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90" width="120" height="90">
+  <!-- Chloé peeking out of a dark hiding place. -->
+  <ellipse cx="60" cy="60" rx="54" ry="30" fill="#3b2e3a" opacity="0.5"/>
+  <path d="M91.3 56.0 Q97.6 61.7 88.9 65.2 Q91.9 72.3 82.1 72.9 Q81.3 80.4 72.0 78.1 Q67.5 84.8 60.0 79.9 Q52.5 84.8 48.0 78.1 Q38.7 80.4 37.9 72.9 Q28.1 72.3 31.1 65.2 Q22.4 61.7 28.7 56.0 Q22.4 50.3 31.1 46.8 Q28.1 39.7 37.9 39.1 Q38.7 31.6 48.0 33.9 Q52.5 27.2 60.0 32.1 Q67.5 27.2 72.0 33.9 Q81.3 31.6 82.1 39.1 Q91.9 39.7 88.9 46.8 Q97.6 50.3 91.3 56.0 Z" fill="#e6dfee"/>
+  <path d="M34 46 Q46 36 60 42 Q74 36 86 46 Q60 30 34 46 Z" fill="#fffbf5"/>
+  <circle cx="46" cy="56" r="7" fill="#3b2e3a"/><circle cx="74" cy="56" r="7" fill="#3b2e3a"/>
+  <circle cx="48" cy="54" r="2.4" fill="#ffffff"/><circle cx="76" cy="54" r="2.4" fill="#ffffff"/>
+  <ellipse cx="60" cy="70" rx="7" ry="5" fill="#3b2e3a"/>
+</svg>

@@ -22,6 +22,9 @@ const WIDGETS := {
 	"sudoku": "res://scenes/puzzles/sudoku/sudoku_widget.gd",
 	"pattern": "res://scenes/puzzles/pattern/pattern_widget.gd",
 	"rotate": "res://scenes/puzzles/rotate/rotate_widget.gd",
+	"dog": "res://scenes/puzzles/dog/dog_widget.gd",
+	"care": "res://scenes/puzzles/dog/dog_widget.gd",
+	"sniff": "res://scenes/puzzles/dog/dog_widget.gd",
 }
 
 var session: LevelSession
@@ -304,6 +307,8 @@ func _host_sprite(host: Dictionary, open: bool = false) -> Texture2D:
 			return UIKit.texture(str(text.furniture(str(host.get("furniture", ""))).get("sprite", "")))
 		"door":
 			return UIKit.texture("ui/home.svg")
+		"dog":
+			return UIKit.texture("props/chloe/chloe_portrait.svg")
 	return null
 
 

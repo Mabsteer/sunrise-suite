@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Chloé's coral leash. -->
+  <path d="M30 30 C10 60 30 100 70 100 C110 100 112 60 90 40" stroke="#ee7b6b" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <circle cx="30" cy="30" r="14" fill="none" stroke="#c95b52" stroke-width="8"/>
+  <rect x="82" y="30" width="18" height="20" rx="4" fill="#d4a24c"/>
+</svg>

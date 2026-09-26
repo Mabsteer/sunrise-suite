@@ -31,7 +31,7 @@ func _run() -> void:
 			continue
 		for tier in range(1, 11):
 			for s in seeds:
-				levels.append(LevelGenerator.generate(room, tier, 5000 + tier * 13 + s * 101))
+				levels.append(LevelGenerator.generate(room, tier, 5000 + tier * 13 + s * 101, {"companion": s % 2 == 1}))
 	levels.append(Campaign.build_endless(2, 99))
 	for e in Campaign.levels():
 		if e.has("postcard"):
@@ -153,6 +153,13 @@ func _open_lock(scene: LevelScene, lock_id: String) -> bool:
 	var w := scene.closeup.widget
 	if w == null:
 		return false
+	if s.given_to_dog(lock_id):
+		# Things for Chloé are given to her: select the item, tap Chloé.
+		scene.closeup.close()
+		scene.select_item(s._inventory_match(s.lock_item(lock_id)))
+		scene.tap("dog:chloe")
+		scene.inventory.deselect()
+		return s.is_open(lock_id)
 	match t:
 		"combo":
 			w.call("set_answer", answer)
@@ -171,9 +178,11 @@ func _open_lock(scene: LevelScene, lock_id: String) -> bool:
 		"order", "pattern":
 			w.call("set_answer", answer)
 			w.submitted.emit(answer)
-		"key", "tool":
+		"key", "tool", "care":
 			scene.select_item(s._inventory_match(s.lock_item(lock_id)))
 			w.use_requested.emit()
+		"dog":
+			w.submitted.emit("dog")
 		"hidden":
 			if s.lock_item(lock_id) != "":
 				scene.select_item(s._inventory_match(s.lock_item(lock_id)))

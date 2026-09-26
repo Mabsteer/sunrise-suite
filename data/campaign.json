@@ -1,5 +1,5 @@
 {
-  "_help": "The walks through Céline's house (see docs/STORY.md). Each walk goes through the seven rooms in route order: kitchen, hall, bedroom, living room, garden, shed, front garden. Walk 1 is the story (Mamie's last treasure hunt); walks 2 and 3 are her old treasure hunts from the shoebox, harder. Per level: room + tier + seed decide a generated puzzle (change the seed for a different one); level_file uses a hand-made level from data/levels/ instead; postcard: which postcard from Céline's life is hidden in it; chapter: the story chapter card shown at the start (data/story.json). star_gate: total stars needed to start the walk.",
+  "_help": "The walks through Céline's house (see docs/STORY.md). Each walk goes through the seven rooms in route order: kitchen, hall, bedroom, living room, garden, shed, front garden. Walk 1 is the story (Mamie's last treasure hunt); walks 2 and 3 are her old treasure hunts from the shoebox, harder. Per level: room + tier + seed decide a generated puzzle (change the seed for a different one); level_file uses a hand-made level from data/levels/ instead; postcard: which postcard from Céline's life is hidden in it; chapter: the story chapter card shown at the start (data/story.json). find_dog: Chloé is hiding in this room (she is found here). companion: Chloé is with you and can help. star_gate: total stars needed to start the walk.",
   "walks": [
     {
       "id": 1,
@@ -9,12 +9,12 @@
       "star_gate": 0,
       "levels": [
         {"id": "w1_kitchen", "room": "kitchen", "tier": 1, "seed": 2101, "level_file": "tutorial", "chapter": "kitchen"},
-        {"id": "w1_hall", "room": "hall", "tier": 2, "seed": 2102, "postcard": "reykjavik", "chapter": "hall"},
-        {"id": "w1_bedroom", "room": "bedroom", "tier": 3, "seed": 2103, "postcard": "santorini", "chapter": "bedroom"},
-        {"id": "w1_lounge", "room": "lounge", "tier": 4, "seed": 2104, "postcard": "marrakech", "chapter": "lounge"},
-        {"id": "w1_garden", "room": "garden", "tier": 5, "seed": 2105, "postcard": "lisbon", "chapter": "garden"},
-        {"id": "w1_shed", "room": "shed", "tier": 6, "seed": 2106, "postcard": "kyoto", "chapter": "shed"},
-        {"id": "w1_front_garden", "room": "front_garden", "tier": 7, "seed": 2107, "chapter": "front_garden", "finale": true}
+        {"id": "w1_hall", "room": "hall", "tier": 2, "seed": 2102, "postcard": "reykjavik", "chapter": "hall", "find_dog": true},
+        {"id": "w1_bedroom", "room": "bedroom", "tier": 3, "seed": 2103, "postcard": "santorini", "chapter": "bedroom", "companion": true},
+        {"id": "w1_lounge", "room": "lounge", "tier": 4, "seed": 2104, "postcard": "marrakech", "chapter": "lounge", "companion": true},
+        {"id": "w1_garden", "room": "garden", "tier": 5, "seed": 2105, "postcard": "lisbon", "chapter": "garden", "companion": true},
+        {"id": "w1_shed", "room": "shed", "tier": 6, "seed": 2106, "postcard": "kyoto", "chapter": "shed", "companion": true},
+        {"id": "w1_front_garden", "room": "front_garden", "tier": 7, "seed": 2107, "chapter": "front_garden", "finale": true, "companion": true}
       ]
     },
     {
@@ -23,13 +23,13 @@
       "subtitle": "WALK_2_SUBTITLE",
       "star_gate": 12,
       "levels": [
-        {"id": "w2_kitchen", "room": "kitchen", "tier": 3, "seed": 2201},
-        {"id": "w2_hall", "room": "hall", "tier": 4, "seed": 2202},
-        {"id": "w2_bedroom", "room": "bedroom", "tier": 5, "seed": 2203},
-        {"id": "w2_lounge", "room": "lounge", "tier": 6, "seed": 2204},
-        {"id": "w2_garden", "room": "garden", "tier": 7, "seed": 2205},
-        {"id": "w2_shed", "room": "shed", "tier": 8, "seed": 2206},
-        {"id": "w2_front_garden", "room": "front_garden", "tier": 8, "seed": 2207}
+        {"id": "w2_kitchen", "room": "kitchen", "tier": 3, "seed": 2201, "companion": true},
+        {"id": "w2_hall", "room": "hall", "tier": 4, "seed": 2202, "companion": true},
+        {"id": "w2_bedroom", "room": "bedroom", "tier": 5, "seed": 2203, "companion": true},
+        {"id": "w2_lounge", "room": "lounge", "tier": 6, "seed": 2204, "companion": true},
+        {"id": "w2_garden", "room": "garden", "tier": 7, "seed": 2205, "companion": true},
+        {"id": "w2_shed", "room": "shed", "tier": 8, "seed": 2206, "companion": true},
+        {"id": "w2_front_garden", "room": "front_garden", "tier": 8, "seed": 2207, "companion": true}
       ]
     },
     {
@@ -38,13 +38,13 @@
       "subtitle": "WALK_3_SUBTITLE",
       "star_gate": 30,
       "levels": [
-        {"id": "w3_kitchen", "room": "kitchen", "tier": 6, "seed": 2301},
-        {"id": "w3_hall", "room": "hall", "tier": 7, "seed": 2302},
-        {"id": "w3_bedroom", "room": "bedroom", "tier": 8, "seed": 2303},
-        {"id": "w3_lounge", "room": "lounge", "tier": 9, "seed": 2304},
-        {"id": "w3_garden", "room": "garden", "tier": 9, "seed": 2305},
-        {"id": "w3_shed", "room": "shed", "tier": 10, "seed": 2306},
-        {"id": "w3_front_garden", "room": "front_garden", "tier": 10, "seed": 2307}
+        {"id": "w3_kitchen", "room": "kitchen", "tier": 6, "seed": 2301, "companion": true},
+        {"id": "w3_hall", "room": "hall", "tier": 7, "seed": 2302, "companion": true},
+        {"id": "w3_bedroom", "room": "bedroom", "tier": 8, "seed": 2303, "companion": true},
+        {"id": "w3_lounge", "room": "lounge", "tier": 9, "seed": 2304, "companion": true},
+        {"id": "w3_garden", "room": "garden", "tier": 9, "seed": 2305, "companion": true},
+        {"id": "w3_shed", "room": "shed", "tier": 10, "seed": 2306, "companion": true},
+        {"id": "w3_front_garden", "room": "front_garden", "tier": 10, "seed": 2307, "companion": true}
       ]
     }
   ]

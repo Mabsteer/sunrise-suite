@@ -485,6 +485,74 @@
         "p_vib_strength": 0.1,
         "p_vib_speed": 0.6
       }
+    },
+    "dog_bark": {
+      "note": "Chloé barks: one small, soft 'wuf'.",
+      "volume": 0.24,
+      "overrides": {
+        "wave_type": 0,
+        "p_base_freq": 0.33,
+        "p_freq_ramp": -0.35,
+        "p_duty": 0.35,
+        "p_env_attack": 0.02,
+        "p_env_sustain": 0.06,
+        "p_env_decay": 0.18,
+        "p_env_punch": 0.35,
+        "p_lpf_freq": 0.35
+      }
+    },
+    "dog_squeak": {
+      "note": "Gaston the squeaky seagull: a high little squeak.",
+      "volume": 0.16,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.62,
+        "p_freq_ramp": 0.25,
+        "p_vib_strength": 0.3,
+        "p_vib_speed": 0.6,
+        "p_env_sustain": 0.08,
+        "p_env_decay": 0.14
+      }
+    },
+    "dog_dig": {
+      "note": "Chloé digging: quick soft scrapes in soil.",
+      "volume": 0.18,
+      "overrides": {
+        "wave_type": 3,
+        "p_base_freq": 0.35,
+        "p_env_attack": 0.02,
+        "p_env_sustain": 0.12,
+        "p_env_decay": 0.18,
+        "p_repeat_speed": 0.55,
+        "p_lpf_freq": 0.3
+      }
+    },
+    "dog_sniff": {
+      "note": "Chloé sniffing: two tiny puffs.",
+      "volume": 0.12,
+      "overrides": {
+        "wave_type": 3,
+        "p_base_freq": 0.6,
+        "p_env_attack": 0.05,
+        "p_env_sustain": 0.05,
+        "p_env_decay": 0.08,
+        "p_repeat_speed": 0.6,
+        "p_lpf_freq": 0.45
+      }
+    },
+    "dog_happy": {
+      "note": "Chloé is happy (fed, found, petted): a bouncy rising trill.",
+      "volume": 0.18,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.42,
+        "p_arp_mod": 0.45,
+        "p_arp_speed": 0.6,
+        "p_vib_strength": 0.15,
+        "p_vib_speed": 0.5,
+        "p_env_sustain": 0.1,
+        "p_env_decay": 0.25
+      }
     }
   }
 }

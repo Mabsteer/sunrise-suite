@@ -11,6 +11,7 @@
   "sky_rect": [290, 90, 1340, 700],
   "sunrise": 0.88,
   "music": "hub_penthouse",
+  "dog_spot": [250, 1050],
   "furniture": [],
   "decor_slots": [
     {"id": "rug_center", "type": "rug", "anchor": [960, 1030], "max": [820, 170]},
