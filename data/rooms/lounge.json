@@ -1,0 +1,20 @@
+{
+  "id": "lounge",
+  "name": "Sunrise Lounge",
+  "background": "rooms/lounge_bg.svg",
+  "light": "rooms/lounge_light.svg",
+  "view_far": "rooms/view_far.svg",
+  "balcony": "rooms/balcony.svg",
+  "horizon_y": 450,
+  "sun_x": 980,
+  "music": "level_lounge",
+  "furniture": [
+    {"id": "rug", "name": "the rug", "sprite": "props/lounge/rug.svg", "pos": [510, 870], "size": [900, 170]},
+    {"id": "bookshelf", "name": "the bookshelf", "sprite": "props/lounge/bookshelf.svg", "pos": [30, 160], "size": [260, 610]},
+    {"id": "credenza", "name": "the credenza", "sprite": "props/lounge/credenza.svg", "pos": [600, 600], "size": [720, 170]},
+    {"id": "record_cabinet", "name": "the record player", "sprite": "props/lounge/record_cabinet.svg", "pos": [1250, 540], "size": [200, 250]},
+    {"id": "monstera", "name": "the monstera", "sprite": "props/lounge/monstera.svg", "pos": [1720, 420], "size": [220, 420]},
+    {"id": "coffee_table", "name": "the coffee table", "sprite": "props/lounge/coffee_table.svg", "pos": [660, 840], "size": [600, 150]},
+    {"id": "armchair", "name": "the armchair", "sprite": "props/lounge/armchair.svg", "pos": [80, 650], "size": [360, 340]}
+  ]
+}

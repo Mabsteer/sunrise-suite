@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250" width="200" height="250">
+  <!-- Small cabinet with a record player on top and records below. -->
+  <ellipse cx="100" cy="242" rx="96" ry="8" fill="#3b2e3a" opacity="0.18"/>
+  <!-- turntable -->
+  <rect x="8" y="46" width="184" height="40" rx="8" fill="#fff4e2"/>
+  <rect x="8" y="70" width="184" height="16" rx="6" fill="#f3ddb3"/>
+  <ellipse cx="84" cy="48" rx="66" ry="12" fill="#3b2e3a"/>
+  <ellipse cx="84" cy="48" rx="50" ry="8" fill="#4d3d4b"/>
+  <ellipse cx="84" cy="48" rx="18" ry="4" fill="#ee7b6b"/>
+  <circle cx="84" cy="48" r="2" fill="#fbe3a0"/>
+  <path d="M172 34 L172 44 L130 52" stroke="#a87a2e" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="172" cy="34" r="6" fill="#d4a24c"/>
+  <circle cx="164" cy="74" r="4" fill="#ee7b6b"/>
+  <circle cx="178" cy="74" r="4" fill="#6cc2be"/>
+  <!-- cabinet -->
+  <rect x="0" y="86" width="200" height="130" rx="8" fill="#a8744a"/>
+  <rect x="0" y="86" width="200" height="10" fill="#3b2e3a" opacity="0.12"/>
+  <rect x="12" y="102" width="176" height="102" rx="4" fill="#7a5134"/>
+  <!-- records -->
+  <rect x="20" y="112" width="14" height="92" fill="#2e8c8c"/>
+  <rect x="36" y="118" width="12" height="86" fill="#f6c453"/>
+  <rect x="50" y="110" width="14" height="94" fill="#ee7b6b"/>
+  <rect x="66" y="116" width="12" height="88" fill="#fff4e2"/>
+  <rect x="80" y="112" width="14" height="92" fill="#9c8ac4"/>
+  <rect x="96" y="120" width="12" height="84" fill="#8faf8a"/>
+  <g transform="rotate(12 110 204)">
+    <rect x="110" y="114" width="14" height="90" fill="#f9b98a"/>
+  </g>
+  <rect x="150" y="150" width="30" height="54" rx="3" fill="#c8674a"/>
+  <rect x="150" y="150" width="30" height="10" rx="3" fill="#e08e6d"/>
+  <!-- legs -->
+  <path d="M16 214 L28 214 L24 244 L20 244 Z" fill="#7a5134"/>
+  <path d="M172 214 L184 214 L180 244 L176 244 Z" fill="#7a5134"/>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 170" width="900" height="170">
+  <!-- Oval jute rug with a sunrise motif, seen in perspective. -->
+  <ellipse cx="450" cy="88" rx="446" ry="80" fill="#3b2e3a" opacity="0.10"/>
+  <ellipse cx="450" cy="84" rx="440" ry="78" fill="#e3c393"/>
+  <ellipse cx="450" cy="84" rx="410" ry="66" fill="none" stroke="#c8674a" stroke-width="10"/>
+  <ellipse cx="450" cy="84" rx="380" ry="56" fill="none" stroke="#fff4e2" stroke-width="4" opacity="0.8"/>
+  <ellipse cx="450" cy="84" rx="330" ry="44" fill="#ecd3a6"/>
+  <path d="M330 100 C360 60 400 46 450 46 C500 46 540 60 570 100 Z" fill="#f9b98a"/>
+  <path d="M370 100 C390 74 418 64 450 64 C482 64 510 74 530 100 Z" fill="#f6c453"/>
+  <rect x="300" y="100" width="300" height="8" rx="4" fill="#2e8c8c" opacity="0.8"/>
+  <rect x="340" y="114" width="220" height="6" rx="3" fill="#2e8c8c" opacity="0.5"/>
+  <g stroke="#c99a6b" stroke-width="3" opacity="0.7">
+    <line x1="20" y1="84" x2="6" y2="84"/><line x1="880" y1="84" x2="894" y2="84"/>
+    <line x1="40" y1="118" x2="28" y2="126"/><line x1="860" y1="118" x2="872" y2="126"/>
+    <line x1="40" y1="50" x2="28" y2="42"/><line x1="860" y1="50" x2="872" y2="42"/>
+  </g>
+</svg>

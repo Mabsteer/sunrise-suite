@@ -14,3 +14,8 @@ One line per decision: what, and why.
 - Music crossfades a track's end into its own start (Suno tracks don't loop seamlessly), so native loop flags are turned off.
 - Daily Sunrise uses UTC dates. The weekly sleep-in is keyed by weeks since 1970 starting on Monday.
 - Fonts: Nunito (UI) and Caveat (Grandma's handwriting), both OFL from Google Fonts' GitHub.
+- Room backgrounds are 2400x1440 with the 1920x1080 stage in the middle, so wide phones and tall tablets never see empty edges. Windows and doors are transparent holes, with the sky shader and silhouette layers behind them.
+- One parameter (sunrise_t) drives sky, sun, sea, room tint, silhouettes, gulls and sunbeams, so the sunrise can be tweened as the level's progress bar.
+- Outside silhouettes (palms, headland) are drawn white and tinted in code, so they follow the sunrise colours.
+- Screenshot tour sizes are 1600x900 and 1560x720 (16:9 and ~20:9) instead of full 1920/2340 widths, so the window always fits on the monitor.
+- tools/tour.sh re-imports before the tour, because running the game directly uses stale imported textures after an SVG edit.

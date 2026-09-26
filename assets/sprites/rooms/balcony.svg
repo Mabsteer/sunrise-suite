@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-240 -180 2400 1440" width="2400" height="1440">
+  <!-- Balcony outside the windows: glass railing with a brass top rail and a teak deck. Only visible through the window/door holes. -->
+  <defs>
+    <linearGradient id="deck" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b98a5e"/>
+      <stop offset="1" stop-color="#8f6441"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8f6f4" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#e8f6f4" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <!-- deck -->
+  <rect x="-240" y="690" width="2400" height="80" fill="url(#deck)"/>
+  <rect x="-240" y="690" width="2400" height="6" fill="#fffbf5" opacity="0.25"/>
+  <rect x="-240" y="712" width="2400" height="2" fill="#7a5134" opacity="0.4"/>
+  <rect x="-240" y="738" width="2400" height="2" fill="#7a5134" opacity="0.4"/>
+  <!-- glass panels -->
+  <rect x="-240" y="566" width="2400" height="124" fill="url(#glass)"/>
+  <!-- posts -->
+  <rect x="80" y="560" width="10" height="130" fill="#a87a2e"/>
+  <rect x="420" y="560" width="10" height="130" fill="#a87a2e"/>
+  <rect x="760" y="560" width="10" height="130" fill="#a87a2e"/>
+  <rect x="1100" y="560" width="10" height="130" fill="#a87a2e"/>
+  <rect x="1440" y="560" width="10" height="130" fill="#a87a2e"/>
+  <rect x="1780" y="560" width="10" height="130" fill="#a87a2e"/>
+  <!-- top rail -->
+  <rect x="-240" y="552" width="2400" height="16" rx="8" fill="#d4a24c"/>
+  <rect x="-240" y="553" width="2400" height="5" rx="2" fill="#f7dc9a" opacity="0.8"/>
+  <!-- planter with a little olive tree seen through the door -->
+  <rect x="1520" y="640" width="120" height="70" rx="10" fill="#c8674a"/>
+  <rect x="1520" y="640" width="120" height="12" rx="6" fill="#e08e6d"/>
+  <ellipse cx="1580" cy="600" rx="62" ry="46" fill="#8faf8a"/>
+  <ellipse cx="1556" cy="590" rx="30" ry="24" fill="#a9c7a3"/>
+  <rect x="1576" y="620" width="8" height="24" fill="#7a5134"/>
+</svg>

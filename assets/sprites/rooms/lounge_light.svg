@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-240 -180 2400 1440" width="2400" height="1440">
+  <!-- Sunbeams falling through the window and the balcony door. Added on top of the room with additive blending; strength follows the sunrise. -->
+  <defs>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbe3a0" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#fbe3a0" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="pool" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f9b98a" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#f9b98a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <polygon points="560,660 952,660 900,1180 380,1180" fill="url(#beam)"/>
+  <polygon points="968,660 1360,660 1560,1180 1020,1180" fill="url(#beam)"/>
+  <polygon points="1494,760 1726,760 1900,1120 1560,1120" fill="url(#beam)"/>
+  <ellipse cx="880" cy="900" rx="520" ry="120" fill="url(#pool)"/>
+  <ellipse cx="960" cy="400" rx="520" ry="300" fill="url(#pool)" opacity="0.5"/>
+</svg>

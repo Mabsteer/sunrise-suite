@@ -7,7 +7,7 @@ The full brief is `PROMPT.md`. Progress and next steps: `docs/PROGRESS.md`. Deci
 - Godot (always through the wrapper): `bash tools/godot.sh <args>`
 - Full gate before every commit: `bash tools/check.sh` (use `--no-export` while iterating)
 - Unit tests only: `bash tools/godot.sh --headless --path . res://tests/test_runner.tscn -- --filter=<part of name>`
-- Screenshot tour (non-headless, writes `tests/screenshots/`): `bash tools/godot.sh --path . -- --screenshot-tour`
+- Screenshot tour (re-imports, then opens a window and writes `tests/screenshots/`): `bash tools/tour.sh [name-filter]`
 - Sound effects: edit `tools/sfx/sfx.json`, then `npm run sfx`
 - Local web test: `node tools/serve_web.mjs` → http://localhost:8060 (after an export)
 - CI: `gh run watch` after `git push`. The live build is https://mabsteer.github.io/sunrise-suite/

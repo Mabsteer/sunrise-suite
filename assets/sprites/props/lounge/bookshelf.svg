@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 610" width="260" height="610">
+  <!-- Built-in bookshelf with a two-door cabinet at the bottom. -->
+  <rect x="10" y="8" width="250" height="600" rx="6" fill="#3b2e3a" opacity="0.10"/>
+  <rect x="0" y="0" width="250" height="600" rx="6" fill="#a8744a"/>
+  <rect x="0" y="0" width="7" height="600" fill="#c99a6b"/>
+  <rect x="14" y="14" width="222" height="430" fill="#ecd6b4"/>
+  <rect x="14" y="14" width="222" height="10" fill="#3b2e3a" opacity="0.10"/>
+  <rect x="0" y="0" width="250" height="14" rx="5" fill="#c99a6b"/>
+
+  <!-- shelf 1 books -->
+  <rect x="22" y="38" width="22" height="112" rx="2" fill="#ee7b6b"/>
+  <rect x="22" y="52" width="22" height="5" fill="#fbe3a0" opacity="0.8"/>
+  <rect x="22" y="130" width="22" height="5" fill="#fbe3a0" opacity="0.8"/>
+  <rect x="46" y="52" width="18" height="98" rx="2" fill="#2e8c8c"/>
+  <rect x="46" y="62" width="18" height="4" fill="#fffbf5" opacity="0.6"/>
+  <rect x="66" y="30" width="26" height="120" rx="2" fill="#f3ddb3"/>
+  <rect x="72" y="50" width="14" height="30" rx="2" fill="#c8674a" opacity="0.8"/>
+  <rect x="94" y="46" width="20" height="104" rx="2" fill="#8faf8a"/>
+  <rect x="94" y="136" width="20" height="4" fill="#fffbf5" opacity="0.6"/>
+  <rect x="116" y="34" width="24" height="116" rx="2" fill="#9c8ac4"/>
+  <rect x="116" y="48" width="24" height="4" fill="#fbe3a0"/>
+  <rect x="116" y="56" width="24" height="4" fill="#fbe3a0"/>
+  <g transform="rotate(-10 142 150)">
+    <rect x="142" y="42" width="22" height="108" rx="2" fill="#c8674a"/>
+    <rect x="142" y="58" width="22" height="4" fill="#fbe3a0"/>
+  </g>
+  <rect x="192" y="112" width="36" height="38" rx="4" fill="#c8674a"/>
+  <rect x="190" y="108" width="40" height="9" rx="4" fill="#e08e6d"/>
+  <ellipse cx="200" cy="96" rx="14" ry="18" fill="#5e7f5e" transform="rotate(-25 200 96)"/>
+  <ellipse cx="222" cy="92" rx="12" ry="20" fill="#8faf8a" transform="rotate(20 222 92)"/>
+  <ellipse cx="212" cy="84" rx="9" ry="16" fill="#a9c7a3"/>
+
+  <!-- shelf 1 board -->
+  <rect x="14" y="150" width="222" height="12" fill="#c99a6b"/>
+  <rect x="14" y="162" width="222" height="6" fill="#7a5134" opacity="0.45"/>
+
+  <!-- shelf 2 books (right half left free for objects) -->
+  <rect x="22" y="192" width="20" height="100" rx="2" fill="#6cc2be"/>
+  <rect x="44" y="178" width="26" height="114" rx="2" fill="#f6c453"/>
+  <rect x="44" y="196" width="26" height="4" fill="#a87a2e" opacity="0.7"/>
+  <rect x="72" y="200" width="18" height="92" rx="2" fill="#ee7b6b"/>
+  <rect x="92" y="184" width="22" height="108" rx="2" fill="#5e7f5e"/>
+  <rect x="92" y="270" width="22" height="4" fill="#fbe3a0" opacity="0.7"/>
+  <path d="M214 292 C206 280 208 266 222 262 C234 266 236 280 228 292 Z" fill="#fcd9b8"/>
+  <path d="M216 290 C214 280 216 270 222 266 M222 290 L222 266 M228 290 C230 280 228 270 222 266" stroke="#e08e6d" stroke-width="2" fill="none"/>
+
+  <!-- shelf 2 board -->
+  <rect x="14" y="292" width="222" height="12" fill="#c99a6b"/>
+  <rect x="14" y="304" width="222" height="6" fill="#7a5134" opacity="0.45"/>
+
+  <!-- shelf 3: stacked books left, space for objects -->
+  <rect x="20" y="386" width="92" height="18" rx="2" fill="#f3ddb3"/>
+  <rect x="26" y="404" width="84" height="20" rx="2" fill="#2e8c8c"/>
+  <rect x="22" y="424" width="90" height="20" rx="2" fill="#c95b52"/>
+  <rect x="22" y="430" width="90" height="3" fill="#fbe3a0" opacity="0.7"/>
+  <rect x="196" y="384" width="34" height="60" rx="4" fill="#d4a24c"/>
+  <rect x="201" y="389" width="24" height="44" rx="2" fill="#fcd9b8"/>
+  <circle cx="213" cy="406" r="8" fill="#f6c453"/>
+  <rect x="201" y="414" width="24" height="19" fill="#6cc2be"/>
+
+  <!-- shelf 3 board -->
+  <rect x="14" y="432" width="222" height="12" fill="#c99a6b"/>
+
+  <!-- cabinet -->
+  <rect x="14" y="444" width="222" height="136" fill="#b98457"/>
+  <rect x="14" y="444" width="222" height="8" fill="#3b2e3a" opacity="0.15"/>
+  <rect x="26" y="458" width="94" height="110" rx="6" fill="#c99a6b"/>
+  <rect x="130" y="458" width="94" height="110" rx="6" fill="#c99a6b"/>
+  <rect x="34" y="466" width="78" height="94" rx="4" fill="#b98457" opacity="0.5"/>
+  <rect x="138" y="466" width="78" height="94" rx="4" fill="#b98457" opacity="0.5"/>
+  <circle cx="110" cy="513" r="6" fill="#d4a24c"/>
+  <circle cx="140" cy="513" r="6" fill="#d4a24c"/>
+  <circle cx="109" cy="511" r="2" fill="#fbe3a0"/>
+  <circle cx="139" cy="511" r="2" fill="#fbe3a0"/>
+  <rect x="6" y="580" width="238" height="20" rx="4" fill="#7a5134"/>
+</svg>

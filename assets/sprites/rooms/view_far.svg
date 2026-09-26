@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-240 -180 2400 1440" width="2400" height="1440">
+  <!-- Silhouettes outside the windows (headland, lighthouse, palms). Drawn white: the game tints them with the sunrise colours. Horizon is at y=450. -->
+  <!-- distant headland with a little lighthouse -->
+  <path d="M-240 450 C-120 430 40 418 160 420 C300 404 420 396 520 412 C600 424 680 432 760 442 C800 446 830 450 840 450 Z" fill="#ffffff" opacity="0.55"/>
+  <rect x="318" y="352" width="18" height="52" fill="#ffffff" opacity="0.6"/>
+  <polygon points="314,356 340,356 327,338" fill="#ffffff" opacity="0.6"/>
+  <!-- small island on the right -->
+  <path d="M1180 450 C1210 436 1250 430 1290 434 C1320 438 1340 444 1352 450 Z" fill="#ffffff" opacity="0.5"/>
+  <!-- left palm -->
+  <g opacity="0.95">
+    <path d="M700 760 C696 640 690 520 668 420 C660 380 652 350 640 318 L652 314 C668 350 678 384 686 420 C706 520 714 640 718 760 Z" fill="#ffffff"/>
+    <path d="M646 318 C600 290 548 292 506 318 C548 300 598 304 640 330 Z" fill="#ffffff"/>
+    <path d="M646 318 C618 276 572 256 530 258 C576 270 610 292 636 326 Z" fill="#ffffff"/>
+    <path d="M646 318 C668 270 712 248 760 250 C716 266 682 290 656 326 Z" fill="#ffffff"/>
+    <path d="M646 318 C690 300 740 306 782 334 C736 318 690 318 656 332 Z" fill="#ffffff"/>
+    <path d="M646 318 C640 280 650 240 676 212 C660 246 656 282 654 322 Z" fill="#ffffff"/>
+    <path d="M646 318 C616 320 584 340 566 372 C592 348 618 336 648 330 Z" fill="#ffffff"/>
+  </g>
+  <!-- right palm -->
+  <g opacity="0.95">
+    <path d="M1230 760 C1240 640 1256 520 1286 430 C1298 392 1312 362 1330 334 L1340 342 C1324 370 1312 400 1302 436 C1276 526 1262 640 1252 760 Z" fill="#ffffff"/>
+    <path d="M1334 336 C1380 306 1432 306 1470 330 C1430 316 1382 320 1340 348 Z" fill="#ffffff"/>
+    <path d="M1334 336 C1364 294 1410 276 1452 280 C1406 292 1372 312 1344 346 Z" fill="#ffffff"/>
+    <path d="M1334 336 C1310 290 1266 268 1218 270 C1262 284 1296 308 1324 344 Z" fill="#ffffff"/>
+    <path d="M1334 336 C1290 318 1240 326 1200 356 C1244 338 1292 338 1326 350 Z" fill="#ffffff"/>
+    <path d="M1334 336 C1342 298 1334 258 1310 230 C1324 264 1328 300 1326 340 Z" fill="#ffffff"/>
+  </g>
+  <!-- small palm seen through the balcony door -->
+  <g opacity="0.9">
+    <path d="M1668 760 C1664 680 1660 600 1646 540 L1656 538 C1672 598 1678 680 1682 760 Z" fill="#ffffff"/>
+    <path d="M1650 540 C1620 520 1588 522 1562 540 C1592 530 1620 534 1646 550 Z" fill="#ffffff"/>
+    <path d="M1650 540 C1676 512 1708 504 1736 512 C1706 518 1680 532 1658 552 Z" fill="#ffffff"/>
+    <path d="M1650 540 C1646 510 1656 484 1674 466 C1662 490 1660 514 1660 544 Z" fill="#ffffff"/>
+    <path d="M1650 540 C1680 538 1706 552 1722 576 C1700 560 1678 552 1654 552 Z" fill="#ffffff"/>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 340" width="360" height="340">
+  <!-- Rattan armchair with a cream seat cushion and a peach pillow. -->
+  <ellipse cx="180" cy="324" rx="168" ry="14" fill="#3b2e3a" opacity="0.18"/>
+  <!-- legs -->
+  <rect x="58" y="286" width="16" height="40" rx="5" fill="#7a5134"/>
+  <rect x="286" y="286" width="16" height="40" rx="5" fill="#7a5134"/>
+  <!-- rattan back -->
+  <path d="M34 220 C24 110 90 18 180 14 C270 18 336 110 326 220 Z" fill="#d9b07e"/>
+  <path d="M52 214 C46 122 104 38 180 34 C256 38 314 122 308 214 Z" fill="#e6c496"/>
+  <g fill="#c99a6b" opacity="0.8">
+    <circle cx="120" cy="80" r="4"/><circle cx="150" cy="64" r="4"/><circle cx="180" cy="58" r="4"/><circle cx="210" cy="64" r="4"/><circle cx="240" cy="80" r="4"/>
+    <circle cx="96" cy="108" r="4"/><circle cx="126" cy="100" r="4"/><circle cx="156" cy="92" r="4"/><circle cx="186" cy="90" r="4"/><circle cx="216" cy="94" r="4"/><circle cx="246" cy="102" r="4"/><circle cx="270" cy="114" r="4"/>
+    <circle cx="80" cy="140" r="4"/><circle cx="110" cy="132" r="4"/><circle cx="250" cy="130" r="4"/><circle cx="280" cy="142" r="4"/>
+    <circle cx="72" cy="172" r="4"/><circle cx="100" cy="164" r="4"/><circle cx="262" cy="162" r="4"/><circle cx="290" cy="172" r="4"/>
+  </g>
+  <path d="M34 220 C24 110 90 18 180 14 C270 18 336 110 326 220" stroke="#b98a5e" stroke-width="10" fill="none"/>
+  <!-- arms -->
+  <rect x="18" y="150" width="72" height="150" rx="34" fill="#d9b07e"/>
+  <rect x="270" y="150" width="72" height="150" rx="34" fill="#d9b07e"/>
+  <rect x="26" y="158" width="20" height="120" rx="10" fill="#e6c496"/>
+  <rect x="278" y="158" width="20" height="120" rx="10" fill="#e6c496"/>
+  <!-- pillow -->
+  <rect x="118" y="104" width="124" height="100" rx="30" fill="#f9b98a"/>
+  <rect x="118" y="146" width="124" height="16" fill="#ee7b6b" opacity="0.7"/>
+  <rect x="130" y="112" width="60" height="18" rx="9" fill="#fcd9b8" opacity="0.8"/>
+  <!-- seat cushion -->
+  <rect x="64" y="192" width="232" height="78" rx="28" fill="#fff4e2"/>
+  <rect x="64" y="238" width="232" height="32" rx="16" fill="#f3ddb3"/>
+  <rect x="84" y="200" width="120" height="14" rx="7" fill="#fffbf5" opacity="0.9"/>
+  <!-- apron -->
+  <rect x="44" y="262" width="272" height="32" rx="14" fill="#c99a6b"/>
+  <rect x="44" y="284" width="272" height="10" rx="5" fill="#a8744a"/>
+</svg>

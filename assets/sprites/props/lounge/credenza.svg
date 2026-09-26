@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 170" width="720" height="170">
+  <!-- Low mid-century credenza: cane doors left and right, two drawers in the middle. -->
+  <ellipse cx="360" cy="160" rx="350" ry="10" fill="#3b2e3a" opacity="0.16"/>
+  <!-- legs -->
+  <path d="M40 132 L52 132 L48 164 L44 164 Z" fill="#7a5134"/>
+  <path d="M668 132 L680 132 L676 164 L672 164 Z" fill="#7a5134"/>
+  <path d="M250 132 L262 132 L258 162 L254 162 Z" fill="#7a5134"/>
+  <path d="M458 132 L470 132 L466 162 L462 162 Z" fill="#7a5134"/>
+  <!-- body -->
+  <rect x="4" y="18" width="712" height="118" rx="10" fill="#a8744a"/>
+  <rect x="0" y="8" width="720" height="18" rx="6" fill="#c99a6b"/>
+  <rect x="0" y="8" width="720" height="5" rx="3" fill="#fffbf5" opacity="0.35"/>
+  <rect x="4" y="26" width="712" height="8" fill="#3b2e3a" opacity="0.12"/>
+  <!-- left cane door -->
+  <rect x="18" y="36" width="224" height="88" rx="6" fill="#c99a6b"/>
+  <rect x="28" y="44" width="204" height="72" rx="4" fill="#ecd3a6"/>
+  <g fill="#c99a6b" opacity="0.9">
+    <circle cx="44" cy="58" r="3"/><circle cx="64" cy="58" r="3"/><circle cx="84" cy="58" r="3"/><circle cx="104" cy="58" r="3"/><circle cx="124" cy="58" r="3"/><circle cx="144" cy="58" r="3"/><circle cx="164" cy="58" r="3"/><circle cx="184" cy="58" r="3"/><circle cx="204" cy="58" r="3"/>
+    <circle cx="54" cy="80" r="3"/><circle cx="74" cy="80" r="3"/><circle cx="94" cy="80" r="3"/><circle cx="114" cy="80" r="3"/><circle cx="134" cy="80" r="3"/><circle cx="154" cy="80" r="3"/><circle cx="174" cy="80" r="3"/><circle cx="194" cy="80" r="3"/><circle cx="214" cy="80" r="3"/>
+    <circle cx="44" cy="102" r="3"/><circle cx="64" cy="102" r="3"/><circle cx="84" cy="102" r="3"/><circle cx="104" cy="102" r="3"/><circle cx="124" cy="102" r="3"/><circle cx="144" cy="102" r="3"/><circle cx="164" cy="102" r="3"/><circle cx="184" cy="102" r="3"/><circle cx="204" cy="102" r="3"/>
+  </g>
+  <rect x="228" y="68" width="6" height="26" rx="3" fill="#d4a24c"/>
+  <!-- drawers -->
+  <rect x="256" y="36" width="208" height="40" rx="6" fill="#c99a6b"/>
+  <rect x="256" y="84" width="208" height="40" rx="6" fill="#c99a6b"/>
+  <rect x="330" y="52" width="60" height="8" rx="4" fill="#d4a24c"/>
+  <rect x="330" y="100" width="60" height="8" rx="4" fill="#d4a24c"/>
+  <rect x="332" y="52" width="24" height="3" rx="1" fill="#fbe3a0"/>
+  <rect x="332" y="100" width="24" height="3" rx="1" fill="#fbe3a0"/>
+  <!-- right cane door -->
+  <rect x="478" y="36" width="224" height="88" rx="6" fill="#c99a6b"/>
+  <rect x="488" y="44" width="204" height="72" rx="4" fill="#ecd3a6"/>
+  <g fill="#c99a6b" opacity="0.9">
+    <circle cx="504" cy="58" r="3"/><circle cx="524" cy="58" r="3"/><circle cx="544" cy="58" r="3"/><circle cx="564" cy="58" r="3"/><circle cx="584" cy="58" r="3"/><circle cx="604" cy="58" r="3"/><circle cx="624" cy="58" r="3"/><circle cx="644" cy="58" r="3"/><circle cx="664" cy="58" r="3"/>
+    <circle cx="514" cy="80" r="3"/><circle cx="534" cy="80" r="3"/><circle cx="554" cy="80" r="3"/><circle cx="574" cy="80" r="3"/><circle cx="594" cy="80" r="3"/><circle cx="614" cy="80" r="3"/><circle cx="634" cy="80" r="3"/><circle cx="654" cy="80" r="3"/><circle cx="674" cy="80" r="3"/>
+    <circle cx="504" cy="102" r="3"/><circle cx="524" cy="102" r="3"/><circle cx="544" cy="102" r="3"/><circle cx="564" cy="102" r="3"/><circle cx="584" cy="102" r="3"/><circle cx="604" cy="102" r="3"/><circle cx="624" cy="102" r="3"/><circle cx="644" cy="102" r="3"/><circle cx="664" cy="102" r="3"/>
+  </g>
+  <rect x="486" y="68" width="6" height="26" rx="3" fill="#d4a24c"/>
+  <rect x="4" y="124" width="712" height="12" rx="6" fill="#7a5134" opacity="0.6"/>
+</svg>

@@ -9,6 +9,7 @@ const SCREENS := {
 	"level": "res://scenes/level/level.tscn",
 	"scrapbook": "res://scenes/scrapbook/scrapbook.tscn",
 	"calendar": "res://scenes/calendar/calendar.tscn",
+	"room_preview": "res://scenes/room/room_preview.tscn",
 }
 const FADE_SECONDS := 0.35
 

@@ -4,7 +4,7 @@ Live build: https://mabsteer.github.io/sunrise-suite/
 
 ## Milestones
 - [x] **M0 Scaffold & pipeline**: project, autoloads, export presets, `tools/check.sh`, test runner, CI + GitHub Pages
-- [ ] M1 Look & feel
+- [x] **M1 Look & feel**: sunrise sky/sea shader, Sunrise Lounge art (room, balcony, view, 7 furniture pieces), RoomView, screenshot tour, title screen backdrop
 - [ ] M2 Escape-room core
 - [ ] M3 Generator
 - [ ] M4 Rooms
@@ -16,7 +16,7 @@ Live build: https://mabsteer.github.io/sunrise-suite/
 - [ ] M10 Onboarding & polish
 
 ## Next
-- M1: palette + ART_STYLE.md, sunrise sky/sea shader, Sunrise Lounge backdrop, screenshot tour.
+- M2: level data model + LevelSession (logic), hotspots, close-ups, inventory, combining, 8 lock types, hints, hand-made test level.
 
 ## Known issues
 - (none)
