@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420">
+  <!-- Postcard: Kyoto pagoda and torii gate with blossoms. -->
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0.00" stop-color="#c9bde3"/><stop offset="0.50" stop-color="#fcd9b8"/><stop offset="1.00" stop-color="#fbe3a0"/></linearGradient></defs>
+  <rect x="6" y="8" width="634" height="412" rx="14" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="0" y="0" width="634" height="412" rx="14" fill="#fffbf5"/>
+  <rect x="20" y="20" width="594" height="372" rx="6" fill="url(#sky)"/>
+  <circle cx="200" cy="200" r="60" fill="#fbe3a0" opacity="0.9"/>
+  <path d="M20 300 C120 260 220 280 320 250 S520 270 614 240 V392 H20 Z" fill="#8faf8a"/>
+  <path d="M20 330 C160 300 300 320 420 300 S560 310 614 296 V392 H20 Z" fill="#5e7f5e"/>
+  <g fill="#3e3570">
+    <rect x="428" y="130" width="12" height="190"/>
+    <path d="M384 140 H484 L470 122 H398 Z"/><path d="M390 180 H478 L464 162 H404 Z"/><path d="M396 220 H472 L458 202 H410 Z"/><path d="M402 260 H466 L452 242 H416 Z"/>
+    <path d="M430 100 L434 130 L438 100 Z"/>
+  </g>
+  <g fill="#c95b52"><rect x="90" y="250" width="16" height="130"/><rect x="200" y="250" width="16" height="130"/><rect x="72" y="244" width="162" height="16" rx="4"/><rect x="84" y="270" width="138" height="10"/></g>
+  <circle cx="70" cy="90" r="16" fill="#fcd9b8"/><circle cx="82" cy="96" r="12" fill="#f9b98a"/><circle cx="110" cy="70" r="16" fill="#fcd9b8"/><circle cx="122" cy="76" r="12" fill="#f9b98a"/><circle cx="150" cy="96" r="16" fill="#fcd9b8"/><circle cx="162" cy="102" r="12" fill="#f9b98a"/><circle cx="560" cy="80" r="16" fill="#fcd9b8"/><circle cx="572" cy="86" r="12" fill="#f9b98a"/><circle cx="590" cy="120" r="16" fill="#fcd9b8"/><circle cx="602" cy="126" r="12" fill="#f9b98a"/><circle cx="530" cy="110" r="16" fill="#fcd9b8"/><circle cx="542" cy="116" r="12" fill="#f9b98a"/><circle cx="300" cy="60" r="16" fill="#fcd9b8"/><circle cx="312" cy="66" r="12" fill="#f9b98a"/>
+  <ellipse cx="250" cy="170" rx="5" ry="3" fill="#fcd9b8" transform="rotate(30 250 170)"/><ellipse cx="320" cy="220" rx="5" ry="3" fill="#fcd9b8" transform="rotate(30 320 220)"/><ellipse cx="380" cy="150" rx="5" ry="3" fill="#fcd9b8" transform="rotate(30 380 150)"/><ellipse cx="140" cy="190" rx="5" ry="3" fill="#fcd9b8" transform="rotate(30 140 190)"/>
+</svg>

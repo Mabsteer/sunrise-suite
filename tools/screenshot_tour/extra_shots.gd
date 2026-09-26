@@ -45,8 +45,32 @@ static func fake_daily() -> void:
 		"last_day": Daily.date_key(Time.get_date_dict_from_unix_time((today - 1) * 86400 + 43200)), "sleep_ins": {}}
 
 
+static func fake_postcards(count: int) -> void:
+	var ids: Array = []
+	for p in GameState.postcard_list().slice(0, count):
+		ids.append(str(p["id"]))
+	SaveManager.data["postcards"] = ids
+
+
 func shots() -> Array[Dictionary]:
 	return [
+		{"name": "scrapbook_empty", "screen": "scrapbook", "frames": 30},
+		{"name": "scrapbook_some", "screen": "scrapbook", "setup": func() -> void: fake_postcards(3), "frames": 30},
+		{"name": "scrapbook_card", "screen": "scrapbook", "setup": func() -> void: fake_postcards(3), "action": func(s: Node) -> void: s.call("show_postcard", "kyoto"), "frames": 30},
+		{"name": "scrapbook_back", "screen": "scrapbook", "setup": func() -> void: fake_postcards(3), "action": func(s: Node) -> void:
+			s.call("show_postcard", "lisbon")
+			var ov: Control = s.get("_overlay")
+			for b in ov.find_children("*", "Button", true, false):
+				if (b as Button).text == TranslationServer.translate("POSTCARD_TURN"):
+					(b as Button).pressed.emit()
+					break, "frames": 40},
+		{"name": "scrapbook_letter", "screen": "scrapbook", "setup": func() -> void: fake_postcards(5), "action": func(s: Node) -> void: s.call("show_letter"), "frames": 30},
+		{"name": "level_postcard", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("main_09"), "mode": "main", "record_id": "main_09"}, "action": func(s: Node) -> void:
+			var session: LevelSession = s.get("session")
+			var pc: Dictionary = session.level["postcard"]
+			while not session.accessible(str(pc["location"])):
+				LevelSolver.apply_goal(session, session.next_goal())
+			s.call("take", "postcard", str(pc["id"])), "frames": 40},
 		{"name": "calendar_new", "screen": "calendar", "frames": 30},
 		{"name": "calendar_streak", "screen": "calendar", "setup": fake_daily, "frames": 30},
 		{"name": "hub_start", "screen": "hub", "frames": 40},

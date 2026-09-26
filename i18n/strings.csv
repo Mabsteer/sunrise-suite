@@ -36,7 +36,7 @@ INSIDE_EMPTY,Nothing else in here.
 NOTHING_HIDDEN,Nothing hidden here.
 POSTCARD,Postcard
 POSTCARD_FOUND_TITLE,A postcard from Grandma!
-POSTCARD_FOUND_TEXT,It's been added to your scrapbook.
+POSTCARD_FOUND_TEXT,"A postcard from %s! It's been added to your scrapbook."
 INVENTORY_EMPTY,Things you pick up will appear here.
 ITEM_SELECTED,"%s - tap where to use it, or tap it again to look."
 ITEM_WRONG,The %s doesn't work here.
@@ -150,3 +150,11 @@ CALENDAR_HELP,Every sunrise you finish paints its day in the calendar.
 DAILY_STREAK,"Daily streak: %d days!"
 DAILY_SLEEP_IN_USED,You slept in - your weekly sleep-in kept the streak going.
 BACK_TO_CALENDAR,Back to the calendar
+POSTCARD_ALL_FOUND,You found every postcard! Grandma left you a letter in the scrapbook.
+SCRAPBOOK_TITLE,Grandma's Scrapbook
+SCRAPBOOK_COUNT,%d of %d postcards
+SCRAPBOOK_LETTER,Read Grandma's letter
+SCRAPBOOK_LETTER_LOCKED,Find all the postcards to read Grandma's letter
+SCRAPBOOK_MISSING,A postcard is still hidden somewhere...
+SCRAPBOOK_HINT,Hidden somewhere in Sunrise %d
+POSTCARD_TURN,Turn it over

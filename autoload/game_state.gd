@@ -204,6 +204,63 @@ func _sleep_ins_cover(missed: Array[String], d: Dictionary) -> bool:
 	return true
 
 
+# ================================================================== postcards
+
+func postcard_list() -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	for p: Dictionary in Data.get_dict("postcards").get("postcards", []):
+		out.append(p)
+	return out
+
+
+func postcard(id: String) -> Dictionary:
+	for p in postcard_list():
+		if str(p["id"]) == id:
+			return p
+	return {}
+
+
+func has_postcard(id: String) -> bool:
+	return (SaveManager.data.get("postcards", []) as Array).has(id)
+
+
+func postcards_found_count() -> int:
+	var n := 0
+	for p in postcard_list():
+		if has_postcard(str(p["id"])):
+			n += 1
+	return n
+
+
+func all_postcards_found() -> bool:
+	return postcards_found_count() >= postcard_list().size() and not postcard_list().is_empty()
+
+
+## The main level that hides a postcard ("" if none).
+func postcard_level(id: String) -> String:
+	for e in Campaign.levels():
+		if str(e.get("postcard", "")) == id:
+			return str(e["id"])
+	return ""
+
+
+## Adds a postcard to the scrapbook. Returns { "new": bool, "all": bool, "rewards": Array[String] }.
+func collect_postcard(id: String) -> Dictionary:
+	var result := {"new": false, "all": false, "rewards": []}
+	if postcard(id).is_empty() or has_postcard(id):
+		return result
+	var list: Array = SaveManager.data.get("postcards", [])
+	list.append(id)
+	SaveManager.data["postcards"] = list
+	result["new"] = true
+	if all_postcards_found():
+		result["all"] = true
+		result["rewards"] = grant_rewards("postcards_all")
+	SaveManager.save_game()
+	Events.postcard_found.emit(id)
+	return result
+
+
 # ================================================================== decor
 
 func decor_items() -> Dictionary:

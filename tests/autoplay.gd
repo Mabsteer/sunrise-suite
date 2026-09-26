@@ -30,6 +30,9 @@ func _run() -> void:
 			for s in seeds:
 				levels.append(LevelGenerator.generate(room, tier, 5000 + tier * 13 + s * 101))
 	levels.append(Campaign.build_endless(2, 99))
+	for e in Campaign.levels():
+		if e.has("postcard"):
+			levels.append(Campaign.build(str(e["id"])))
 	for level in levels:
 		if level.is_empty():
 			_failures.append("a level could not be generated")
@@ -55,6 +58,7 @@ func _play(level: Dictionary) -> void:
 	var guard := 0
 	while not s.finished and guard < 300:
 		guard += 1
+		_try_postcard(scene)
 		var goal := s.next_goal()
 		var ok := await _do(scene, goal)
 		if not ok:
@@ -102,6 +106,25 @@ func _do(scene: LevelScene, goal: Dictionary) -> bool:
 		"open":
 			return _open_lock(scene, str(goal["id"]))
 	return false
+
+
+## Picks up the level's postcard through the UI as soon as it can be reached.
+func _try_postcard(scene: LevelScene) -> void:
+	var s := scene.session
+	var pc: Dictionary = s.level.get("postcard", {})
+	if pc.is_empty() or s.postcard_taken or not s.accessible(str(pc.get("location", "room"))):
+		return
+	var id := str(pc["id"])
+	if scene.hotspots.has("postcard:" + id):
+		scene.tap("postcard:" + id)
+	else:
+		_open_container(scene, str(pc["location"]))
+		scene.take("postcard", id)
+	scene.closeup.close()
+	if not s.postcard_taken:
+		_failures.append("%s: could not pick up postcard %s" % [s.level.get("id", "?"), id])
+	elif not GameState.has_postcard(id):
+		_failures.append("%s: postcard %s not added to the scrapbook" % [s.level.get("id", "?"), id])
 
 
 func _open_container(scene: LevelScene, lock_id: String) -> void:

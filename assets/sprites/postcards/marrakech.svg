@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420">
+  <!-- Postcard: a Marrakech rooftop at dawn with lanterns and arches. -->
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0.00" stop-color="#ee7b6b"/><stop offset="0.50" stop-color="#f9b98a"/><stop offset="1.00" stop-color="#fbe3a0"/></linearGradient></defs>
+  <rect x="6" y="8" width="634" height="412" rx="14" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="0" y="0" width="634" height="412" rx="14" fill="#fffbf5"/>
+  <rect x="20" y="20" width="594" height="372" rx="6" fill="url(#sky)"/>
+  <circle cx="320" cy="170" r="70" fill="#fbe3a0"/>
+  <path d="M20 250 H614 V392 H20 Z" fill="#c8674a"/>
+  <path d="M60 250 V160 H140 V250 Z M180 250 V120 H220 V250 Z" fill="#a9533b"/>
+  <rect x="190" y="100" width="20" height="24" fill="#a9533b"/><circle cx="200" cy="96" r="8" fill="#f6c453"/>
+  <path d="M60 392 V320 C60 290 120 290 120 320 V392 Z" fill="#7a3a2a"/><path d="M66 392 V322 C66 298 114 298 114 322 V392 Z" fill="#2e8c8c" opacity="0.5"/><path d="M180 392 V320 C180 290 240 290 240 320 V392 Z" fill="#7a3a2a"/><path d="M186 392 V322 C186 298 234 298 234 322 V392 Z" fill="#2e8c8c" opacity="0.5"/><path d="M300 392 V320 C300 290 360 290 360 320 V392 Z" fill="#7a3a2a"/><path d="M306 392 V322 C306 298 354 298 354 322 V392 Z" fill="#2e8c8c" opacity="0.5"/><path d="M420 392 V320 C420 290 480 290 480 320 V392 Z" fill="#7a3a2a"/><path d="M426 392 V322 C426 298 474 298 474 322 V392 Z" fill="#2e8c8c" opacity="0.5"/><path d="M540 392 V320 C540 290 600 290 600 320 V392 Z" fill="#7a3a2a"/><path d="M546 392 V322 C546 298 594 298 594 322 V392 Z" fill="#2e8c8c" opacity="0.5"/>
+  <rect x="20" y="250" width="594" height="16" fill="#e08e6d"/>
+  <path d="M100 20 V40" stroke="#7a5134" stroke-width="2"/><path d="M86 40 H114 L108 74 H92 Z" fill="#f6c453"/><rect x="90" y="48" width="20" height="6" fill="#ee7b6b"/><path d="M250 20 V60" stroke="#7a5134" stroke-width="2"/><path d="M236 60 H264 L258 94 H242 Z" fill="#f6c453"/><rect x="240" y="68" width="20" height="6" fill="#ee7b6b"/><path d="M400 20 V40" stroke="#7a5134" stroke-width="2"/><path d="M386 40 H414 L408 74 H392 Z" fill="#f6c453"/><rect x="390" y="48" width="20" height="6" fill="#ee7b6b"/><path d="M540 20 V60" stroke="#7a5134" stroke-width="2"/><path d="M526 60 H554 L548 94 H532 Z" fill="#f6c453"/><rect x="530" y="68" width="20" height="6" fill="#ee7b6b"/>
+  <path d="M520 250 C530 190 510 150 540 120 M540 120 C510 110 490 120 480 130 M540 120 C560 100 580 104 596 116 M540 120 C540 96 550 84 566 80" stroke="#5e7f5e" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>

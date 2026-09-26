@@ -100,6 +100,13 @@ func refresh() -> void:
 		_show(showing, false)
 
 
+## Adds an extra line of text under the current view (e.g. "You found every postcard!").
+func add_line(message: String) -> void:
+	var l := UIKit.label(message, 32, Palette.color("coral_dark"))
+	l.custom_minimum_size.x = 900
+	_body.add_child(l)
+
+
 func close() -> void:
 	if not visible:
 		return
@@ -137,7 +144,15 @@ func _show(what: Dictionary, animate: bool = true) -> void:
 			_body.add_child(l)
 		"postcard":
 			_header(UIKit.texture("props/common/postcard_small.svg"), tr("POSTCARD_FOUND_TITLE"))
-			var l := UIKit.label(tr("POSTCARD_FOUND_TEXT"), 38, Palette.color("ink"))
+			var pc := GameState.postcard(id)
+			var front := TextureRect.new()
+			front.texture = UIKit.texture(str(pc.get("front", "props/common/postcard_small.svg")))
+			front.custom_minimum_size = Vector2(560, 368)
+			front.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			front.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			front.rotation_degrees = -1.5
+			_body.add_child(front)
+			var l := UIKit.label(tr("POSTCARD_FOUND_TEXT") % str(pc.get("place", "")), 34, Palette.color("ink"))
 			l.custom_minimum_size.x = 900
 			_body.add_child(l)
 	if not visible:

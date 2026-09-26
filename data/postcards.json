@@ -1,0 +1,39 @@
+{
+  "_help": "Grandma June's postcards, in story order. front: picture (assets/sprites/...). text: the handwritten back. Which level hides which postcard is set in campaign.json. final_letter is shown once all postcards are found.",
+  "postcards": [
+    {
+      "id": "lisbon",
+      "place": "Lisbon, Portugal",
+      "front": "postcards/lisbon.svg",
+      "text": "Sweetheart,\nYour grandfather Teo and I once missed the last tram up the hill, so we walked all night and ended up on a garden wall above the river. The sun came up gold over the rooftops. Teo said: \"Every sunrise is the world saying: let's try again.\" I have been saying it ever since.\nLove, Grandma June"
+    },
+    {
+      "id": "kyoto",
+      "place": "Kyoto, Japan",
+      "front": "postcards/kyoto.svg",
+      "text": "Dear one,\nI got up at 4 to find a famous temple for sunrise and got completely lost. Instead I found a tiny tea shop, and Mrs. Aoki taught me that tea must be made slowly, like a good morning. (I found the temple later. It was next door.)\nSlowly, slowly,\nGrandma June"
+    },
+    {
+      "id": "santorini",
+      "place": "Santorini, Greece",
+      "front": "postcards/santorini.svg",
+      "text": "Hello from the island!\nEveryone comes here for the sunsets. I came for the sunrise, and had the whole cliff to myself: just me, a donkey called Stavros and a very sleepy baker. The baker gave me warm bread. Stavros tried to eat my hat. Best morning of the year.\nJune"
+    },
+    {
+      "id": "marrakech",
+      "place": "Marrakech, Morocco",
+      "front": "postcards/marrakech.svg",
+      "text": "My darling,\nThe call to prayer woke me before dawn, so I climbed onto the roof of the riad and watched the sky turn the colour of saffron. Afterwards I bargained for the spices in our kitchen rack. I definitely paid too much. Worth every coin.\nHugs, Grandma"
+    },
+    {
+      "id": "reykjavik",
+      "place": "Reykjavik, Iceland",
+      "front": "postcards/reykjavik.svg",
+      "text": "Sweetheart,\nIn summer here the sun barely sets, so it barely rises either! I waited up all night for a sunrise that never really left. Teo would have laughed at me. I laughed too, and cried a little, and then laughed again. That's how it goes, and that's alright.\nYour Grandma June"
+    }
+  ],
+  "final_letter": {
+    "title": "A letter from Grandma",
+    "text": "My dear,\nIf you are reading this, you found every one of my postcards. I hid them because I wanted you to find what I found: every morning is a present you get to open again.\nThe penthouse is yours to fill with light while I'm away. Leave the balcony door open tomorrow. I'll be home soon, with a suitcase full of new stories.\nAll my love, always,\nGrandma June\n\nP.S. Mango has breakfast at 7:00. Sharp. He will remind you."
+  }
+}

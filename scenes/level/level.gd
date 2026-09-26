@@ -55,6 +55,9 @@ func _ready() -> void:
 func start(level_data: Dictionary) -> void:
 	level = level_data
 	session = LevelSession.new(level)
+	var pc_data: Dictionary = level.get("postcard", {})
+	if not pc_data.is_empty() and GameState.has_postcard(str(pc_data.get("id", ""))):
+		session.postcard_taken = true
 	room_view = RoomView.new()
 	add_child(room_view)
 	room_view.setup(str(level.get("room", "lounge")))
@@ -177,9 +180,13 @@ func take(kind: String, id: String, from_global: Vector2 = Vector2.INF) -> void:
 		"postcard":
 			if session.take_postcard():
 				AudioManager.play_sfx("postcard_found")
-				Events.postcard_found.emit(id)
+				var found := GameState.collect_postcard(id)
 				_remove_room_thing("postcard:" + id)
 				closeup.show_thing("postcard", id)
+				if bool(found.get("all", false)):
+					closeup.add_line(tr("POSTCARD_ALL_FOUND"))
+				for decor_name: String in found.get("rewards", []):
+					closeup.add_line(tr("UNLOCK_DECOR") % decor_name)
 
 
 func select_item(item_id: String) -> void:
@@ -229,7 +236,7 @@ func _build_room_things() -> void:
 		if str(it.get("location", "room")) == "room" and str(it.get("slot", "")) != "":
 			_place_item(id, str(it["slot"]))
 	var pc: Dictionary = level.get("postcard", {})
-	if not pc.is_empty() and str(pc.get("location", "room")) == "room":
+	if not pc.is_empty() and str(pc.get("location", "room")) == "room" and not session.postcard_taken:
 		_place_host("postcard:" + str(pc.get("id", "")), pc.get("host", {}), false)
 
 
