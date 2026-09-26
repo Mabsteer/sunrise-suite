@@ -8,6 +8,7 @@
   "balcony": "rooms/balcony.svg",
   "horizon_y": 450,
   "sun_x": 960,
+  "sky_rect": [130, 70, 1070, 720],
   "music": "level_kitchen",
   "door": {"name": "the balcony door", "rect": [170, 110, 260, 660]},
   "furniture": [

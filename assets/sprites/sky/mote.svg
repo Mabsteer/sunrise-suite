@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- A soft speck of dust floating in a sunbeam. -->
+  <defs><radialGradient id="g" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#fffbf5" stop-opacity="1"/><stop offset="0.5" stop-color="#fbe3a0" stop-opacity="0.6"/><stop offset="1" stop-color="#fbe3a0" stop-opacity="0"/></radialGradient></defs>
+  <circle cx="12" cy="12" r="12" fill="url(#g)"/>
+</svg>

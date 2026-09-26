@@ -54,6 +54,20 @@ static func fake_postcards(count: int) -> void:
 
 func shots() -> Array[Dictionary]:
 	return [
+		{"name": "tutorial_start", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("main_01"), "mode": "main", "record_id": "main_01"}, "frames": 60},
+		{"name": "tutorial_combine", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("main_01"), "mode": "main", "record_id": "main_01"}, "action": func(s: Node) -> void:
+			var session: LevelSession = s.get("session")
+			session.see_clue("c_welcome")
+			session.submit_answer("drawers", "714")
+			s.call("take", "item", "i_batteries")
+			s.call("tap", "item:i_flashlight_empty")
+			(s.get("closeup") as CloseupPanel).close(), "frames": 90},
+		{"name": "level_door_opening", "screen": "level", "params": TEST_LEVEL, "action": func(s: Node) -> void:
+			var session: LevelSession = s.get("session")
+			for i in 80:
+				if session.finished:
+					break
+				LevelSolver.apply_goal(session, session.next_goal()), "frames": 110},
 		{"name": "settings", "screen": "main_menu", "action": func(s: Node) -> void: s.add_child(SettingsPanel.new()), "frames": 30},
 		{"name": "scrapbook_empty", "screen": "scrapbook", "frames": 30},
 		{"name": "scrapbook_some", "screen": "scrapbook", "setup": func() -> void: fake_postcards(3), "frames": 30},

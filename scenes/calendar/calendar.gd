@@ -223,3 +223,9 @@ class DayTile extends Control:
 		var font := get_theme_default_font()
 		var col := Color.WHITE if done else (Palette.color("ink_soft") if not future else Color(0.42, 0.35, 0.4, 0.4))
 		draw_string(font, Vector2(10, 30), str(day), HORIZONTAL_ALIGNMENT_LEFT, -1, 26, col)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
+		Router.goto("main_menu")

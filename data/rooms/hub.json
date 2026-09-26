@@ -8,6 +8,7 @@
   "balcony": "rooms/balcony.svg",
   "horizon_y": 450,
   "sun_x": 960,
+  "sky_rect": [290, 90, 1340, 700],
   "sunrise": 0.88,
   "music": "hub_penthouse",
   "furniture": [],

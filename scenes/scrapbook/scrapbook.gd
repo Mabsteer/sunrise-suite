@@ -232,3 +232,12 @@ class EmptySlot extends Control:
 			while d < length:
 				draw_line(a + dir * d, a + dir * minf(d + dash, length), col, 4.0)
 				d += dash * 2.0
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
+		if _overlay:
+			_close_overlay()
+		else:
+			Router.goto("main_menu")

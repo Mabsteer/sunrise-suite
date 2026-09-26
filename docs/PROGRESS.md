@@ -13,17 +13,24 @@ Live build: https://mabsteer.github.io/sunrise-suite/
 - [x] **M7 Daily Sunrise**: UTC-date seeded daily level (room rotation + weekday difficulty), streaks with one free sleep-in per week (several weeks can each cover a missed day), streak rewards (3/7/14 days), Sunrise Calendar with sky-painted day tiles, daily results; screen smoke test added to the gate
 - [x] **M8 Story**: 5 illustrated postcards (Lisbon, Kyoto, Santorini, Marrakech, Reykjavik) with Grandma June's messages, postcard pickup in levels 3/9/15/21/27, scrapbook with flip-over backs, final letter, Grandma's portrait reward; autoplay also collects postcards through the UI
 - [x] **M9 Audio**: 37 jsfxr sounds (music-box notes per symbol, clock ticks, switches, tiles, key/tool/search, purchase, streak...), music per screen (menu, rooms, hub, daily), one-shot sunrise stinger that ducks the music, Settings panel (4 volume sliders, fullscreen, timer, reduce motion, text size, credits, start over) from the menu and pause menu; audio test checks every sound name used in code exists
-- [ ] M10 Onboarding & polish
+- [x] **M10 Onboarding & polish**: hand-made tutorial level 1 with a step-by-step guide (data/tutorial.json), dust motes in the sunbeams, settle-in zoom, door glow + lean toward the door on completion, bouncing boxes, rotate-your-phone hint, Esc everywhere, sky shader limited to window areas (web performance), README with recipes
 
 ## Next
-- M10: tutorial in level 1 (click, inspect, inventory, combine, hints), juice (dust motes, unlock sparkles, door opening), rotate-your-phone hint, accessibility + web performance passes, README with recipes.
+- Work through the polish backlog below.
 
 ## Known issues
-- Portrait phones show the room small with empty bands above and below. Plan: "rotate your phone" hint (M10).
+- Portrait phones show a "turn your phone sideways" card (it can be dismissed); the game is designed for landscape.
 
 ## Polish backlog
-- Door visibly opening at the end of a level (slide/glow).
-- Rotate-your-phone hint in portrait.
+- [ ] Pause the level timer while the browser tab or window is in the background (fair third star).
+- [ ] Small step counter under the room title ("2 of 6"), next to the sunrise.
+- [ ] Results: seashells count up, "new best time" note.
+- [ ] Main menu: "Next sunrise" quick button that jumps straight into the current level.
+- [ ] Level book: show best time on finished cards; daily card shows an easy/medium/hard label.
+- [ ] More clue template variety in clues.json (more phrasings per level).
+- [ ] Hub life: Mango the cat breathes, the lanterns sway gently.
+- [ ] Par-time sanity check: measure the autoplay step count per tier against par_time.
+- [ ] Custom web loading screen colours (sunrise gradient instead of plain background).
 
 ## Blocked
 - (none)

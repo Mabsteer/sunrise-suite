@@ -8,6 +8,7 @@
   "balcony": "rooms/balcony.svg",
   "horizon_y": 450,
   "sun_x": 960,
+  "sky_rect": [720, 70, 480, 720],
   "music": "level_study",
   "door": {"name": "the French doors", "rect": [760, 110, 400, 650]},
   "furniture": [

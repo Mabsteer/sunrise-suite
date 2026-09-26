@@ -224,3 +224,9 @@ func _scroll_to_current() -> void:
 	await get_tree().process_frame
 	if _current_row:
 		_scroll.scroll_vertical = maxi(0, int(_current_row.position.y) - 40)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
+		Router.goto("main_menu")

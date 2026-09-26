@@ -365,6 +365,15 @@ func _build_ui() -> void:
 	_toast.add_child(_toast_label)
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
+		if decorating:
+			toggle_decorate()
+		else:
+			Router.goto("main_menu")
+
+
 func toggle_decorate() -> void:
 	decorating = not decorating
 	moving_from = ""

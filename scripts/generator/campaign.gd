@@ -50,6 +50,13 @@ static func build(level_id: String) -> Dictionary:
 	var e := entry(level_id)
 	if e.is_empty() or not room_available(str(e["room"])):
 		return {}
+	if e.has("level_file"):
+		var fixed: Dictionary = Data.get_dict("levels/" + str(e["level_file"])).duplicate(true)
+		if fixed.is_empty():
+			return {}
+		fixed["id"] = level_id
+		_cache[level_id] = fixed
+		return fixed
 	var options := {"id": level_id}
 	if e.has("postcard"):
 		options["postcard"] = str(e["postcard"])

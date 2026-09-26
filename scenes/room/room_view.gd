@@ -32,7 +32,14 @@ var _view_far: Sprite2D
 var _balcony: Sprite2D
 var _light: Sprite2D
 var _gulls: Node2D
+var _motes: CPUParticles2D
 var _sunrise_tween: Tween
+## Camera-like zoom of the stage around a focus point (1 = normal).
+var zoom := 1.0:
+	set(value):
+		zoom = value
+		_center_stage()
+var zoom_focus := Vector2(960, 540)
 
 
 func _ready() -> void:
@@ -57,8 +64,10 @@ func setup(id: String) -> void:
 
 	sky = SkyBackdrop.new()
 	sky.name = "Sky"
-	sky.position = Vector2(-800, -600)
-	sky.size = Vector2(3520, 2280)
+	# The sky shader only needs to cover the window/door openings (much cheaper on phones).
+	var sky_rect: Array = room.get("sky_rect", [-800, -600, 3520, 2280])
+	sky.position = Vector2(float(sky_rect[0]), float(sky_rect[1]))
+	sky.size = Vector2(float(sky_rect[2]), float(sky_rect[3]))
 	sky.horizon_y = float(room.get("horizon_y", 450))
 	sky.sun_x = float(room.get("sun_x", 960))
 	stage.add_child(sky)
@@ -102,8 +111,48 @@ func setup(id: String) -> void:
 		_light.material = mat
 		stage.move_child(_light, stage.get_child_count() - 1)
 
+	_motes = CPUParticles2D.new()
+	_motes.name = "DustMotes"
+	_motes.texture = load(SPRITES_DIR + "sky/mote.svg") as Texture2D
+	_motes.amount = 34
+	_motes.lifetime = 10.0
+	_motes.preprocess = 10.0
+	_motes.emission_shape = CPUParticles2D.EMISSION_SHAPE_RECTANGLE
+	var mote_area: Array = room.get("sky_rect", [400, 150, 1200, 700])
+	_motes.position = Vector2(float(mote_area[0]) + float(mote_area[2]) / 2.0, 820)
+	_motes.emission_rect_extents = Vector2(float(mote_area[2]) / 2.0, 260)
+	_motes.direction = Vector2(0.3, -1)
+	_motes.spread = 60.0
+	_motes.gravity = Vector2(0, -3)
+	_motes.initial_velocity_min = 4.0
+	_motes.initial_velocity_max = 14.0
+	_motes.scale_amount_min = 0.35
+	_motes.scale_amount_max = 1.1
+	var fade := Gradient.new()
+	fade.offsets = PackedFloat32Array([0.0, 0.3, 0.7, 1.0])
+	fade.colors = PackedColorArray([Color(1, 1, 1, 0), Color(1, 1, 1, 0.8), Color(1, 1, 1, 0.8), Color(1, 1, 1, 0)])
+	_motes.color_ramp = fade
+	_motes.emitting = not bool(SaveManager.settings.get("reduce_motion", false))
+	stage.add_child(_motes)
+
 	_center_stage()
 	_apply_lighting()
+
+
+## A gentle "walk into the room" zoom-out when a level starts.
+func settle_in() -> void:
+	if bool(SaveManager.settings.get("reduce_motion", false)):
+		return
+	zoom = 1.04
+	create_tween().tween_property(self, "zoom", 1.0, 1.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+
+## Slowly leans the view toward a point (e.g. the balcony door opening).
+func lean_toward(point: Vector2, amount: float = 1.05, seconds: float = 2.6) -> void:
+	if bool(SaveManager.settings.get("reduce_motion", false)):
+		return
+	zoom_focus = point
+	create_tween().tween_property(self, "zoom", amount, seconds).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 
 ## Smoothly animates the sunrise to `target` over `seconds`.
@@ -189,13 +238,17 @@ func _apply_lighting() -> void:
 	_gulls.modulate.a = smoothstep(0.1, 0.5, t)
 	if _light:
 		_light.modulate.a = smoothstep(0.3, 1.0, t) * 0.38
+	if _motes:
+		_motes.modulate.a = smoothstep(0.35, 1.0, t)
 
 
 func _center_stage() -> void:
 	if stage == null or not is_inside_tree():
 		return
 	var vp := get_viewport().get_visible_rect().size
-	stage.position = ((vp - STAGE_SIZE) / 2.0).floor()
+	var base := ((vp - STAGE_SIZE) / 2.0).floor()
+	stage.scale = Vector2(zoom, zoom)
+	stage.position = base + zoom_focus * (1.0 - zoom)
 
 
 static func _ramp(colors: Array[Color], t: float) -> Color:

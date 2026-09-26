@@ -175,3 +175,5 @@ RESET_TITLE,Start over?
 RESET_TEXT,"This erases your stars, seashells, decor, postcards and streak. It can't be undone."
 RESET_YES,"Yes, start over"
 RESET_NO,"No, keep my progress"
+ROTATE_HINT,Turn your phone sideways for the best sunrise view.
+ROTATE_OK,Play like this anyway

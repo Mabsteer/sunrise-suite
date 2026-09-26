@@ -25,7 +25,7 @@ func _run() -> void:
 		if arg.begins_with("--seeds="):
 			seeds = int(arg.trim_prefix("--seeds="))
 	var played := 0
-	var levels: Array[Dictionary] = [Data.get_dict("levels/test_lounge")]
+	var levels: Array[Dictionary] = [Data.get_dict("levels/test_lounge"), Campaign.build("main_01")]
 	for room in ["lounge", "kitchen", "study"]:
 		if not Campaign.room_available(room):
 			continue
@@ -68,6 +68,12 @@ func _play(level: Dictionary) -> void:
 			_failures.append("%s: could not %s (%s)" % [name, goal.get("action", "?"), goal.get("target", "?")])
 			break
 		await get_tree().process_frame
+	if bool(level.get("tutorial", false)):
+		var guides := scene.find_children("*", "TutorialGuide", true, false)
+		if guides.is_empty():
+			_failures.append("%s: tutorial guide missing" % name)
+		elif (guides[0] as TutorialGuide).current_step() < (Data.get_dict("tutorial").get("steps", []) as Array).size():
+			_failures.append("%s: tutorial stopped at step %d" % [name, (guides[0] as TutorialGuide).current_step()])
 	if not s.finished:
 		_failures.append("%s: level not finished" % name)
 	else:

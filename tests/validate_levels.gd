@@ -56,8 +56,13 @@ func _run() -> void:
 	for entry: Dictionary in Campaign.levels():
 		if not Campaign.room_available(str(entry["room"])):
 			continue
-		if Campaign.build(str(entry["id"])).is_empty():
+		var built := Campaign.build(str(entry["id"]))
+		if built.is_empty():
 			failures.append("campaign level %s failed" % entry["id"])
+		elif entry.has("level_file"):
+			var r := LevelValidator.validate(built)
+			if not bool(r["ok"]):
+				failures.append("hand-made level %s: %s" % [entry["id"], ", ".join(r["errors"])])
 	for d in 14:
 		var key := Daily.date_key(Time.get_date_dict_from_unix_time(int(Time.get_unix_time_from_system()) + d * 86400))
 		if Campaign.build_daily(key).is_empty():

@@ -62,6 +62,7 @@ func start(level_data: Dictionary) -> void:
 	add_child(room_view)
 	room_view.setup(str(level.get("room", "lounge")))
 	room_view.sunrise_t = 0.0
+	room_view.settle_in()
 	text = LevelText.new(session, room_view.room)
 	_props_layer = room_view.props_layer
 	_spots_layer = Node2D.new()
@@ -69,6 +70,12 @@ func start(level_data: Dictionary) -> void:
 	room_view.stage.add_child(_spots_layer)
 	_build_ui()
 	_build_room_things()
+	if bool(level.get("tutorial", false)):
+		var guide := TutorialGuide.new()
+		var ui_root := _hint_panel.get_parent()
+		ui_root.add_child(guide)
+		ui_root.move_child(guide, _hint_panel.get_index())
+		guide.setup(self)
 	session.lock_opened.connect(_on_lock_opened)
 	session.item_picked.connect(_on_item_picked)
 	session.item_consumed.connect(func(id: String) -> void: inventory.remove_item(id))
@@ -379,6 +386,14 @@ func _on_lock_opened(lock_id: String) -> void:
 				var size_before := sprite.texture.get_size() * sprite.scale
 				sprite.texture = tex
 				sprite.scale = size_before / tex.get_size()
+				if not bool(SaveManager.settings.get("reduce_motion", false)):
+					var base_scale := sprite.scale
+					var base_pos := sprite.position
+					var bounce := sprite.create_tween()
+					bounce.tween_property(sprite, "scale", base_scale * Vector2(1.08, 0.94), 0.1)
+					bounce.parallel().tween_property(sprite, "position", base_pos + Vector2(-size_before.x * 0.04, size_before.y * 0.06), 0.1)
+					bounce.tween_property(sprite, "scale", base_scale, 0.25).set_trans(Tween.TRANS_BACK)
+					bounce.parallel().tween_property(sprite, "position", base_pos, 0.25).set_trans(Tween.TRANS_BACK)
 	elif hotspots.has(key) and str(host.get("kind", "")) == "furniture":
 		if host_sprites.has("badge:" + key):
 			(host_sprites["badge:" + key] as Node).queue_free()
@@ -417,6 +432,7 @@ func _on_completed() -> void:
 	AudioManager.play_sfx("door_open")
 	AudioManager.play_stinger("sunrise_stinger")
 	room_view.animate_sunrise_to(1.12, 3.0)
+	_open_door_glow()
 	var result := GameState.record_level_result(level, record_id, mode, session)
 	finished_level.emit(result)
 	await get_tree().create_timer(2.6 if not bool(SaveManager.settings.get("reduce_motion", false)) else 0.6).timeout
@@ -529,6 +545,40 @@ func _build_ui() -> void:
 	hclose.focus_mode = Control.FOCUS_NONE
 	hclose.pressed.connect(func() -> void: _hint_panel.visible = false)
 	hv.add_child(hclose)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
+		if closeup.is_open():
+			closeup.close()
+		elif _hint_panel.visible:
+			_hint_panel.visible = false
+		elif inventory.selected != "":
+			inventory.deselect()
+		elif not session.finished:
+			_toggle_pause()
+
+
+## Warm light pours through the balcony door and the view leans toward it.
+func _open_door_glow() -> void:
+	var r: Array = (room_view.room.get("door", {}) as Dictionary).get("rect", [1480, 110, 260, 650])
+	var rect := Rect2(float(r[0]), float(r[1]), float(r[2]), float(r[3]))
+	var glow := ColorRect.new()
+	glow.color = Palette.color("gold_light")
+	glow.position = rect.position
+	glow.size = rect.size
+	glow.modulate.a = 0.0
+	glow.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var mat := CanvasItemMaterial.new()
+	mat.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	glow.material = mat
+	room_view.stage.add_child(glow)
+	var t := glow.create_tween()
+	t.tween_property(glow, "modulate:a", 0.45, 1.4).set_trans(Tween.TRANS_SINE)
+	t.tween_property(glow, "modulate:a", 0.25, 1.6).set_trans(Tween.TRANS_SINE)
+	room_view.lean_toward(rect.get_center(), 1.05, 2.8)
+	_sparkle_at(_hotspot_center("lock:" + session.door_id()), 4)
 
 
 func show_hint() -> void:
