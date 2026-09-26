@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 270" width="440" height="270">
+  <!-- Framed world map with red pins and a dotted travel route. -->
+  <rect x="8" y="10" width="432" height="260" rx="6" fill="#3b2e3a" opacity="0.15"/>
+  <rect x="0" y="0" width="432" height="260" rx="6" fill="#7a5134"/>
+  <rect x="14" y="14" width="404" height="232" fill="#6cc2be"/>
+  <g transform="translate(14 14)"><path d="M40 60 C70 40 110 50 120 80 C110 110 80 120 60 150 C40 130 30 100 40 60 Z" fill="#f3ddb3"/>
+    <path d="M150 50 C190 40 230 60 250 90 C240 120 200 110 180 140 C160 120 140 90 150 50 Z" fill="#f3ddb3"/>
+    <path d="M280 60 C330 50 380 70 390 110 C360 130 320 120 300 150 C280 120 270 90 280 60 Z" fill="#f3ddb3"/>
+    <path d="M300 170 C330 160 360 180 350 210 C330 220 310 210 300 170 Z" fill="#f3ddb3"/></g>
+  <path d="M100 110 C150 60 220 70 260 100 S360 130 380 160" stroke="#fffbf5" stroke-width="3" stroke-dasharray="8 7" fill="none"/>
+  <g fill="#ee7b6b"><circle cx="100" cy="112" r="8"/><circle cx="262" cy="102" r="8"/><circle cx="380" cy="160" r="8"/><circle cx="330" cy="206" r="8"/><circle cx="190" cy="84" r="8"/></g>
+  <g fill="#fffbf5"><circle cx="98" cy="110" r="2.5"/><circle cx="260" cy="100" r="2.5"/><circle cx="378" cy="158" r="2.5"/><circle cx="328" cy="204" r="2.5"/><circle cx="188" cy="82" r="2.5"/></g>
+  <circle cx="40" cy="220" r="18" fill="#fffbf5" opacity="0.8"/><path d="M40 204 L44 220 L40 236 L36 220 Z" fill="#c8674a"/>
+</svg>

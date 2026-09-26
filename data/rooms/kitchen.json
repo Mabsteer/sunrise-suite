@@ -1,0 +1,58 @@
+{
+  "_help": "Room template. See docs/DATA_FORMAT.md. pos/size in stage pixels; spot rects in the furniture's own coordinates.",
+  "id": "kitchen",
+  "name": "Kitchen & Bar",
+  "background": "rooms/kitchen_bg.svg",
+  "light": "rooms/kitchen_light.svg",
+  "view_far": "rooms/view_far.svg",
+  "balcony": "rooms/balcony.svg",
+  "horizon_y": 450,
+  "sun_x": 960,
+  "music": "level_kitchen",
+  "door": {"name": "the balcony door", "rect": [170, 110, 260, 660]},
+  "furniture": [
+    {"id": "counter", "name": "the kitchen counter", "sprite": "props/kitchen/counter.svg", "pos": [460, 488], "size": [1180, 300],
+     "spots": [
+       {"id": "left_cabinet", "name": "the left cupboard", "rect": [22, 104, 352, 170], "locks": ["key", "combo"]},
+       {"id": "sink", "name": "under the sink", "rect": [392, 104, 400, 170], "locks": ["hidden"], "tools": [null, "flashlight"], "reveal": "something tucked behind the pipes"},
+       {"id": "drawers", "name": "the kitchen drawers", "rect": [806, 104, 352, 172], "locks": ["combo", "key"]}
+     ],
+     "flavor": "Butcher-block counters, always a little floury."},
+    {"id": "espresso", "name": "the espresso machine", "sprite": "props/kitchen/espresso.svg", "pos": [520, 360], "size": [180, 190],
+     "spots": [{"id": "drip_tray", "name": "under the drip tray", "rect": [20, 130, 140, 56], "locks": ["hidden"], "tools": [null], "reveal": "something tucked under the drip tray"}],
+     "flavor": "Grandma's pride and joy. It hisses like a happy dragon."},
+    {"id": "spice_rack", "name": "the spice rack", "sprite": "props/kitchen/spice_rack.svg", "pos": [495, 150], "size": [230, 160],
+     "spots": [{"id": "spices", "name": "the spice jars", "rect": [0, 0, 226, 152], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "a little tin behind the jars"}],
+     "flavor": "Cinnamon, cardamom, saffron from Marrakech..."},
+    {"id": "fridge", "name": "the fridge", "sprite": "props/kitchen/fridge.svg", "pos": [1650, 244], "size": [250, 530],
+     "spots": [
+       {"id": "freezer", "name": "the freezer", "rect": [10, 10, 230, 150], "locks": ["key", "combo"]},
+       {"id": "magnets", "name": "the fridge magnets", "rect": [60, 290, 180, 110], "clue": true}
+     ],
+     "flavor": "A mint-green fridge that hums a little tune."},
+    {"id": "island", "name": "the kitchen island", "sprite": "props/kitchen/island.svg", "pos": [520, 772], "size": [880, 230],
+     "spots": [
+       {"id": "left_drawer", "name": "the island's left drawer", "rect": [30, 46, 400, 52], "locks": ["key", "combo"]},
+       {"id": "right_drawer", "name": "the island's right drawer", "rect": [450, 46, 400, 52], "locks": ["combo", "key"]}
+     ],
+     "flavor": "The island where breakfast happens."},
+    {"id": "fruit_bowl", "name": "the fruit bowl", "sprite": "props/kitchen/fruit_bowl.svg", "pos": [560, 662], "size": [210, 120],
+     "spots": [{"id": "bowl", "name": "under the lemons", "rect": [10, 0, 190, 112], "locks": ["hidden"], "tools": [null], "reveal": "something under the lemons"}],
+     "flavor": "Lemons and one very proud peach."}
+  ],
+  "wall_slots": [
+    {"id": "wall_left", "rect": [12, 220, 130, 140], "accepts": ["wall", "wall_small"]},
+    {"id": "backsplash", "rect": [1188, 346, 64, 104], "accepts": ["wall_small"]},
+    {"id": "wall_right_a", "rect": [1250, 130, 160, 160], "accepts": ["wall", "wall_small"]},
+    {"id": "wall_right_b", "rect": [1440, 130, 160, 160], "accepts": ["wall", "wall_small"]},
+    {"id": "above_fridge", "rect": [1690, 90, 170, 140], "accepts": ["wall", "wall_small"]}
+  ],
+  "surface_slots": [
+    {"id": "counter_1", "anchor": [858, 548], "max": [150, 120], "name": "the counter"},
+    {"id": "counter_2", "anchor": [1340, 548], "max": [150, 120], "name": "the counter"},
+    {"id": "counter_3", "anchor": [1530, 548], "max": [150, 120], "name": "the counter"},
+    {"id": "sill", "anchor": [1105, 518], "max": [100, 90], "name": "the window sill"},
+    {"id": "island_1", "anchor": [960, 774], "max": [150, 110], "name": "the kitchen island"},
+    {"id": "island_2", "anchor": [1250, 774], "max": [150, 110], "name": "the kitchen island"}
+  ]
+}

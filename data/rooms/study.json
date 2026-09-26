@@ -1,0 +1,55 @@
+{
+  "_help": "Room template. See docs/DATA_FORMAT.md. pos/size in stage pixels; spot rects in the furniture's own coordinates.",
+  "id": "study",
+  "name": "Grandma's Study",
+  "background": "rooms/study_bg.svg",
+  "light": "rooms/study_light.svg",
+  "view_far": "rooms/view_far.svg",
+  "balcony": "rooms/balcony.svg",
+  "horizon_y": 450,
+  "sun_x": 960,
+  "music": "level_study",
+  "door": {"name": "the French doors", "rect": [760, 110, 400, 650]},
+  "furniture": [
+    {"id": "world_map", "name": "the world map", "sprite": "props/study/world_map.svg", "pos": [180, 140], "size": [440, 270],
+     "spots": [{"id": "pins", "name": "the world map", "rect": [14, 14, 404, 232], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "a folded note tucked behind the frame"}],
+     "flavor": "Every red pin is a place Grandma has watched the sun come up."},
+    {"id": "grandfather_clock", "name": "the grandfather clock", "sprite": "props/study/grandfather_clock.svg", "pos": [10, 190], "size": [140, 580],
+     "spots": [
+       {"id": "face", "name": "the grandfather clock", "rect": [26, 56, 88, 88], "locks": ["clock"]},
+       {"id": "case", "name": "the clock's case", "rect": [32, 196, 76, 288], "locks": ["key", "hidden"], "tools": [null], "reveal": "something behind the pendulum"}
+     ],
+     "flavor": "Tick... tock... It chimes a little tune at sunrise."},
+    {"id": "bookcase", "name": "the bookcase", "sprite": "props/study/bookcase.svg", "pos": [1580, 150], "size": [320, 620],
+     "spots": [
+       {"id": "books", "name": "the travel books", "rect": [14, 14, 282, 418], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "a hollow book"},
+       {"id": "cabinet", "name": "the bookcase cabinet", "rect": [14, 444, 282, 146], "locks": ["key", "combo"]}
+     ],
+     "flavor": "Guidebooks with notes in every margin."},
+    {"id": "globe", "name": "the globe", "sprite": "props/study/globe.svg", "pos": [1300, 520], "size": [230, 360],
+     "spots": [{"id": "globe", "name": "the globe", "rect": [20, 30, 190, 200], "locks": ["hidden", "combo"], "tools": [null], "reveal": "the globe opens: a tiny secret bar"}],
+     "flavor": "Spin it, point, and that's where the next trip goes."},
+    {"id": "desk", "name": "the writing desk", "sprite": "props/study/desk.svg", "pos": [160, 520], "size": [600, 330],
+     "spots": [
+       {"id": "typewriter", "name": "the page in the typewriter", "rect": [50, 0, 200, 92], "clue": true},
+       {"id": "left_drawers", "name": "the desk's left drawers", "rect": [26, 134, 188, 184], "locks": ["key", "combo"]},
+       {"id": "right_drawers", "name": "the desk's right drawers", "rect": [386, 134, 188, 184], "locks": ["combo", "key"]}
+     ],
+     "flavor": "Where Grandma writes her postcards. Clack clack clack."},
+    {"id": "trunk", "name": "the travel trunk", "sprite": "props/study/trunk.svg", "pos": [1500, 840], "size": [380, 210],
+     "spots": [{"id": "trunk", "name": "the travel trunk", "rect": [10, 40, 360, 160], "locks": ["key", "combo"]}],
+     "flavor": "Stickers from forty years of adventures."}
+  ],
+  "wall_slots": [
+    {"id": "wall_low", "rect": [430, 420, 150, 94], "accepts": ["wall", "wall_small"]},
+    {"id": "wall_right_a", "rect": [1295, 160, 170, 170], "accepts": ["wall", "wall_small"]},
+    {"id": "wall_right_low", "rect": [1470, 360, 100, 140], "accepts": ["wall", "wall_small"]}
+  ],
+  "surface_slots": [
+    {"id": "desk_1", "anchor": [515, 610], "max": [140, 110], "name": "the desk"},
+    {"id": "trunk_top", "anchor": [1690, 874], "max": [150, 100], "name": "the travel trunk"},
+    {"id": "shelf_2", "anchor": [1795, 442], "max": [120, 110], "name": "the bookcase"},
+    {"id": "shelf_3", "anchor": [1723, 582], "max": [100, 110], "name": "the bookcase"},
+    {"id": "floor_1", "anchor": [1180, 900], "max": [120, 110], "name": "the rug"}
+  ]
+}

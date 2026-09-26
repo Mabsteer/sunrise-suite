@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 300" width="1180" height="300">
+  <!-- Sage kitchen counter: cabinets left, sink in the middle, drawers right. -->
+  <ellipse cx="590" cy="292" rx="580" ry="10" fill="#3b2e3a" opacity="0.18"/>
+  <!-- sink faucet -->
+  <path d="M600 58 V16 C600 2 626 2 626 16 V26" stroke="#a87a2e" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <rect x="586" y="44" width="30" height="16" rx="4" fill="#d4a24c"/>
+  <!-- countertop -->
+  <rect x="0" y="60" width="1180" height="30" rx="6" fill="#c99a6b"/>
+  <rect x="0" y="60" width="1180" height="6" rx="3" fill="#fffbf5" opacity="0.35"/>
+  <ellipse cx="600" cy="66" rx="150" ry="9" fill="#6b5a66"/>
+  <ellipse cx="600" cy="64" rx="140" ry="6" fill="#4d3d4b"/>
+  <!-- cabinets -->
+  <rect x="10" y="90" width="1160" height="198" fill="#8faf8a"/>
+  <rect x="10" y="90" width="1160" height="8" fill="#3b2e3a" opacity="0.12"/>
+  <rect x="22" y="104" width="172" height="170" rx="8" fill="#9fbe9a"/>
+  <rect x="34" y="116" width="148" height="146" rx="5" fill="#8faf8a"/>
+  <circle cx="180" cy="190" r="7" fill="#d4a24c"/><circle cx="178" cy="188" r="2.5" fill="#fbe3a0"/>
+  <rect x="202" y="104" width="172" height="170" rx="8" fill="#9fbe9a"/>
+  <rect x="214" y="116" width="148" height="146" rx="5" fill="#8faf8a"/>
+  <circle cx="216" cy="190" r="7" fill="#d4a24c"/><circle cx="214" cy="188" r="2.5" fill="#fbe3a0"/>
+  <rect x="392" y="104" width="196" height="170" rx="8" fill="#9fbe9a"/>
+  <rect x="404" y="116" width="172" height="146" rx="5" fill="#8faf8a"/>
+  <circle cx="574" cy="190" r="7" fill="#d4a24c"/><circle cx="572" cy="188" r="2.5" fill="#fbe3a0"/>
+  <rect x="596" y="104" width="196" height="170" rx="8" fill="#9fbe9a"/>
+  <rect x="608" y="116" width="172" height="146" rx="5" fill="#8faf8a"/>
+  <circle cx="610" cy="190" r="7" fill="#d4a24c"/><circle cx="608" cy="188" r="2.5" fill="#fbe3a0"/>
+  <rect x="806" y="104" width="352" height="52" rx="8" fill="#9fbe9a"/><rect x="946" y="124" width="72" height="10" rx="5" fill="#d4a24c"/>
+  <rect x="806" y="164" width="352" height="52" rx="8" fill="#9fbe9a"/><rect x="946" y="184" width="72" height="10" rx="5" fill="#d4a24c"/>
+  <rect x="806" y="224" width="352" height="52" rx="8" fill="#9fbe9a"/><rect x="946" y="244" width="72" height="10" rx="5" fill="#d4a24c"/>
+  <rect x="10" y="284" width="1160" height="14" fill="#5e7f5e"/>
+</svg>

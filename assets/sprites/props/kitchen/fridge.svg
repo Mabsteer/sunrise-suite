@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 530" width="250" height="530">
+  <!-- Retro mint fridge with a freezer on top and colourful magnets. -->
+  <ellipse cx="125" cy="522" rx="118" ry="8" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="0" y="0" width="250" height="520" rx="42" fill="#6cc2be"/>
+  <rect x="14" y="10" width="20" height="490" rx="10" fill="#a6e0dc" opacity="0.6"/>
+  <rect x="10" y="163" width="230" height="6" fill="#2e8c8c" opacity="0.6"/>
+  <rect x="26" y="52" width="14" height="80" rx="7" fill="#e9e6f2"/><rect x="28" y="54" width="5" height="74" rx="2" fill="#fffbf5"/>
+  <rect x="26" y="196" width="14" height="110" rx="7" fill="#e9e6f2"/><rect x="28" y="198" width="5" height="104" rx="2" fill="#fffbf5"/>
+  <rect x="100" y="126" width="54" height="16" rx="8" fill="#d4a24c"/>
+  <!-- magnets -->
+  <g transform="translate(66 300)">
+    <ellipse cx="30" cy="20" rx="20" ry="15" fill="#f6c453"/><path d="M40 6 C46 0 56 2 56 8 C50 8 46 8 40 6 Z" fill="#8faf8a"/>
+    <circle cx="96" cy="18" r="16" fill="#fffbf5"/><circle cx="96" cy="18" r="6" fill="#f6c453"/>
+    <path d="M140 30 C120 18 118 6 126 0 C132 -4 138 0 140 6 C142 0 148 -4 154 0 C162 6 160 18 140 30 Z" fill="#ee7b6b"/>
+    <rect x="12" y="62" width="40" height="30" rx="6" fill="#9c8ac4"/><rect x="18" y="68" width="28" height="18" rx="3" fill="#fffbf5"/>
+    <circle cx="96" cy="78" r="15" fill="#2e8c8c"/><path d="M88 78 C92 70 100 70 104 78" stroke="#fffbf5" stroke-width="3" fill="none"/>
+    <rect x="124" y="60" width="34" height="40" rx="4" fill="#fcd9b8"/><path d="M130 72 H152 M130 80 H148 M130 88 H150" stroke="#c8674a" stroke-width="2"/>
+  </g>
+  <rect x="40" y="508" width="30" height="14" rx="4" fill="#3b2e3a" opacity="0.5"/><rect x="180" y="508" width="30" height="14" rx="4" fill="#3b2e3a" opacity="0.5"/>
+</svg>

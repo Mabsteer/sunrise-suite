@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 230" width="880" height="230">
+  <!-- Kitchen island with a marble top and two drawers. -->
+  <ellipse cx="440" cy="226" rx="430" ry="8" fill="#3b2e3a" opacity="0.2"/>
+  <rect x="14" y="30" width="852" height="196" fill="#c99a6b"/>
+  <rect x="30" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="72" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="114" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="156" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="198" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="240" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="282" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="324" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="366" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="408" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="450" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="492" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="534" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="576" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="618" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="660" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="702" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="744" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="786" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/><rect x="828" y="104" width="4" height="118" fill="#a8744a" opacity="0.6"/>
+  <rect x="30" y="46" width="400" height="52" rx="8" fill="#dbb286"/><rect x="190" y="66" width="80" height="10" rx="5" fill="#d4a24c"/>
+  <rect x="450" y="46" width="400" height="52" rx="8" fill="#dbb286"/><rect x="610" y="66" width="80" height="10" rx="5" fill="#d4a24c"/>
+  <rect x="0" y="0" width="880" height="36" rx="10" fill="#f3ddb3"/>
+  <rect x="0" y="0" width="880" height="10" rx="5" fill="#fffbf5" opacity="0.7"/>
+  <path d="M60 20 C120 14 160 26 220 18 M520 22 C580 14 640 28 700 20" stroke="#d9bd8c" stroke-width="2" fill="none"/>
+</svg>

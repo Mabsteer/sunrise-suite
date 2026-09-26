@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 160" width="230" height="160">
+  <!-- Wooden spice rack with ten little jars. -->
+  <rect x="6" y="8" width="226" height="152" rx="8" fill="#3b2e3a" opacity="0.12"/>
+  <rect x="0" y="0" width="226" height="152" rx="8" fill="#a8744a"/>
+  <rect x="10" y="10" width="206" height="132" rx="4" fill="#ecd6b4"/>
+  <rect x="10" y="72" width="206" height="10" fill="#a8744a"/>
+  <rect x="18" y="30" width="30" height="42" rx="6" fill="#fffbf5" opacity="0.9"/>
+  <rect x="18" y="24" width="30" height="10" rx="4" fill="#ee7b6b"/>
+  <rect x="22" y="44" width="22" height="20" rx="3" fill="#c8674a" opacity="0.8"/>
+  <rect x="58" y="30" width="30" height="42" rx="6" fill="#fffbf5" opacity="0.9"/>
+  <rect x="58" y="24" width="30" height="10" rx="4" fill="#f6c453"/>
+  <rect x="62" y="44" width="22" height="20" rx="3" fill="#f6c453" opacity="0.8"/>
+  <rect x="98" y="30" width="30" height="42" rx="6" fill="#fffbf5" opacity="0.9"/>
+  <rect x="98" y="24" width="30" height="10" rx="4" fill="#8faf8a"/>
+  <rect x="102" y="44" width="22" height="20" rx="3" fill="#5e7f5e" opacity="0.8"/>
+  <rect x="138" y="30" width="30" height="42" rx="6" fill="#fffbf5" opacity="0.9"/>
+  <rect x="138" y="24" width="30" height="10" rx="4" fill="#9c8ac4"/>
+  <rect x="142" y="44" width="22" height="20" rx="3" fill="#c95b52" opacity="0.8"/>
+  <rect x="178" y="30" width="30" height="42" rx="6" fill="#fffbf5" opacity="0.9"/>
+  <rect x="178" y="24" width="30" height="10" rx="4" fill="#2e8c8c"/>
+  <rect x="182" y="44" width="22" height="20" rx="3" fill="#a8744a" opacity="0.8"/>
+  <rect x="18" y="96" width="30" height="42" rx="6" fill="#fffbf5" opacity="0.9"/>
+  <rect x="18" y="90" width="30" height="10" rx="4" fill="#2e8c8c"/>
+  <rect x="22" y="110" width="22" height="20" rx="3" fill="#e08e6d" opacity="0.8"/>
+  <rect x="58" y="96" width="30" height="42" rx="6" fill="#fffbf5" opacity="0.9"/>
+  <rect x="58" y="90" width="30" height="10" rx="4" fill="#9c8ac4"/>
+  <rect x="62" y="110" width="22" height="20" rx="3" fill="#6b5a66" opacity="0.8"/>
+  <rect x="98" y="96" width="30" height="42" rx="6" fill="#fffbf5" opacity="0.9"/>
+  <rect x="98" y="90" width="30" height="10" rx="4" fill="#ee7b6b"/>
+  <rect x="102" y="110" width="22" height="20" rx="3" fill="#f9b98a" opacity="0.8"/>
+  <rect x="138" y="96" width="30" height="42" rx="6" fill="#fffbf5" opacity="0.9"/>
+  <rect x="138" y="90" width="30" height="10" rx="4" fill="#f6c453"/>
+  <rect x="142" y="110" width="22" height="20" rx="3" fill="#8faf8a" opacity="0.8"/>
+  <rect x="178" y="96" width="30" height="42" rx="6" fill="#fffbf5" opacity="0.9"/>
+  <rect x="178" y="90" width="30" height="10" rx="4" fill="#8faf8a"/>
+  <rect x="182" y="110" width="22" height="20" rx="3" fill="#c99a6b" opacity="0.8"/>
+</svg>

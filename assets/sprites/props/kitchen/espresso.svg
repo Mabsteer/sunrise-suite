@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 190" width="180" height="190">
+  <!-- Coral espresso machine with a cup on the drip tray. -->
+  <ellipse cx="90" cy="184" rx="80" ry="6" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="10" y="18" width="160" height="34" rx="12" fill="#c95b52"/>
+  <rect x="20" y="40" width="140" height="140" rx="18" fill="#ee7b6b"/>
+  <rect x="28" y="48" width="18" height="120" rx="9" fill="#fcd9b8" opacity="0.5"/>
+  <circle cx="126" cy="80" r="18" fill="#fffbf5"/><circle cx="126" cy="80" r="14" fill="#fff4e2"/>
+  <line x1="126" y1="80" x2="134" y2="72" stroke="#3b2e3a" stroke-width="3" stroke-linecap="round"/>
+  <rect x="58" y="96" width="60" height="18" rx="6" fill="#d4a24c"/>
+  <rect x="44" y="104" width="90" height="10" rx="5" fill="#a87a2e"/>
+  <rect x="30" y="160" width="120" height="16" rx="5" fill="#6b5a66"/>
+  <path d="M72 140 H106 V156 C106 164 72 164 72 156 Z" fill="#fffbf5"/>
+  <path d="M106 144 C116 144 116 154 106 154" stroke="#fffbf5" stroke-width="4" fill="none"/>
+</svg>

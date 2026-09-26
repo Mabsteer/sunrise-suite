@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 360" width="230" height="360">
+  <!-- Globe on a wooden stand (it secretly opens). -->
+  <ellipse cx="115" cy="352" rx="100" ry="8" fill="#3b2e3a" opacity="0.2"/>
+  <path d="M60 350 L100 250 H130 L170 350" stroke="#7a5134" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M115 250 V350" stroke="#7a5134" stroke-width="12" stroke-linecap="round"/>
+  <rect x="80" y="238" width="70" height="18" rx="8" fill="#a8744a"/>
+  <circle cx="115" cy="128" r="96" fill="#6cc2be"/>
+  <path d="M60 70 C90 50 120 60 126 90 C110 118 84 110 70 140 C54 120 50 94 60 70 Z" fill="#f3ddb3"/>
+  <path d="M140 110 C170 100 196 120 196 150 C176 170 150 160 140 190 C126 170 126 132 140 110 Z" fill="#f3ddb3"/>
+  <path d="M80 170 C100 170 110 190 100 206 C86 210 76 196 80 170 Z" fill="#f3ddb3"/>
+  <circle cx="84" cy="96" r="30" fill="#fffbf5" opacity="0.18"/>
+  <path d="M115 20 C190 30 220 110 200 180 C190 214 160 236 115 240" stroke="#d4a24c" stroke-width="8" fill="none"/>
+  <circle cx="115" cy="24" r="8" fill="#d4a24c"/><circle cx="115" cy="236" r="8" fill="#d4a24c"/>
+  <path d="M22 132 H208" stroke="#1f5f6b" stroke-width="3" opacity="0.5"/>
+</svg>

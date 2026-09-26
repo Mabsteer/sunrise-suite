@@ -14,6 +14,9 @@ func shots() -> Array[Dictionary]:
 		{"name": "gen_lounge_t1", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 1, 11)}},
 		{"name": "gen_lounge_t5", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 5, 55)}},
 		{"name": "gen_lounge_t10", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 10, 1010)}},
+		{"name": "gen_kitchen_t8", "screen": "level", "params": {"level": LevelGenerator.generate("kitchen", 8, 808)}},
+		{"name": "gen_study_t9", "screen": "level", "params": {"level": LevelGenerator.generate("study", 9, 909)}},
+		{"name": "gen_study_t2", "screen": "level", "params": {"level": LevelGenerator.generate("study", 2, 202)}},
 		{"name": "level_inventory", "screen": "level", "params": TEST_LEVEL, "action": func(s: Node) -> void:
 			s.call("tap", "item:i_flashlight_empty")
 			s.call("select_item", "i_flashlight_empty"), "frames": 60},

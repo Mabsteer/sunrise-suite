@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-240 -180 2400 1440" width="2400" height="1440">
+  <!-- Sunbeams through the kitchen window and balcony door (additive, strength follows the sunrise). -->
+  <defs>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe3a0" stop-opacity="0.55"/><stop offset="1" stop-color="#fbe3a0" stop-opacity="0"/></linearGradient>
+    <radialGradient id="pool" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#f9b98a" stop-opacity="0.5"/><stop offset="1" stop-color="#f9b98a" stop-opacity="0"/></radialGradient>
+  </defs>
+  <polygon points="760,520 952,520 880,1100 520,1100" fill="url(#beam)"/>
+  <polygon points="968,520 1160,520 1420,1100 1060,1100" fill="url(#beam)"/>
+  <polygon points="184,770 416,770 520,1150 120,1150" fill="url(#beam)"/>
+  <ellipse cx="960" cy="860" rx="520" ry="110" fill="url(#pool)" opacity="1"/>
+  <ellipse cx="300" cy="900" rx="220" ry="70" fill="url(#pool)" opacity="0.7"/>
+</svg>

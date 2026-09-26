@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-240 -180 2400 1440" width="2400" height="1440">
+  <!-- Sunbeams through the study's French doors (additive, strength follows the sunrise). -->
+  <defs>
+    <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe3a0" stop-opacity="0.55"/><stop offset="1" stop-color="#fbe3a0" stop-opacity="0"/></linearGradient>
+    <radialGradient id="pool" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#f9b98a" stop-opacity="0.5"/><stop offset="1" stop-color="#f9b98a" stop-opacity="0"/></radialGradient>
+  </defs>
+  <polygon points="760,760 950,760 900,1180 620,1180" fill="url(#beam)"/>
+  <polygon points="970,760 1160,760 1300,1180 1020,1180" fill="url(#beam)"/>
+  <ellipse cx="960" cy="900" rx="420" ry="110" fill="url(#pool)" opacity="1"/>
+  <ellipse cx="960" cy="420" rx="380" ry="260" fill="url(#pool)" opacity="0.45"/>
+</svg>

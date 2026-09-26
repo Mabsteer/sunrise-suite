@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 120" width="210" height="120">
+  <!-- Terracotta bowl of lemons and a peach. -->
+  <ellipse cx="105" cy="114" rx="90" ry="6" fill="#3b2e3a" opacity="0.18"/>
+  <circle cx="64" cy="54" r="22" fill="#f6c453"/><circle cx="58" cy="48" r="6" fill="#fbe3a0"/>
+  <circle cx="104" cy="44" r="24" fill="#f9b98a"/><circle cx="98" cy="38" r="6" fill="#fcd9b8"/>
+  <circle cx="146" cy="54" r="22" fill="#f6c453"/>
+  <path d="M104 22 C100 10 110 4 116 8 C110 12 108 16 106 22 Z" fill="#8faf8a"/>
+  <path d="M16 62 H194 C190 96 150 112 105 112 C60 112 20 96 16 62 Z" fill="#e08e6d"/>
+  <path d="M16 62 H194 C193 70 190 76 186 80 H24 C20 76 17 70 16 62 Z" fill="#c8674a"/>
+  <path d="M40 92 C70 100 140 100 170 92" stroke="#fcd9b8" stroke-width="4" fill="none" opacity="0.7"/>
+</svg>
