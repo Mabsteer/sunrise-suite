@@ -11,6 +11,7 @@
   "sky_rect": [750, 150, 420, 380],
   "music": "level_kitchen",
   "door": {"name": "the door to the hall", "rect": [170, 110, 260, 660]},
+  "exit": {"kind": "door", "to": "hall", "view_center": [640,470], "hinge": "left"},
   "dog_spot": [420, 885],
   "furniture": [
     {"id": "counter", "name": "the kitchen counter", "sprite": "props/kitchen/counter.svg", "pos": [460, 488], "size": [1180, 300],

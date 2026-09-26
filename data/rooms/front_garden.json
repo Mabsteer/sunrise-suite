@@ -10,6 +10,7 @@
   "music": "level_front_garden",
   "outdoor": true,
   "door": {"name": "the garden gate", "rect": [860, 450, 200, 160]},
+  "exit": {"kind": "gate", "to": "kitchen"},
   "dog_spot": [1240, 885],
   "furniture": [
     {"id": "roses", "name": "Rose's roses", "sprite": "props/front_garden/roses.svg", "pos": [60, 470], "size": [430, 280],

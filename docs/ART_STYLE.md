@@ -43,3 +43,7 @@ All colours come from `assets/palette.json` (scripts read them via `Palette.colo
 
 ## Replacing art
 Overwrite the SVG with a new one of the **same name and size** (Inkscape works well; save as *Plain SVG*). Keep to the technical rules above, then run the game or `bash tools/check.sh`.
+
+## Exits and stairs (v3)
+- What you see through an open exit isn't drawn separately: the game renders the next room live into the doorway (`exit.view_center` picks the part), so it always matches that room's art and light.
+- Stairs are drawn in side view and must be physically right: every step has the same run and rise, the stringer's top edge runs through the inner corners of the steps, the handrail is parallel to the line through the step noses, each baluster stands on a tread and reaches the rail, and anything under the stairs (the cupboard) follows the stringer's slope. See `tools/art/hall.mjs`.

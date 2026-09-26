@@ -93,6 +93,15 @@ func shots() -> Array[Dictionary]:
 			s.get("closeup").call("close")
 			s.call("toggle_notebook"), "frames": 30},
 		{"name": "bag_folded", "screen": "level", "setup": func() -> void: SaveManager.settings["bag_collapsed"] = true, "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "test"}, "frames": 30},
+		{"name": "exit_kitchen", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_kitchen"), "mode": "test"}, "action": func(s: Node) -> void: s.call("_play_exit", true), "frames": 50},
+		{"name": "exit_hall", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "test"}, "action": func(s: Node) -> void: s.call("_play_exit", true), "frames": 50},
+		{"name": "exit_bedroom", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_bedroom"), "mode": "test"}, "action": func(s: Node) -> void: s.call("_play_exit", true), "frames": 50},
+		{"name": "exit_lounge", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_lounge"), "mode": "test"}, "action": func(s: Node) -> void: s.call("_play_exit", true), "frames": 50},
+		{"name": "exit_garden", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_garden"), "mode": "test"}, "action": func(s: Node) -> void: s.call("_play_exit", true), "frames": 50},
+		{"name": "exit_shed", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_shed"), "mode": "test"}, "action": func(s: Node) -> void: s.call("_play_exit", true), "frames": 50},
+		{"name": "exit_front_garden", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_front_garden"), "mode": "test"}, "action": func(s: Node) -> void: s.call("_play_exit", true), "frames": 50},
+		{"name": "hall_stairs_zoomed", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "test"}, "action": func(s: Node) -> void:
+			(s.get("room_zoom") as RoomZoom).animate_to(1.7, Vector2(1500, 500), 0.0), "frames": 30},
 		{"name": "dev_panel", "screen": "level", "setup": func() -> void: SaveManager.settings["dev_mode"] = true, "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "test"}, "action": func(s: Node) -> void: s.get("ui").add_child(DevPanel.new()), "frames": 30},
 		{"name": "chapter_card", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "main", "record_id": "w1_hall"}, "frames": 40},
 		{"name": "room_hall_start", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "test"}, "frames": 40},
@@ -187,6 +196,7 @@ func shots() -> Array[Dictionary]:
 		{"name": "chloe_silly_find", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_bedroom"), "mode": "test"}, "action": func(s: Node) -> void:
 			s.call("_drop_silly_find", "sock"), "frames": 20},
 		{"name": "hub_chloe", "screen": "hub", "setup": func() -> void: SaveManager.data["chloe_found"] = true, "frames": 40},
+		{"name": "art_hall", "screen": "art_sheet", "params": {"dirs": ["props/hall"], "scale": 0.8}},
 		{"name": "art_chloe", "screen": "art_sheet", "params": {"dirs": ["props/chloe"], "scale": 1.6}},
 		{"name": "art_puzzle_props", "screen": "art_sheet", "params": {"dirs": ["props/puzzles"], "scale": 1.3}},
 		{"name": "level_start", "screen": "level", "params": TEST_LEVEL},

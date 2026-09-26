@@ -139,27 +139,73 @@ save("props/hall/umbrella_stand.svg", svg(90, 220, `  ${shadow(45, 214, 40, 6)}
   <path d="M10 100 H80 L74 210 H16 Z" fill="#c8674a"/><path d="M10 100 H80 L79 118 H11 Z" fill="#e08e6d"/>
   <path d="M22 140 H68 M20 170 H70" stroke="#f6c453" stroke-width="5"/>`, "Terracotta umbrella stand with a coral and a teal umbrella and a walking stick."));
 
-// Stairs rising to the right, with a banister and the little cupboard underneath.
-const steps = 9, W = 820, H = 700;
-let treads = "", balusters = "";
-for (let i = 0; i < steps; i++) {
-  const x = 30 + i * 60, y = H - 20 - (i + 1) * 62;
-  treads += `<rect x="${x}" y="${y}" width="${W - x}" height="16" fill="#a8744a"/><rect x="${x}" y="${y}" width="${W - x}" height="5" fill="#dbb286"/><rect x="${x}" y="${y + 16}" width="${W - x}" height="46" fill="#fff4e2"/>`;
-  balusters += `<rect x="${x + 24}" y="${y - 150}" width="7" height="150" rx="3" fill="#fffbf5"/>`;
+// Stairs rising to the right, seen from the side: 9 steps (run 76, rise 66) on a stringer that runs
+// parallel to them, a handrail parallel to the steps, one baluster standing on each tread, the newel
+// post at the bottom, and the little cupboard in the wall underneath (with a gap under its door).
+const W = 820, H = 700, FLOOR = 690, X0 = 60, RUN = 76, RISE = 66, STEPS = 9;
+const SLOPE = RISE / RUN;
+const noseY = (x) => FLOOR - RISE - (x - X0) * SLOPE; // the line through the step noses
+const railY = (x) => noseY(x) - 150;
+const topX = X0 + STEPS * RUN, topY = FLOOR - STEPS * RISE;
+let profile = `M${X0} ${FLOOR}`;
+let treads = "", risers = "", balusters = "";
+for (let i = 0; i < STEPS; i++) {
+  const x = X0 + i * RUN, y = FLOOR - (i + 1) * RISE;
+  profile += ` V${y} H${x + RUN}`;
+  risers += `<path d="M${x} ${y} V${y + RISE}" stroke="#d9bc8f" stroke-width="3"/>`;
+  treads += `<rect x="${x - 6}" y="${y - 8}" width="${RUN + 6}" height="12" rx="3" fill="#a8744a"/><rect x="${x - 6}" y="${y - 8}" width="${RUN + 6}" height="4" rx="2" fill="#dbb286"/>`;
+  const bx = x + RUN / 2 - 3;
+  balusters += `<rect x="${bx}" y="${railY(bx + 3).toFixed(1)}" width="7" height="${(y - 8 - railY(bx + 3)).toFixed(1)}" rx="3" fill="#fffbf5"/>`;
 }
-save("props/hall/stairs.svg", svg(W, H, `  ${shadow(300, H - 6, 290, 8)}
-  <path d="M0 ${H - 10} L${W} ${H - 10} L${W} 90 Z" fill="#b7cfc8"/>
-  <path d="M40 ${H - 10} L${W} ${H - 10} L${W} 150 Z" fill="#a6c2ba"/>
-  <!-- cupboard under the stairs -->
-  <path d="M70 ${H - 12} V520 L230 400 V${H - 12} Z" fill="#8a6446"/>
-  <path d="M84 ${H - 22} V527 L216 428 V${H - 22} Z" fill="#6f4f38"/>
-  <circle cx="200" cy="${H - 110}" r="7" fill="#d4a24c"/>
-  <path d="M112 ${H - 60} Q150 ${H - 80} 190 ${H - 60}" stroke="#3b2e3a" stroke-width="2" opacity="0.3" fill="none"/>
-  ${treads}
-  <path d="M0 ${H - 10} L${W} 40" stroke="#7a5134" stroke-width="28" stroke-linecap="round"/>
+profile += ` H${W} V${topY + 6} L${X0} ${FLOOR} Z`;
+// The stringer: a board whose top edge runs through the inner corners of the steps.
+const sTop = (x) => FLOOR - (x - X0) * SLOPE;
+const sBottomX = X0 + 44 / SLOPE;
+const stringer = `M${X0} ${FLOOR} L${topX} ${sTop(topX).toFixed(1)} L${W} ${sTop(topX).toFixed(1)} L${W} ${(sTop(topX) + 44).toFixed(1)} L${topX} ${(sTop(topX) + 44).toFixed(1)} L${sBottomX.toFixed(1)} ${FLOOR} Z`;
+const under = (x) => sTop(x) + 44; // bottom edge of the stringer
+const C0 = 300, C1 = 470;
+save("props/hall/stairs.svg", svg(W, H, `  ${shadow(420, H - 6, 400, 8)}
+  <!-- the wall under the stairs -->
+  <path d="M${sBottomX.toFixed(1)} ${FLOOR} L${topX} ${under(topX).toFixed(1)} L${W} ${under(topX).toFixed(1)} L${W} ${FLOOR} Z" fill="#c99a6b"/>
+  ${Array.from({ length: 12 }, (_, i) => { const px = 140 + i * 56; return px < W ? `<path d="M${px} ${FLOOR} V${Math.max(under(Math.min(px, topX)), under(topX)).toFixed(1)}" stroke="#b88558" stroke-width="3"/>` : ""; }).join("")}
+  <!-- cupboard under the stairs: its top follows the stringer; a dark gap under the door -->
+  <path d="M${C0} ${FLOOR - 2} V${(under(C0) + 14).toFixed(1)} L${C1} ${(under(C1) + 14).toFixed(1)} V${FLOOR - 2} Z" fill="#8a6446"/>
+  <path d="M${C0 + 14} ${FLOOR - 14} V${(under(C0 + 14) + 30).toFixed(1)} L${C1 - 14} ${(under(C1 - 14) + 30).toFixed(1)} V${FLOOR - 14} Z" fill="#6f4f38"/>
+  <rect x="${C0 + 6}" y="${FLOOR - 12}" width="${C1 - C0 - 12}" height="10" fill="#2b2350" opacity="0.8"/>
+  <circle cx="${C1 - 30}" cy="${FLOOR - 120}" r="7" fill="#d4a24c"/>
+  <!-- steps -->
+  <path d="${profile}" fill="#f3ddb3"/>
+  ${risers}${treads}
+  <!-- stringer and landing edge -->
+  <path d="${stringer}" fill="#7a5134"/>
+  <path d="M${X0} ${FLOOR} L${topX} ${sTop(topX).toFixed(1)} L${W} ${sTop(topX).toFixed(1)}" stroke="#a8744a" stroke-width="4" fill="none"/>
+  <!-- balusters and handrail, parallel to the steps -->
   ${balusters}
-  <path d="M20 ${H - 190} L${W} 0" stroke="#a8744a" stroke-width="18" stroke-linecap="round"/>
-  <path d="M20 ${H - 196} L${W} -6" stroke="#dbb286" stroke-width="5" stroke-linecap="round"/>
-  <rect x="6" y="${H - 220}" width="30" height="210" rx="6" fill="#a8744a"/><circle cx="21" cy="${H - 226}" r="18" fill="#c99a6b"/>`, "Stairs going up to the right, with a white banister and a little cupboard underneath."));
+  <path d="M40 ${railY(40).toFixed(1)} L${W} ${railY(W).toFixed(1)}" stroke="#a8744a" stroke-width="18" stroke-linecap="round"/>
+  <path d="M40 ${(railY(40) - 6).toFixed(1)} L${W} ${(railY(W) - 6).toFixed(1)}" stroke="#dbb286" stroke-width="5" stroke-linecap="round"/>
+  <!-- newel post -->
+  <rect x="26" y="${(railY(40) - 16).toFixed(1)}" width="30" height="${(FLOOR - railY(40) + 16).toFixed(1)}" rx="6" fill="#a8744a"/>
+  <circle cx="41" cy="${(railY(40) - 22).toFixed(1)}" r="18" fill="#c99a6b"/>`, "Stairs going up to the right: steps on a stringer, a handrail parallel to them, a cupboard underneath."));
+
+// Mamie's little white stair gate at the foot of the stairs (the way up is through it).
+const gate = (open) => {
+  const w = 190, h = 160;
+  const pick = (x0, x1, lean) => Array.from({ length: 6 }, (_, i) => {
+    const x = x0 + (x1 - x0) * (i + 0.5) / 6;
+    return `<path d="M${x.toFixed(1)} ${(40 + lean * i).toFixed(1)} L${x.toFixed(1)} ${(h - 22 - lean * i * 0.4).toFixed(1)}" stroke="#fffbf5" stroke-width="9" stroke-linecap="round"/>`;
+  }).join("");
+  const body = open
+    ? `<path d="M22 44 L70 30 L70 ${h - 30} L22 ${h - 20} Z" fill="#3b2e3a" opacity="0.08"/>${pick(24, 68, -2)}
+       <path d="M22 60 L70 48 M22 ${h - 44} L70 ${h - 50}" stroke="#fffbf5" stroke-width="8" stroke-linecap="round"/>`
+    : `${pick(24, 166, 0)}
+       <path d="M22 64 H168 M22 ${h - 46} H168" stroke="#fffbf5" stroke-width="8" stroke-linecap="round"/>
+       <rect x="150" y="${h / 2 - 16}" width="18" height="30" rx="5" fill="#d4a24c"/>`;
+  return svg(w, h, `  ${shadow(95, h - 4, 90, 6)}
+  <rect x="8" y="24" width="16" height="${h - 28}" rx="5" fill="#e9dcc6"/><circle cx="16" cy="22" r="10" fill="#fffbf5"/>
+  <rect x="166" y="24" width="16" height="${h - 28}" rx="5" fill="#e9dcc6"/><circle cx="174" cy="22" r="10" fill="#fffbf5"/>
+  ${body}`, open ? "The little stair gate, swung open." : "A little white stair gate with a brass latch, at the foot of the stairs.");
+};
+save("props/hall/stair_gate.svg", gate(false));
+save("props/hall/stair_gate_open.svg", gate(true));
 
 console.log("hall art written");

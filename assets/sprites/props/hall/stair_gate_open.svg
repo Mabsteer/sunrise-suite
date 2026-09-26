@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 160" width="190" height="160">
+  <!-- The little stair gate, swung open. -->
+  <ellipse cx="95" cy="156" rx="90" ry="6" fill="#3b2e3a" opacity="0.18"/>
+  <rect x="8" y="24" width="16" height="132" rx="5" fill="#e9dcc6"/><circle cx="16" cy="22" r="10" fill="#fffbf5"/>
+  <rect x="166" y="24" width="16" height="132" rx="5" fill="#e9dcc6"/><circle cx="174" cy="22" r="10" fill="#fffbf5"/>
+  <path d="M22 44 L70 30 L70 130 L22 140 Z" fill="#3b2e3a" opacity="0.08"/><path d="M27.7 40.0 L27.7 138.0" stroke="#fffbf5" stroke-width="9" stroke-linecap="round"/><path d="M35.0 38.0 L35.0 138.8" stroke="#fffbf5" stroke-width="9" stroke-linecap="round"/><path d="M42.3 36.0 L42.3 139.6" stroke="#fffbf5" stroke-width="9" stroke-linecap="round"/><path d="M49.7 34.0 L49.7 140.4" stroke="#fffbf5" stroke-width="9" stroke-linecap="round"/><path d="M57.0 32.0 L57.0 141.2" stroke="#fffbf5" stroke-width="9" stroke-linecap="round"/><path d="M64.3 30.0 L64.3 142.0" stroke="#fffbf5" stroke-width="9" stroke-linecap="round"/>
+       <path d="M22 60 L70 48 M22 116 L70 110" stroke="#fffbf5" stroke-width="8" stroke-linecap="round"/>
+</svg>

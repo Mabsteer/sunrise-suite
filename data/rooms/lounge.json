@@ -11,6 +11,7 @@
   "sky_rect": [520, 70, 1260, 720],
   "music": "level_lounge",
   "door": {"name": "the garden doors", "rect": [1480, 110, 260, 650]},
+  "exit": {"kind": "garden_doors", "to": "garden", "view_center": [860,470], "hinge": "left"},
   "dog_spot": [1300, 885],
   "furniture": [
     {"id": "rug", "name": "the rug", "sprite": "props/lounge/rug.svg", "pos": [510, 870], "size": [900, 170],

@@ -3,12 +3,15 @@ extends RefCounted
 ## Starts levels in each mode with the right Router params.
 
 
-static func play_main(level_id: String) -> void:
+## `extra`: more Router params, e.g. {"arrive_from": "door"} when Juliette walks in from the last room.
+static func play_main(level_id: String, extra: Dictionary = {}) -> void:
 	var level := Campaign.build(level_id)
 	if level.is_empty():
 		push_error("Launcher: could not build %s" % level_id)
 		return
-	Router.goto("level", {"level": level, "mode": "main", "record_id": level_id, "exit_to": "level_select"})
+	var params := {"level": level, "mode": "main", "record_id": level_id, "exit_to": "level_select"}
+	params.merge(extra)
+	Router.goto("level", params)
 
 
 ## A fresh puzzle for the same room and tier (counts toward the level's stars).

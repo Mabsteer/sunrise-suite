@@ -28,6 +28,12 @@ var host_sprites: Dictionary = {}
 var _toast: PanelContainer
 var _toast_label: Label
 var _toast_tween: Tween
+## How much of the next room shows through an open door (1 = exactly the door's size).
+const EXIT_VIEW_SCALE := 1.6
+## The walk through the exit: how far the camera zooms in, and how long it takes.
+const WALK_ZOOM := 2.4
+const WALK_SECONDS := 1.1
+
 var _notebook: NotebookPanel
 var _notebook_button: Button
 ## The notes in Mamie's notebook for this room (on a walk: every note read on the walk so far).
@@ -69,7 +75,12 @@ func start(level_data: Dictionary) -> void:
 	add_child(room_view)
 	room_view.setup(str(level.get("room", "lounge")))
 	room_view.sunrise_t = sky_t(0.0)
-	room_view.settle_in()
+	if Router.params.has("arrive_from") and not bool(SaveManager.settings.get("reduce_motion", false)):
+		# Juliette just walked in: the room opens up around her.
+		room_view.zoom = 1.25
+		create_tween().tween_property(room_view, "zoom", 1.0, 1.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	else:
+		room_view.settle_in()
 	text = LevelText.new(session, room_view.room)
 	_props_layer = room_view.props_layer
 	_spots_layer = Node2D.new()
@@ -544,11 +555,21 @@ func _on_completed() -> void:
 	# The room's slice of the morning brightens a little past its end; the last room sees the sun rise.
 	var r: Array = level.get("sunrise_range", [0.0, 1.0])
 	room_view.animate_sunrise_to(1.12 if float(r[1]) >= 1.0 else float(r[1]) + 0.04, 3.0)
-	_open_door_glow()
 	var result := GameState.record_level_result(level, record_id, mode, session)
 	finished_level.emit(result)
+	# On a walk (the first time through), the exit opens onto the next room and Juliette walks in.
+	var walk_next := _walk_next_level(result)
+	_play_exit(walk_next != "")
+	if walk_next != "" or _ends_walk(result):
+		_room_toast(result)
 	await get_tree().create_timer(2.6 if not bool(SaveManager.settings.get("reduce_motion", false)) else 0.6).timeout
 	AudioManager.play_sfx("level_complete")
+	if walk_next != "":
+		_walk_through(walk_next)
+		return
+	if _ends_walk(result) and not (mode == "main" and bool(level.get("finale", false))):
+		_show_walk_results()
+		return
 	if mode == "main" and bool(level.get("finale", false)):
 		# The end of Mamie's treasure hunt: her last letter, then the results.
 		_letter_open = true
@@ -556,9 +577,209 @@ func _on_completed() -> void:
 		var letter: Dictionary = Data.get_dict("postcards").get("final_letter", {})
 		UIKit.letter(ui, str(letter.get("title", "")), str(letter.get("text", "")), func() -> void:
 			_letter_open = false
-			_show_results(result))
+			if _ends_walk(result):
+				_show_walk_results()
+			else:
+				_show_results(result))
 		return
 	_show_results(result)
+
+
+# ======================================================================= walking from room to room
+
+## The room's exit (data/rooms: "exit"), with the rect of the room's door filled in.
+func exit_data() -> Dictionary:
+	var ex: Dictionary = (room_view.room.get("exit", {}) as Dictionary).duplicate()
+	if not ex.has("rect"):
+		ex["rect"] = (room_view.room.get("door", {}) as Dictionary).get("rect", [1480, 110, 260, 650])
+	return ex
+
+
+func _exit_rect() -> Rect2:
+	var r: Array = exit_data()["rect"]
+	return Rect2(float(r[0]), float(r[1]), float(r[2]), float(r[3]))
+
+
+## The next room on this walk if Juliette walks straight on ("" to show the results card instead):
+## only the first time through, in the story's order.
+func _walk_next_level(result: Dictionary) -> String:
+	if mode != "main" or not bool(result.get("first_clear", false)):
+		return ""
+	var nxt := GameState.next_level_id(record_id)
+	if nxt == "" or not GameState.is_level_unlocked(nxt):
+		return ""
+	if int(Campaign.entry(nxt).get("walk", 0)) != int(level.get("walk", -1)):
+		return ""
+	return nxt
+
+
+## True when this was the last room of a walk, played for the first time.
+func _ends_walk(result: Dictionary) -> bool:
+	return mode == "main" and bool(result.get("first_clear", false)) and int(level.get("step", -1)) == Campaign.ROUTE.size() - 1
+
+
+## The exit opens. Through a door you see the next room as it is right now; the stair gate swings
+## open; a gate (or a door with nothing to walk into) glows with morning light.
+func _play_exit(show_view: bool) -> void:
+	var ex := exit_data()
+	var rect := _exit_rect()
+	room_zoom.reset(0.5)
+	if ex.has("furniture") and ex.has("sprite_open"):
+		var node: Node = room_view.furniture_nodes.get(str(ex["furniture"]))
+		if node is Sprite2D:
+			(node as Sprite2D).texture = UIKit.texture(str(ex["sprite_open"]))
+	if show_view and ex.has("view_center") and _open_door_onto(ex, rect):
+		room_view.lean_toward(rect.get_center(), 1.04, 2.4)
+		return
+	_open_door_glow()
+
+
+## Paints the next room into the doorway: a small live render of it (a SubViewport), lit like the
+## start of its slice of the morning, with the door leaf swung back against its hinge.
+func _open_door_onto(ex: Dictionary, rect: Rect2) -> bool:
+	var next_room := str(ex.get("view_room", ex.get("to", "")))
+	if next_room == "" or Data.get_dict("rooms/" + next_room).is_empty():
+		return false
+	var vp := SubViewport.new()
+	vp.name = "ExitView"
+	vp.size = Vector2i(960, 540)
+	vp.size_2d_override = Vector2i(RoomView.STAGE_SIZE)
+	vp.size_2d_override_stretch = true
+	add_child(vp)
+	var other := RoomView.new()
+	vp.add_child(other)
+	other.setup(next_room)
+	var r: Array = level.get("sunrise_range", [0.0, 1.0])
+	other.sunrise_t = float(r[1])
+	var c: Array = ex["view_center"]
+	var region_size := rect.size * EXIT_VIEW_SCALE
+	var region := Rect2(Vector2(float(c[0]), float(c[1])) - region_size / 2.0, region_size)
+	var view := Sprite2D.new()
+	view.name = "ExitViewSprite"
+	view.texture = vp.get_texture()
+	view.centered = false
+	view.region_enabled = true
+	view.region_rect = Rect2(region.position * 0.5, region.size * 0.5)
+	view.position = rect.position
+	view.scale = rect.size / (region.size * 0.5)
+	room_view.room_layer.add_child(view)
+	room_view.room_layer.move_child(view, 1)
+	host_sprites["exit_view"] = view
+	# The door leaf, swung back against its hinge.
+	var leaf := Polygon2D.new()
+	var w := rect.size.x * 0.2
+	var left := str(ex.get("hinge", "left")) == "left"
+	var x0 := rect.position.x if left else rect.end.x
+	var x1 := x0 + (w if left else -w)
+	leaf.polygon = PackedVector2Array([Vector2(x0, rect.position.y), Vector2(x1, rect.position.y + rect.size.y * 0.05),
+		Vector2(x1, rect.end.y - rect.size.y * 0.03), Vector2(x0, rect.end.y)])
+	leaf.color = Palette.color("wood_dark")
+	room_view.room_layer.add_child(leaf)
+	room_view.room_layer.move_child(leaf, 2)
+	view.modulate.a = 0.0
+	leaf.modulate.a = 0.0
+	var t := create_tween().set_parallel(true)
+	t.tween_property(view, "modulate:a", 1.0, 0.6)
+	t.tween_property(leaf, "modulate:a", 1.0, 0.3)
+	return true
+
+
+## A small card with the room's stars and seashells, while Juliette walks on.
+func _room_toast(result: Dictionary) -> void:
+	var card := PanelContainer.new()
+	card.name = "RoomToast"
+	card.add_theme_stylebox_override("panel", UIKit.card(18))
+	card.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
+	card.offset_left = -300
+	card.offset_right = 300
+	card.offset_top = 120
+	card.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	card.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	ui.add_child(card)
+	var h := HBoxContainer.new()
+	h.alignment = BoxContainer.ALIGNMENT_CENTER
+	h.add_theme_constant_override("separation", 10)
+	card.add_child(h)
+	var stars := int(result.get("stars", 1))
+	for i in 3:
+		var s := TextureRect.new()
+		s.texture = UIKit.texture("ui/star_full.svg" if i < stars else "ui/star_empty.svg")
+		s.custom_minimum_size = Vector2(56, 56)
+		s.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		h.add_child(s)
+	var shells := int(result.get("seashells", 0))
+	if shells > 0:
+		h.add_child(UIKit.label("   " + tr("TOAST_SHELLS") % shells, 30, Palette.color("coral_dark")))
+	if bool(result.get("new_best_time", false)):
+		h.add_child(UIKit.label("   " + tr("RESULTS_NEW_BEST"), 26, Palette.color("sea_deep")))
+	UIKit.pop_in(card)
+	for i in stars:
+		get_tree().create_timer(0.2 + i * 0.25).timeout.connect(func() -> void: AudioManager.play_sfx("star_%d" % (i + 1)))
+	if shells > 0:
+		get_tree().create_timer(1.0).timeout.connect(func() -> void: AudioManager.play_sfx("seashell_gain"))
+
+
+## The camera walks through the exit (up the stairs, through the doorway), then the next room.
+func _walk_through(next_id: String) -> void:
+	var ex := exit_data()
+	var focus := _exit_rect().get_center()
+	if ex.has("walk_to"):
+		var wt: Array = ex["walk_to"]
+		focus = Vector2(float(wt[0]), float(wt[1]))
+	var kind := str(ex.get("kind", "door"))
+	if bool(SaveManager.settings.get("reduce_motion", false)):
+		Launcher.play_main(next_id, {"arrive_from": kind})
+		return
+	room_view.zoom_focus = focus
+	var t := create_tween()
+	t.tween_property(room_view, "zoom", WALK_ZOOM, WALK_SECONDS).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	get_tree().create_timer(WALK_SECONDS * 0.7).timeout.connect(func() -> void: Launcher.play_main(next_id, {"arrive_from": kind}))
+
+
+## The end of a walk (a chapter): every room's stars, the time, and on to the next chapter.
+func _show_walk_results() -> void:
+	var walk_id := int(level.get("walk", 1))
+	var w := Campaign.walk(walk_id)
+	var rooms: Array = w.get("levels", [])
+	var first_next := ""
+	var next_walk := Campaign.walk(walk_id + 1)
+	if not next_walk.is_empty() and not (next_walk.get("levels", []) as Array).is_empty():
+		first_next = str(next_walk["levels"][0]["id"])
+	var items: Array = []
+	if first_next != "" and GameState.is_level_unlocked(first_next):
+		items.append([tr("NEXT_CHAPTER"), func() -> void: Launcher.play_main(first_next, {"arrive_from": "front_door"}), true])
+	items.append([tr("BACK_TO_BOOK"), func() -> void: Router.goto("level_select")])
+	if Router.has_screen("hub"):
+		items.append([tr("MENU_PENTHOUSE"), func() -> void: Router.goto("hub")])
+	_results = UIKit.dialog(ui, tr(str(w.get("title", ""))), "", items)
+	var body: VBoxContainer = _results.get_meta("body")
+	var grid := GridContainer.new()
+	grid.columns = 2
+	grid.add_theme_constant_override("h_separation", 30)
+	grid.add_theme_constant_override("v_separation", 6)
+	body.add_child(grid)
+	body.move_child(grid, 1)
+	var total := 0.0
+	var star_total := 0
+	for e: Dictionary in rooms:
+		var id := str(e["id"])
+		var rec := GameState.level_record(id)
+		total += float(rec.get("best_time", 0.0))
+		var stars := int(rec.get("stars", 0))
+		star_total += stars
+		grid.add_child(UIKit.label(Campaign.room_name(id), 30, Palette.color("ink"), HORIZONTAL_ALIGNMENT_LEFT))
+		var row := HBoxContainer.new()
+		row.alignment = BoxContainer.ALIGNMENT_END
+		for i in 3:
+			var s := TextureRect.new()
+			s.texture = UIKit.texture("ui/star_full.svg" if i < stars else "ui/star_empty.svg")
+			s.custom_minimum_size = Vector2(40, 40)
+			s.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			row.add_child(s)
+		grid.add_child(row)
+	var info := UIKit.label(tr("WALK_DONE_INFO") % [star_total, rooms.size() * 3, _format_time(total)], 30, Palette.color("ink_soft"))
+	body.add_child(info)
+	body.move_child(info, 2)
 
 
 # ======================================================================= UI

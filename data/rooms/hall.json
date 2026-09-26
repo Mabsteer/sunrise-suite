@@ -8,7 +8,8 @@
   "sun_x": 1610,
   "sky_rect": [100, 60, 1660, 320],
   "music": "level_hall",
-  "door": {"name": "the bedroom door", "rect": [880, 190, 240, 580]},
+  "door": {"name": "the stair gate", "rect": [1380, 610, 190, 160]},
+  "exit": {"kind": "stairs_up", "to": "bedroom", "furniture": "stair_gate", "sprite_open": "props/hall/stair_gate_open.svg", "walk_to": [1880,200]},
   "dog_spot": [700, 885],
   "furniture": [
     {"id": "umbrella_stand", "name": "the umbrella stand", "sprite": "props/hall/umbrella_stand.svg", "pos": [24, 560], "size": [90, 220],
@@ -33,6 +34,9 @@
        {"id": "basket", "name": "the basket of flip-flops", "rect": [60, 168, 140, 62], "locks": ["hidden", "dog"], "tools": [null], "dog_action": "fetch", "reveal": "something under the flip-flops"}
      ],
      "flavor": "Keys, shells and sunglasses. Everything you need on the way out."},
+    {"id": "living_room_door", "name": "the living room door", "sprite": "", "pos": [880, 190], "size": [240, 580],
+     "spots": [],
+     "flavor": "The door to the living room. Not yet, ma puce: Mamie's hunt goes up the stairs first."},
     {"id": "height_marks", "name": "the door frame", "sprite": "props/hall/height_marks.svg", "pos": [828, 250], "size": [56, 520],
      "spots": [{"id": "marks", "name": "the pencil marks on the door frame", "rect": [0, 20, 56, 480], "clue": true}],
      "flavor": "Pencil marks with little numbers. Every summer, a bit higher."},
@@ -44,10 +48,13 @@
      "flavor": "Tick... tock... It has been two minutes slow since 1987. Nobody minds."},
     {"id": "stairs", "name": "the stairs", "sprite": "props/hall/stairs.svg", "pos": [1340, 80], "size": [820, 700],
      "spots": [
-       {"id": "cupboard", "name": "the cupboard under the stairs", "rect": [70, 400, 160, 290], "locks": ["key", "combo", "care"]},
+       {"id": "cupboard", "name": "the cupboard under the stairs", "rect": [300, 392, 170, 296], "locks": ["key", "combo", "care"]},
        {"id": "treads", "name": "the stairs", "rect": [250, 180, 330, 300], "clue": true}
      ],
-     "flavor": "The stairs creak on the fourth step. Juliette always jumped over it."}
+     "flavor": "The stairs creak on the fourth step. Juliette always jumped over it."},
+    {"id": "stair_gate", "name": "the stair gate", "sprite": "props/hall/stair_gate.svg", "pos": [1380, 610], "size": [190, 160],
+     "spots": [],
+     "flavor": "Mamie's little white stair gate. Chloé never once tried to jump it."}
   ],
   "wall_slots": [
     {"id": "wall_a", "rect": [420, 90, 160, 150], "accepts": ["wall", "wall_small"]},
@@ -56,7 +63,7 @@
   ],
   "surface_slots": [
     {"id": "console_1", "anchor": [680, 560], "max": [120, 110], "name": "the console table"},
-    {"id": "stair_1", "anchor": [1532, 574], "max": [90, 90], "name": "the stairs"},
+    {"id": "stair_1", "anchor": [1600, 570], "max": [90, 90], "name": "the stairs"},
     {"id": "floor_1", "anchor": [520, 900], "max": [120, 110], "name": "the runner rug"},
     {"id": "floor_2", "anchor": [1120, 890], "max": [120, 110], "name": "the floor by the clock"}
   ]

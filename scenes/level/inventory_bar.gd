@@ -89,10 +89,10 @@ func peek() -> void:
 		return
 	_peeking = true
 	_update_look()
-	await get_tree().create_timer(PEEK_SECONDS).timeout
-	if _peeking and selected == "":
-		_peeking = false
-		_update_look()
+	get_tree().create_timer(PEEK_SECONDS).timeout.connect(func() -> void:
+		if is_instance_valid(self) and _peeking and selected == "":
+			_peeking = false
+			_update_look())
 
 
 ## True while the items are showing (not folded away).

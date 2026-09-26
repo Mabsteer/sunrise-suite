@@ -240,3 +240,6 @@ BAG,Your bag (tap to fold it away)
 DOG_SPOT_FETCH,"It's much too narrow to reach in there. You can't see a thing."
 DOG_SPOT_DIG,"The soil is soft here, freshly turned."
 NOTHING_SPECIAL,Nothing special here as far as you can see.
+TOAST_SHELLS,+%d seashells
+NEXT_CHAPTER,Next chapter
+WALK_DONE_INFO,"%d of %d stars · %s"
