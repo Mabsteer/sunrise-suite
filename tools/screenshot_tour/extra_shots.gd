@@ -11,6 +11,9 @@ func shots() -> Array[Dictionary]:
 		{"name": "art_items", "screen": "art_sheet", "params": {"dirs": ["items", "ui/symbols", "ui"], "scale": 0.9}},
 		{"name": "art_puzzles", "screen": "art_sheet", "params": {"dirs": ["puzzles"], "scale": 0.5}},
 		{"name": "level_start", "screen": "level", "params": TEST_LEVEL},
+		{"name": "gen_lounge_t1", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 1, 11)}},
+		{"name": "gen_lounge_t5", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 5, 55)}},
+		{"name": "gen_lounge_t10", "screen": "level", "params": {"level": LevelGenerator.generate("lounge", 10, 1010)}},
 		{"name": "level_inventory", "screen": "level", "params": TEST_LEVEL, "action": func(s: Node) -> void:
 			s.call("tap", "item:i_flashlight_empty")
 			s.call("select_item", "i_flashlight_empty"), "frames": 60},

@@ -27,3 +27,10 @@ One line per decision: what, and why.
 - Items and parts are consumed when used; each item is needed exactly once per level, which keeps the bag tidy.
 - Stars: finish (1), at most one hint (2), under par time (3). Seashells: 10 first clear, 5 per new star, 3 per replay.
 - Prop and item SVGs were first drawn by tools/art/*.mjs; the SVG files are the source of truth, and the scripts are only kept for re-generation.
+- The generator works backwards from the door. Each requirement goes in the room, into a new container, or comes from a recipe. The result is a tree, so there are no dependency cycles by construction.
+- Generation retries with derived seeds (up to 30 attempts) until LevelValidator accepts the level. Still deterministic: same (room, tier, seed) gives the same level.
+- Array(const PackedStringArray) shares storage with the constant. Always copy element by element before shuffling (see LevelGenerator._symbol_pool).
+- Tier step counts may exceed the tier maximum by 1 when the room runs out of slots (an item gets hidden in an extra container). The validator allows min..max+1.
+- Furniture-hosted key/code locks show a small brass padlock, so new players can see something is locked. Hidden spots stay unmarked, to be discovered.
+- Headless tests set AudioManager.enabled = false, because the dummy audio driver never releases finished sounds (it causes "resources still in use" errors).
+- Campaign levels are generated from data/campaign.json (room, tier, fixed seed) instead of stored as big level files, so levels can be tuned by changing one seed.

@@ -1,0 +1,40 @@
+{
+  "_help": "The 30 main levels, in order. room + tier + seed decide the puzzle (change the seed for a different level). postcard: which of Grandma's postcards is hidden in the level. Star gates: total stars needed to start a tier.",
+  "levels": [
+    {"id": "main_01", "room": "lounge", "tier": 1, "seed": 1031, "tutorial": true},
+    {"id": "main_02", "room": "kitchen", "tier": 1, "seed": 1062},
+    {"id": "main_03", "room": "study", "tier": 1, "seed": 1093, "postcard": "lisbon"},
+    {"id": "main_04", "room": "lounge", "tier": 2, "seed": 1124},
+    {"id": "main_05", "room": "kitchen", "tier": 2, "seed": 1155},
+    {"id": "main_06", "room": "study", "tier": 2, "seed": 1186},
+    {"id": "main_07", "room": "lounge", "tier": 3, "seed": 1217},
+    {"id": "main_08", "room": "kitchen", "tier": 3, "seed": 1248},
+    {"id": "main_09", "room": "study", "tier": 3, "seed": 1279, "postcard": "kyoto"},
+    {"id": "main_10", "room": "lounge", "tier": 4, "seed": 1310},
+    {"id": "main_11", "room": "kitchen", "tier": 4, "seed": 1341},
+    {"id": "main_12", "room": "study", "tier": 4, "seed": 1372},
+    {"id": "main_13", "room": "lounge", "tier": 5, "seed": 1403},
+    {"id": "main_14", "room": "kitchen", "tier": 5, "seed": 1434},
+    {"id": "main_15", "room": "study", "tier": 5, "seed": 1465, "postcard": "santorini"},
+    {"id": "main_16", "room": "lounge", "tier": 6, "seed": 1496},
+    {"id": "main_17", "room": "kitchen", "tier": 6, "seed": 1527},
+    {"id": "main_18", "room": "study", "tier": 6, "seed": 1558},
+    {"id": "main_19", "room": "lounge", "tier": 7, "seed": 1589},
+    {"id": "main_20", "room": "kitchen", "tier": 7, "seed": 1620},
+    {"id": "main_21", "room": "study", "tier": 7, "seed": 1651, "postcard": "marrakech"},
+    {"id": "main_22", "room": "lounge", "tier": 8, "seed": 1682},
+    {"id": "main_23", "room": "kitchen", "tier": 8, "seed": 1713},
+    {"id": "main_24", "room": "study", "tier": 8, "seed": 1744},
+    {"id": "main_25", "room": "lounge", "tier": 9, "seed": 1775},
+    {"id": "main_26", "room": "kitchen", "tier": 9, "seed": 1806},
+    {"id": "main_27", "room": "study", "tier": 9, "seed": 1837, "postcard": "reykjavik"},
+    {"id": "main_28", "room": "lounge", "tier": 10, "seed": 1868},
+    {"id": "main_29", "room": "kitchen", "tier": 10, "seed": 1899},
+    {"id": "main_30", "room": "study", "tier": 10, "seed": 1930}
+  ],
+  "star_gates": {
+    "4": 12,
+    "7": 24,
+    "10": 40
+  }
+}

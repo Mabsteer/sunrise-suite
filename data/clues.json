@@ -1,0 +1,54 @@
+{
+  "_help": "Clue text templates, picked at random by the generator. Levels 0-3 = how indirect the clue is (see tiers.json 'indirection'). Split clues use 'first'/'last'. Placeholders: {lock} name of the lock, {code} 4 7 2, {part} part of a code, {words} four, seven, two, {reversed} 2 7 4, {seq} symbols, {seq_reversed}, {time} 7:30, {time_words} half past seven, {time_before} 6:30, {on} symbols switched on, {off} symbols switched off. Write {sun} etc. for symbol icons.",
+  "combo": {
+    "0": ["The code for {lock} is {code}.", "{lock} opens with {code}. Love, G.", "Note to self: {lock} is {code}."],
+    "1": ["Grandma's lucky number: {code}.", "Don't forget: {code}!", "Our old house number was {code}.", "Locker number at the beach club: {code}."],
+    "2": ["{words}. Say it out loud!", "Read it backwards: {reversed}."],
+    "first": ["The code starts with {part}...", "First the {part}..."],
+    "last": ["...and it ends with {part}.", "...then finish with {part}."],
+    "3": ["Backwards, it goes {reversed}.", "In words: {words}."]
+  },
+  "sequence": {
+    "0": ["{lock} plays: {seq}.", "The tune for {lock}: {seq}."],
+    "1": ["My favourite tune goes {seq}.", "Hum it like the morning: {seq}."],
+    "2": ["The tune, but backwards: {seq_reversed}."],
+    "first": ["The tune begins {part}...", "It starts with {part}..."],
+    "last": ["...and ends {part}.", "...then {part} to finish."],
+    "3": ["Play it from the end to the start: {seq_reversed}."]
+  },
+  "clock": {
+    "0": ["Set {lock} to {time}.", "{lock} likes to show {time}."],
+    "1": ["Breakfast on the balcony at {time}. Don't be late! - J.", "Morning swim at {time} sharp.", "Yoga on the sand at {time}."],
+    "2": ["Tea at {time_words}, as always.", "Sunrise walk at {time_words}."],
+    "3": ["One hour after my {time_before} coffee.", "An hour after the {time_before} ferry."]
+  },
+  "switches": {
+    "0": ["Switch on: {on}. Everything else off.", "Lamps on: {on}."],
+    "1": ["Only the lamps with the {on} should glow.", "Light up {on} - leave the rest dark."],
+    "2": ["Everything on except {off}.", "Leave {off} off, turn on the others."],
+    "first": ["Turn on {part}...", "The {part} lamp stays on..."],
+    "last": ["...and {part} too. The rest off.", "...plus {part}. Nothing else."],
+    "3": ["All lamps on, apart from {off}."]
+  },
+  "decoys": [
+    "Grocery list: 3 lemons, 12 eggs, 1 very large pineapple.",
+    "Water the monstera twice a week. It sulks otherwise.",
+    "Book club - Thursday at 4:15. Bring biscuits!",
+    "Bus 27 to the flower market.",
+    "Sunscreen! SPF 50. Every. Single. Day.",
+    "Room 812 at the Lisbon hotel had the best view.",
+    "Remember: 2 scoops of coffee, not 3.",
+    "Call Marisol about the boat trip on the 14th.",
+    "Recipe: 250 g flour, 3 eggs, a pinch of cinnamon.",
+    "Tide table: high tide at 5:40, low tide at 11:55.",
+    "Pilates moved to Wednesdays at 6.",
+    "The ferry leaves from pier 9."
+  ],
+  "time_words": {
+    "0": "{h} o'clock",
+    "15": "quarter past {h}",
+    "30": "half past {h}",
+    "45": "quarter to {h1}"
+  },
+  "number_words": ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"]
+}

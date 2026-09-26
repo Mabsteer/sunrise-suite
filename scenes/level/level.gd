@@ -250,6 +250,14 @@ func _place_host(key: String, host: Dictionary, _open: bool) -> void:
 				(hotspots[flavor_key] as Node).queue_free()
 				hotspots.erase(flavor_key)
 			_add_hotspot(key, rect, room_view.furniture_nodes.get(str(host.get("furniture", ""))))
+			# A little padlock shows that this part of the furniture is locked (hidden spots stay a secret).
+			if key.begins_with("lock:") and session.lock_type(key.substr(5)) not in ["hidden"]:
+				var badge := Sprite2D.new()
+				badge.texture = UIKit.texture("ui/padlock.svg")
+				badge.scale = Vector2(0.7, 0.7)
+				badge.position = rect.position + Vector2(rect.size.x - 24, rect.size.y / 2.0)
+				_props_layer.add_child(badge)
+				host_sprites["badge:" + key] = badge
 		"prop":
 			var prop: Dictionary = Data.get_dict("props").get(str(host.get("prop", "")), {})
 			var rect := _slot_rect(str(host.get("slot", "")), _vec(prop.get("size", [100, 100])))
@@ -364,6 +372,9 @@ func _on_lock_opened(lock_id: String) -> void:
 				sprite.texture = tex
 				sprite.scale = size_before / tex.get_size()
 	elif hotspots.has(key) and str(host.get("kind", "")) == "furniture":
+		if host_sprites.has("badge:" + key):
+			(host_sprites["badge:" + key] as Node).queue_free()
+			host_sprites.erase("badge:" + key)
 		var h: Control = hotspots[key]
 		var badge := Sprite2D.new()
 		badge.texture = UIKit.texture(BADGE)

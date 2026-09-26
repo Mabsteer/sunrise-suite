@@ -139,6 +139,11 @@ ui("unlocked", `  <circle cx="32" cy="32" r="26" fill="#fffbf5" opacity="0.9"/>
   <path d="M22 28 V20 C22 10 40 10 42 18" stroke="#a87a2e" stroke-width="5" fill="none" stroke-linecap="round"/>
   <rect x="16" y="28" width="32" height="24" rx="6" fill="#d4a24c"/>
   <circle cx="32" cy="38" r="4" fill="#7a5134"/><rect x="30" y="40" width="4" height="7" rx="2" fill="#7a5134"/>`, "Small badge showing something was unlocked.");
+ui("padlock", `  <circle cx="32" cy="32" r="27" fill="#fffbf5" opacity="0.85"/>
+  <path d="M22 30 V22 C22 12 42 12 42 22 V30" stroke="#a87a2e" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <rect x="16" y="28" width="32" height="24" rx="6" fill="#d4a24c"/>
+  <rect x="16" y="28" width="32" height="6" rx="3" fill="#fbe3a0" opacity="0.7"/>
+  <circle cx="32" cy="38" r="4" fill="#7a5134"/><rect x="30" y="40" width="4" height="7" rx="2" fill="#7a5134"/>`, "Small brass padlock badge: this is locked.");
 ui("sparkle", `  <path d="M32 4 C34 22 42 30 60 32 C42 34 34 42 32 60 C30 42 22 34 4 32 C22 30 30 22 32 4 Z" fill="#f6c453"/>
   <path d="M32 16 C33 26 38 31 48 32 C38 33 33 38 32 48 C31 38 26 33 16 32 C26 31 31 26 32 16 Z" fill="#fffbf5" opacity="0.7"/>`, "Sparkle.");
 ui("gear", `  <g transform="translate(32 32)">${Array.from({ length: 8 }, (_, i) => `<rect x="-5" y="-28" width="10" height="14" rx="3" fill="#6b5a66" transform="rotate(${i * 45})"/>`).join("")}

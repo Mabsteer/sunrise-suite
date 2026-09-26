@@ -1,0 +1,22 @@
+{
+  "_help": "Difficulty tiers. steps: [min, max] puzzle steps including the door. branches: how many chains may run in parallel. herrings: decoy notes. indirection: 0 = clues say it plainly ... 3 = riddles and split clues. types: lock types that may appear. combine: item combinations allowed. tools: hidden spots may need a tool. nesting: chance (0..1) that a box sits inside another container. par_time in seconds (for the third star). Tiers above 10 (Endless) grow from the last tier, see 'endless'.",
+  "tiers": [
+    {"tier": 1, "steps": [3, 3], "branches": 1, "herrings": 0, "indirection": 0, "types": ["combo", "key", "hidden"], "combine": false, "tools": false, "nesting": 0.0, "digits": 3, "sequence_length": 3, "switch_count": 4, "slider_size": 3, "slider_scramble": 10, "par_time": 240},
+    {"tier": 2, "steps": [4, 4], "branches": 1, "herrings": 0, "indirection": 0, "types": ["combo", "key", "hidden", "sequence"], "combine": false, "tools": false, "nesting": 0.0, "digits": 3, "sequence_length": 3, "switch_count": 4, "slider_size": 3, "slider_scramble": 14, "par_time": 300},
+    {"tier": 3, "steps": [4, 5], "branches": 1, "herrings": 1, "indirection": 1, "types": ["combo", "key", "hidden", "sequence", "clock"], "combine": true, "tools": false, "nesting": 0.1, "digits": 3, "sequence_length": 3, "switch_count": 4, "slider_size": 3, "slider_scramble": 16, "par_time": 360},
+    {"tier": 4, "steps": [5, 6], "branches": 2, "herrings": 1, "indirection": 1, "types": ["combo", "key", "hidden", "sequence", "clock", "switches"], "combine": true, "tools": true, "nesting": 0.15, "digits": 4, "sequence_length": 3, "switch_count": 4, "slider_size": 3, "slider_scramble": 18, "par_time": 420},
+    {"tier": 5, "steps": [6, 7], "branches": 2, "herrings": 2, "indirection": 1, "types": ["combo", "key", "hidden", "sequence", "clock", "switches", "slider"], "combine": true, "tools": true, "nesting": 0.2, "digits": 4, "sequence_length": 4, "switch_count": 4, "slider_size": 3, "slider_scramble": 22, "par_time": 480},
+    {"tier": 6, "steps": [7, 8], "branches": 2, "herrings": 2, "indirection": 2, "types": ["combo", "key", "hidden", "sequence", "clock", "switches", "slider"], "combine": true, "tools": true, "nesting": 0.25, "digits": 4, "sequence_length": 4, "switch_count": 5, "slider_size": 3, "slider_scramble": 26, "par_time": 560},
+    {"tier": 7, "steps": [8, 9], "branches": 2, "herrings": 3, "indirection": 2, "types": ["combo", "key", "hidden", "sequence", "clock", "switches", "slider"], "combine": true, "tools": true, "nesting": 0.3, "digits": 4, "sequence_length": 4, "switch_count": 5, "slider_size": 3, "slider_scramble": 30, "par_time": 640},
+    {"tier": 8, "steps": [9, 10], "branches": 3, "herrings": 3, "indirection": 2, "types": ["combo", "key", "hidden", "sequence", "clock", "switches", "slider"], "combine": true, "tools": true, "nesting": 0.35, "digits": 5, "sequence_length": 5, "switch_count": 5, "slider_size": 4, "slider_scramble": 34, "par_time": 720},
+    {"tier": 9, "steps": [10, 11], "branches": 3, "herrings": 4, "indirection": 3, "types": ["combo", "key", "hidden", "sequence", "clock", "switches", "slider"], "combine": true, "tools": true, "nesting": 0.4, "digits": 5, "sequence_length": 5, "switch_count": 6, "slider_size": 4, "slider_scramble": 40, "par_time": 820},
+    {"tier": 10, "steps": [11, 12], "branches": 3, "herrings": 4, "indirection": 3, "types": ["combo", "key", "hidden", "sequence", "clock", "switches", "slider"], "combine": true, "tools": true, "nesting": 0.45, "digits": 5, "sequence_length": 5, "switch_count": 6, "slider_size": 4, "slider_scramble": 46, "par_time": 920}
+  ],
+  "endless": {
+    "_help": "Endless tiers (11+) copy tier 10, add 1 step every 'steps_every' tiers up to 'max_steps', and add 'par_time_per_tier' seconds per tier.",
+    "steps_every": 3,
+    "max_steps": 14,
+    "par_time_per_tier": 60,
+    "max_herrings": 5
+  }
+}

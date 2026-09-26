@@ -7,6 +7,7 @@ const TEST_DIR := "res://tests/unit/"
 
 func _ready() -> void:
 	SaveManager.persist = false
+	AudioManager.enabled = false
 	_run.call_deferred()
 
 
@@ -49,4 +50,6 @@ func _run() -> void:
 	for f in failed:
 		printerr("FAIL ", f)
 	print("TESTS: %d passed, %d failed" % [passed, failed.size()])
+	AudioManager.stop_all()
+	await get_tree().process_frame
 	get_tree().quit(0 if failed.is_empty() else 1)

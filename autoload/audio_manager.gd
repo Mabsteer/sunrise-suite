@@ -11,6 +11,9 @@ const BUSES: PackedStringArray = ["Music", "SFX", "Ambience"]
 const SFX_POOL_SIZE := 10
 const CROSSFADE_SECONDS := 1.5
 
+## False in headless tests: nothing plays (the dummy audio driver never releases finished sounds).
+var enabled := true
+
 var _sfx_players: Array[AudioStreamPlayer] = []
 var _sfx_next := 0
 var _stream_cache: Dictionary = {}
@@ -62,6 +65,8 @@ func _process(_delta: float) -> void:
 
 ## Plays a sound effect from assets/audio/sfx/<name>.wav.
 func play_sfx(sfx_name: String, pitch_variation: float = 0.0, volume_db: float = 0.0) -> void:
+	if not enabled:
+		return
 	var stream := _load_stream(SFX_DIR, sfx_name)
 	if stream == null:
 		return
@@ -75,7 +80,7 @@ func play_sfx(sfx_name: String, pitch_variation: float = 0.0, volume_db: float =
 
 ## Starts (or keeps) a music track from assets/audio/music/<track>.(ogg|mp3|wav), crossfading from the current one.
 func play_music(track: String) -> void:
-	if track == _music_track:
+	if not enabled or track == _music_track:
 		return
 	_music_track = track
 	var stream := _load_stream(MUSIC_DIR, track, true)
@@ -96,13 +101,28 @@ func stop_music() -> void:
 			tween.tween_callback(p.stop)
 
 
+## Stops every sound right away (used before quitting so no playback holds on to its stream).
+func stop_all() -> void:
+	for p in _sfx_players:
+		p.stop()
+		p.stream = null
+	for m in _music_players:
+		m.stop()
+		m.stream = null
+	_music_track = ""
+	_ambience_track = ""
+	_ambience_player.stop()
+	_ambience_player.stream = null
+	_stream_cache.clear()
+
+
 func current_music() -> String:
 	return _music_track
 
 
 ## Loops an ambience layer (e.g. "ambience_ocean") if the file exists.
 func play_ambience(track: String) -> void:
-	if track == _ambience_track:
+	if not enabled or track == _ambience_track:
 		return
 	_ambience_track = track
 	var stream := _load_stream(MUSIC_DIR, track, true)
