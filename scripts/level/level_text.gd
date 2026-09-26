@@ -146,13 +146,7 @@ func answer_text(lock_id: String) -> String:
 
 ## Replaces {sun}-style tokens with inline icons for a RichTextLabel.
 func rich(text: String, icon_size: int = 44) -> String:
-	var out := text
-	for key: String in _symbols_db.keys():
-		if key.begins_with("_"):
-			continue
-		var sprite := "res://assets/sprites/" + str((_symbols_db[key] as Dictionary).get("sprite", ""))
-		out = out.replace("{%s}" % key, "[img=%d]%s[/img]" % [icon_size, sprite])
-	return out
+	return UIKit.symbol_icons(text, icon_size)
 
 
 ## Plain version of a text with {sun}-style tokens spelled out.

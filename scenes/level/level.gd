@@ -929,7 +929,12 @@ func _keep_memory(kind: String, id: String) -> void:
 	var memory_id := str(thing.get("memory", ""))
 	if memory_id == "" or mode != "main":
 		return
-	if GameState.collect_memory(memory_id):
+	if not GameState.collect_memory(memory_id):
+		return
+	# Said once the note is put down, so the toast doesn't cover Mamie's words.
+	if closeup.is_open():
+		closeup.closed.connect(func() -> void: toast(tr("MEMORY_KEPT"), 2.5), CONNECT_ONE_SHOT)
+	else:
 		toast(tr("MEMORY_KEPT"), 2.5)
 
 

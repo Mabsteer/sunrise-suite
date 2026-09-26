@@ -109,6 +109,12 @@ func shots() -> Array[Dictionary]:
 			fake_postcards(3)
 			for m in ["hall_marks", "hall_bus", "kitchen_welcome", "kitchen_chloe"]:
 				GameState.collect_memory(m), "action": func(s: Node) -> void: s.call("show_chapter", "hall"), "frames": 30},
+		{"name": "tutorial_memory", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_kitchen"), "mode": "main", "record_id": "w1_kitchen"}, "action": func(s: Node) -> void: s.call("tap", "clue:c_welcome"), "frames": 60},
+		{"name": "scrapbook_memory_open", "screen": "scrapbook", "setup": func() -> void: GameState.collect_memory("hall_photos"), "action": func(s: Node) -> void:
+			s.call("show_chapter", "hall")
+			for b: Button in s.find_children("*", "Button", true, false):
+				if b.text == "Our summers":
+					b.pressed.emit(), "frames": 30},
 		{"name": "scrapbook_chapter", "screen": "scrapbook", "setup": func() -> void: fake_postcards(3), "action": func(s: Node) -> void: s.call("show_chapter", "hall"), "frames": 30},
 		{"name": "scrapbook_empty", "screen": "scrapbook", "frames": 30},
 		{"name": "scrapbook_some", "screen": "scrapbook", "setup": func() -> void: fake_postcards(3), "frames": 30},

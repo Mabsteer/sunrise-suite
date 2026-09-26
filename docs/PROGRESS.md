@@ -37,13 +37,14 @@ The owner's playtest feedback changes the direction: difficulty must come from t
   - Dog actions in levels: fetch (under furniture, through small gaps), dig, sniff (give her a scent to follow), bark at what matters, and care tasks (food, water, leash, her toy). Generator support and `DATA_FORMAT.md`.
 - [x] **F6 Story levels**: the seven hand-made story levels with the memories and riddles from `STORY.md`, a new kitchen tutorial, postcards in rooms 2–6, and the last letter at the front garden gate.
 - [x] **F7 Zoom**: pinch and mouse-wheel zoom, drag to pan, zoom buttons, double-tap to zoom in on a spot.
-- [ ] **F8 Polish and summary**
+- [x] **F8 Polish and summary**: scrapbook memories show symbols as icons, the "memory for the scrapbook" toast waits until the note is put down, Chloé's spots sit above the bag in every room, the screenshot tour waits for the first screen, and this summary.
 
 ## Next
-- F8: polish and the v2 summary (play the whole story walk, check the phone layout, tidy the docs).
+- v2 is done. Waiting for the owner's next playtest; ideas that didn't make this round are in the polish backlog below.
 
 ## Known issues
 - Portrait phones show a "turn your phone sideways" card (it can be dismissed); the game is designed for landscape.
+- Pinch-zoom is covered by unit tests with simulated input, but hasn't been tried on a real phone yet.
 
 ## Polish backlog
 - [x] Pause the level timer while the browser tab or window is in the background (fair third star).
@@ -56,8 +57,25 @@ The owner's playtest feedback changes the direction: difficulty must come from t
 - [x] Par-time sanity check: measure the autoplay step count per tier against par_time.
 - [x] Custom web loading screen colours (sunrise gradient instead of plain background).
 
+### v2 ideas (not started)
+- [ ] Double-tap on furniture could zoom in on it instead of opening it straight away (now: double-tap zooms on empty spots only).
+- [ ] Zoom in the sunroom too.
+- [ ] More memories per room (the scrapbook has 3-4 per chapter).
+- [ ] Walk 2/3 notes in Mamie's voice to little and teenage Juliette (they now use the generic clue templates).
+
 ## Blocked
 - (none)
+
+## Summary (v2 done)
+The playtest feedback round (F1-F8) is complete, the checks are green, and every push deploys to https://mabsteer.github.io/sunrise-suite/.
+
+- **Story:** Juliette inherits Mamie Céline's house by the sea. Walk 1 is seven hand-made story rooms, from Céline's last years in the kitchen back to her childhood in the front garden. There are 22 memories (notes that are story and riddle at once), 5 postcards, and her last letter in the time capsule under the roses. `docs/STORY.md` is the story bible.
+- **Puzzles that make you think:** 15 lock types (codes, symbol tunes, clocks, lamps, orders, number squares, patterns, turning and sliding tiles, keys, tools, search spots, and Chloé's fetch/dig, care and sniff). From room 2 on, codes come from riddles, counting, sums and logic. Keys are always a puzzle's reward. Every order, lamp riddle and number square is proven to have exactly one answer.
+- **The house:** one route through seven rooms (kitchen → hall → bedroom → living room → garden → shed → front garden), each with its own art and puzzles. Three walks, Replay, Endless, Daily.
+- **Chloé:** Mamie's Maltese hides in the hall, then follows Juliette through every room and naps in the sunroom. She fetches, digs, sniffs and barks, and has her own care tasks.
+- **Look closer:** pinch, the mouse wheel, drag, double-tap and +/- buttons zoom the room up to 2.5x.
+- **Safety net:** `bash tools/check.sh` runs 77 unit tests, validates 14,000 generated levels plus the story levels (unique answers, keys as rewards, fair par times), and a bot plays 149 levels through the real UI. Web and Windows exports are built on every push.
+- **What needs a human:** a playtest on a real phone (pinch, Chloé, the story walk), and the Suno music tracks (`docs/SUNO_PROMPTS.md`; the game is quiet until they're added).
 
 ## Summary (v1 done)
 Sunrise Suite v1 is complete: every milestone (M0-M10) and the whole polish backlog are done, the checks are green, and every push deploys to https://mabsteer.github.io/sunrise-suite/.

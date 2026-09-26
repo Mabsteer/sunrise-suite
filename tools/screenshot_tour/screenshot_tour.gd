@@ -57,6 +57,9 @@ func _run() -> void:
 			var params: Variant = shot.get("params", {})
 			if params is Callable:
 				params = (params as Callable).call()
+			# The game may still be fading in its first screen; wait until the Router is free.
+			while bool(Router.get("_busy")):
+				await _frames(1)
 			var ok: bool = await Router.goto(str(shot["screen"]), params, false)
 			if not ok:
 				push_warning("Screenshot tour: could not open %s" % shot["screen"])

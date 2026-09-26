@@ -200,7 +200,7 @@ func show_chapter(room: String) -> void:
 		var found_m := GameState.has_memory(id)
 		var mb := _memory_card(tr(str(m.get("title", ""))) if found_m else tr("SCRAPBOOK_MEMORY_WAITING"), UIKit.texture("props/common/note.svg") if found_m else null, found_m)
 		if found_m:
-			mb.pressed.connect(func() -> void: UIKit.letter(self, tr(str(m.get("title", ""))), tr(str(m.get("text", "")))))
+			mb.pressed.connect(func() -> void: UIKit.letter(self, tr(str(m.get("title", ""))), UIKit.symbol_icons(tr(str(m.get("text", ""))), 40)))
 		row.add_child(mb)
 	var close := UIKit.text_button(tr("CLOSE"), Vector2(260, 90))
 	close.size_flags_horizontal = Control.SIZE_SHRINK_CENTER

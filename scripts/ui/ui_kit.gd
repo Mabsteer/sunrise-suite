@@ -71,6 +71,18 @@ static func label(text: String, size: int = 34, color: Color = Color(0.231, 0.18
 
 
 ## A RichTextLabel in Mamie's handwriting (for notes and clues).
+## Replaces {sun}-style symbol tokens (data/symbols.json) with inline icons, for RichTextLabels.
+static func symbol_icons(text: String, icon_size: int = 44) -> String:
+	var out := text
+	var db := Data.get_dict("symbols")
+	for key: String in db.keys():
+		if key.begins_with("_"):
+			continue
+		var sprite := "res://assets/sprites/" + str((db[key] as Dictionary).get("sprite", ""))
+		out = out.replace("{%s}" % key, "[img=%d]%s[/img]" % [icon_size, sprite])
+	return out
+
+
 static func handwriting(bbcode: String, size: int = 46) -> RichTextLabel:
 	var r := RichTextLabel.new()
 	r.bbcode_enabled = true
