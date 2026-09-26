@@ -51,15 +51,15 @@ The treasure hunt goes through the house in this order. The exit of each room le
 ### 1. The kitchen: "Mornings with Chloé" (2015–2025, Céline 77–87)
 - **What it was:** the heart of her last years. Up before the sun, a walk on the beach with Chloé, then the market (the cheese man always had a crumb for Chloé; the flower stall that used to be her mother's), then coffee at the table. Juliette's weekend visits and the lemon tart she always asked for.
 - **Atmosphere:** blue-and-white tiles, the old espresso machine, herbs on the sill, the market basket by the door, Chloé's empty bowl. Still dark outside.
-- **Memories:** the welcome letter (the whole hunt explained); the Saturday market list; the lemon tart recipe; the note about Chloé ("She will be hiding. She does that when she misses someone. Please look after her for me.").
+- **Memories:** the welcome letter (the whole hunt explained, with the Saturday market list); the note about Chloé ("She does that when she misses someone. Please look after her for me."); the lemon tart recipe.
 - **Puzzles:** the tutorial. The market list is the first riddle (count what she bought, in order). A flashlight without batteries, a dark cupboard, the key to the hall.
 - **Exit:** the hall door.
 
 ### 2. The hall: "The summers with Juliette" (2001–2013, Céline 63–75)
 - **What it was:** after Henri died, summer came, and so did five-year-old Juliette with a bucket and a very serious face. Every summer: the first bus to the big beach at a quarter past seven (Juliette wanted the seat behind the driver), sandcastle contests, a treasure hunt every rainy day, and a pencil mark on the door frame on her first day.
 - **Atmosphere:** the front door with its coloured glass, a coat rack with straw hats and the beach bag that was always packed, an umbrella stand, a console table with a bowl of shells, the grandfather clock, the stairs, and the little door under the stairs.
-- **Memories:** the height marks ("every summer you stood on your toes"); the summer photos (sandcastle, learning to swim, the crab, the red bicycle); the 7:15 bus; the shoebox where she kept every treasure hunt she ever made for Juliette.
-- **Puzzles:** read the height marks on the door frame; put the summer photos back in order; set the grandfather clock to the bus time; coax Chloé out with Gaston.
+- **Memories:** the pencil marks ("every summer you stood on your toes"); the 7:15 bus; the summer photos (sandcastle, learning to swim, the crab, the red bicycle); the shoebox where she kept every treasure hunt she ever made for Juliette (in the cardigan pocket).
+- **Puzzles (as built):** the three lowest pencil marks (5, 7, 9) open the console drawer; set the grandfather clock to the bus time (7:15); put the summer photos in order on the photo ledge (a logic note); Gaston, found behind the photos, coaxes Chloé out from under the stairs, and the bedroom key is in the cardigan pocket.
 - **Chloé:** found here, asleep under the stairs on Mamie's old cardigan. She only comes out for Gaston. In the cardigan pocket: the next key.
 - **Postcard:** Reykjavik, 2013.
 - **Exit:** the bedroom door.
@@ -67,8 +67,8 @@ The treasure hunt goes through the house in this order. The exit of each room le
 ### 3. The bedroom: "Henri" (1981–2001, Céline 43–63)
 - **What it was:** Margot had left for Montréal, and the house was theirs again. Henri did the number puzzle in the morning paper every day and Céline did the crossword, and they cheated for each other. On Sunday mornings he wound up her jewellery box and asked her to dance, in their socks, on the creaky floor. They travelled at last. Henri died in his sleep in the winter of 2001, "on a morning with a beautiful sunrise. He would have liked that."
 - **Atmosphere:** soft lavender walls, the big bed with the quilt Céline sewed from their old shirts, a wardrobe with a suitcase on top, a dressing table with the jewellery box, the nightstand with Henri's last newspaper, the wedding photo above the bed.
-- **Memories:** Henri's last number puzzle, half done; their song on the jewellery box; the wedding photo (June 1960); the suitcase with stickers from their trips.
-- **Puzzles:** finish Henri's number square (sudoku) to read the code for his watch box; play their song on the jewellery box (a logic note about the order of the symbols); Chloé fetches what rolled under the bed; the door opens with the year on the wedding photo.
+- **Memories:** their song on the jewellery box; the suitcase with stickers from their trips; Henri's last number puzzle, half done. The wedding photo (June 1960) hangs above the bed.
+- **Puzzles (as built):** Chloé fetches the note that rolled under the bed; it gives the order of their song (a logic note) for the jewellery box, which holds the suitcase key; the suitcase note sends you to the wardrobe, which opens with the year on the wedding photo; Henri's newspaper is in his jacket; finish his number square and its shaded squares open the nightstand drawer with the bedroom key.
 - **Chloé:** crawls under the bed where nobody else fits.
 - **Postcard:** Santorini, 1994.
 - **Exit:** the stairs down to the living room.
@@ -76,24 +76,24 @@ The treasure hunt goes through the house in this order. The exit of each room le
 ### 4. The living room: "Margot" (1963–1981, Céline 25–43)
 - **What it was:** the family years. Records every Sunday, Margot's piano lessons (she hated them, then loved them), birthday cakes, forts made of sofa cushions, stories under the reading lamp, the bead necklace Margot made for her mother, the trip to Marrakech.
 - **Atmosphere:** the big windows to the sea, the record player, the bookshelf, the armchair, the monstera Céline grew from a cutting, family photos on the walls.
-- **Memories:** Sunday records; the birthday photos (count the candles); the reading-lamp rules for story time; Margot's bead necklace; her teddy bear.
-- **Puzzles:** a pattern (the bead necklace with beads missing); the lamps for story time (a logic note: which lamps on, which off); count the candles on Margot's birthday cakes; put the records back in order; Chloé sniffs Margot's teddy and finds her old hiding place.
+- **Memories:** the reading-lamp rules for story time (by Margot, aged seven); Sunday records (Margot's note in her hiding place); the birthdays in this room.
+- **Puzzles (as built):** Chloé wriggles under the rug for Margot's bead box (a pattern with beads missing); the story-time lamps (a logic note: which on, which off) open a cubby with Margot's teddy; Chloé sniffs the teddy and finds Margot's hiding place behind the books; put Papa's Sunday records in order (a logic note) for the key.
 - **Postcard:** Marrakech, 1979.
 - **Exit:** the garden doors.
 
 ### 5. The garden: "The first years" (1960–1963, Céline 22–25)
 - **What it was:** they married on 18 June 1960, right here, under a lemon tree so small it needed a stick to stand up. Henri painted the shed blue, built the bench, dug the vegetable beds. Honeymoon in Lisbon. Margot on the way.
 - **Atmosphere:** early light on the dew, the lemon tree (big now), the rose arch, vegetable beds, a washing line, the garden table with two chairs, the bird bath, the sundial, the blue shed at the end.
-- **Memories:** the wedding under the lemon tree; the seed packets and what was planted when; the sundial Henri set "to our time"; the first lemon.
-- **Puzzles:** a pattern in the vegetable beds; the sundial (a time riddle); seed packets in planting order; watering the thirsty lemon tree; Chloé digs where something is buried (after a drink from her water bowl).
+- **Memories:** the wedding under the lemon tree ("our time"); the first spring's seed jars, in sowing order; the first lemon.
+- **Puzzles (as built):** set the sundial to "our time" (a quarter to eleven); the seed jars in sowing order (a logic note); a drink of water for Chloé, then she digs under the roses and finds the first-lemon note; the garden table drawer opens with things to count (daisies, birds in the picture, chairs at the table).
 - **Postcard:** Lisbon, 1960.
 - **Exit:** the blue shed door.
 
 ### 6. The shed: "The girl at the flower stall" (1955–1960, Céline 17–22)
 - **What it was:** Céline worked at her mother's flower stall at the market around the corner. A young sailor bought one sunflower every Saturday for a year. "I thought he had a lot of vases. He had one. He was working up his courage." When he finally asked, it was to watch the sunrise on the beach. Then he sailed away for months and sent postcards.
 - **Atmosphere:** the old wooden flower cart with the painted sign "ROSE · FLEURS", zinc flower buckets, the old scales and weights, Céline's delivery bicycle with its basket, her father's tools on a pegboard, the chalk price board, cobwebs lit gold.
-- **Memories:** the price board (one sunflower, every Saturday); the scales ("Maman weighed everything twice"); the delivery rounds on the bicycle; Henri's letters from the sea.
-- **Puzzles:** sums on the price board; a balance/logic riddle with the weights; turn the pieces of the stall sign; the bicycle lock; Chloé squeezes behind the workbench; oil for the rusty latch.
+- **Memories:** the price board (one sunflower, every Saturday); Maman's scales and weights; Henri's letters from the sea.
+- **Puzzles (as built):** turn the tiles of the market picture; the sunflower sum (52 Saturdays, then the 18th) opens the bicycle lock; Chloé's brush is in the basket, and once her fringe is out of her eyes she squeezes under the workbench for Maman's weights riddle (small, middle, big = 2, 3, 6), which opens the drawer with the side door key.
 - **Postcard:** Kyoto, 1958 (from Henri, to "the girl at the flower stall").
 - **Exit:** the side door to the front garden.
 
@@ -101,7 +101,7 @@ The treasure hunt goes through the house in this order. The exit of each room le
 - **What it was:** Céline was born in this house. Her father left for the sea before dawn, and every morning little Céline ran down the path to the beach to wave at his boat as the sun came up. Her mother's roses by the gate. The hopscotch she chalked on the path. The swing on the old pine. At ten she buried a biscuit tin under the rose bush, full of treasures.
 - **Atmosphere:** a white picket fence, the garden gate, the letterbox, the rose bushes, the chalk hopscotch, the swing, the path that runs down to the beach, and at the end of the street, the market's awnings and the sea. The sky is gold now.
 - **Memories:** running to the beach; the hopscotch; her mother's roses; the time capsule.
-- **Puzzles:** a hopscotch pattern; the letterbox; Chloé digs up the time capsule under the rose bush (on her leash, because this is the street side); the gate.
+- **Puzzles (as built):** a hopscotch number pattern; the letterbox (house number 12, then the last hopscotch number, 22) holds Chloé's leash; on her leash she digs up the time capsule under the rose bush; the gate opens with the year the tin was buried (1938 + 10 = 1948).
 - **The ending:** the time capsule holds little Céline's treasures from 1948 (a shell, a marble, a drawing of the sun) and one new envelope, added last spring: the last letter. Juliette opens the gate as the sun clears the sea.
 
 ## Chloé

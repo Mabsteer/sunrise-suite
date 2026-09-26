@@ -3,24 +3,82 @@
   "chapters": [
     {"room": "kitchen", "title": "Mornings with Chloé", "years": "2015 - 2025",
      "intro": "Mamie's last years: the sunrise walk, the market, coffee at this table.",
-     "outro": "The door to the hall swings open. Somewhere a floorboard creaks."},
+     "outro": "The door to the hall swings open. Somewhere a floorboard creaks.",
+     "memories": [
+       {"id": "kitchen_welcome", "title": "Welcome home",
+        "text": "Ma chérie Juliette,\nWelcome home. Yes, home: the house is yours now.\nYou know I can't give anything without a riddle, so I made you one last treasure hunt, through the house and back through my life.\nThe first one is easy. My Saturday market list, the same every week: 3 lemons, 1 little cheese for Chloé, 7 peaches. The kitchen drawers open with my list, in that order.\nTake your time. The sun isn't up yet.\nMamie"},
+       {"id": "kitchen_chloe", "title": "Look after Chloé",
+        "text": "Juliette, one more thing, the most important one. Chloé will be hiding somewhere in the house. She does that when she misses someone. She's shy the first time, but she can never resist Gaston, her squeaky seagull.\nPlease look after her for me. Breakfast at 8, and she likes to sleep where the sun falls on the floor.\nMamie"},
+       {"id": "kitchen_tart", "title": "The lemon tart",
+        "text": "Lemon tart, the one you always ask for.\nThree lemons from the market (never from the supermarket, they sulk), butter, sugar, eggs, and patience.\nThe secret is to take it out while the middle still trembles a little. Like me on the scales at the doctor's.\nMake it for someone. It tastes better that way."}
+     ]},
     {"room": "hall", "title": "The summers with Juliette", "years": "2001 - 2013",
      "intro": "Every July: a bucket, the 7:15 bus, and a pencil mark on the door frame.",
-     "outro": "Chloé trots ahead to the bedroom door, looking back to see if you follow."},
+     "outro": "Chloé trots ahead to the bedroom door, looking back to see if you follow.",
+     "memories": [
+       {"id": "hall_marks", "title": "The pencil marks",
+        "text": "Every first day of summer you stood against the door frame and I drew a line with your age next to it. Every summer you stood on your toes, and every summer I pretended not to see.\nThe console drawer opens with the three lowest marks, read from the floor up.\nMamie"},
+       {"id": "hall_bus", "title": "The 7:15 bus",
+        "text": "Every summer morning we ran for the first bus to the big beach. It left at a quarter past seven, and you would only sit behind the driver.\nThe old clock stopped the summer you stopped coming every year. Set it to our bus again and see what it has kept for you."},
+       {"id": "hall_photos", "title": "Our summers",
+        "text": "Our summers, on the photo ledge. I keep them in order, oldest first, and a small white dog keeps knocking them over.\nThe sandcastle {shell} is the first one. Learning to swim {wave} comes right after it. The red bicycle {heart} is not next to the swimming one.\nAnd the crab {star}? He pinched you. He goes wherever there's room."},
+       {"id": "hall_shoebox", "title": "The shoebox",
+        "text": "Found in the pocket of Mamie's old cardigan, under Chloé:\n\"I kept every treasure hunt I ever made you, in the shoebox on top of the wardrobe. When this one is over, have a look. Some of them are very hard. You were very clever, even at six.\""}
+     ]},
     {"room": "bedroom", "title": "Henri", "years": "1981 - 2001",
      "intro": "The house was quiet again. Number puzzles, dancing in socks, and trips at last.",
-     "outro": "Down to the living room, where the records are."},
+     "outro": "Down to the living room, where the records are.",
+     "memories": [
+       {"id": "bedroom_song", "title": "Our song",
+        "text": "On Sunday mornings Henri wound up my jewellery box and asked me to dance, in our socks, on the creaky floor. Our song has four notes: {heart} {sun} {star} {wave}, but not in that order.\nIt starts with the {heart}, of course. The {sun} comes right before the {star}. And the {wave} never comes last."},
+       {"id": "bedroom_suitcase", "title": "The suitcase",
+        "text": "Every sticker on this suitcase is a place where we watched the sun come up. Santorini was the best one; Henri did his number puzzle by torchlight on the way up.\nHis good jacket, the one from our wedding, still hangs in the wardrobe. The wardrobe opens with the year of the wedding. It's on our photo above the bed."},
+       {"id": "bedroom_numbers", "title": "Henri's last puzzle",
+        "text": "Every morning Henri did the number puzzle and I did the crossword, and we cheated for each other. This was his last one, and he left it half done. I never had the heart to finish it. Thank you for finishing it for him.\nThe squares he shaded, read like a book, open his nightstand drawer."}
+     ]},
     {"room": "lounge", "title": "Margot", "years": "1963 - 1981",
      "intro": "The family years: Sunday records, birthday cakes and stories under the lamp.",
-     "outro": "The garden doors open onto dew and birdsong."},
+     "outro": "The garden doors open onto dew and birdsong.",
+     "memories": [
+       {"id": "lounge_lamps", "title": "Story time",
+        "text": "The rules for story time, written by Margot, aged seven:\nThe {star} lamp is ON, so nobody is scared.\nThe {sun} lamp is OFF, because it's night.\nThe {shell} lamp does the same as the {star} lamp.\nThe {wave} lamp does the opposite of the {shell} lamp.\n(Papa must read the voices properly.)"},
+       {"id": "lounge_records", "title": "Sunday records",
+        "text": "Margot's secret hiding place, behind the books! A note in her round handwriting:\n\"Papa's Sunday records, the way he always plays them: the {star} is always last, for dancing. The {sun} comes right after the {wave}. The {heart} is never first, because Maman says it's too sad for the morning.\""},
+       {"id": "lounge_birthdays", "title": "Birthdays",
+        "text": "Margot's birthdays in this room: a cake with too many candles, a fort made of every cushion in the house, and one year a very surprised tortoise.\nShe hated her piano lessons. Then one day she didn't. I never found out why, and I never asked."}
+     ]},
     {"room": "garden", "title": "The first years", "years": "1960 - 1963",
      "intro": "A wedding under a lemon tree so small it needed a stick to stand up.",
-     "outro": "The blue shed smells of wood and old flowers."},
+     "outro": "The blue shed smells of wood and old flowers.",
+     "memories": [
+       {"id": "garden_wedding", "title": "Under the lemon tree",
+        "text": "We married right here on 18 June 1960, under a lemon tree so small it needed a stick to stand up. We said yes at a quarter to eleven; Henri checked his watch, of course.\nThe next day he set the sundial to that moment. He called it \"our time\"."},
+       {"id": "garden_seeds", "title": "The first spring",
+        "text": "Our first spring, the seed jars, in the order we sowed them:\nThe beans {leaf} went in first, Henri insisted. The tomatoes {heart} went in right before the sunflowers {sun}. The radishes {shell} were not last; they never are, they're too impatient."},
+       {"id": "garden_lemon", "title": "The first lemon",
+        "text": "The first lemon from our tree, summer 1961. It was tiny and very sour and we ate it anyway, one half each.\nThe garden table drawer opens with the daisies in my vase, then the birds in the picture on the trellis, then how many chairs we had at that table."}
+     ]},
     {"room": "shed", "title": "The girl at the flower stall", "years": "1955 - 1960",
      "intro": "One sunflower, every Saturday, for a whole year.",
-     "outro": "The side door leads round to the front of the house, where it all began."},
+     "outro": "The side door leads round to the front of the house, where it all began.",
+     "memories": [
+       {"id": "shed_price", "title": "One sunflower",
+        "text": "Maman's price board from the flower stall. A young sailor bought one sunflower every Saturday for a whole year. I thought he had a lot of vases. He had one. He was working up his courage.\nMy bicycle lock opens with how many sunflowers he bought that year, then the day in June we married (the eighteenth, you know that one)."},
+       {"id": "shed_weights", "title": "Maman's scales",
+        "text": "Maman weighed everything twice. She had three weights, and she made me learn them by heart:\nAll three together weigh 11 kilos. The middle one is 1 kilo heavier than the small one. The big one weighs as much as two middle ones.\nThe workbench drawer opens with the small one, the middle one and the big one."},
+       {"id": "shed_letters", "title": "Letters from the sea",
+        "text": "Henri's letters from the sea, tied with string. He wrote about the weather, the food and the other sailors' snoring, and at the end of every single one: \"Keep one sunflower for me.\"\nI kept all of them. The sunflowers didn't last, but the letters did."}
+     ]},
     {"room": "front_garden", "title": "Where it began", "years": "1938 - 1955",
      "intro": "A little girl ran down this path every morning to wave at her father's boat.",
-     "outro": "The gate opens. The sun is up."}
+     "outro": "The gate opens. The sun is up.",
+     "memories": [
+       {"id": "front_running", "title": "Waving at Papa",
+        "text": "Every morning Papa left for the sea before dawn, and every morning I ran down this path in my nightdress to wave at his boat as the sun came up. That's where it started, ma puce: me and the sunrise.\nMaman kept the leash for her old dog in the letterbox. So do I. It opens with our house number, then the last number of my hopscotch game, the one you just finished."},
+       {"id": "front_roses", "title": "Maman's roses",
+        "text": "Maman planted these roses by the gate the year I was born. She said a house should smell nice when you come home, even if you only went to the market."},
+       {"id": "front_capsule", "title": "The time capsule",
+        "text": "A biscuit tin, rusty at the edges. I buried it under Maman's roses when I was ten years old. I was born in 1938, in this very house, so you can work out the year.\nThe gate opens with that year. The last letter is inside the tin, under the shell and the marble."}
+     ]}
   ]
 }

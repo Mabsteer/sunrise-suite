@@ -73,6 +73,7 @@ Keys starting with `_` (like `_help`) are comments and are ignored.
 - **after**: this lock can only be used once all these locks are open (e.g. Chloé only helps after breakfast).
 - **Keys are rewards**: an item of kind `key` must be inside a puzzle (`combo`, `sequence`, `clock`, `switches`, `order`, `sudoku`, `pattern`, `rotate`, `slider`, `tool`, `care`), never in the room or a search spot. The validator checks this for every level.
 - **Clues** can be carried by an item (`"item"`). The clue is then read by looking at that item in the bag.
+- **Memories**: a clue or decoy with `"memory": <id>` is one of Céline's story notes. Leave out `"text"`: it comes from that memory in `data/story.json`, so the words live in one place. Reading it in the story walk puts it in the scrapbook. The validator checks the memory exists.
 - Every lock and every recipe is one **step**. The sunrise progress is `solved steps / all steps`.
 - **companion** (optional): `"chloe"` when Chloé is in the level. Without it, levels have no dog locks (the validator checks).
 - **riddle** (optional, hand-made levels): how hard the notes are, for the par-time check (generated levels take it from `tiers.json`).
@@ -96,7 +97,7 @@ Chloé is found in the hall in walk 1 and then follows Juliette. She sits at the
 Everything she does is an ordinary lock in the level, so the solver, validator, hints and autoplay treat her like any other step. A paw badge marks the spots where she can help. Her sprites are in `assets/sprites/props/chloe/` (drawn by `tools/art/chloe.mjs`); her sounds are `dog_bark`, `dog_squeak`, `dog_dig`, `dog_sniff` and `dog_happy` in `tools/sfx/sfx.json`.
 
 ## `data/story.json`: the chapters of Céline's life
-`chapters`: one per room in route order, `{ "room", "title", "years", "intro", "outro", "memories"?: [ { "id", "title", "text" } ] }`. The scrapbook shows one page per chapter; `memories` are the story notes collected there (see docs/STORY.md).
+`chapters`: one per room in route order, `{ "room", "title", "years", "intro", "outro", "memories"?: [ { "id", "title", "text" } ] }`. The scrapbook shows one page per chapter; `memories` are the story notes collected there (see docs/STORY.md). Each memory is used by exactly one note in that room's story level (`data/levels/story_<room>.json`, and `tutorial.json` for the kitchen); a unit test checks this.
 
 ## `data/daily.json`
 `rooms` rotation, `weekday_tiers` (Sunday first), `streak_rewards` (streak length → decor id).

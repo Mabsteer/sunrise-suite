@@ -97,6 +97,23 @@ static func chapter(room_id: String) -> Dictionary:
 	return {}
 
 
+## A memory (a story note) from data/story.json, by id.
+static func memory(memory_id: String) -> Dictionary:
+	for c: Dictionary in Data.get_dict("story").get("chapters", []):
+		for m: Dictionary in c.get("memories", []):
+			if str(m.get("id", "")) == memory_id:
+				return m
+	return {}
+
+
+## Story notes keep their text in data/story.json (`"memory": id`), so there is only one copy of it.
+static func fill_memories(level: Dictionary) -> void:
+	for key in ["clues", "decoys"]:
+		for c: Dictionary in level.get(key, []):
+			if c.has("memory") and not c.has("text"):
+				c["text"] = str(memory(str(c["memory"])).get("text", ""))
+
+
 ## Builds a main level (cached).
 static func build(level_id: String) -> Dictionary:
 	if _cache.has(level_id):
@@ -110,6 +127,7 @@ static func build(level_id: String) -> Dictionary:
 		if level.is_empty():
 			return {}
 		level["id"] = level_id
+		fill_memories(level)
 		if bool(e.get("companion", false)):
 			level["companion"] = "chloe"
 	else:

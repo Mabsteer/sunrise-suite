@@ -1,0 +1,37 @@
+{
+  "_help": "Story level 5: the garden, 'The first years'. The sundial set to 'our time', the seed jars, a drink for Chloé before she digs, and the first lemon.",
+  "id": "story_garden",
+  "room": "garden",
+  "tier": 5,
+  "seed": 1,
+  "riddle": 3,
+  "par_time": 540,
+  "locks": [
+    {"id": "door", "type": "key", "is_door": true, "host": {"kind": "door"}, "location": "room", "item": "i_key"},
+    {"id": "sundial", "type": "clock", "host": {"kind": "furniture", "furniture": "sundial", "spot": "dial"}, "location": "room",
+     "answer": "10:45", "clues": ["c_wedding"]},
+    {"id": "seeds", "type": "order", "host": {"kind": "prop", "prop": "jar_shelf", "slot": "shed_wall"}, "location": "room",
+     "answer": "leaf,shell,heart,sun", "clues": ["c_seeds"], "config": {"length": 4}},
+    {"id": "thirsty", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_water"},
+    {"id": "roses", "type": "dog", "action": "dig", "host": {"kind": "furniture", "furniture": "flower_bed", "spot": "soil"}, "location": "room",
+     "after": ["thirsty"]},
+    {"id": "table", "type": "combo", "host": {"kind": "furniture", "furniture": "garden_table", "spot": "drawer"}, "location": "room",
+     "answer": "532", "clues": ["c_lemon", "c_daisies", "c_birds"], "config": {"digits": 3}}
+  ],
+  "items": [
+    {"id": "i_water", "type": "water_jug", "location": "seeds"},
+    {"id": "i_key", "type": "old_key", "location": "table"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_wedding", "memory": "garden_wedding", "host": {"kind": "furniture", "furniture": "lemon_tree", "spot": "branches"}, "location": "room", "for": "sundial"},
+    {"id": "c_seeds", "memory": "garden_seeds", "host": {"kind": "prop", "prop": "note"}, "location": "sundial", "for": "seeds"},
+    {"id": "c_lemon", "memory": "garden_lemon", "host": {"kind": "prop", "prop": "note"}, "location": "roses", "for": "table"},
+    {"id": "c_daisies", "host": {"kind": "prop", "prop": "daisy_vase", "slot": "table_2", "count": 5}, "location": "room", "for": "table",
+     "text": "A jam jar of daisies on the garden table."},
+    {"id": "c_birds", "host": {"kind": "prop", "prop": "bird_picture", "slot": "trellis", "count": 3}, "location": "room", "for": "table",
+     "text": "A little painting of birds, hung on the trellis where the real ones sit."}
+  ],
+  "decoys": [],
+  "postcard": {"id": "lisbon", "host": {"kind": "prop", "prop": "postcard"}, "location": "table"}
+}

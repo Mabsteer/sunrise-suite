@@ -99,6 +99,16 @@ func shots() -> Array[Dictionary]:
 				if session.finished:
 					break
 				LevelSolver.apply_goal(session, session.next_goal()), "frames": 300},
+		{"name": "story_bedroom", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_bedroom"), "mode": "test"}, "frames": 40},
+		{"name": "story_lounge", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_lounge"), "mode": "test"}, "frames": 40},
+		{"name": "story_garden", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_garden"), "mode": "test"}, "frames": 40},
+		{"name": "story_shed", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_shed"), "mode": "test"}, "frames": 40},
+		{"name": "story_front_garden", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_front_garden"), "mode": "test"}, "frames": 40},
+		{"name": "story_memory_note", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "test"}, "action": func(s: Node) -> void: s.call("tap", "clue:c_marks"), "frames": 30},
+		{"name": "scrapbook_memories", "screen": "scrapbook", "setup": func() -> void:
+			fake_postcards(3)
+			for m in ["hall_marks", "hall_bus", "kitchen_welcome", "kitchen_chloe"]:
+				GameState.collect_memory(m), "action": func(s: Node) -> void: s.call("show_chapter", "hall"), "frames": 30},
 		{"name": "scrapbook_chapter", "screen": "scrapbook", "setup": func() -> void: fake_postcards(3), "action": func(s: Node) -> void: s.call("show_chapter", "hall"), "frames": 30},
 		{"name": "scrapbook_empty", "screen": "scrapbook", "frames": 30},
 		{"name": "scrapbook_some", "screen": "scrapbook", "setup": func() -> void: fake_postcards(3), "frames": 30},

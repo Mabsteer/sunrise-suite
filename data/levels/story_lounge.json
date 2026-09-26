@@ -1,0 +1,34 @@
+{
+  "_help": "Story level 4: the living room, 'Margot'. Chloé fetches Margot's bead box from under the rug, the story-time lamps, then Chloé follows the smell of Margot's teddy to her old hiding place.",
+  "id": "story_lounge",
+  "room": "lounge",
+  "tier": 4,
+  "seed": 1,
+  "riddle": 3,
+  "par_time": 480,
+  "locks": [
+    {"id": "door", "type": "key", "is_door": true, "host": {"kind": "door"}, "location": "room", "item": "i_key"},
+    {"id": "rug", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "rug", "spot": "rug"}, "location": "room"},
+    {"id": "beads", "type": "pattern", "host": {"kind": "prop", "prop": "bead_box"}, "location": "rug",
+     "answer": "star,star", "config": {"kind": "symbols", "terms": ["shell", "star", "shell", "star", "star", "shell", "star", "star", "star"], "blanks": [7, 8]}},
+    {"id": "lamps", "type": "switches", "host": {"kind": "prop", "prop": "switch_panel", "slot": "wall_door"}, "location": "room",
+     "answer": "0110", "clues": ["c_lamps"], "config": {"symbols": ["sun", "shell", "star", "wave"]}},
+    {"id": "books", "type": "sniff", "host": {"kind": "furniture", "furniture": "bookshelf", "spot": "books"}, "location": "room",
+     "item": "i_teddy"},
+    {"id": "records", "type": "order", "host": {"kind": "furniture", "furniture": "record_cabinet", "spot": "records"}, "location": "room",
+     "answer": "wave,sun,heart,star", "clues": ["c_records"], "config": {"length": 4}}
+  ],
+  "items": [
+    {"id": "i_teddy", "type": "margot_teddy", "location": "lamps"},
+    {"id": "i_key", "type": "brass_key", "location": "records"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_lamps", "memory": "lounge_lamps", "host": {"kind": "prop", "prop": "note"}, "location": "beads", "for": "lamps"},
+    {"id": "c_records", "memory": "lounge_records", "host": {"kind": "prop", "prop": "note"}, "location": "books", "for": "records"}
+  ],
+  "decoys": [
+    {"id": "d_birthdays", "memory": "lounge_birthdays", "host": {"kind": "prop", "prop": "photo_stand", "slot": "credenza_1"}, "location": "room"}
+  ],
+  "postcard": {"id": "marrakech", "host": {"kind": "prop", "prop": "postcard"}, "location": "lamps"}
+}

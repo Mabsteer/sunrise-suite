@@ -1,0 +1,33 @@
+{
+  "_help": "Story level 7: the front garden, 'Where it began'. The hopscotch, the letterbox, Chloé on her leash digging up the time capsule, and the gate. The last letter opens when the gate does.",
+  "id": "story_front_garden",
+  "room": "front_garden",
+  "tier": 7,
+  "seed": 1,
+  "riddle": 3,
+  "par_time": 480,
+  "locks": [
+    {"id": "door", "type": "combo", "is_door": true, "host": {"kind": "door"}, "location": "room",
+     "answer": "1948", "clues": ["c_capsule"], "config": {"digits": 4}},
+    {"id": "hopscotch", "type": "pattern", "host": {"kind": "furniture", "furniture": "hopscotch", "spot": "squares"}, "location": "room",
+     "answer": "16,22", "config": {"kind": "numbers", "terms": ["1", "2", "4", "7", "11", "16", "22"], "blanks": [5, 6]}},
+    {"id": "letterbox", "type": "combo", "host": {"kind": "furniture", "furniture": "letterbox", "spot": "box"}, "location": "room",
+     "answer": "1222", "clues": ["c_running", "c_number"], "config": {"digits": 4}},
+    {"id": "walk", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_leash"},
+    {"id": "roses", "type": "dog", "action": "dig", "host": {"kind": "furniture", "furniture": "roses", "spot": "soil"}, "location": "room",
+     "after": ["walk"]}
+  ],
+  "items": [
+    {"id": "i_leash", "type": "leash", "location": "letterbox"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_running", "memory": "front_running", "host": {"kind": "prop", "prop": "note"}, "location": "hopscotch", "for": "letterbox"},
+    {"id": "c_number", "host": {"kind": "furniture", "furniture": "letterbox", "spot": "number"}, "location": "room", "for": "letterbox",
+     "text": "The house number, painted on the letterbox by Céline's father: 12."},
+    {"id": "c_capsule", "memory": "front_capsule", "host": {"kind": "prop", "prop": "note"}, "location": "roses", "for": "door"}
+  ],
+  "decoys": [
+    {"id": "d_roses", "memory": "front_roses", "host": {"kind": "furniture", "furniture": "roses", "spot": "flowers"}, "location": "room"}
+  ]
+}

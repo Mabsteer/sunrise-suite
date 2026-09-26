@@ -85,3 +85,8 @@ One line per decision: what, and why.
 - Care tasks are *given to Chloé* (select item, tap her), not used on a spot, so she's the one who has to be looked after. Her care close-up says what she wants, and she drops what she was guarding once she's happy (care locks can hold keys: looking after her is a puzzle).
 - Sniff locks sit only on search spots (the smell is where you can't see anything), at most one per level, so they stay special.
 - Chloé never walks while "reduce motion" is on; she just stays in her spot and the result appears.
+- Walk 1 is hand-made (F6): data/levels/story_<room>.json, one per room, built from STORY.md. Walks 2-3, replays, Daily and Endless stay generated. Each story level is 5-7 steps and every note in it is a memory that also holds the riddle to the next step.
+- Memory texts live only in data/story.json; a note in a level points at one with "memory" and the game fills in the text. Reading a memory in the story walk keeps it in the scrapbook (with a small "a memory for the scrapbook" toast). Replays of story rooms are generated, so they don't hand out memories again.
+- Story-level par times are about 1.5-2x the solver's estimate (the same margin as the generated tiers); validate_levels fails a hand-made level whose par is under its estimate + 10%.
+- The pencil marks in the hall now read 5-15 (Juliette first came at five, STORY.md), so the console code is 579.
+- Keys stay rewards in the story levels too, so the story sometimes bends: Gaston is behind the summer photos, the leash is kept in the letterbox ("Maman kept the leash for her old dog in the letterbox. So do I."), Henri's newspaper is in his wedding jacket.

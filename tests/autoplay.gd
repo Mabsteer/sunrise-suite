@@ -34,7 +34,7 @@ func _run() -> void:
 				levels.append(LevelGenerator.generate(room, tier, 5000 + tier * 13 + s * 101, {"companion": s % 2 == 1}))
 	levels.append(Campaign.build_endless(2, 99))
 	for e in Campaign.levels():
-		if e.has("postcard"):
+		if (e.has("postcard") or e.has("level_file")) and str(e["id"]) != "w1_kitchen":
 			levels.append(Campaign.build(str(e["id"])))
 	for level in levels:
 		if level.is_empty():

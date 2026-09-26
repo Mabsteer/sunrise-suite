@@ -24,11 +24,10 @@
     {"a": "i_flashlight_empty", "b": "i_batteries", "result": "i_flashlight"}
   ],
   "clues": [
-    {"id": "c_welcome", "host": {"kind": "prop", "prop": "note", "slot": "island_1"}, "location": "room", "for": "drawers",
-     "text": "Ma chérie Juliette,\nWelcome home. Yes, home: the house is yours now.\nYou know I can't give anything without a riddle, so I made you one last treasure hunt, through the house and back through my life.\nThe first one is easy. My Saturday market list, the same every week: 3 lemons, 1 little cheese for Chloé, 7 peaches. The kitchen drawers open with my list, in that order.\nTake your time. The sun isn't up yet.\nMamie"}
+    {"id": "c_welcome", "memory": "kitchen_welcome", "host": {"kind": "prop", "prop": "note", "slot": "island_1"}, "location": "room", "for": "drawers"}
   ],
   "decoys": [
-    {"id": "d_chloe", "host": {"kind": "prop", "prop": "note"}, "location": "drawers",
-     "text": "Juliette, one more thing, the most important one. Chloé will be hiding somewhere in the house. She does that when she misses someone. She's shy the first time, but she can never resist Gaston, her squeaky seagull.\nPlease look after her for me. Breakfast at 8, and she likes to sleep where the sun falls on the floor.\nMamie"}
+    {"id": "d_chloe", "memory": "kitchen_chloe", "host": {"kind": "prop", "prop": "note"}, "location": "drawers"},
+    {"id": "d_tart", "memory": "kitchen_tart", "host": {"kind": "prop", "prop": "open_book"}, "location": "sink"}
   ]
 }

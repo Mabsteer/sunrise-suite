@@ -86,6 +86,10 @@ func _run() -> void:
 			var r := LevelValidator.validate(built)
 			if not bool(r["ok"]):
 				failures.append("hand-made level %s: %s" % [entry["id"], ", ".join(r["errors"])])
+			elif float(built.get("par_time", 0)) < float(r["estimate"]) * 1.1:
+				failures.append("hand-made level %s: par_time %ds is below its time estimate %ds + 10%%" % [entry["id"], int(built.get("par_time", 0)), int(r["estimate"])])
+			else:
+				print("  %s: %d steps, estimate %ds, par %ds" % [entry["id"], int(r["steps"]), int(r["estimate"]), int(built.get("par_time", 0))])
 	for d in 14:
 		var key := Daily.date_key(Time.get_date_dict_from_unix_time(int(Time.get_unix_time_from_system()) + d * 86400))
 		if Campaign.build_daily(key).is_empty():

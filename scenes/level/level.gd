@@ -171,6 +171,7 @@ func tap(key: String) -> void:
 			closeup.show_thing(kind, id)
 			if kind == "clue":
 				session.see_clue(id)
+			_keep_memory(kind, id)
 		"postcard":
 			take("postcard", id, _hotspot_center(key))
 		"dog":
@@ -240,6 +241,7 @@ func take(kind: String, id: String, from_global: Vector2 = Vector2.INF) -> void:
 			closeup.show_thing(kind, id)
 			if kind == "clue":
 				session.see_clue(id)
+			_keep_memory(kind, id)
 		"postcard":
 			if session.take_postcard():
 				AudioManager.play_sfx("postcard_found")
@@ -868,6 +870,16 @@ static func _vec(a: Variant) -> Vector2:
 	if a is Array and (a as Array).size() >= 2:
 		return Vector2(float(a[0]), float(a[1]))
 	return Vector2.ZERO
+
+
+## A story note read in the main story goes into the scrapbook (its chapter page).
+func _keep_memory(kind: String, id: String) -> void:
+	var thing: Dictionary = (session.clues if kind == "clue" else session.decoys).get(id, {})
+	var memory_id := str(thing.get("memory", ""))
+	if memory_id == "" or mode != "main":
+		return
+	if GameState.collect_memory(memory_id):
+		toast(tr("MEMORY_KEPT"), 2.5)
 
 
 # ======================================================================= Chloé

@@ -23,6 +23,12 @@ static func validate(level: Dictionary, tier_cfg: Dictionary = {}) -> Dictionary
 	var clue_ids := {}
 	for c: Dictionary in level.get("clues", []):
 		clue_ids[str(c["id"])] = c
+	for key in ["clues", "decoys"]:
+		for c: Dictionary in level.get(key, []):
+			if c.has("memory") and Campaign.memory(str(c["memory"])).is_empty():
+				errors.append("%s: unknown memory '%s' (data/story.json)" % [c.get("id", "?"), c["memory"]])
+			elif str(c.get("text", "")) == "":
+				errors.append("%s has no text" % c.get("id", "?"))
 
 	# --- exactly one door
 	var doors := 0

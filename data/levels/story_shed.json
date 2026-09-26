@@ -1,0 +1,34 @@
+{
+  "_help": "Story level 6: the shed, 'The girl at the flower stall'. The stall sign in pieces, the sunflower sums, Chloé's fringe, and Maman's weights.",
+  "id": "story_shed",
+  "room": "shed",
+  "tier": 6,
+  "seed": 1,
+  "riddle": 3,
+  "par_time": 480,
+  "locks": [
+    {"id": "door", "type": "key", "is_door": true, "host": {"kind": "door"}, "location": "room", "item": "i_key"},
+    {"id": "sign", "type": "rotate", "host": {"kind": "prop", "prop": "tile_frame", "slot": "wall_mid"}, "location": "room",
+     "answer": "solved", "config": {"size": 3, "picture": "puzzles/picture_market.svg"}},
+    {"id": "bicycle", "type": "combo", "host": {"kind": "furniture", "furniture": "bicycle", "spot": "lock"}, "location": "room",
+     "answer": "5218", "clues": ["c_price"], "config": {"digits": 4}},
+    {"id": "fringe", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_brush"},
+    {"id": "under", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "workbench", "spot": "under"}, "location": "room",
+     "after": ["fringe"]},
+    {"id": "drawer", "type": "combo", "host": {"kind": "furniture", "furniture": "workbench", "spot": "left_drawer"}, "location": "room",
+     "answer": "236", "clues": ["c_weights"], "config": {"digits": 3}}
+  ],
+  "items": [
+    {"id": "i_brush", "type": "dog_brush", "location": "bicycle"},
+    {"id": "i_key", "type": "shell_key", "location": "drawer"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_price", "memory": "shed_price", "host": {"kind": "prop", "prop": "note"}, "location": "sign", "for": "bicycle"},
+    {"id": "c_weights", "memory": "shed_weights", "host": {"kind": "prop", "prop": "note"}, "location": "under", "for": "drawer"}
+  ],
+  "decoys": [
+    {"id": "d_letters", "memory": "shed_letters", "host": {"kind": "prop", "prop": "note"}, "location": "drawer"}
+  ],
+  "postcard": {"id": "kyoto", "host": {"kind": "prop", "prop": "postcard"}, "location": "bicycle"}
+}

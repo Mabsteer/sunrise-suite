@@ -87,15 +87,15 @@ save("rooms/hall_light.svg", lightLayer(
 const shadow = (cx, cy, rx, ry, op = 0.18) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="#3b2e3a" opacity="${op}"/>`;
 
 // Height marks on the left side of the bedroom door frame: pencil lines with Juliette's ages.
-// Heights (px above the floor): 3 → 280, 5 → 325, 7 → 360, 9 → 392, 12 → 443, 15 → 478.
-export const HEIGHTS = [[3, 280], [5, 325], [7, 360], [9, 392], [12, 443], [15, 478]];
+// Heights (px above the floor): 5 → 290, 7 → 330, 9 → 368, 11 → 404, 13 → 442, 15 → 478 (she first came at five).
+export const HEIGHTS = [[5, 290], [7, 330], [9, 368], [11, 404], [13, 442], [15, 478]];
 const marks = HEIGHTS.map(([age, h]) => {
   const y = 520 - h;
   return `<path d="M4 ${y} L40 ${y + 1}" stroke="#6b5a66" stroke-width="3" stroke-linecap="round"/>${number(age, age >= 10 ? 8 : 16, y - 27, 21, "#3e3570", 3)}`;
 }).join("\n  ");
 save("props/hall/height_marks.svg", svg(56, 520, `  <rect x="0" y="0" width="56" height="520" fill="#fffbf5"/>
   <rect x="50" y="0" width="6" height="520" fill="#e9d6b8"/>
-  ${marks}`, "Height marks in pencil on the bedroom door frame, with Juliette's ages 3, 5, 7, 9, 12 and 15."));
+  ${marks}`, "Height marks in pencil on the bedroom door frame, with Juliette's ages 5, 7, 9, 11, 13 and 15."));
 
 save("props/hall/coat_rack.svg", svg(200, 530, `  ${shadow(100, 522, 70, 7)}
   <rect x="94" y="30" width="12" height="490" rx="5" fill="#7a5134"/>

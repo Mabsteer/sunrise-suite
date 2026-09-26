@@ -9,12 +9,12 @@
       "star_gate": 0,
       "levels": [
         {"id": "w1_kitchen", "room": "kitchen", "tier": 1, "seed": 2101, "level_file": "tutorial", "chapter": "kitchen"},
-        {"id": "w1_hall", "room": "hall", "tier": 2, "seed": 2102, "postcard": "reykjavik", "chapter": "hall", "find_dog": true},
-        {"id": "w1_bedroom", "room": "bedroom", "tier": 3, "seed": 2103, "postcard": "santorini", "chapter": "bedroom", "companion": true},
-        {"id": "w1_lounge", "room": "lounge", "tier": 4, "seed": 2104, "postcard": "marrakech", "chapter": "lounge", "companion": true},
-        {"id": "w1_garden", "room": "garden", "tier": 5, "seed": 2105, "postcard": "lisbon", "chapter": "garden", "companion": true},
-        {"id": "w1_shed", "room": "shed", "tier": 6, "seed": 2106, "postcard": "kyoto", "chapter": "shed", "companion": true},
-        {"id": "w1_front_garden", "room": "front_garden", "tier": 7, "seed": 2107, "chapter": "front_garden", "finale": true, "companion": true}
+        {"id": "w1_hall", "room": "hall", "tier": 2, "seed": 2102, "level_file": "story_hall", "postcard": "reykjavik", "chapter": "hall", "find_dog": true},
+        {"id": "w1_bedroom", "room": "bedroom", "tier": 3, "seed": 2103, "level_file": "story_bedroom", "postcard": "santorini", "chapter": "bedroom", "companion": true},
+        {"id": "w1_lounge", "room": "lounge", "tier": 4, "seed": 2104, "level_file": "story_lounge", "postcard": "marrakech", "chapter": "lounge", "companion": true},
+        {"id": "w1_garden", "room": "garden", "tier": 5, "seed": 2105, "level_file": "story_garden", "postcard": "lisbon", "chapter": "garden", "companion": true},
+        {"id": "w1_shed", "room": "shed", "tier": 6, "seed": 2106, "level_file": "story_shed", "postcard": "kyoto", "chapter": "shed", "companion": true},
+        {"id": "w1_front_garden", "room": "front_garden", "tier": 7, "seed": 2107, "level_file": "story_front_garden", "chapter": "front_garden", "finale": true, "companion": true}
       ]
     },
     {
