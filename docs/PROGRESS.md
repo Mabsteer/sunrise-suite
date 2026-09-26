@@ -15,8 +15,32 @@ Live build: https://mabsteer.github.io/sunrise-suite/
 - [x] **M9 Audio**: 37 jsfxr sounds (music-box notes per symbol, clock ticks, switches, tiles, key/tool/search, purchase, streak...), music per screen (menu, rooms, hub, daily), one-shot sunrise stinger that ducks the music, Settings panel (4 volume sliders, fullscreen, timer, reduce motion, text size, credits, start over) from the menu and pause menu; audio test checks every sound name used in code exists
 - [x] **M10 Onboarding & polish**: hand-made tutorial level 1 with a step-by-step guide (data/tutorial.json), dust motes in the sunbeams, settle-in zoom, door glow + lean toward the door on completion, bouncing boxes, rotate-your-phone hint, Esc everywhere, sky shader limited to window areas (web performance), README with recipes
 
+## v2: playtest feedback (2026-09-26)
+The owner's playtest feedback changes the direction: difficulty must come from thinking, not searching; more kinds of puzzles; one route through a whole house; a new story (Juliette inherits her late grandmother Céline's house) told through the notes; Chloé the dog as a helper; zooming. Work in this order, each milestone ends with `bash tools/check.sh`, commit, push and a green CI run.
+
+- [x] **F1 Bug**: the missing `NOTHING_HIDDEN_SHORT` text and the `NOTHING_HIDDEN` placeholder. New unit test: every text key the code uses exists, and keys formatted with `%` have a placeholder.
+- [ ] **F2 Story**: `docs/STORY.md` (premise, people, timeline, one life period per room, the notes as memories with riddles woven in, Chloé, the postcards, the scrapbook, the last letter). Rewrite the postcards, the final letter and every "Grandma June / penthouse" text to fit.
+- [ ] **F3 Puzzle system and difficulty**
+  - New locks you *do* something with: **order** (arrange things, solved with a logic note), **sudoku** (small 4×4 number square), **pattern** (what comes next?), **rotate** (turn the tiles until the picture is right), **tool** (use an item on something you can see).
+  - Riddle notes: the code is never written plainly above tier 1. Digits come from facts, from counting things in the room (jars of shells, birds in a painting...), from sums, and from logic statements (for symbol, lamp and order locks).
+  - Puzzles build on each other: a solved puzzle can reveal the code for the next one.
+  - A key is always the reward of a solved puzzle, never lying around.
+  - Hiding is no longer a difficulty knob: at most one search spot per level, never holding a key.
+  - `tiers.json` reworked around thinking: number of puzzles, which puzzle types, riddle depth, chaining, puzzle size. Validator, solver, hints, autoplay and par-time model updated. `DATA_FORMAT.md` documents every new lock.
+- [ ] **F4 The house route**
+  - Seven rooms in one route: kitchen → hall → bedroom → living room → garden → shed → front garden. Five new rooms (hall, bedroom, garden, shed, front garden) with their own art, furniture and puzzle flavours; the kitchen and living room are adapted; the study retires.
+  - The campaign becomes walks through the house: walk 1 is the story, walks 2 and 3 are Mamie's old treasure hunts (generated, harder). Each room's exit leads to the next room, and the sunrise spans the whole walk.
+  - Level select shows the route; chapter cards at the start and end of each story room; the scrapbook becomes Céline's life (memories and postcards per period, the last letter at the end).
+  - Daily, Endless and Replay use all seven rooms. Save migration for old progress.
+- [ ] **F5 Chloé**
+  - White Maltese sprites (sit, walk, sniff, dig, sleep). She is found in the hall, then follows Juliette and is visible in every later room (and in the sunroom).
+  - Dog actions in levels: fetch (under furniture, through small gaps), dig, sniff (give her a scent to follow), bark at what matters, and care tasks (food, water, leash, her toy). Generator support and `DATA_FORMAT.md`.
+- [ ] **F6 Story levels**: the seven hand-made story levels with the memories and riddles from `STORY.md`, a new kitchen tutorial, postcards in rooms 2–6, and the last letter at the front garden gate.
+- [ ] **F7 Zoom**: pinch and mouse-wheel zoom, drag to pan, zoom buttons, double-tap to zoom in on a spot.
+- [ ] **F8 Polish and summary**
+
 ## Next
-- v1 is done (see the summary at the end). Ideas for later: more rooms, a proper Suno soundtrack (docs/SUNO_PROMPTS.md), more postcards.
+- F2: write `docs/STORY.md`.
 
 ## Known issues
 - Portrait phones show a "turn your phone sideways" card (it can be dismissed); the game is designed for landscape.

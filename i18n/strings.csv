@@ -33,7 +33,8 @@ SEARCH,Search
 INSIDE,Inside you find:
 INSIDE_REVEAL,You find %s!
 INSIDE_EMPTY,Nothing else in here.
-NOTHING_HIDDEN,Nothing hidden here.
+NOTHING_HIDDEN,You check %s. Nothing hidden there.
+NOTHING_HIDDEN_SHORT,Nothing hidden there.
 POSTCARD,Postcard
 POSTCARD_FOUND_TITLE,A postcard from Grandma!
 POSTCARD_FOUND_TEXT,"A postcard from %s! It's been added to your scrapbook."
