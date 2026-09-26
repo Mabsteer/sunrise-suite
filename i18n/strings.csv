@@ -245,3 +245,11 @@ DEV_UNLOCK_ALL,Unlock every room
 DEV_RESET,Reset progress
 DEV_AUDIO,Audio
 DEV_RESUME_AUDIO,Wake up audio
+NOTEBOOK,Mamie's notebook
+NOTEBOOK_NOTES,Notes
+NOTEBOOK_HINTS,Hints
+NOTEBOOK_EMPTY,The notes you read are tucked in here so you can read them again.
+NOTEBOOK_HINT_INTRO,Stuck? Mamie always had a little nudge ready.
+NOTEBOOK_ASK,Ask Mamie for a hint
+NOTEBOOK_ASK_MORE,Tell me a little more
+BAG,Your bag (tap to fold it away)

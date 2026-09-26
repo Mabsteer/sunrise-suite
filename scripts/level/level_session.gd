@@ -48,6 +48,8 @@ var finished := false
 var postcard_taken := false
 ## Is Chloé with Juliette in this room? (From the start with "companion": "chloe", or once she's found.)
 var dog_present := false
+## Notes Juliette took along into Mamie's notebook ("clue:<id>" / "decoy:<id>"): they leave their spot.
+var notes_taken: Dictionary = {}
 
 var _hint_target := ""
 var _hint_level := 0
@@ -188,10 +190,10 @@ func things_at(location: String) -> Array[Dictionary]:
 		if str(items[id].get("location", "room")) == location:
 			out.append({"kind": "item", "id": id})
 	for id: String in clues.keys():
-		if str(clues[id].get("location", "room")) == location and str(clues[id].get("item", "")) == "":
+		if str(clues[id].get("location", "room")) == location and str(clues[id].get("item", "")) == "" and not notes_taken.has("clue:" + id):
 			out.append({"kind": "clue", "id": id})
 	for id: String in decoys.keys():
-		if str(decoys[id].get("location", "room")) == location:
+		if str(decoys[id].get("location", "room")) == location and not notes_taken.has("decoy:" + id):
 			out.append({"kind": "decoy", "id": id})
 	var pc: Dictionary = level.get("postcard", {})
 	if not pc.is_empty() and str(pc.get("location", "room")) == location:
@@ -222,6 +224,11 @@ func pick_up(item_id: String) -> bool:
 		if str(clues[c].get("item", "")) == item_id:
 			see_clue(c)
 	return true
+
+
+## A paper note goes into Mamie's notebook once it's read (it leaves its spot or container).
+func take_note(kind: String, id: String) -> void:
+	notes_taken[kind + ":" + id] = true
 
 
 func see_clue(clue_id: String) -> void:

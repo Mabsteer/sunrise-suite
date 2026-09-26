@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Juliette's bag (opens and closes the item bar). -->
+  <path d="M22 20 C22 10 42 10 42 20" fill="none" stroke="#7a5134" stroke-width="4" stroke-linecap="round"/>
+  <path d="M10 22 H54 L50 56 Q49 60 45 60 H19 Q15 60 14 56 Z" fill="#c8674a"/>
+  <path d="M10 22 H54 L53 30 H11 Z" fill="#e08e6d"/>
+  <rect x="28" y="30" width="8" height="8" rx="2" fill="#d4a24c"/>
+  <path d="M16 46 H48" stroke="#a8744a" stroke-width="2" stroke-linecap="round"/>
+</svg>

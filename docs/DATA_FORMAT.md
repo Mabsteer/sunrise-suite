@@ -20,7 +20,8 @@ Keys starting with `_` (like `_help`) are comments and are ignored.
 | `surface_slots` | Where small props or items stand: `{ id, anchor: [x, y] (bottom-centre), max: [w, h], name }` |
 
 ## `data/props.json`: props levels can place
-`{ name, sprite, sprite_open?, sprite_count?, size: [w,h], place: "wall"|"wall_small"|"surface", locks?: [types], tools?: [...], clue?: bool, reveal? }`
+`{ name, sprite, sprite_open?, sprite_count?, size: [w,h], place: "wall"|"wall_small"|"surface", locks?: [types], tools?: [...], clue?: bool, takeable?: bool, reveal? }`
+- **takeable**: a paper note. Once read it goes into Mamie's notebook and leaves its spot. Other clue carriers (pencil marks, a photo) stay in the room, but what they say is written in the notebook too.
 - **Counter props** (`shell_jar`, `daisy_vase`, `boat_photo`, `bird_picture`) show a number of things to count. They have `sprite_count` with `{n}` in it (`props/counters/shell_jar_{n}.svg`, n = 1-9); a level picks the number with `"count"` in the host. How riddles name them is in `data/clues.json` → `counters`.
 
 ## `data/items.json`: inventory items
@@ -43,9 +44,11 @@ Keys starting with `_` (like `_help`) are comments and are ignored.
   "recipes": [ { "a": item id, "b": item id, "result": item id } ],
   "clues":   [ { "id", "host", "location", "for": lock id, "text", "item"?: item id, "source"?: lock id } ],
   "decoys":  [ { "id", "host", "location", "text" } ],
-  "postcard": { "id", "host", "location" }
+  "postcard": { "id", "host", "location" },
+  "requires_notes": [memory ids]
 }
 ```
+- **requires_notes** (optional): memories from earlier rooms of the walk that this room needs. They are put in Mamie's notebook when the room starts (so a replay or a dev-mode jump still has them).
 - **location**: `"room"` (visible from the start), a **lock id** (inside that lock's container, reachable once it's open), or `"recipe"` (items made by combining).
 - **host**: where the thing is.
   - `{ "kind": "door" }`

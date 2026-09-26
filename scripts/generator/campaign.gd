@@ -106,6 +106,15 @@ static func memory(memory_id: String) -> Dictionary:
 	return {}
 
 
+## The name of the room a memory belongs to ("" if unknown).
+static func memory_room_name(memory_id: String) -> String:
+	for c: Dictionary in Data.get_dict("story").get("chapters", []):
+		for m: Dictionary in c.get("memories", []):
+			if str(m.get("id", "")) == memory_id:
+				return TranslationServer.translate(str(Data.get_dict("rooms/" + str(c.get("room", ""))).get("name", "")))
+	return ""
+
+
 ## Story notes keep their text in data/story.json (`"memory": id`), so there is only one copy of it.
 static func fill_memories(level: Dictionary) -> void:
 	for key in ["clues", "decoys"]:

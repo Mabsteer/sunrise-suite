@@ -28,8 +28,10 @@ var host_sprites: Dictionary = {}
 var _toast: PanelContainer
 var _toast_label: Label
 var _toast_tween: Tween
-var _hint_panel: PanelContainer
-var _hint_label: RichTextLabel
+var _notebook: NotebookPanel
+var _notebook_button: Button
+## The notes in Mamie's notebook for this room (on a walk: every note read on the walk so far).
+var _notes: Array = []
 var _timer_label: Label
 var _pause_menu: Control
 var _results: Control
@@ -74,12 +76,13 @@ func start(level_data: Dictionary) -> void:
 	_spots_layer.name = "Hotspots"
 	room_view.stage.add_child(_spots_layer)
 	_build_ui()
+	_load_notebook()
 	_build_room_things()
 	if bool(level.get("tutorial", false)):
 		var guide := TutorialGuide.new()
-		var ui_root := _hint_panel.get_parent()
+		var ui_root := _notebook.get_parent()
 		ui_root.add_child(guide)
-		ui_root.move_child(guide, _hint_panel.get_index())
+		ui_root.move_child(guide, _notebook.get_index())
 		guide.setup(self)
 	session.lock_opened.connect(_on_lock_opened)
 	session.item_picked.connect(_on_item_picked)
@@ -176,6 +179,7 @@ func tap(key: String) -> void:
 			closeup.show_thing(kind, id)
 			if kind == "clue":
 				session.see_clue(id)
+			_note_read(kind, id)
 			_keep_memory(kind, id)
 		"postcard":
 			take("postcard", id, _hotspot_center(key))
@@ -247,6 +251,7 @@ func take(kind: String, id: String, from_global: Vector2 = Vector2.INF) -> void:
 			if kind == "clue":
 				session.see_clue(id)
 			_keep_memory(kind, id)
+			_note_read(kind, id)
 		"postcard":
 			if session.take_postcard():
 				AudioManager.play_sfx("postcard_found")
@@ -510,7 +515,7 @@ func _on_items_combined(_a: String, _b: String, result: String) -> void:
 func _on_completed() -> void:
 	inventory.deselect()
 	closeup.close()
-	_hint_panel.visible = false
+	_notebook.visible = false
 	AudioManager.play_sfx("door_open")
 	AudioManager.play_stinger("sunrise_stinger")
 	# The room's slice of the morning brightens a little past its end; the last room sees the sun rise.
@@ -549,14 +554,14 @@ func _build_ui() -> void:
 	pause.position = Vector2(28, 24)
 	pause.pressed.connect(_toggle_pause)
 	root.add_child(pause)
-	var hint := UIKit.icon_button("ui/hint.svg", 110, tr("HINT"))
-	hint.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
-	hint.offset_left = -138
-	hint.offset_right = -28
-	hint.offset_top = 22
-	hint.offset_bottom = 132
-	hint.pressed.connect(show_hint)
-	root.add_child(hint)
+	_notebook_button = UIKit.icon_button("ui/hint.svg", 110, tr("NOTEBOOK"))
+	_notebook_button.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
+	_notebook_button.offset_left = -138
+	_notebook_button.offset_right = -28
+	_notebook_button.offset_top = 22
+	_notebook_button.offset_bottom = 132
+	_notebook_button.pressed.connect(toggle_notebook)
+	root.add_child(_notebook_button)
 	var title := UIKit.label("%s  ·  %s" % [tr(str(room_view.room.get("name", ""))), _mode_caption()], 30, Palette.color("white_warm"))
 	title.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
 	title.offset_left = -500
@@ -632,7 +637,7 @@ func _build_ui() -> void:
 	# Inventory
 	inventory = InventoryBar.new()
 	root.add_child(inventory)
-	inventory.setup(text)
+	inventory.setup(text, bool(level.get("tutorial", false)))
 	inventory.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM)
 	inventory.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	inventory.grow_vertical = Control.GROW_DIRECTION_BEGIN
@@ -643,28 +648,11 @@ func _build_ui() -> void:
 		closeup.show_thing("item", id)
 		inventory.deselect())
 
-	# Hint bubble (Mamie's notebook)
-	_hint_panel = PanelContainer.new()
-	_hint_panel.add_theme_stylebox_override("panel", UIKit.paper(26))
-	_hint_panel.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT)
-	_hint_panel.offset_left = -760
-	_hint_panel.offset_right = -40
-	_hint_panel.offset_top = 150
-	_hint_panel.visible = false
-	root.add_child(_hint_panel)
-	var hv := VBoxContainer.new()
-	_hint_panel.add_child(hv)
-	var htitle := UIKit.label(tr("HINT_TITLE"), 28, Palette.color("coral_dark"), HORIZONTAL_ALIGNMENT_LEFT)
-	hv.add_child(htitle)
-	_hint_label = UIKit.handwriting("", 44)
-	_hint_label.custom_minimum_size.x = 660
-	hv.add_child(_hint_label)
-	var hclose := Button.new()
-	hclose.text = tr("HINT_THANKS")
-	hclose.size_flags_horizontal = Control.SIZE_SHRINK_END
-	hclose.focus_mode = Control.FOCUS_NONE
-	hclose.pressed.connect(func() -> void: _hint_panel.visible = false)
-	hv.add_child(hclose)
+	# Mamie's notebook: the notes read so far and the hints.
+	_notebook = NotebookPanel.new()
+	root.add_child(_notebook)
+	_notebook.setup(text)
+	_notebook.hint_requested.connect(show_hint)
 
 
 func _update_zoom_buttons() -> void:
@@ -692,8 +680,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		if closeup.is_open():
 			closeup.close()
-		elif _hint_panel.visible:
-			_hint_panel.visible = false
+		elif _notebook.visible:
+			_notebook.visible = false
 		elif inventory.selected != "":
 			inventory.deselect()
 		elif not session.finished:
@@ -722,14 +710,23 @@ func _open_door_glow() -> void:
 	_sparkle_at(_hotspot_center("lock:" + session.door_id()), 4)
 
 
+## Opens or closes Mamie's notebook (the top-right button), on the notes.
+func toggle_notebook() -> void:
+	if _notebook.visible:
+		AudioManager.play_sfx("ui_back")
+		_notebook.visible = false
+		return
+	AudioManager.play_sfx("page_turn")
+	_notebook.open(NotebookPanel.NOTES)
+
+
+## Asks Mamie for a hint: it's written on the notebook's Hints page.
 func show_hint() -> void:
 	if session.finished:
 		return
 	var goal := session.request_hint()
 	AudioManager.play_sfx("hint")
-	_hint_label.text = text.rich(text.hint_text(goal), 40)
-	_hint_panel.visible = true
-	UIKit.pop_in(_hint_panel)
+	_notebook.show_hint_text(text.rich(text.hint_text(goal), 40))
 	if int(goal.get("level", 1)) >= 2:
 		var target := _goal_hotspot(goal)
 		if target != "":
@@ -966,6 +963,64 @@ static func _vec(a: Variant) -> Vector2:
 
 
 ## A story note read in the main story goes into the scrapbook (its chapter page).
+# ======================================================================= Mamie's notebook
+
+## Which notebook this room writes in: the walk's (kept between its rooms), or "" (only this room).
+func notebook_key() -> String:
+	return "walk_%d" % int(level.get("walk", 1)) if mode == "main" and level.has("walk") else ""
+
+
+func _load_notebook() -> void:
+	var key := notebook_key()
+	if key != "" and int(level.get("step", 0)) == 0 and mode == "main":
+		GameState.notebook_clear(key)
+	# Notes from earlier rooms this room needs (so a replay or a dev jump still has them).
+	if key != "":
+		_notes = GameState.notebook(key).duplicate(true)
+	for memory_id: String in level.get("requires_notes", []):
+		var m := Campaign.memory(memory_id)
+		var entry := {"id": "memory:" + memory_id, "room": Campaign.memory_room_name(memory_id), "title": str(m.get("title", "")), "text": str(m.get("text", ""))}
+		if m.is_empty() or _notes.any(func(e: Dictionary) -> bool: return str(e.get("id", "")) == entry["id"]):
+			continue
+		_notes.append(entry)
+		GameState.notebook_add(key, entry)
+	_notebook.set_entries(_notes)
+
+
+## A note was read: it goes into Mamie's notebook, and a paper note leaves its spot once it's put down.
+func _note_read(kind: String, id: String) -> void:
+	var thing: Dictionary = (session.clues if kind == "clue" else session.decoys).get(id, {})
+	var host: Dictionary = thing.get("host", {})
+	var body := str(thing.get("text", ""))
+	if body == "" or host.has("count"):
+		return
+	var note_id := kind + ":" + id
+	var memory_id := str(thing.get("memory", ""))
+	if memory_id != "":
+		note_id = "memory:" + memory_id
+	for e: Dictionary in _notes:
+		if str(e.get("id", "")) == note_id:
+			return
+	var title := str(Campaign.memory(memory_id).get("title", "")) if memory_id != "" else ""
+	if title == "":
+		title = CloseupPanel._cap(text.host_name(host))
+	var entry := {"id": note_id, "room": tr(str(room_view.room.get("name", ""))), "title": title, "text": body}
+	_notes.append(entry)
+	GameState.notebook_add(notebook_key(), entry)
+	_notebook.set_entries(_notes)
+	var takeable := str(host.get("kind", "")) == "prop" and bool(Data.get_dict("props").get(str(host.get("prop", "")), {}).get("takeable", false))
+	if not takeable:
+		return
+	session.take_note(kind, id)
+	var tuck := func() -> void:
+		_remove_room_thing(kind + ":" + id)
+		UIKit.wiggle(_notebook_button)
+	if closeup.is_open():
+		closeup.closed.connect(tuck, CONNECT_ONE_SHOT)
+	else:
+		tuck.call()
+
+
 func _keep_memory(kind: String, id: String) -> void:
 	var thing: Dictionary = (session.clues if kind == "clue" else session.decoys).get(id, {})
 	var memory_id := str(thing.get("memory", ""))

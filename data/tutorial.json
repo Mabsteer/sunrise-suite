@@ -8,6 +8,6 @@
     {"text": "Let's combine them! In your bag, tap the flashlight, then tap the batteries. (You can also drag one onto the other.)", "target": "", "done": "combined"},
     {"text": "A working flashlight! It's too dark under the sink... Tap the flashlight in your bag, then tap under the sink.", "target": "lock:sink", "done": "lock_opened:sink"},
     {"text": "You found a key! Pick it up.", "target": "lock:sink", "done": "item_picked:i_key"},
-    {"text": "Last step: tap the key in your bag, then tap the door to the hall. (Stuck any time? Mamie's notebook in the top corner gives hints.)", "target": "lock:door", "done": "level_complete"}
+    {"text": "Last step: tap the key in your bag, then tap the door to the hall. (The notes you read wait in Mamie's notebook in the top corner, with a hint if you're stuck.)", "target": "lock:door", "done": "level_complete"}
   ]
 }

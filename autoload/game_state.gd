@@ -262,6 +262,35 @@ func dev_prepare_jump(level_id: String) -> void:
 			set_chloe_found()
 
 
+## Mamie's notebook for a walk ("walk_1"...): every note read on it, oldest first.
+func notebook(key: String) -> Array:
+	return (SaveManager.data.get("notebook", {}) as Dictionary).get(key, [])
+
+
+## Adds a note (once, by its "id") and saves.
+func notebook_add(key: String, entry: Dictionary) -> void:
+	if key == "":
+		return
+	var book: Dictionary = SaveManager.data.get("notebook", {})
+	var list: Array = book.get(key, [])
+	for e: Dictionary in list:
+		if str(e.get("id", "")) == str(entry.get("id", "")):
+			return
+	list.append(entry)
+	book[key] = list
+	SaveManager.data["notebook"] = book
+	SaveManager.save_game()
+
+
+## A walk starts over: its notebook is empty again.
+func notebook_clear(key: String) -> void:
+	var book: Dictionary = SaveManager.data.get("notebook", {})
+	if book.has(key):
+		book.erase(key)
+		SaveManager.data["notebook"] = book
+		SaveManager.save_game()
+
+
 ## Has Juliette found Chloé (in the hall, in Mamie's treasure hunt)? From then on she follows along.
 func chloe_found() -> bool:
 	return bool(SaveManager.data.get("chloe_found", false))

@@ -4,41 +4,105 @@ extends PanelContainer
 ##  - tap an item: select it (then tap something in the room to use it)
 ##  - tap the selected item again: look at it
 ##  - with one selected, tap another: combine them (or drag one onto the other)
+##  - the bag button folds the bar away (it peeks open when something new goes in)
+## It's see-through while you're not using it, so the room behind it stays visible.
 
 signal item_tapped(item_id: String)
 signal combine_requested(a: String, b: String)
 signal inspect_requested(item_id: String)
 
 const SLOT := 112.0
+const VISIBLE_SLOTS := 6
+## How long the folded-away bar stays open after something new goes in.
+const PEEK_SECONDS := 4.0
+const IDLE_ALPHA := 0.55
 
 var selected := ""
+## Folded away: only the bag button shows.
+var collapsed := false
 var _row: HBoxContainer
 var _slots: Dictionary = {}
 var _text: LevelText
 var _empty_label: Label
+var _scroll: ScrollContainer
+var _bag: Button
+var _show_empty_text := false
+var _hovered := false
+var _peeking := false
+var _idle_box: StyleBoxFlat
+var _active_box: StyleBoxFlat
 
 
-func setup(level_text: LevelText) -> void:
+## show_empty_text: the "Things you pick up will appear here" line (only in the tutorial).
+func setup(level_text: LevelText, show_empty_text: bool = false) -> void:
 	_text = level_text
-	add_theme_stylebox_override("panel", UIKit.card(14))
-	var scroll := ScrollContainer.new()
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
-	scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	scroll.custom_minimum_size = Vector2(SLOT * 8 + 7 * 10, SLOT + 8)
-	add_child(scroll)
+	_show_empty_text = show_empty_text
+	_active_box = UIKit.card(14)
+	_idle_box = _active_box.duplicate() as StyleBoxFlat
+	_idle_box.bg_color.a = IDLE_ALPHA
+	_idle_box.border_color.a = IDLE_ALPHA
+	_idle_box.shadow_color.a *= 0.3
+	var h := HBoxContainer.new()
+	h.add_theme_constant_override("separation", 12)
+	add_child(h)
+	_bag = UIKit.icon_button("ui/bag.svg", SLOT, tr("BAG"))
+	_bag.name = "Bag"
+	_bag.pressed.connect(func() -> void:
+		AudioManager.play_sfx("ui_click")
+		set_collapsed(not collapsed, true))
+	h.add_child(_bag)
+	_scroll = ScrollContainer.new()
+	_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	_scroll.custom_minimum_size = Vector2(SLOT * VISIBLE_SLOTS + (VISIBLE_SLOTS - 1) * 10, SLOT + 8)
+	h.add_child(_scroll)
 	_row = HBoxContainer.new()
 	_row.add_theme_constant_override("separation", 10)
-	scroll.add_child(_row)
+	_scroll.add_child(_row)
 	_empty_label = UIKit.label(tr("INVENTORY_EMPTY"), 28, Palette.color("ink_soft"))
-	_empty_label.custom_minimum_size = Vector2(SLOT * 8, SLOT)
+	_empty_label.custom_minimum_size = Vector2(SLOT * VISIBLE_SLOTS, SLOT)
 	_empty_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	_row.add_child(_empty_label)
+	mouse_entered.connect(func() -> void:
+		_hovered = true
+		_update_look())
+	mouse_exited.connect(func() -> void:
+		_hovered = false
+		_update_look())
+	collapsed = bool(SaveManager.settings.get("bag_collapsed", false))
+	_update_look()
+
+
+## Folds the bar away (just the bag button) or opens it. `remember`: keep it that way in later rooms.
+func set_collapsed(on: bool, remember: bool = false) -> void:
+	collapsed = on
+	_peeking = false
+	if remember:
+		SaveManager.settings["bag_collapsed"] = on
+		SaveManager.save_settings()
+	_update_look()
+
+
+## Opens the folded-away bar for a few seconds (something new went in), then folds it again.
+func peek() -> void:
+	if not collapsed or not is_inside_tree():
+		return
+	_peeking = true
+	_update_look()
+	await get_tree().create_timer(PEEK_SECONDS).timeout
+	if _peeking and selected == "":
+		_peeking = false
+		_update_look()
+
+
+## True while the items are showing (not folded away).
+func is_open() -> bool:
+	return not collapsed or _peeking
 
 
 func add_item(item_id: String, from_global: Vector2 = Vector2.INF) -> void:
 	if _slots.has(item_id):
 		return
-	_empty_label.visible = false
 	var slot := ItemSlot.new()
 	slot.item_id = item_id
 	slot.bar = self
@@ -52,6 +116,8 @@ func add_item(item_id: String, from_global: Vector2 = Vector2.INF) -> void:
 	_row.add_child(slot)
 	_slots[item_id] = slot
 	_style(slot, false)
+	_update_look()
+	peek()
 	if from_global != Vector2.INF and not bool(SaveManager.settings.get("reduce_motion", false)):
 		_fly_in(slot, from_global)
 	else:
@@ -66,17 +132,28 @@ func remove_item(item_id: String) -> void:
 	if selected == item_id:
 		selected = ""
 	slot.queue_free()
-	_empty_label.visible = _slots.is_empty()
+	_update_look()
 
 
 func select(item_id: String) -> void:
 	selected = item_id
 	for id: String in _slots.keys():
 		_style(_slots[id], id == item_id)
+	_update_look()
 
 
 func deselect() -> void:
 	select("")
+
+
+func _update_look() -> void:
+	if _scroll == null:
+		return
+	var empty := _slots.is_empty()
+	_empty_label.visible = empty and _show_empty_text
+	_scroll.visible = is_open() and not (empty and not _show_empty_text)
+	var active := _hovered or selected != ""
+	add_theme_stylebox_override("panel", _active_box if active else _idle_box)
 
 
 func has_item(item_id: String) -> bool:

@@ -13,7 +13,7 @@
   "music_box": {"name": "the music box", "sprite": "props/common/music_box.svg", "sprite_open": "props/common/music_box_open.svg", "size": [110, 90], "place": "surface", "locks": ["sequence"]},
   "puzzle_box": {"name": "the puzzle box", "sprite": "props/common/puzzle_box.svg", "sprite_open": "props/common/puzzle_box_open.svg", "size": [110, 100], "place": "surface", "locks": ["slider"]},
   "jar": {"name": "the tall jar", "sprite": "props/common/jar.svg", "size": [80, 120], "place": "surface", "locks": ["hidden"], "tools": ["fishing_magnet"], "reveal": "something shiny at the bottom"},
-  "note": {"name": "the note", "sprite": "props/common/note.svg", "size": [90, 60], "place": "surface", "clue": true},
+  "note": {"name": "the note", "sprite": "props/common/note.svg", "size": [90, 60], "place": "surface", "clue": true, "takeable": true},
   "open_book": {"name": "the open book", "sprite": "props/common/open_book.svg", "size": [130, 60], "place": "surface", "clue": true},
   "photo_stand": {"name": "the photo", "sprite": "props/common/photo_stand.svg", "size": [80, 100], "place": "surface", "clue": true},
   "postcard": {"name": "a postcard", "sprite": "props/common/postcard_small.svg", "size": [70, 50], "place": "surface"},

@@ -41,6 +41,8 @@ func default_save() -> Dictionary:
 		## Chloé was found in the hall and follows Juliette
 		"chloe_found": false,
 		"final_letter_read": false,
+		## Mamie's notebook: walk key -> [{ "id", "room", "title", "text" }], the notes read on that walk
+		"notebook": {},
 		"daily": {
 			## "YYYY-MM-DD" -> { "stars": int, "time": float }
 			"completed": {},
