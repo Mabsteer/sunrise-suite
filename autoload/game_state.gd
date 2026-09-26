@@ -46,6 +46,8 @@ func total_stars() -> int:
 ## Is a main level playable? The first always; later ones once the previous level is done and the
 ## walk's star gate is met.
 func is_level_unlocked(level_id: String) -> bool:
+	if dev_unlocked():
+		return Campaign.index_of(level_id) >= 0
 	var idx := Campaign.index_of(level_id)
 	if idx <= 0:
 		return idx == 0
@@ -243,6 +245,21 @@ func story_finished() -> bool:
 		if bool(e.get("finale", false)):
 			return is_level_completed(str(e["id"]))
 	return false
+
+
+## Dev mode with "unlock everything" on: every room can be played.
+func dev_unlocked() -> bool:
+	return bool(SaveManager.settings.get("dev_mode", false)) and bool(SaveManager.settings.get("dev_unlock_all", false))
+
+
+## Dev mode jumps straight into a room: set up what the story would have done by then
+## (Chloé is found once the room where she hides lies behind).
+func dev_prepare_jump(level_id: String) -> void:
+	var target := Campaign.index_of(level_id)
+	var list := Campaign.levels()
+	for i in list.size():
+		if bool(list[i].get("find_dog", false)) and i < target:
+			set_chloe_found()
 
 
 ## Has Juliette found Chloé (in the hall, in Mamie's treasure hunt)? From then on she follows along.

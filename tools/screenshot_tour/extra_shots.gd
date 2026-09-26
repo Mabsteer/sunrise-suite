@@ -88,6 +88,7 @@ func shots() -> Array[Dictionary]:
 					break
 				LevelSolver.apply_goal(session, session.next_goal()), "frames": 110},
 		{"name": "settings", "screen": "main_menu", "action": func(s: Node) -> void: s.add_child(SettingsPanel.new()), "frames": 30},
+		{"name": "dev_panel", "screen": "level", "setup": func() -> void: SaveManager.settings["dev_mode"] = true, "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "test"}, "action": func(s: Node) -> void: s.get("ui").add_child(DevPanel.new()), "frames": 30},
 		{"name": "chapter_card", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "main", "record_id": "w1_hall"}, "frames": 40},
 		{"name": "room_hall_start", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "test"}, "frames": 40},
 		{"name": "finale_letter", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_front_garden"), "mode": "main", "record_id": "w1_front_garden"}, "action": func(s: Node) -> void:

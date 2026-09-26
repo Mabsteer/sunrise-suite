@@ -230,3 +230,18 @@ HUB_CHLOE,Chloé is asleep where the sun falls on the floor.
 MEMORY_KEPT,A memory for the scrapbook.
 ZOOM_IN,Zoom in
 ZOOM_OUT,Zoom out
+SETTINGS_HELPERS,Show helpers (easier)
+SETTINGS_VERSION,Version %s
+SETTINGS_DEV,Dev
+DEV_ON,Dev mode on
+DEV_OFF,Dev mode off
+DEV_TITLE,Dev menu
+DEV_THIS_ROOM,This room
+DEV_NEXT_STEP,Do the next step
+DEV_FINISH_ROOM,Finish this room
+DEV_JUMP,Jump to a room
+DEV_PROGRESS,Progress
+DEV_UNLOCK_ALL,Unlock every room
+DEV_RESET,Reset progress
+DEV_AUDIO,Audio
+DEV_RESUME_AUDIO,Wake up audio

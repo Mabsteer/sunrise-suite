@@ -42,6 +42,7 @@ var _spots_layer: Node2D
 
 
 func _ready() -> void:
+	add_to_group("level_screen")
 	var params := Router.params
 	mode = str(params.get("mode", "main"))
 	record_id = str(params.get("record_id", ""))
@@ -726,6 +727,27 @@ func show_hint() -> void:
 			_sparkle_at(_hotspot_center(target), 3)
 
 
+## Dev mode: do the next thing a player would do (pick up, read, combine or open).
+func dev_step() -> bool:
+	if session == null or session.finished:
+		return false
+	if closeup.is_open():
+		closeup.close()
+	var goal := session.next_goal()
+	if str(goal.get("action", "")) == "look":
+		return false
+	return LevelSolver.apply_goal(session, goal)
+
+
+## Dev mode: solve the whole room, step by step, so the ending plays as usual.
+func dev_finish() -> void:
+	_paused = false
+	for i in 200:
+		if session.finished or not dev_step():
+			break
+		await get_tree().create_timer(0.05).timeout
+
+
 func toast(message: String, seconds: float = 2.6) -> void:
 	_toast_label.text = message
 	_toast.visible = true
@@ -805,6 +827,17 @@ func _toggle_pause() -> void:
 		[tr("RESTART"), func() -> void: Router.goto("level", Router.params)],
 		[tr("LEAVE"), func() -> void: Router.goto(_exit_screen())],
 	])
+	if bool(SaveManager.settings.get("dev_mode", false)):
+		var body: VBoxContainer = _pause_menu.get_meta("body")
+		var dev := UIKit.text_button(tr("SETTINGS_DEV"), Vector2(460, 96))
+		dev.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		dev.pressed.connect(func() -> void:
+			_pause_menu.queue_free()
+			_pause_menu = null
+			var panel := DevPanel.new()
+			panel.closed.connect(func() -> void: _paused = false)
+			ui.add_child(panel))
+		body.add_child(dev)
 
 
 func _show_results(result: Dictionary) -> void:

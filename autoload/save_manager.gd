@@ -68,6 +68,11 @@ func default_settings() -> Dictionary:
 		"text_scale": 1.0,
 		"reduce_motion": false,
 		"show_timer": false,
+		## Badges, sparkles and Chloé barking at the next goal (off: the room gives nothing away).
+		"show_helpers": false,
+		## The owner's dev menu (Settings: tap the version number 5 times).
+		"dev_mode": false,
+		"dev_unlock_all": false,
 	}
 
 

@@ -12,6 +12,12 @@ const SLIDERS := [
 	["SETTINGS_AMBIENCE", "volume_ambience"],
 ]
 const TEXT_SIZES := [1.0, 1.15, 1.3]
+## Taps on the version number that turn dev mode on or off.
+const DEV_TAPS := 5
+
+var _version_taps := 0
+var _version_tap_time := 0.0
+var _dev_button: Button
 
 
 func _ready() -> void:
@@ -61,10 +67,46 @@ func _ready() -> void:
 	var reset := UIKit.text_button(tr("SETTINGS_RESET"), Vector2(300, 90))
 	reset.pressed.connect(_confirm_reset)
 	buttons.add_child(reset)
+	_dev_button = UIKit.text_button(tr("SETTINGS_DEV"), Vector2(160, 90))
+	_dev_button.pressed.connect(open_dev_panel)
+	_dev_button.visible = bool(s.get("dev_mode", false))
+	buttons.add_child(_dev_button)
 	var done := UIKit.primary(UIKit.text_button(tr("SETTINGS_DONE"), Vector2(260, 90)))
 	done.pressed.connect(close_panel)
 	buttons.add_child(done)
+	var version := UIKit.label(tr("SETTINGS_VERSION") % str(ProjectSettings.get_setting("application/config/version", "0.1.0")), 22, Palette.color("ink_soft"), HORIZONTAL_ALIGNMENT_RIGHT)
+	version.name = "Version"
+	version.mouse_filter = Control.MOUSE_FILTER_STOP
+	version.gui_input.connect(func(e: InputEvent) -> void:
+		if (e is InputEventMouseButton and (e as InputEventMouseButton).pressed and (e as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT) or (e is InputEventScreenTouch and (e as InputEventScreenTouch).pressed):
+			tap_version())
+	v.add_child(version)
 	UIKit.pop_in(card)
+
+
+## Tapping the version number 5 times (quickly) turns the owner's dev mode on or off.
+func tap_version() -> void:
+	var now := Time.get_ticks_msec() / 1000.0
+	if now - _version_tap_time > 1.5:
+		_version_taps = 0
+	_version_tap_time = now
+	_version_taps += 1
+	if _version_taps < DEV_TAPS:
+		return
+	_version_taps = 0
+	var on := not bool(SaveManager.settings.get("dev_mode", false))
+	SaveManager.settings["dev_mode"] = on
+	SaveManager.save_settings()
+	_dev_button.visible = on
+	AudioManager.play_sfx("hint")
+	UIKit.dialog(self, tr("DEV_ON") if on else tr("DEV_OFF"), "", [[tr("CLOSE"), Callable(), true]])
+
+
+func open_dev_panel() -> void:
+	var panel := DevPanel.new()
+	get_parent().add_child(panel)
+	closed.emit()
+	queue_free()
 
 
 func close_panel() -> void:
