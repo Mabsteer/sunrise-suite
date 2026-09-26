@@ -178,6 +178,14 @@ func shots() -> Array[Dictionary]:
 		{"name": "chloe_w_dog", "screen": "level", "params": func() -> Dictionary: return {"level": _level_with("garden", 6, "dog"), "mode": "test"}, "action": func(s: Node) -> void: _open_first(s, "dog"), "frames": 30},
 		{"name": "chloe_w_care", "screen": "level", "params": func() -> Dictionary: return {"level": _level_with("bedroom", 5, "care"), "mode": "test"}, "action": func(s: Node) -> void: _open_first(s, "care"), "frames": 30},
 		{"name": "chloe_w_sniff", "screen": "level", "params": func() -> Dictionary: return {"level": _level_with("lounge", 7, "sniff"), "mode": "test"}, "action": func(s: Node) -> void: _open_first(s, "sniff"), "frames": 30},
+		{"name": "chloe_hall_hidden", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "test"}, "frames": 40},
+		{"name": "chloe_hall_hidden_zoomed", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "test"}, "action": func(s: Node) -> void:
+			var h: Control = s.get("hotspots")["lock:cupboard"]
+			(s.get("room_zoom") as RoomZoom).animate_to(2.2, h.get_global_rect().get_center(), 0.0), "frames": 30},
+		{"name": "chloe_ready", "screen": "level", "setup": func() -> void: SaveManager.data["chloe_found"] = true, "params": func() -> Dictionary: return {"level": Campaign.build("w1_garden"), "mode": "test"}, "action": func(s: Node) -> void: s.call("tap", "dog:chloe"), "frames": 30},
+		{"name": "chloe_needs_brush", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_shed"), "mode": "test"}, "frames": 30},
+		{"name": "chloe_silly_find", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_bedroom"), "mode": "test"}, "action": func(s: Node) -> void:
+			s.call("_drop_silly_find", "sock"), "frames": 20},
 		{"name": "hub_chloe", "screen": "hub", "setup": func() -> void: SaveManager.data["chloe_found"] = true, "frames": 40},
 		{"name": "art_chloe", "screen": "art_sheet", "params": {"dirs": ["props/chloe"], "scale": 1.6}},
 		{"name": "art_puzzle_props", "screen": "art_sheet", "params": {"dirs": ["props/puzzles"], "scale": 1.3}},

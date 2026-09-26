@@ -149,10 +149,6 @@ func _open_lock(scene: LevelScene, lock_id: String) -> bool:
 	var lock: Dictionary = s.locks[lock_id]
 	var t := str(lock["type"])
 	var answer := str(lock.get("answer", ""))
-	_open_container(scene, lock_id)
-	var w := scene.closeup.widget
-	if w == null:
-		return false
 	if s.given_to_dog(lock_id):
 		# Things for Chloé are given to her: select the item, tap Chloé.
 		scene.closeup.close()
@@ -160,6 +156,16 @@ func _open_lock(scene: LevelScene, lock_id: String) -> bool:
 		scene.tap("dog:chloe")
 		scene.inventory.deselect()
 		return s.is_open(lock_id)
+	if t == "dog":
+		# Chloé is sent: tap her (she gets ready), then tap the spot.
+		scene.closeup.close()
+		scene.tap("dog:chloe")
+		scene.tap("lock:" + lock_id)
+		return s.is_open(lock_id)
+	_open_container(scene, lock_id)
+	var w := scene.closeup.widget
+	if w == null:
+		return false
 	match t:
 		"combo":
 			w.call("set_answer", answer)
@@ -181,8 +187,6 @@ func _open_lock(scene: LevelScene, lock_id: String) -> bool:
 		"key", "tool", "care":
 			scene.select_item(s._inventory_match(s.lock_item(lock_id)))
 			w.use_requested.emit()
-		"dog":
-			w.submitted.emit("dog")
 		"hidden":
 			if s.lock_item(lock_id) != "":
 				scene.select_item(s._inventory_match(s.lock_item(lock_id)))

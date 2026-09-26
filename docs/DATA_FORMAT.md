@@ -70,7 +70,7 @@ Keys starting with `_` (like `_help`) are comments and are ignored.
   - `tool`: needs `item` (a tool: flashlight, trowel, screwdriver, magnet on a string). You can see it needs something.
   - `hidden`: nothing needed, just search. At most one per generated level.
 - **Chloé's locks** (only in levels with `"companion": "chloe"`; see the section below):
-  - `dog`: she fetches or digs something out, `"action": "fetch"|"dig"`. No item; you ask her in the close-up ("Chloé, fetch!").
+  - `dog`: she fetches or digs something out, `"action": "fetch"|"dig"`. No item; you tap Chloé, then the spot.
   - `care`: she needs something, host `{ "kind": "dog" }` (it's Chloé herself), `item` = a `care` item. You select it and tap her. When she's happy she drops what she was guarding. With `"finds_dog": true` the lock is her hiding place instead (host = a spot), and giving her Gaston brings her out.
   - `sniff`: a spot with a smell, `item` = a `scent` item. Give her the scent and she runs to the spot and finds what's there. At most one per generated level.
 - **after**: this lock can only be used once all these locks are open (e.g. Chloé only helps after breakfast).
@@ -93,11 +93,13 @@ Walk levels share one morning: each room gets its own slice of the sunrise (`sun
 - `companion`: Chloé is with Juliette in this level (every room after the hall). Replays and Endless use her once she's been found.
 
 ## Chloé, Mamie's Maltese
-Chloé is found in the hall in walk 1 and then follows Juliette. She sits at the room's `dog_spot` (and naps in the sunroom). The player can:
-- **tap her** with nothing selected: if she needs something, her care close-up opens; otherwise she trots to what matters now and barks at it (a free hint, it doesn't cost a star).
-- **tap her with an item selected**: gives it to her (a `care` item for a `care` lock, or a `scent` for a `sniff` lock).
-- **ask her** in a `dog` close-up: she fetches or digs.
-Everything she does is an ordinary lock in the level, so the solver, validator, hints and autoplay treat her like any other step. A paw badge marks the spots where she can help. Her sprites are in `assets/sprites/props/chloe/` (drawn by `tools/art/chloe.mjs`); her sounds are `dog_bark`, `dog_squeak`, `dog_dig`, `dog_sniff` and `dog_happy` in `tools/sfx/sfx.json`.
+Chloé is found in the hall in walk 1 and then follows Juliette. She sits at the room's `dog_spot` (and naps in the sunroom). Nothing on screen says what she can do; the player finds out:
+- **tap her, then tap a spot**: the first tap makes her stand up, ready (tap her again to let her sit). The next tap sends her there (`LevelSession.send_dog_to(key)`). At a `dog` lock whose `after` locks are open she fetches or digs, and the lock opens. At a `dog` lock she can't do yet she comes back and shows what she wants. Anywhere else she comes back empty, or (a seeded quarter of the time) with something silly: a sock, a leaf, a cork or a shell that only lies there a moment.
+- **tap her with an item selected**: gives it to her (a `care` item for a `care` lock, or a `scent` for a `sniff` lock, which she then follows by herself).
+- **what she wants** shows in her pose, never in words: sitting by her empty bowl (kibble), panting by it (water), scratching to go out (leash), her fringe over her eyes (brush), looking around (Gaston).
+- **tapping a `dog` or `sniff` spot yourself** only shows what Juliette sees ("much too narrow to reach in there", "the soil is soft here").
+- **hiding** (`finds_dog`): no sprite at all. A soft whimper or sniff every 25-45 s, and a tuft of fur at the bottom of her hiding place when zoomed in to 1.8x or more. Her hiding place's close-up is a dark space you can hold something out to.
+With "Show helpers" on, a paw badge marks her spots and tapping her makes her bark at the next step. Everything she does is an ordinary lock, so the solver, validator, hints and autoplay treat her like any other step. Her sprites are in `assets/sprites/props/chloe/` (drawn by `tools/art/chloe.mjs`); her sounds are `dog_bark`, `dog_squeak`, `dog_dig`, `dog_sniff`, `dog_happy`, `dog_whimper`, `dog_huff` and `dog_drop` in `tools/sfx/sfx.json`.
 
 ## `data/story.json`: the chapters of Céline's life
 `chapters`: one per room in route order, `{ "room", "title", "years", "intro", "outro", "memories"?: [ { "id", "title", "text" } ] }`. The scrapbook shows one page per chapter; `memories` are the story notes collected there (see docs/STORY.md). Each memory is used by exactly one note in that room's story level (`data/levels/story_<room>.json`, and `tutorial.json` for the kitchen); a unit test checks this.

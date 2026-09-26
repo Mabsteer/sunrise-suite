@@ -205,16 +205,18 @@ func _open_hints(lock_id: String) -> PackedStringArray:
 	var t := session.lock_type(lock_id)
 	var item := session.lock_item(lock_id)
 	if t == "dog":
-		var act := session.dog_action(lock_id)
+		var need := session.dog_need(lock_id)
+		if need != "":
+			return _open_hints(need)
 		return [
-			"Chloé could help with %s." % name,
-			"Tap %s and ask Chloé to %s." % [name, act],
-			"Tap %s, then \"Chloé, %s!\"" % [name, act],
+			"Some places are too small for you. Not for everyone, though.",
+			"Chloé fits where you don't: %s." % name,
+			"Tap Chloé, then tap %s." % name,
 		]
 	if session.finds_dog(lock_id):
 		var toy := item_name(session._inventory_match(item) if session._inventory_match(item) != "" else item)
 		return [
-			"Someone small is hiding in %s." % name,
+			"Listen. Something small is breathing in %s." % name,
 			"Chloé won't come out for just anyone. Show her the %s." % toy,
 			"Select the %s in your bag, then tap %s." % [toy, name],
 		]

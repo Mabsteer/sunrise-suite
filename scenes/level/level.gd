@@ -126,6 +126,7 @@ func _process(delta: float) -> void:
 		# Clamp: browsers stop frames in hidden tabs, and the first frame back can have a huge delta.
 		session.elapsed += minf(delta, 0.25)
 	_update_info()
+	_chloe_process(delta)
 
 
 ## The small line under the title: steps solved, plus the time if the player turned the timer on.
@@ -148,6 +149,19 @@ func _notification(what: int) -> void:
 
 # ======================================================================= controller API
 
+## Juliette looks at a spot where only Chloé can help: what she sees, nothing more.
+func _show_dog_spot(lock_id: String) -> void:
+	var t := session.lock_type(lock_id)
+	var line := tr("NOTHING_SPECIAL")
+	if t == "dog":
+		line = tr("DOG_SPOT_DIG") if session.dog_action(lock_id) == "dig" else tr("DOG_SPOT_FETCH")
+	var host: Dictionary = session.locks[lock_id].get("host", {})
+	var sprite := ""
+	if str(host.get("kind", "")) == "furniture":
+		sprite = str(text.furniture(str(host.get("furniture", ""))).get("sprite", ""))
+	closeup.show_flavor(CloseupPanel._cap(text.lock_name(lock_id)), line, sprite)
+
+
 ## Handles a tap on something in the room (or in a close-up) by its key, e.g. "lock:safe", "item:i_key".
 func tap(key: String) -> void:
 	if session.finished:
@@ -156,6 +170,10 @@ func tap(key: String) -> void:
 		return
 	var kind := key.get_slice(":", 0)
 	var id := key.substr(kind.length() + 1)
+	# Chloé is standing, ready: this tap tells her where to go.
+	if chloe_ready and kind != "dog":
+		send_chloe(key)
+		return
 	match kind:
 		"background":
 			inventory.deselect()
@@ -168,6 +186,10 @@ func tap(key: String) -> void:
 		"lock":
 			if inventory.selected != "":
 				use_selected_on(id)
+			elif session.lock_type(id) in ["dog", "sniff"]:
+				# A job only Chloé can do: to Juliette it's just a spot (the words are the only hint).
+				AudioManager.play_sfx("ui_click")
+				_show_dog_spot(id)
 			else:
 				AudioManager.play_sfx("ui_click")
 				closeup.show_lock(id)
@@ -456,6 +478,7 @@ func _hotspot_center(key: String) -> Vector2:
 # ======================================================================= session events
 
 func _on_lock_opened(lock_id: String) -> void:
+	_update_chloe_mood()
 	var lock: Dictionary = session.locks[lock_id]
 	AudioManager.play_sfx("lock_open")
 	if not bool(lock.get("is_door", false)):
@@ -1037,27 +1060,64 @@ func _keep_memory(kind: String, id: String) -> void:
 
 # ======================================================================= Chloé
 
+## Seconds between the little sounds Chloé makes while she's hiding (seeded, so not a steady beat).
+const HIDING_SOUND_SECONDS := Vector2(25.0, 45.0)
+## How far in you must zoom to see the tuft of fur in her hiding place.
+const TUFT_ZOOM := 1.8
+## Her pose for each thing she can want (a care lock given to her).
+const NEED_POSES := {"kibble": "sit", "water_jug": "pant", "leash": "scratch", "dog_brush": "fringe", "gaston": "sniff"}
+
 var _chloe: Node2D
 var _chloe_sprite: Sprite2D
 var _chloe_home := Vector2.ZERO
 var _chloe_busy := false
+## Tapped once: she's standing, waiting for Juliette to tap where she should go.
+var chloe_ready := false
+var _chloe_bowl: Sprite2D
+var _hiding_tuft: Sprite2D
+var _hiding_timer := 0.0
+var _hiding_rng := RandomNumberGenerator.new()
 
 
-## Chloé sits where the sun falls in this room (room "dog_spot"), or peeks out of her hiding place.
+## Chloé sits where the sun falls in this room (room "dog_spot"). If she's hiding in this room,
+## nothing shows: only a soft sound now and then, and a tuft of fur for anyone who zooms in.
 func _build_chloe() -> void:
 	var spot: Array = room_view.room.get("dog_spot", [960, 930])
 	_chloe_home = Vector2(float(spot[0]), float(spot[1]))
-	for id: String in LevelSession._sorted_keys(session.locks):
-		if session.finds_dog(id) and not session.is_open(id) and hotspots.has("lock:" + id):
-			var h: Control = hotspots["lock:" + id]
-			var peek := Sprite2D.new()
-			peek.texture = UIKit.texture("props/chloe/chloe_peek.svg")
-			peek.scale = Vector2(0.8, 0.8)
-			peek.position = h.position + h.size / 2.0
-			_props_layer.add_child(peek)
-			host_sprites["peek:" + id] = peek
+	_hiding_rng.seed = hash(str(level.get("id", "")) + ":chloe")
+	_hiding_timer = _hiding_rng.randf_range(HIDING_SOUND_SECONDS.x * 0.4, HIDING_SOUND_SECONDS.y * 0.5)
+	var hide := hiding_lock()
+	if hide != "" and hotspots.has("lock:" + hide):
+		var h: Control = hotspots["lock:" + hide]
+		_hiding_tuft = Sprite2D.new()
+		_hiding_tuft.texture = UIKit.texture("props/chloe/chloe_tuft.svg")
+		_hiding_tuft.position = h.position + Vector2(h.size.x * 0.5, h.size.y - 12.0)
+		_hiding_tuft.scale = Vector2(0.7, 0.7)
+		_hiding_tuft.visible = false
+		_props_layer.add_child(_hiding_tuft)
+		room_zoom.zoom_changed.connect(func(z: float) -> void:
+			if is_instance_valid(_hiding_tuft):
+				_hiding_tuft.visible = z >= TUFT_ZOOM)
 	if session.dog_present:
 		_spawn_chloe(_chloe_home)
+
+
+## The lock where Chloé is hiding in this room ("" once she's out, or if she isn't hiding here).
+func hiding_lock() -> String:
+	for id: String in LevelSession._sorted_keys(session.locks):
+		if session.finds_dog(id) and not session.is_open(id):
+			return id
+	return ""
+
+
+## While she's hiding: now and then a soft whimper or sniff (not while a close-up is open).
+func _chloe_process(delta: float) -> void:
+	if _hiding_tuft == null or not is_instance_valid(_hiding_tuft) or session.finished or _paused or closeup.is_open():
+		return
+	_hiding_timer -= delta
+	if _hiding_timer <= 0.0:
+		_hiding_timer = _hiding_rng.randf_range(HIDING_SOUND_SECONDS.x, HIDING_SOUND_SECONDS.y)
+		AudioManager.play_sfx("dog_whimper" if _hiding_rng.randf() < 0.6 else "dog_sniff")
 
 
 func _spawn_chloe(at: Vector2) -> void:
@@ -1074,43 +1134,123 @@ func _spawn_chloe(at: Vector2) -> void:
 		var t := _chloe_sprite.create_tween().set_loops()
 		t.tween_property(_chloe_sprite, "scale", Vector2(1.0, 1.03), 1.2).set_trans(Tween.TRANS_SINE)
 		t.tween_property(_chloe_sprite, "scale", Vector2.ONE, 1.3).set_trans(Tween.TRANS_SINE)
+	_update_chloe_mood()
 
 
-## Tapping Chloé: give her the selected item, show what she needs, or she barks at what matters now.
+## Her resting pose shows what she wants (no words): sitting by her empty bowl, panting, scratching
+## to go out, her fringe over her eyes, or looking around for Gaston.
+func _update_chloe_mood() -> void:
+	if _chloe == null or _chloe_busy or chloe_ready:
+		return
+	var pose := "sit"
+	var want := session.dog_wants()
+	var wanted_type := ""
+	if want != "":
+		wanted_type = str(session.items.get(session.lock_item(want), {}).get("type", ""))
+		pose = str(NEED_POSES.get(wanted_type, "sit"))
+	_chloe_sprite.texture = UIKit.texture("props/chloe/chloe_%s.svg" % pose)
+	_chloe_sprite.flip_h = false
+	var show_bowl := wanted_type in ["kibble", "water_jug"]
+	if show_bowl and _chloe_bowl == null:
+		_chloe_bowl = Sprite2D.new()
+		_chloe_bowl.texture = UIKit.texture("props/chloe/bowl_empty.svg")
+		_chloe_bowl.position = _chloe_home + Vector2(-120, -20)
+		_props_layer.add_child(_chloe_bowl)
+		_props_layer.move_child(_chloe_bowl, _chloe.get_index())
+	elif not show_bowl and _chloe_bowl != null:
+		_chloe_bowl.queue_free()
+		_chloe_bowl = null
+
+
+## Tapping Chloé: with an item selected she's given it; otherwise she gets ready to go somewhere
+## (tap her again to let her sit back down). With "Show helpers" on she barks at the next step.
 func _tap_chloe() -> void:
-	if not session.dog_present:
+	if not session.dog_present or _chloe_busy:
 		return
 	if inventory.selected != "":
 		_give_to_chloe(inventory.selected)
 		return
-	for id: String in LevelSession._sorted_keys(session.locks):
-		if session.lock_type(id) == "care" and session.given_to_dog(id) and not session.is_open(id) and session.lock_visible(id):
-			AudioManager.play_sfx("dog_bark")
-			closeup.show_lock(id)
-			return
-	var target := _goal_hotspot(session.next_goal()) if helpers_on() else ""
-	if target == "" or not hotspots.has(target) or _chloe_busy:
-		AudioManager.play_sfx("dog_happy")
-		toast(tr("DOG_PET"))
+	if chloe_ready:
+		_set_chloe_ready(false)
 		return
-	var h: Control = hotspots[target]
-	_walk_chloe_to(h.position + Vector2(h.size.x / 2.0, h.size.y), "walk", func() -> void:
-		AudioManager.play_sfx("dog_bark")
-		_sparkle_at(_hotspot_center(target), 2))
-	toast(tr("DOG_BARKS_AT") % _target_name(target))
+	if helpers_on():
+		var target := _goal_hotspot(session.next_goal())
+		if target != "" and hotspots.has(target):
+			var h: Control = hotspots[target]
+			_walk_chloe_to(h.position + Vector2(h.size.x / 2.0, h.size.y), "walk", func() -> void:
+				AudioManager.play_sfx("dog_bark")
+				_sparkle_at(_hotspot_center(target), 2))
+			return
+	_set_chloe_ready(true)
 
 
-func _target_name(key: String) -> String:
-	var kind := key.get_slice(":", 0)
-	var id := key.substr(kind.length() + 1)
-	match kind:
-		"lock":
-			return text.lock_name(id)
-		"item":
-			return "the " + text.item_name(id)
-		"clue":
-			return text.clue_place(id)
-	return "something"
+func _exit_tree() -> void:
+	if chloe_ready:
+		Input.set_custom_mouse_cursor(null, Input.CURSOR_POINTING_HAND)
+
+
+func _set_chloe_ready(on: bool) -> void:
+	chloe_ready = on
+	if on:
+		AudioManager.play_sfx("dog_huff")
+		_chloe_sprite.texture = UIKit.texture("props/chloe/chloe_ready.svg")
+		_hop_chloe()
+		var paw := UIKit.texture("ui/paw_badge.svg")
+		if paw and not OS.has_feature("mobile"):
+			var img := paw.get_image()
+			if img:
+				img.resize(48, 48)
+				Input.set_custom_mouse_cursor(ImageTexture.create_from_image(img), Input.CURSOR_POINTING_HAND, Vector2(24, 24))
+	else:
+		Input.set_custom_mouse_cursor(null, Input.CURSOR_POINTING_HAND)
+		_update_chloe_mood()
+
+
+## Juliette tapped somewhere while Chloé was ready: she trots there and does what fits.
+func send_chloe(key: String) -> Dictionary:
+	_set_chloe_ready(false)
+	var target := _chloe_target(key)
+	var trip := session.send_dog_to(key)
+	match str(trip.get("result", "")):
+		"acted":
+			pass # _on_dog_acted walks her there and back.
+		"needs":
+			_walk_chloe_to(target, "sniff", func() -> void: AudioManager.play_sfx("dog_whimper"))
+		"silly":
+			var find := str(trip.get("find", "sock"))
+			_walk_chloe_to(target, "sniff", func() -> void: AudioManager.play_sfx("dog_sniff"), true, func() -> void: _drop_silly_find(find))
+		"empty":
+			_walk_chloe_to(target, "sniff", func() -> void: AudioManager.play_sfx("dog_sniff"))
+	return trip
+
+
+## Where Chloé goes for a tapped key: the bottom middle of its hotspot, or the tapped point.
+func _chloe_target(key: String) -> Vector2:
+	if key != "background" and hotspots.has(key):
+		var h: Control = hotspots[key]
+		return h.position + Vector2(h.size.x / 2.0, h.size.y)
+	var at := room_view.stage.get_global_transform_with_canvas().affine_inverse() * get_viewport().get_mouse_position()
+	return Vector2(clampf(at.x, 120.0, 2280.0), clampf(at.y, 700.0, 1380.0))
+
+
+## She drops something silly at Juliette's feet: it lies there a moment, then she lies down on it.
+func _drop_silly_find(find: String) -> void:
+	if _chloe == null:
+		return
+	AudioManager.play_sfx("dog_drop")
+	var s := Sprite2D.new()
+	s.texture = UIKit.texture("props/chloe/find_%s.svg" % find)
+	s.position = _chloe_home + Vector2(110, -30)
+	_props_layer.add_child(s)
+	host_sprites["silly_find"] = s
+	UIKit.pop_in(s)
+	_hop_chloe()
+	var t := s.create_tween()
+	t.tween_interval(3.0)
+	t.tween_property(s, "modulate:a", 0.0, 0.6)
+	t.tween_callback(func() -> void:
+		host_sprites.erase("silly_find")
+		s.queue_free())
 
 
 func _give_to_chloe(item: String) -> void:
@@ -1128,9 +1268,13 @@ func _on_dog_acted(lock_id: String, action: String) -> void:
 	var key := "lock:" + lock_id
 	if action == "care":
 		AudioManager.play_sfx("dog_squeak" if str(session.items.get(session.lock_item(lock_id), {}).get("type", "")) == "gaston" else "dog_happy")
-		toast(tr("DOG_HAPPY"))
 		_hop_chloe()
-		closeup.show_lock(lock_id)
+		_update_chloe_mood()
+		# She drops what she was guarding at Juliette's feet.
+		var inside := session.things_at(lock_id)
+		if not inside.is_empty():
+			toast(tr("DOG_HAPPY"))
+			closeup.show_lock(lock_id)
 		return
 	var target := _chloe_home
 	if hotspots.has(key):
@@ -1147,11 +1291,12 @@ func _on_dog_acted(lock_id: String, action: String) -> void:
 func _on_dog_found() -> void:
 	var from := _chloe_home
 	for id: String in session.locks.keys():
-		if session.finds_dog(id) and host_sprites.has("peek:" + id):
-			var peek: Node2D = host_sprites["peek:" + id]
-			from = peek.position + Vector2(0, 60)
-			peek.queue_free()
-			host_sprites.erase("peek:" + id)
+		if session.finds_dog(id) and hotspots.has("lock:" + id):
+			var h: Control = hotspots["lock:" + id]
+			from = h.position + Vector2(h.size.x / 2.0, h.size.y)
+	if _hiding_tuft != null and is_instance_valid(_hiding_tuft):
+		_hiding_tuft.queue_free()
+	_hiding_tuft = null
 	if mode == "main" or mode == "replay":
 		GameState.set_chloe_found()
 	AudioManager.play_sfx("dog_squeak")
@@ -1161,12 +1306,16 @@ func _on_dog_found() -> void:
 
 
 ## Walks Chloé to a stage point, plays a pose there, then (optionally) back to her spot.
-func _walk_chloe_to(target: Vector2, pose: String, on_arrive: Callable, come_back: bool = true) -> void:
+## `on_home` runs once she's back.
+func _walk_chloe_to(target: Vector2, pose: String, on_arrive: Callable, come_back: bool = true, on_home: Callable = Callable()) -> void:
 	if _chloe == null:
 		return
 	if bool(SaveManager.settings.get("reduce_motion", false)):
 		on_arrive.call()
 		_chloe.position = _chloe_home
+		if on_home.is_valid():
+			on_home.call()
+		_update_chloe_mood()
 		return
 	_chloe_busy = true
 	var dist := _chloe.position.distance_to(target)
@@ -1185,9 +1334,10 @@ func _walk_chloe_to(target: Vector2, pose: String, on_arrive: Callable, come_bac
 			_chloe_sprite.flip_h = _chloe_home.x > _chloe.position.x)
 		t.tween_property(_chloe, "position", _chloe_home, clampf(dist / 700.0, 0.3, 1.4)).set_trans(Tween.TRANS_SINE)
 	t.tween_callback(func() -> void:
-		_chloe_sprite.texture = UIKit.texture("props/chloe/chloe_sit.svg")
-		_chloe_sprite.flip_h = false
-		_chloe_busy = false)
+		_chloe_busy = false
+		_update_chloe_mood()
+		if on_home.is_valid():
+			on_home.call())
 
 
 func _hop_chloe() -> void:

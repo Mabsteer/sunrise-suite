@@ -50,3 +50,6 @@ after `#` into that sound's `"b58"` field in `tools/sfx/sfx.json` (remove `prese
 | `dog_dig` | noise | 0.11 s | 39% | [sfxr.me](https://sfxr.me/#7GQhofrboBLgtiKt9bx9JCuYdodK4SFoaNBbNwYBgpHHh7isb48hA2quKRJwb3xrzBvmo1jM4ypVZ8KD1jRUXAejGWBkfnB3QvuaQsE6xX4DgByPVXTBxZoBM) |
 | `dog_sniff` | noise | 0.03 s | 23% | [sfxr.me](https://sfxr.me/#8puhcUeyUqVjgViS6kBWDMdvKsckYRM6o16fbFWLh5LvGbwfofzddrHYncCCb1HocUpXFCirxjQ2Cpveg4KtAs8yGkJ4qD5RD4XKrKBwHrGNQcu1diwxuz1Lj) |
 | `dog_happy` | sine | 0.16 s | 39% | [sfxr.me](https://sfxr.me/#57uBnWgpsMuHdwLFN9uE7CA5bEXfzdCtCJ4zK46RQTEwT8BvGfCACk218AEjaiqwSUUbTJftj3MBhkVvn69Mq3rGu2jJUtrVVVJ5GiA82F6vcgEzFDKGTxyY3) |
+| `dog_whimper` | sine | 0.38 s | 21% | [sfxr.me](https://sfxr.me/#6GynYUzp3wQL4qc7DP4XH6oSBdxZLmbKD2ie95LBHMwGvPnLFcETAQQsbXEbVmNscWWKLEcbycWZozkFBw8hs9FSXtQ8YeH821RBc5QZYz19TypD44ZV1jv5M) |
+| `dog_huff` | noise | 0.04 s | 28% | [sfxr.me](https://sfxr.me/#7GQejrdLtqTEiQ1BxRc3h2jaxrsrhZscAWTrJBh26sU6MhY3atTq5Jwrnjvph7DvYLtLisnT52ZR2M2PW5uGP9hvR7jUhy55JodCMAK5LUoHAL5QYCBCgjeNj) |
+| `dog_drop` | noise | 0.05 s | 32% | [sfxr.me](https://sfxr.me/#7BMHBGAc9GHfqEF56M4bjpm5EGNXxHE4HJi6n9dU9p7x7k4Rub2q8W4G35aTzyAbQF6hiL1RWZsh85UBE23ntpmoA7odKdR95HtP3r7RdmEYtmtep274Svs27) |

@@ -143,6 +143,54 @@ item("margot_teddy", `  ${shadow(64, 118, 36, 6)}
   <ellipse cx="64" cy="52" rx="8" ry="6" fill="#e3c39a"/><circle cx="64" cy="50" r="3" fill="${INK}"/>
   <path d="M50 70 L78 70" stroke="#ee7b6b" stroke-width="6" stroke-linecap="round"/>`, "Margot's old teddy bear, with one ear chewed.");
 
+// Standing up, ready: ears up, tail wagging, looking at you (tap her, then tap a spot).
+save("props/chloe/chloe_ready.svg", svg(170, 180, `  ${shadow(85, 172, 60, 8)}
+  ${fluff(58, 150, 12, 20, 10, FUR, 0.1)}${fluff(112, 150, 12, 20, 10, FUR, 0.1)}
+  ${fluff(85, 118, 48, 34, 20, FUR_SHADE, 0.07)}${fluff(85, 112, 42, 30, 20, FUR, 0.07)}
+  ${fluff(138, 84, 16, 12, 10, FUR_SHADE, 0.14)}${fluff(146, 72, 12, 10, 10, FUR, 0.14)}
+  <path d="M150 58 q8 -4 10 4 M154 50 q8 -2 8 6" stroke="${FUR_DEEP}" stroke-width="3" fill="none" stroke-linecap="round"/>
+  ${headFront(82, 62, 1)}`, "Chloé on her feet, tail wagging: ready to go."));
+
+// Lying in the shade with her tongue out: she's thirsty.
+save("props/chloe/chloe_pant.svg", svg(180, 120, `  ${shadow(90, 110, 74, 8)}
+  ${fluff(104, 80, 62, 28, 22, FUR_SHADE, 0.07)}${fluff(104, 76, 58, 24, 22, FUR, 0.07)}
+  ${fluff(40, 98, 16, 10, 10, FUR, 0.1)}${fluff(66, 100, 16, 10, 10, FUR, 0.1)}
+  ${fluff(160, 66, 14, 10, 10, FUR_SHADE, 0.14)}
+  ${headFront(46, 58, 0.85)}
+  <path d="M42 86 Q46 106 52 86 Z" fill="${PINK}"/>
+  <path d="M8 38 q4 -6 8 0 M4 50 q4 -6 8 0" stroke="#6cc2be" stroke-width="3" fill="none" stroke-linecap="round"/>`, "Chloé lying down, panting, tongue out."));
+
+// Up on her back legs, scratching at a door: she wants to go out (her leash).
+save("props/chloe/chloe_scratch.svg", svg(150, 190, `  ${shadow(80, 182, 46, 7)}
+  ${fluff(70, 166, 12, 16, 10, FUR, 0.1)}${fluff(96, 166, 12, 16, 10, FUR, 0.1)}
+  ${fluff(80, 124, 32, 44, 20, FUR_SHADE, 0.07)}${fluff(80, 120, 28, 40, 20, FUR, 0.07)}
+  ${fluff(112, 82, 10, 16, 10, FUR, 0.1)}${fluff(118, 104, 10, 14, 10, FUR, 0.1)}
+  <path d="M128 76 l10 -4 M128 90 l12 0 M126 104 l10 4" stroke="${FUR_DEEP}" stroke-width="3" stroke-linecap="round"/>
+  ${fluff(46, 150, 12, 10, 10, FUR_SHADE, 0.14)}
+  ${headSide(90, 58)}`, "Chloé up on her back legs, scratching to go out."));
+
+// Sitting, her fringe grown right over her eyes: she needs a brush.
+save("props/chloe/chloe_fringe.svg", svg(160, 170, `  ${shadow(80, 162, 56, 8)}
+  ${fluff(80, 118, 46, 40, 20, FUR_SHADE, 0.07)}
+  ${fluff(80, 112, 40, 36, 20, FUR, 0.07)}
+  ${fluff(58, 150, 14, 12, 10, FUR, 0.1)}${fluff(102, 150, 14, 12, 10, FUR, 0.1)}
+  ${headFront(80, 64, 1)}
+  ${fluff(80, 58, 36, 16, 16, FUR, 0.14)}
+  <path d="M52 60 q6 10 2 18 M66 62 q4 10 0 18 M94 62 q-4 10 0 18 M108 60 q-6 10 -2 18" stroke="${FUR_SHADE}" stroke-width="4" fill="none" stroke-linecap="round"/>`, "Chloé with her fringe over her eyes."));
+
+// A tuft of white fur in a dark gap: all you see of Chloé in her hiding place.
+save("props/chloe/chloe_tuft.svg", svg(60, 30, `  ${fluff(30, 18, 22, 10, 12, FUR_SHADE, 0.16)}${fluff(28, 16, 16, 7, 10, FUR, 0.18)}`, "A tuft of white fur."));
+
+// The silly things Chloé brings back when there's nothing to find.
+save("props/chloe/find_sock.svg", svg(96, 96, `  <path d="M30 10 L58 10 L58 52 Q58 58 64 62 L82 72 Q92 80 84 88 Q78 94 66 88 L36 72 Q28 66 30 56 Z" fill="#6cc2be"/>
+  <path d="M30 10 L58 10 L58 22 L30 22 Z" fill="#fffbf5"/><path d="M34 40 L56 40" stroke="#fffbf5" stroke-width="5"/>`, "An odd striped sock."));
+save("props/chloe/find_leaf.svg", svg(96, 96, `  <path d="M16 80 Q10 30 60 14 Q88 8 84 20 Q80 70 22 82 Z" fill="#8faf8a"/>
+  <path d="M16 80 Q46 50 78 22" stroke="#5e7f5e" stroke-width="3" fill="none"/>`, "A big leaf."));
+save("props/chloe/find_cork.svg", svg(96, 96, `  <path d="M34 20 L62 20 L66 76 L30 76 Z" fill="#c99a6b"/><ellipse cx="48" cy="20" rx="14" ry="5" fill="#e3c39a"/>
+  <circle cx="42" cy="40" r="2.5" fill="#a8744a"/><circle cx="54" cy="56" r="2.5" fill="#a8744a"/><circle cx="44" cy="64" r="2" fill="#a8744a"/>`, "A wine cork, well chewed."));
+save("props/chloe/find_shell.svg", svg(96, 96, `  <path d="M48 14 Q84 30 80 64 Q64 82 48 82 Q32 82 16 64 Q12 30 48 14 Z" fill="#fcd9b8"/>
+  <path d="M48 20 L48 80 M48 20 L30 76 M48 20 L66 76 M48 20 L20 62 M48 20 L76 62" stroke="#f9b98a" stroke-width="3"/>`, "A little shell."));
+
 // Chloé's bowl (a prop for the care tasks).
 save("props/chloe/bowl_empty.svg", svg(120, 60, `  ${shadow(60, 54, 50, 5)}
   <path d="M10 22 L110 22 L98 52 L22 52 Z" fill="${BOW}"/><ellipse cx="60" cy="22" rx="50" ry="10" fill="#c95b52"/>

@@ -107,8 +107,9 @@ The treasure hunt goes through the house in this order. The exit of each room le
 ## Chloé
 - White Maltese, ten years old, round dark eyes, a fringe she can't see through, a pink tongue that is always a little out.
 - **Found** in the hall (room 2), asleep on Mamie's cardigan under the stairs. The note in the kitchen asks Juliette to look after her.
-- **After that** she follows Juliette into every room and sits where the sun falls on the floor. Tap her to pet her; she wags and barks at whatever matters most right now.
-- **She helps:** she **fetches** things from under beds and sofas and through gaps too small for Juliette; she **digs** in soft soil; she **sniffs** a scent you give her and follows it; she **barks** at what's important. Some things she only does when she's happy: a full bowl, fresh water, her leash for the street side, Gaston.
+- **Finding her:** you don't see her. Now and then something whimpers softly under the stairs, and if you look very closely there's a tuft of white fur in the gap under the cupboard door.
+- **After that** she follows Juliette into every room and sits where the sun falls on the floor. Tap her and she stands up, tail going, ready to go wherever you point. She doesn't always find something; sometimes she proudly brings back a sock.
+- **She helps:** she **fetches** things from under beds and sofas and through gaps too small for Juliette; she **digs** in soft soil; she **sniffs** a scent you give her and follows it; Some things she only does when she's happy: a full bowl, fresh water, her leash for the street side, a brush for her fringe, Gaston. She never says so; she sits by her bowl, pants, scratches at the door or bumps into things.
 - She never gets hurt, never runs away, and is never in danger.
 
 ## The postcards (the backs)

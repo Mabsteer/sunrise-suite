@@ -553,6 +553,47 @@
         "p_env_sustain": 0.1,
         "p_env_decay": 0.25
       }
+    },
+    "dog_whimper": {
+      "note": "Chloé whimpering softly in her hiding place: a thin falling whine.",
+      "volume": 0.1,
+      "overrides": {
+        "wave_type": 2,
+        "p_base_freq": 0.5,
+        "p_freq_ramp": -0.08,
+        "p_vib_strength": 0.2,
+        "p_vib_speed": 0.45,
+        "p_env_attack": 0.12,
+        "p_env_sustain": 0.25,
+        "p_env_decay": 0.3,
+        "p_lpf_freq": 0.5
+      }
+    },
+    "dog_huff": {
+      "note": "Chloé stands up, ready: a short snuffly huff.",
+      "volume": 0.14,
+      "overrides": {
+        "wave_type": 3,
+        "p_base_freq": 0.35,
+        "p_freq_ramp": -0.2,
+        "p_env_attack": 0.01,
+        "p_env_sustain": 0.04,
+        "p_env_decay": 0.12,
+        "p_lpf_freq": 0.3
+      }
+    },
+    "dog_drop": {
+      "note": "Chloé drops something at Juliette's feet: a soft little thud.",
+      "volume": 0.16,
+      "overrides": {
+        "wave_type": 3,
+        "p_base_freq": 0.2,
+        "p_freq_ramp": -0.3,
+        "p_env_attack": 0,
+        "p_env_sustain": 0.02,
+        "p_env_decay": 0.14,
+        "p_lpf_freq": 0.25
+      }
     }
   }
 }
