@@ -39,3 +39,23 @@ func _scripts(dir: String) -> Array[String]:
 		if f.ends_with(".gd"):
 			out.append(dir.path_join(f))
 	return out
+
+
+func test_audio_status_reports_buses_and_recent_sounds() -> void:
+	AudioManager.play_sfx("ui_click")
+	var st := AudioManager.audio_status()
+	for key in ["enabled", "buses", "recent", "web_audio"]:
+		assert_true(st.has(key), "audio status has %s" % key)
+	assert_true((st["buses"] as Dictionary).has("SFX"), "the SFX bus is listed")
+	assert_eq((st["recent"] as Array).back(), "ui_click", "the last sound is remembered")
+
+
+func test_settings_have_a_test_sound_button() -> void:
+	var panel := SettingsPanel.new()
+	tree.root.add_child(panel)
+	var found := false
+	for b in panel.find_children("*", "Button", true, false):
+		if (b as Button).tooltip_text == tr("SETTINGS_TEST_SOUND"):
+			found = true
+	panel.free()
+	assert_true(found, "a test-sound button sits next to the sound effects slider")

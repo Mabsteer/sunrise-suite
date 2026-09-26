@@ -96,6 +96,10 @@ func _slider_row(caption: String, key: String, value: float) -> Control:
 	pct.custom_minimum_size.x = 100
 	pct.autowrap_mode = TextServer.AUTOWRAP_OFF
 	row.add_child(pct)
+	if key == "volume_sfx":
+		var test := UIKit.icon_button("ui/forward.svg", 64, tr("SETTINGS_TEST_SOUND"))
+		test.pressed.connect(AudioManager.play_test_sound)
+		row.add_child(test)
 	slider.value_changed.connect(func(v: float) -> void:
 		SaveManager.settings[key] = v
 		pct.text = "%d%%" % int(round(v * 100))

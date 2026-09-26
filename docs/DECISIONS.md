@@ -108,3 +108,4 @@ One line per decision: what, and why.
 - Rooms have a light to find; some puzzles need it on or off.
 - Placeholder ambience per room (generated) until the Suno music exists. A hidden dev mode (tap the version 5 times) lets the owner jump to any room.
 - The validator checks 30 seeds per room/tier locally (fast) and 200 in CI.
+- Sound (G1): the live build played sound effects in a fresh browser that allows autoplay, but the owner heard nothing in a normal desktop browser and on an iPhone. Browsers start a page's audio "suspended" until the page is tapped, and some keep it suspended. The web page now keeps a list of every audio context and resumes them on every tap, click or key (a small script in the Web export's head_include), which also unlocks audio on iOS Safari. The iPhone's silent switch still mutes web audio; that's the phone's choice and the game respects it. Settings has a test-sound button, and `AudioManager.audio_status()` feeds the dev panel.

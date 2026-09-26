@@ -26,6 +26,8 @@ var _music_fading := false
 var _ambience_player: AudioStreamPlayer
 var _ambience_track := ""
 var _stinger: AudioStreamPlayer
+## The last few sound effects asked for (for the dev panel's audio status).
+var _recent: Array[String] = []
 
 
 func _ready() -> void:
@@ -69,6 +71,9 @@ func _process(_delta: float) -> void:
 
 ## Plays a sound effect from assets/audio/sfx/<name>.wav.
 func play_sfx(sfx_name: String, pitch_variation: float = 0.0, volume_db: float = 0.0) -> void:
+	_recent.append(sfx_name)
+	if _recent.size() > 5:
+		_recent.pop_front()
 	if not enabled:
 		return
 	var stream := _load_stream(SFX_DIR, sfx_name)
@@ -158,6 +163,34 @@ func play_ambience(track: String) -> void:
 ## Returns true if a sound or track file exists (used by tests and the settings screen).
 func has_sfx(sfx_name: String) -> bool:
 	return ResourceLoader.exists(SFX_DIR + sfx_name + ".wav")
+
+
+## What the audio is doing right now: bus volumes and mutes, the last sounds played and,
+## on the web, the state of the browser's audio contexts ("running" means sound can be heard).
+func audio_status() -> Dictionary:
+	var buses: Dictionary = {}
+	for i in AudioServer.bus_count:
+		buses[AudioServer.get_bus_name(i)] = {
+			"volume_db": snappedf(AudioServer.get_bus_volume_db(i), 0.1),
+			"mute": AudioServer.is_bus_mute(i),
+		}
+	var web := "not a web build"
+	if OS.has_feature("web"):
+		web = str(JavaScriptBridge.eval("JSON.stringify((window.__sunriseAudio || []).map(function (c) { return c.state; }))", true))
+	return {"enabled": enabled, "buses": buses, "recent": _recent.duplicate(), "web_audio": web}
+
+
+## Asks the browser to wake up its audio (it may block sound until the page is tapped).
+func resume_web_audio() -> void:
+	if OS.has_feature("web"):
+		JavaScriptBridge.eval("(window.__sunriseAudio || []).forEach(function (c) { if (c.state !== 'running') { c.resume(); } })", true)
+
+
+## A short, clearly audible pair of sounds to check the speakers.
+func play_test_sound() -> void:
+	resume_web_audio()
+	play_sfx("ui_click")
+	get_tree().create_timer(0.25).timeout.connect(func() -> void: play_sfx("lock_open"))
 
 
 func apply_volumes() -> void:

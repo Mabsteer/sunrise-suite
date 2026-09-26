@@ -159,7 +159,8 @@ POSTCARD_TURN,Turn it over
 SETTINGS_MASTER,Everything
 SETTINGS_MUSIC,Music
 SETTINGS_SFX,Sound effects
-SETTINGS_AMBIENCE,Ocean sounds
+SETTINGS_AMBIENCE,Room sounds
+SETTINGS_TEST_SOUND,Play a test sound
 SETTINGS_FULLSCREEN,Full screen
 SETTINGS_TIMER,Show a timer in rooms
 SETTINGS_REDUCE_MOTION,Reduce motion
