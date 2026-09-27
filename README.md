@@ -69,7 +69,13 @@ Follow [`docs/SUNO_PROMPTS.md`](docs/SUNO_PROMPTS.md): make a track in Suno, nam
 
 ### Edit story text
 - Postcards and Mamie's last letter: `data/postcards.json` (`\n` starts a new line).
-- Mamie's memories (the story notes in walk 1): `data/story.json`, under each chapter's `memories`. The story levels themselves are `data/levels/story_<room>.json`; if you change a riddle's answer there, change the memory text too. The whole story is in `docs/STORY.md`.
+- Mamie's memories (the story notes): `data/story.json`, by day and room, under `memories`. The rooms themselves are `data/levels/ch<day>_<room>.json` (the Day 1 kitchen is `tutorial.json`); if you change a riddle's answer there, change the memory or the room text too. The whole story is in `docs/STORY.md`.
+
+### Write or change a story room
+1. Read "Voice and rules" in `docs/STORY.md`: a note is a memory, never an instruction. It doesn't name its lock or say how to read the code; the answer lives in the room (a photo, a ticket, marks, things to count).
+2. Write the memories in `data/story.json` (that day, that room), and the room in `data/levels/ch<day>_<room>.json` (see `docs/DATA_FORMAT.md`). Give every lock a `_why` (the reasoning) and three `hints` (a nudge, which object, how to read it).
+3. Run `bash tools/check.sh`. The notes lint tells you if a note gives too much away, the validator proves the room has exactly one solution and a fair par time, and the bot plays it.
+4. Look at it: `bash tools/tour.sh ch2_hall` (or any `ch<day>_<room>`), or play it with dev mode (Settings → tap the version 5 times → Dev → Jump to a room).
 - Clue wording and decoy notes of the generated levels: `data/clues.json`.
 - Tutorial guide bubbles: `data/tutorial.json`. The tutorial level itself: `data/levels/tutorial.json`.
 - Menu and button text: `i18n/strings.csv` (the `en` column). Add a column to translate the game.

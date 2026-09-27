@@ -29,7 +29,7 @@ The owner's third playtest: a linear story over three chapters (days) of seven h
 - [x] **G7** Lights (and things only visible in the dark)
 - [x] **G8** Generated room ambience
 - [x] **G9** Faster local check (30 seeds locally, 200 in CI)
-- [ ] **Playtest checkpoint 1** (ready 2026-09-27): waiting for the owner. What to test, on the live build:
+- [x] **Playtest checkpoint 1** (played 2026-09-27; fixed after: the walk results card layout). What to test, on the live build:
   - **Dev mode:** Settings → tap "Version 0.1.0" (bottom right of the card) 5 times. A "Dev" button appears in Settings and in the pause menu: jump to any room, "Finish this room", "Do the next step", the answers of the room you're in, "Unlock every room", and the audio status.
   - **Sound:** the ▶ button next to "Sound effects" plays a test sound. If it's silent, open Dev → Audio and note what "Browser audio" says (it should say "running"). Every room now has its own background sound ("Room sounds" slider).
   - **No helpers:** no padlocks, paws or sparkles in the rooms. Settings → "Show helpers" turns them back on.
@@ -45,7 +45,7 @@ The owner's third playtest: a linear story over three chapters (days) of seven h
 - [x] **G12** Hand-written hints and the notes lint
 - [x] **G13** Chapter 1 rewritten
 - [x] **G14** Half-cryptic generated notes, Endless becomes Mamie's shoebox
-- [ ] **Playtest checkpoint 2** (ready 2026-09-27): waiting for the owner. What to test, on the live build (your progress starts over: the story changed):
+- [x] **Playtest checkpoint 2** (played 2026-09-27; fixed after: Chloé always finds what she can reach, what she fetches can be seen, evener notes). What to test, on the live build (your progress starts over: the story changed):
   - **Day 1 from start to finish**, without hints first: the kitchen (tutorial), then the hall (pencil marks, the bus ticket, the photos, Chloé), bedroom (find the lamp; the stars need the dark), living room (the fort rules, the number square, Chloé under the rug), garden (count, water for Chloé, the shadow clock), shed (the pull cord; Chloé's brush), front garden (the letterbox, the leash, the bucket). Are the notes cryptic enough, or too cryptic? Are the three hints per lock right?
   - **The end of Day 1:** the walk's card with "Next chapter", the Day 2 card, and that the Daily Sunrise and Mamie's shoebox are now open (main menu and the book).
   - **Days 2 and 3** (Dev → Jump to a room, or Unlock every room): the Day card on each kitchen, and the rooms that are still the old v2 story rooms or generated placeholders; they get rewritten in G15/G16.
@@ -55,8 +55,12 @@ The owner's third playtest: a linear story over three chapters (days) of seven h
 ### Phase C: chapters 2 and 3
 - [x] **G15** Chapter 2
 - [x] **G16** Chapter 3 and the finale
-- [ ] **G17** Polish and the v3 summary
-- [ ] **Playtest checkpoint 3**
+- [x] **G17** Polish and the v3 summary
+- [ ] **Playtest checkpoint 3** (ready 2026-09-27): waiting for the owner. What to test (dev mode → Jump to a room, or play on from Day 1):
+  - **Day 2** (Henri and Margot): most locks need a memory and something in the room together (the old calendar, the harbour photo, Margot's bracelet, the card in the clock case, the wedding photo in lamplight, the paint pot, the swing).
+  - **Day 3** (the flower stall): split clues (a torn photo to put together, torn letters, diary pages, Maman's list in two places) and notes from earlier: the hall needs the kitchen's cabin number, the bedroom needs Day 1's lullaby, the shed needs Day 2's wedding day. The notebook keeps them.
+  - **The ending**: the time capsule, the last letter (it mentions the three mornings), the walk's results, and the scrapbook's letter tile on Day 3.
+  - Is the difficulty rising from Day 1 to Day 3 without sudden jumps? Which notes are too direct or too vague?
 
 ## v2: playtest feedback (2026-09-26)
 The owner's playtest feedback changes the direction: difficulty must come from thinking, not searching; more kinds of puzzles; one route through a whole house; a new story (Juliette inherits her late grandmother Céline's house) told through the notes; Chloé the dog as a helper; zooming. Work in this order, each milestone ends with `bash tools/check.sh`, commit, push and a green CI run.
@@ -83,7 +87,7 @@ The owner's playtest feedback changes the direction: difficulty must come from t
 - [x] **F8 Polish and summary**: scrapbook memories show symbols as icons, the "memory for the scrapbook" toast waits until the note is put down, Chloé's spots sit above the bag in every room, the screenshot tour waits for the first screen, and this summary.
 
 ## Next
-- v3 (see above and `docs/PLAN_V3.md`).
+- v3 is built. Waiting for the owner's playtest (checkpoint 3).
 
 ## Known issues
 - Portrait phones show a "turn your phone sideways" card (it can be dismissed); the game is designed for landscape.
@@ -100,14 +104,28 @@ The owner's playtest feedback changes the direction: difficulty must come from t
 - [x] Par-time sanity check: measure the autoplay step count per tier against par_time.
 - [x] Custom web loading screen colours (sunrise gradient instead of plain background).
 
-### v2 ideas (not started)
+### Ideas (not started)
 - [ ] Double-tap on furniture could zoom in on it instead of opening it straight away (now: double-tap zooms on empty spots only).
 - [ ] Zoom in the sunroom too.
-- [ ] More memories per room (the scrapbook has 3-4 per chapter).
-- [ ] Walk 2/3 notes in Mamie's voice to little and teenage Juliette (they now use the generic clue templates).
+- [ ] Mamie's shoebox notes in her voice to little and teenage Juliette (they use the half-cryptic clue templates).
+- [x] More memories per room (v3: 71 memories over 21 rooms).
 
 ## Blocked
 - (none)
+
+## Summary (v3 done)
+The third playtest round (G0-G17) is built, the checks are green, and every push deploys to https://mabsteer.github.io/sunrise-suite/.
+
+- **The story is three days.** Each day walks the whole house (kitchen, hall, up the stairs to the bedroom, down to the living room, garden, shed, front garden), and each day is a period of Céline's life going backwards: her last years and the summers with Juliette, Henri and Margot, the flower stall and her childhood. Linear, no star gates; the last letter at the end of Day 3; a Day card each morning and a results card with "Next chapter" each evening.
+- **21 hand-made rooms, 71 memories.** Notes are memories, not instructions: they never name their lock or say how to read the code; the answers are in the room. Every lock has three hand-written hints. Day 1 has one link per lock, Day 2 two sources, Day 3 split clues and notes from earlier days. A notes lint keeps it that way.
+- **The house connects.** Doors open onto the next room (drawn live), and Juliette walks in. The hall's stairs are redrawn properly, with a gate at the bottom.
+- **Chloé**: hidden in the hall (you hear her; zoom in to see a tuft). Tap her, then a spot: she always finds what's there, sometimes brings a sock. Her needs show in her pose; looking after her earns a memory.
+- **No helpers** unless you want them (Settings → Show helpers). **Lights** in every room; some things only show in the light or in the dark. **Mamie's notebook** keeps every note you've read, with the hints. The bag is see-through and folds away.
+- **Sound**: the web page wakes the browser's audio on every tap; a test-sound button in Settings; generated room sounds in every room until the Suno music arrives.
+- **Dev mode** (Settings → tap the version 5 times): jump anywhere, solve a room, see the answers, unlock all, audio status.
+- **Side modes**: Mamie's shoebox (Endless) and the Daily Sunrise open after Day 1, with half-cryptic notes ("the spoons' bedroom").
+- **Safety net:** 123 unit tests, the validator (2,100 generated levels locally, 14,000 in CI, plus all 21 story rooms), the bot plays 163 levels through the real UI, and web and Windows exports on every push.
+- **What needs a human:** the owner's playtest of Days 2 and 3, a real phone for the sound and pinch-zoom, and the Suno music.
 
 ## Summary (v2 done)
 The playtest feedback round (F1-F8) is complete, the checks are green, and every push deploys to https://mabsteer.github.io/sunrise-suite/.
