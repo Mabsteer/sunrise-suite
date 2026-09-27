@@ -10,28 +10,28 @@
   "sky_rect": [690, 110, 400, 320],
   "music": "level_bedroom",
   "ambience": "bedroom",
-  "door": {"name": "the door to the landing", "rect": [1640, 190, 230, 580]},
+  "door": {"name": "the door to the landing", "riddle_name": "the way back down", "rect": [1640, 190, 230, 580]},
   "exit": {"kind": "stairs_down", "to": "lounge", "view_room": "hall", "view_center": [1640,380], "hinge": "right"},
   "light_switch": {"name": "the bedside lamp", "rect": [1270,420,110,130], "glow": [1320,470]},
   "dog_spot": [1480, 885],
   "furniture": [
     {"id": "wardrobe", "name": "the wardrobe", "sprite": "props/bedroom/wardrobe.svg", "pos": [40, 150], "size": [300, 620],
      "spots": [
-       {"id": "suitcase", "name": "the old suitcase", "rect": [40, 0, 200, 110], "locks": ["combo", "key"]},
-       {"id": "doors", "name": "the wardrobe", "rect": [20, 140, 260, 440], "locks": ["key", "combo", "hidden"], "tools": [null], "reveal": "something folded between Henri's shirts"}
+       {"id": "suitcase", "name": "the old suitcase", "riddle_name": "the traveller on top of the wardrobe", "rect": [40, 0, 200, 110], "locks": ["combo", "key"]},
+       {"id": "doors", "name": "the wardrobe", "riddle_name": "where Sunday clothes wait", "rect": [20, 140, 260, 440], "locks": ["key", "combo", "hidden"], "tools": [null], "reveal": "something folded between Henri's shirts"}
      ],
      "flavor": "Henri's shirts on the left, Mamie's dresses on the right. Neither of them ever moved them."},
     {"id": "dressing_table", "name": "the dressing table", "sprite": "props/bedroom/dressing_table.svg", "pos": [360, 410], "size": [230, 360],
      "spots": [
-       {"id": "jewellery_box", "name": "the jewellery box", "rect": [134, 146, 90, 56], "locks": ["sequence"]},
-       {"id": "drawers", "name": "the dressing table drawers", "rect": [20, 226, 192, 50], "locks": ["combo", "key", "pattern"]},
+       {"id": "jewellery_box", "name": "the jewellery box", "riddle_name": "the box that sings", "rect": [134, 146, 90, 56], "locks": ["sequence"]},
+       {"id": "drawers", "name": "the dressing table drawers", "riddle_name": "where the hairpins sleep", "rect": [20, 226, 192, 50], "locks": ["combo", "key", "pattern"]},
        {"id": "mirror", "name": "the mirror", "rect": [44, 8, 142, 142], "clue": true}
      ],
      "flavor": "Perfume, hairpins and a coral jewellery box that plays a tune when you open it."},
     {"id": "bed", "name": "the bed", "sprite": "props/bedroom/bed.svg", "pos": [600, 430], "size": [620, 500],
      "spots": [
-       {"id": "under_bed", "name": "under the bed", "rect": [20, 460, 580, 40], "locks": ["hidden", "dog"], "tools": [null, "flashlight"], "dog_action": "fetch", "reveal": "something that rolled all the way under the bed"},
-       {"id": "pillows", "name": "the pillows", "rect": [90, 150, 440, 80], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "something tucked under Henri's pillow"}
+       {"id": "under_bed", "name": "under the bed", "riddle_name": "where the dust bunnies live", "rect": [20, 460, 580, 40], "locks": ["hidden", "dog"], "tools": [null, "flashlight"], "dog_action": "fetch", "reveal": "something that rolled all the way under the bed"},
+       {"id": "pillows", "name": "the pillows", "riddle_name": "where the dreams are kept", "rect": [90, 150, 440, 80], "locks": ["hidden"], "tools": [null], "clue": true, "reveal": "something tucked under Henri's pillow"}
      ],
      "flavor": "The quilt is made from their old shirts. The blue squares were Henri's favourite."},
     {"id": "wedding_photo", "name": "the wedding photo", "sprite": "props/bedroom/wedding_photo.svg", "pos": [1245, 160], "size": [190, 170],
@@ -39,8 +39,8 @@
      "flavor": "Henri and Céline under a lemon tree so small it needed a stick to stand up."},
     {"id": "nightstand", "name": "the nightstand", "sprite": "props/bedroom/nightstand.svg", "pos": [1250, 450], "size": [160, 330],
      "spots": [
-       {"id": "drawer", "name": "the nightstand drawer", "rect": [26, 172, 108, 56], "locks": ["combo", "key", "sudoku"]},
-       {"id": "cupboard", "name": "the nightstand cupboard", "rect": [26, 238, 108, 60], "locks": ["key", "combo"]}
+       {"id": "drawer", "name": "the nightstand drawer", "riddle_name": "the bedside drawer", "rect": [26, 172, 108, 56], "locks": ["combo", "key", "sudoku"]},
+       {"id": "cupboard", "name": "the nightstand cupboard", "riddle_name": "the little bedside door", "rect": [26, 238, 108, 60], "locks": ["key", "combo"]}
      ],
      "flavor": "Henri's side. His reading glasses are still here."}
   ],

@@ -4,7 +4,7 @@ SUBTITLE,Mamie Céline's house by the sea
 COMING_SOON,"The sun is almost up... more rooms arrive every day."
 MODE_TIER,Sunrise %d
 MODE_DAILY,Daily Sunrise
-MODE_ENDLESS,Endless Sunrise %d
+MODE_ENDLESS,Mamie's shoebox · hunt %d
 PAUSE,Pause
 HINT,Look in Mamie's notebook for a hint
 CLOSE,Close
@@ -72,14 +72,14 @@ LEVEL_POPUP_TEXT,"Play the same puzzle again, or one of Mamie's other riddles in
 PLAY_AGAIN_SAME,Same puzzle again
 PLAY_FRESH,A fresh puzzle
 POSTCARD_HERE,A postcard is hidden in this room!
-ENDLESS_TITLE,Endless Sunrise
+ENDLESS_TITLE,Mamie's shoebox
 ENDLESS_LOCKED,"Finish the first day of Mamie's hunt to open her shoebox: all the treasure hunts she ever made you, round and round the house."
-ENDLESS_READY,"The hunt keeps going round the house, trickier every room. How far can you go?"
-ENDLESS_BEST,Best so far: Sunrise %d
-ENDLESS_PLAY,Play Endless
+ENDLESS_READY,"Every treasure hunt Mamie ever made you, round and round the house, trickier every time. How far can you go?"
+ENDLESS_BEST,Furthest so far: hunt %d
+ENDLESS_PLAY,Open the shoebox
 UNLOCK_NEXT,The way to %s is open!
 NEXT_LEVEL,Next room
-NEXT_ENDLESS,Next endless sunrise
+NEXT_ENDLESS,Next hunt from the shoebox
 BACK_TO_BOOK,Back to the house
 HUB_TITLE,The sunroom
 HUB_TIP,"This is your sunroom now. Tap Decorate to make it yours, and spend seashells at the Saturday market!"

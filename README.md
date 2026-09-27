@@ -1,31 +1,31 @@
 # Sunrise Suite
 
-A cozy 2D escape-room puzzle game. Juliette inherits the house by the sea of her grandmother Céline ("Mamie"), who loved sunrises, the market around the corner, and riddles. Mamie left one last treasure hunt: room by room through the house and back through her life, until the garden gate opens just as the sun comes up. The whole story is in [`docs/STORY.md`](docs/STORY.md).
+A cozy 2D escape-room puzzle game. Juliette inherits the house by the sea of her grandmother Céline ("Mamie"), who loved sunrises, the market around the corner, and riddles. Mamie left one last treasure hunt: three mornings, each a walk through the whole house, going back through her life, until her last letter waits in the front garden on the third morning. The whole story is in [`docs/STORY.md`](docs/STORY.md).
 
 **Play it in your browser: https://mabsteer.github.io/sunrise-suite/** (works on phones too; hold the phone sideways).
 
 Made with [Godot 4.7](https://godotengine.org). The Windows version is built automatically on every push (see *Automatic builds* below).
 
 ## What's in the game
-- **One route through the whole house**: kitchen → hall → bedroom → living room → garden → shed → front garden. Each room's door leads to the next, and each room is one period of Céline's life, going back in time from her last years to her childhood. The sun rises over the whole walk and clears the sea as you open the front garden gate.
-- **Chloé**, Mamie's little white Maltese: she hides in the hall, and once Juliette finds her she follows her into every room. She fetches things from under furniture, digs in soft soil, follows a scent you give her, and barks at what matters. Some things she only does when she's happy: breakfast, water, her leash, her brush, Gaston the squeaky seagull.
-- **Three walks**: Mamie's last treasure hunt (the story, seven hand-made rooms whose notes are her memories and riddles at once), then two harder walks with her old treasure hunts from the shoebox. Every room comes back harder.
-- **Puzzles that make you think**: number codes, symbol tunes, clocks, lamps, things to put in order, little 4×4 number squares, "what comes next?" patterns, turning-tile and sliding-tile pictures, keys, tools and item combinations. From level 2 on no code is written out: Mamie's notes are riddles (count the shells in the jar, sums, patterns, logic), and one puzzle often gives the answer to the next. Keys are always the reward for a solved puzzle.
-- **The sunrise is your progress bar**: every solved step brightens the sky.
-- **Replay** any room with a fresh puzzle, and **Endless Sunrise** (round and round the house) after the three walks.
-- **Daily Sunrise**: one puzzle a day (the same for everyone), a streak with a free weekly sleep-in, and a calendar that paints each finished day in its sky colours.
+- **Three days, one house**: every day walks kitchen → hall → up the stairs to the bedroom → down to the living room → garden → shed → front garden. You see the next room through each door you open, and walk in. Each day is one period of Céline's life (Day 1: her last years and the summers with Juliette; Day 2: Henri and Margot; Day 3: the flower stall and her childhood), and the sun rises over each morning's walk.
+- **Notes that are memories, not instructions**: Mamie never says which lock a note is for or how to read it. The answers are in the room: pencil marks on a door frame, a bus ticket in the beach bag, stars on the wall that only glow in the dark. Mamie's notebook (top right) keeps every note you've read, and gives hints when you ask.
+- **Chloé**, Mamie's little white Maltese: she hides in the hall on the first day, and after that she follows Juliette everywhere. Tap her, then tap a spot, and she goes to have a look: sometimes she brings something back, sometimes a sock. What she needs (breakfast, water, her leash, her brush, Gaston the squeaky seagull) shows in how she sits.
+- **Puzzles that make you think**: number codes, tunes, clocks, lamps, things to put in order, little 4×4 number squares, patterns, turning and sliding tile pictures, keys, tools, item combinations, and a light switch in every room. Keys are always the reward for a solved puzzle.
+- **Mamie's shoebox** (endless, round and round the house) and the **Daily Sunrise** (one puzzle a day, a streak with a free weekly sleep-in, and a calendar) open after the first day.
 - **The sunroom**: earn seashells and make the house yours with 24 pieces of decor from the Saturday market.
-- **Céline's scrapbook**: one page per chapter of her life, with the postcards and memories you found; her last letter at the end.
+- **Céline's scrapbook**: a page per day, a tile per room, with the postcards and memories you found; her last letter at the end.
 - **Stars**: finish (★), use at most one hint (★★), beat the par time (★★★).
+- **Dev mode** (for testing): in Settings, tap the version number 5 times.
 
 ## How to play
 Tap (or click) things in the room to look closer. Things you pick up go into your bag at the bottom.
 - Tap an item in the bag to select it, then tap something in the room to use it.
 - Tap the selected item again to look at it.
 - With one item selected, tap another to combine them (or drag one onto the other).
-- Chloé: tap her to see what she needs, or she trots over and barks at what matters now. Select something in the bag and tap her to give it to her. In a spot with a paw badge, ask her to fetch or dig.
+- Chloé: tap her (she stands up), then tap a spot to send her there. Select something in the bag and tap her to give it to her.
 - Look closer: pinch (or use the mouse wheel, or the + and - buttons bottom left) to zoom in, drag to look around, and double-tap an empty spot to zoom in there or back out.
-- Stuck? Mamie's notebook (top right) gives hints that get more specific each time.
+- Mamie's notebook (top right): the notes you've read, and hints that get more specific each time you ask.
+- The bag button folds the bag away. Settings → "Show helpers" marks the things you can open, if you want it easier.
 - Keyboard: Esc closes things or pauses.
 
 ---

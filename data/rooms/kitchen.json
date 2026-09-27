@@ -11,39 +11,39 @@
   "sky_rect": [750, 150, 420, 380],
   "music": "level_kitchen",
   "ambience": "kitchen",
-  "door": {"name": "the door to the hall", "rect": [170, 110, 260, 660]},
+  "door": {"name": "the door to the hall", "riddle_name": "the way to the coats and hats", "rect": [170, 110, 260, 660]},
   "exit": {"kind": "door", "to": "hall", "view_center": [640,470], "hinge": "left"},
   "light_switch": {"name": "the light switch by the door", "rect": [446,400,40,60], "sprite": "props/common/light_switch.svg", "glow": [960,150]},
   "dog_spot": [420, 885],
   "furniture": [
     {"id": "counter", "name": "the kitchen counter", "sprite": "props/kitchen/counter.svg", "pos": [460, 488], "size": [1180, 300],
      "spots": [
-       {"id": "left_cabinet", "name": "the left cupboard", "rect": [22, 104, 352, 170], "locks": ["key", "combo"]},
-       {"id": "sink", "name": "under the sink", "rect": [392, 104, 400, 170], "locks": ["hidden"], "tools": [null, "flashlight"], "reveal": "something tucked behind the pipes"},
-       {"id": "drawers", "name": "the kitchen drawers", "rect": [806, 104, 352, 172], "locks": ["combo", "key"]}
+       {"id": "left_cabinet", "name": "the left cupboard", "riddle_name": "where the good plates hide", "rect": [22, 104, 352, 170], "locks": ["key", "combo"]},
+       {"id": "sink", "name": "under the sink", "riddle_name": "the dark place under the dripping tap", "rect": [392, 104, 400, 170], "locks": ["hidden"], "tools": [null, "flashlight"], "reveal": "something tucked behind the pipes"},
+       {"id": "drawers", "name": "the kitchen drawers", "riddle_name": "the spoons' bedroom", "rect": [806, 104, 352, 172], "locks": ["combo", "key"]}
      ],
      "flavor": "Butcher-block counters, always a little floury."},
     {"id": "espresso", "name": "the espresso machine", "sprite": "props/kitchen/espresso.svg", "pos": [520, 360], "size": [180, 190],
-     "spots": [{"id": "drip_tray", "name": "under the drip tray", "rect": [20, 130, 140, 56], "locks": ["hidden"], "tools": [null], "reveal": "something tucked under the drip tray"}],
+     "spots": [{"id": "drip_tray", "name": "under the drip tray", "riddle_name": "under the coffee's little tray", "rect": [20, 130, 140, 56], "locks": ["hidden"], "tools": [null], "reveal": "something tucked under the drip tray"}],
      "flavor": "Mamie's pride and joy. It hisses like a happy dragon."},
     {"id": "spice_rack", "name": "the spice rack", "sprite": "props/kitchen/spice_rack.svg", "pos": [495, 150], "size": [230, 160],
-     "spots": [{"id": "spices", "name": "the spice jars", "rect": [0, 0, 226, 152], "locks": ["hidden", "order"], "tools": [null], "clue": true, "reveal": "a little tin behind the jars"}],
+     "spots": [{"id": "spices", "name": "the spice jars", "riddle_name": "the little jars that make everything taste of holidays", "rect": [0, 0, 226, 152], "locks": ["hidden", "order"], "tools": [null], "clue": true, "reveal": "a little tin behind the jars"}],
      "flavor": "Cinnamon, cardamom, saffron from Marrakech..."},
     {"id": "fridge", "name": "the fridge", "sprite": "props/kitchen/fridge.svg", "pos": [1650, 244], "size": [250, 530],
      "spots": [
-       {"id": "freezer", "name": "the freezer", "rect": [10, 10, 230, 150], "locks": ["key", "combo", "sudoku"]},
+       {"id": "freezer", "name": "the freezer", "riddle_name": "the coldest cupboard in the house", "rect": [10, 10, 230, 150], "locks": ["key", "combo", "sudoku"]},
        {"id": "magnets", "name": "the fridge magnets", "rect": [60, 290, 180, 110], "clue": true}
      ],
      "flavor": "A mint-green fridge that hums a little tune."},
     {"id": "island", "name": "the kitchen island", "sprite": "props/kitchen/island.svg", "pos": [520, 772], "size": [880, 230],
      "spots": [
-       {"id": "left_drawer", "name": "the island's left drawer", "rect": [30, 46, 400, 52], "locks": ["key", "combo"]},
-       {"id": "under", "name": "the gap under the island", "rect": [20, 196, 840, 34], "locks": ["dog"], "dog_action": "fetch"},
-       {"id": "right_drawer", "name": "the island's right drawer", "rect": [450, 46, 400, 52], "locks": ["combo", "key", "pattern"]}
+       {"id": "left_drawer", "name": "the island's left drawer", "riddle_name": "the tea towels' drawer", "rect": [30, 46, 400, 52], "locks": ["key", "combo"]},
+       {"id": "under", "name": "the gap under the island", "riddle_name": "the gap where the crumbs go", "rect": [20, 196, 840, 34], "locks": ["dog"], "dog_action": "fetch"},
+       {"id": "right_drawer", "name": "the island's right drawer", "riddle_name": "the drawer of string and birthday candles", "rect": [450, 46, 400, 52], "locks": ["combo", "key", "pattern"]}
      ],
      "flavor": "The island where breakfast happens."},
     {"id": "fruit_bowl", "name": "the fruit bowl", "sprite": "props/kitchen/fruit_bowl.svg", "pos": [560, 662], "size": [210, 120],
-     "spots": [{"id": "bowl", "name": "under the lemons", "rect": [10, 0, 190, 112], "locks": ["hidden"], "tools": [null], "reveal": "something under the lemons"}],
+     "spots": [{"id": "bowl", "name": "under the lemons", "riddle_name": "under the yellow ones", "rect": [10, 0, 190, 112], "locks": ["hidden"], "tools": [null], "reveal": "something under the lemons"}],
      "flavor": "Lemons and one very proud peach."}
   ],
   "wall_slots": [

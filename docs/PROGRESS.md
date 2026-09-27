@@ -44,8 +44,13 @@ The owner's third playtest: a linear story over three chapters (days) of seven h
 - [x] **G11** Chapter structure: linear, Day cards, chapter results, finale after chapter 3, save v3
 - [x] **G12** Hand-written hints and the notes lint
 - [x] **G13** Chapter 1 rewritten
-- [ ] **G14** Half-cryptic generated notes, Endless becomes Mamie's shoebox
-- [ ] **Playtest checkpoint 2**
+- [x] **G14** Half-cryptic generated notes, Endless becomes Mamie's shoebox
+- [ ] **Playtest checkpoint 2** (ready 2026-09-27): waiting for the owner. What to test, on the live build (your progress starts over: the story changed):
+  - **Day 1 from start to finish**, without hints first: the kitchen (tutorial), then the hall (pencil marks, the bus ticket, the photos, Chloé), bedroom (find the lamp; the stars need the dark), living room (the fort rules, the number square, Chloé under the rug), garden (count, water for Chloé, the shadow clock), shed (the pull cord; Chloé's brush), front garden (the letterbox, the leash, the bucket). Are the notes cryptic enough, or too cryptic? Are the three hints per lock right?
+  - **The end of Day 1:** the walk's card with "Next chapter", the Day 2 card, and that the Daily Sunrise and Mamie's shoebox are now open (main menu and the book).
+  - **Days 2 and 3** (Dev → Jump to a room, or Unlock every room): the Day card on each kitchen, and the rooms that are still the old v2 story rooms or generated placeholders; they get rewritten in G15/G16.
+  - **The scrapbook:** a tab per day; Day 1's memories fill in as you read them.
+  - **Mamie's shoebox / Daily:** notes now name things in Mamie's words ("the spoons' bedroom") instead of plainly.
 
 ### Phase C: chapters 2 and 3
 - [ ] **G15** Chapter 2

@@ -756,7 +756,7 @@ func _split_answer(type: String, answer: String, lock: Dictionary) -> PackedStri
 func _fill(template: String, lock: Dictionary, part: String) -> String:
 	var answer := str(lock["answer"])
 	var out := template
-	out = out.replace("{lock}", _lock_name(lock))
+	out = out.replace("{lock}", _lock_ref(lock))
 	out = out.replace("{part}", part)
 	match str(lock["type"]):
 		"combo":
@@ -810,6 +810,32 @@ func _digit_words(code: String) -> String:
 	for ch in code:
 		out.append(str(words[int(ch)]) if words.size() > 9 else ch)
 	return ", ".join(out)
+
+
+## How a note names a lock: plainly at riddle depth 0 (the first tier), and from then on in Mamie's
+## words ("riddle_name": "the spoons' bedroom" for the kitchen drawers). Each riddle name belongs to
+## one thing in its room, so a note can only mean one lock (the validator checks).
+func _lock_ref(lock: Dictionary) -> String:
+	if int(cfg.get("riddle", cfg.get("indirection", 0))) < 1:
+		return _lock_name(lock)
+	var riddle_name := _riddle_name(lock)
+	return riddle_name if riddle_name != "" else _lock_name(lock)
+
+
+func _riddle_name(lock: Dictionary) -> String:
+	var host: Dictionary = lock.get("host", {})
+	match str(host.get("kind", "")):
+		"door":
+			return str((room.get("door", {}) as Dictionary).get("riddle_name", ""))
+		"furniture":
+			for fu: Dictionary in room.get("furniture", []):
+				if str(fu["id"]) == str(host.get("furniture", "")):
+					for sp: Dictionary in fu.get("spots", []):
+						if str(sp["id"]) == str(host.get("spot", "")):
+							return str(sp.get("riddle_name", ""))
+		"prop":
+			return str(props_db.get(str(host.get("prop", "")), {}).get("riddle_name", ""))
+	return ""
 
 
 func _lock_name(lock: Dictionary) -> String:

@@ -101,7 +101,7 @@ func _daily_caption() -> String:
 
 
 ## First launch: start the tutorial. Later: jump straight into the next unfinished sunrise
-## (or Endless Sunrise once the book is done). The book has its own button.
+## (or Mamie's shoebox once the story is done). The book has its own button.
 ## What the big button does: "first", "next", "endless" (the story is done), or "book".
 func _quick_play() -> String:
 	if GameState.completed_count() == 0:
