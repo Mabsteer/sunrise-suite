@@ -215,9 +215,6 @@ func _open_hints(lock_id: String) -> PackedStringArray:
 	var t := session.lock_type(lock_id)
 	var item := session.lock_item(lock_id)
 	if t == "dog":
-		var need := session.dog_need(lock_id)
-		if need != "":
-			return _open_hints(need)
 		return [
 			"Some places are too small for you. Not for everyone, though.",
 			"Chloé fits where you don't: %s." % name,

@@ -99,7 +99,7 @@ The answers are never in the notes: a note is a memory, and the thing it's about
 - **Puzzles:**
   - The room is dark: the first note on the quilt can only be read with **the bedside lamp** on.
   - *The lullaby* (on the quilt, needs the light): "First the little star comes out, then the little wave rocks the boat, and the little shell keeps the sea until morning." → **the jewellery box (music box): star, wave, shell**. Inside: a tiny key.
-  - The tiny key opens **the nightstand cupboard**: Chloé's treats. Chloé sits by her empty bowl; **feed her**, then **send her under the bed**: she brings out the counting book.
+  - The tiny key opens **the nightstand cupboard**: Chloé's treats. Chloé sits by her empty bowl; **feed her** and she drops the storm drawing she was lying on. **Send her under the bed** (any time): she brings out the counting book.
   - *The counting book* (from under the bed): "You made me promise: one sheep for every star on your wall, and two kisses for every sheep. You were asleep before the kisses, every time." The stars only show **in the dark** (lamp off): 8 stars → 8 sheep → 16 kisses → **the nightstand drawer: 816**. Inside: the key to the landing.
 
 ### 4. Living room: "Rainy days" (2003–2005)
@@ -114,7 +114,7 @@ The answers are never in the notes: a note is a memory, and the thing it's about
 - **What it was:** the summer of the red bicycle on the garden path, and the crab in the rock pool.
 - **Puzzles:**
   - *The bicycle lesson* (on the garden table): "You fell off exactly as many times as there are daisies in my jam jar, and got back on every single time. The birds on the trellis laughed at you, all of them, and you laughed back." → count the daisies (5) then the birds (3) → **the garden table drawer: 53**. Inside: the water jug.
-  - Chloé is panting: **give her water**; then **send her to dig under the roses**: the crab bucket.
+  - Chloé is panting: **give her water** and she drops a memory (the garden hose). **Send her to dig under the roses** (any time): the crab bucket.
   - *The crab* (in the bucket): the crab pinched Juliette just as the church bells finished ringing nine, and she cried until they rang the half hour. "Henri's sundial still remembers that morning. It only needs reminding." → **the sundial: 9:30**. Inside: the key to the shed.
 
 ### 6. Shed: "Bucket and spade" (2001–2002)
@@ -122,14 +122,14 @@ The answers are never in the notes: a note is a memory, and the thing it's about
 - **Puzzles:**
   - The shed is dark: the note on the workbench only shows with **the light on** (the pull cord).
   - *The shell counts* (on the workbench): every evening they counted the day's shells and wrote the number on the bucket lid, "and you never beat that very first day." On the smallest bucket's lid: 23, 19, 21, 17, 20 → **the workbench drawer: 23**. Inside: Chloé's brush.
-  - Chloé bumps into things, her fringe over her eyes: **brush her**; then **send her under the workbench**: the ribbons note.
+  - Chloé bumps into things, her fringe over her eyes: **brush her** and she drops the contest rules. **Send her under the workbench** (any time): the ribbons note.
   - *The ribbons* (from under the workbench): the red bicycle was Juliette's prize the summer after her first ribbon; the ribbons on the pegboard read MOST SHELLS · 2001 → **the bicycle lock: 2002**. In the basket: the side gate key.
 
 ### 7. Front garden: "You came" (summer 2001)
 - **What it was:** the summer after Henri died. Five-year-old Juliette arrived at the gate with a bucket, a very serious face and a list. "You saved me that summer."
 - **Puzzles:**
   - *The drawings* (on the bench): every day that summer Juliette posted a drawing to Papa Henri, and wrote the house number twice on every envelope, "because once wasn't polite enough for heaven." The number on the letterbox is 12 → **the letterbox: 1212**. Inside: Chloé's leash.
-  - Chloé scratches at the gate: **her leash**; then **send her to dig under the roses**: Juliette's first bucket.
+  - Chloé scratches at the gate: **her leash**, and she drops a memory (the first walk to the market). **Send her to dig under the roses** (any time): Juliette's first bucket.
   - *The bucket* (dug up): "JULIETTE · 5 ANS · ÉTÉ 2001" painted on it, and inside a note: "Everything you gave me that summer is in here." → **the garden gate: 2001**. The end of Day 1.
   - *The ice-cream* (Chloé fetches it from under the bench): a memory.
 
@@ -143,7 +143,7 @@ They follow the table above and the same rules. The existing memories move to th
 - **Found** in the hall (room 2), asleep on Mamie's cardigan under the stairs. The note in the kitchen asks Juliette to look after her.
 - **Finding her:** you don't see her. Now and then something whimpers softly under the stairs, and if you look very closely there's a tuft of white fur in the gap under the cupboard door.
 - **After that** she follows Juliette into every room and sits where the sun falls on the floor. Tap her and she stands up, tail going, ready to go wherever you point. She doesn't always find something; sometimes she proudly brings back a sock.
-- **She helps:** she **fetches** things from under beds and sofas and through gaps too small for Juliette; she **digs** in soft soil; she **sniffs** a scent you give her and follows it; Some things she only does when she's happy: a full bowl, fresh water, her leash for the street side, a brush for her fringe, Gaston. She never says so; she sits by her bowl, pants, scratches at the door or bumps into things.
+- **She helps:** she **fetches** things from under beds and sofas and through gaps too small for Juliette; she **digs** in soft soil; she **sniffs** a scent you give her and follows it; She never makes you wait: whatever is where you send her, she finds. Looking after her (a full bowl, fresh water, her leash, a brush for her fringe) makes her happy, and a happy Chloé drops the memory she was guarding. She never says what she needs; she sits by her bowl, pants, scratches at the door or bumps into things.
 - She never gets hurt, never runs away, and is never in danger.
 
 ## The postcards (the backs)

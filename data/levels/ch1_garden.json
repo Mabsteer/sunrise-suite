@@ -12,14 +12,13 @@
      "hints": ["The blue shed at the end of the garden is locked.", "The key from the sundial opens the shed door.", "Select the brass key, then tap the shed door."]},
     {"id": "table", "type": "combo", "host": {"kind": "furniture", "furniture": "garden_table", "spot": "drawer"}, "location": "room",
      "answer": "46", "clues": ["c_bicycle", "c_daisies", "c_birds"], "config": {"digits": 2},
-     "_why": "She fell off as many times as there are daisies in the jam jar (4), and all the birds on the trellis laughed (6): 4 then 6.",
+     "_why": "She fell off once for every daisy in the jam jar (4), and every bird on the trellis laughed (6): 4 then 6. 'The table remembers' points at the garden table.",
      "hints": ["How many times did you fall off? Something on the table knows.", "The daisies in the jam jar and the birds in the picture on the trellis belong to the garden table drawer.", "4 daisies, then 6 birds."]},
     {"id": "thirsty", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_water",
      "_why": "Chloé is panting by her empty bowl; the water jug was in the garden table drawer.",
      "hints": ["Chloé is panting in the sun.", "She needs water, and there's a jug in the garden table drawer.", "Select the water jug, then tap Chloé."]},
     {"id": "roses", "type": "dog", "action": "dig", "host": {"kind": "furniture", "furniture": "flower_bed", "spot": "soil"}, "location": "room",
-     "after": ["thirsty"],
-     "_why": "Something is buried in the soft soil under the roses. Chloé digs, once she's had a drink.",
+     "_why": "Something is buried in the soft soil under the roses; only Chloé digs.",
      "hints": ["The soil in one bed is soft, freshly turned.", "Chloé could dig under the roses.", "Tap Chloé, then tap the soil under the roses."]},
     {"id": "sundial", "type": "clock", "host": {"kind": "furniture", "furniture": "sundial", "spot": "dial"}, "location": "room",
      "answer": "9:30", "clues": ["c_crab"],
@@ -39,5 +38,7 @@
      "text": "A little painting of birds, hung on the trellis where the real ones sit."},
     {"id": "c_crab", "memory": "garden_crab", "host": {"kind": "prop", "prop": "beach_bucket"}, "location": "roses", "for": "sundial"}
   ],
-  "decoys": []
+  "decoys": [
+    {"id": "d_hose", "memory": "garden_hose", "host": {"kind": "prop", "prop": "note"}, "location": "thirsty"}
+  ]
 }

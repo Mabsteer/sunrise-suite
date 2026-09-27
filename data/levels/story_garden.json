@@ -13,8 +13,7 @@
     {"id": "seeds", "type": "order", "host": {"kind": "prop", "prop": "jar_shelf", "slot": "shed_wall"}, "location": "room",
      "answer": "leaf,shell,heart,sun", "clues": ["c_seeds"], "config": {"length": 4}},
     {"id": "thirsty", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_water"},
-    {"id": "roses", "type": "dog", "action": "dig", "host": {"kind": "furniture", "furniture": "flower_bed", "spot": "soil"}, "location": "room",
-     "after": ["thirsty"]},
+    {"id": "roses", "type": "dog", "action": "dig", "host": {"kind": "furniture", "furniture": "flower_bed", "spot": "soil"}, "location": "room"},
     {"id": "table", "type": "combo", "host": {"kind": "furniture", "furniture": "garden_table", "spot": "drawer"}, "location": "room",
      "answer": "532", "clues": ["c_lemon", "c_daisies", "c_birds"], "config": {"digits": 3}}
   ],

@@ -19,11 +19,10 @@
      "_why": "The tiny key from the jewellery box opens the nightstand cupboard.",
      "hints": ["A tiny key, a small door.", "The tiny key from the jewellery box fits the nightstand cupboard.", "Select the tiny key, then tap the nightstand cupboard."]},
     {"id": "breakfast", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_kibble",
-     "_why": "Chloé sits by her empty bowl: she's hungry. Her treats were in the nightstand cupboard.",
+     "_why": "Chloé sits by her empty bowl: she's hungry. Her treats were in the nightstand cupboard. Fed, she drops the drawing she was lying on.",
      "hints": ["Chloé keeps looking at her bowl, then at you.", "Chloé is hungry, and her treats were in the nightstand.", "Select the kibble, then tap Chloé."]},
     {"id": "under_bed", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "bed", "spot": "under_bed"}, "location": "room",
-     "after": ["breakfast"],
-     "_why": "Nobody fits under the bed except Chloé, and she only helps on a full stomach.",
+     "_why": "Nobody fits under the bed except Chloé.",
      "hints": ["Some places are too small for you. Not for everyone, though.", "Chloé fits under the bed.", "Tap Chloé, then tap under the bed."]},
     {"id": "nightstand", "type": "combo", "host": {"kind": "furniture", "furniture": "nightstand", "spot": "drawer"}, "location": "room",
      "answer": "816", "clues": ["c_countbook", "c_stars"], "config": {"digits": 3},
@@ -42,5 +41,7 @@
     {"id": "c_stars", "host": {"kind": "prop", "prop": "glow_stars", "slot": "wall_dresser"}, "location": "room", "for": "nightstand", "visible_when": "dark",
      "text": "Little plastic stars stuck on the wall above the dressing table, glowing faintly in the dark. Eight of them."}
   ],
-  "decoys": []
+  "decoys": [
+    {"id": "d_storm", "memory": "bedroom_storm", "host": {"kind": "prop", "prop": "note"}, "location": "breakfast"}
+  ]
 }

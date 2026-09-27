@@ -13,8 +13,7 @@
     {"id": "bicycle", "type": "combo", "host": {"kind": "furniture", "furniture": "bicycle", "spot": "lock"}, "location": "room",
      "answer": "5218", "clues": ["c_price"], "config": {"digits": 4}},
     {"id": "fringe", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_brush"},
-    {"id": "under", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "workbench", "spot": "under"}, "location": "room",
-     "after": ["fringe"]},
+    {"id": "under", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "workbench", "spot": "under"}, "location": "room"},
     {"id": "drawer", "type": "combo", "host": {"kind": "furniture", "furniture": "workbench", "spot": "left_drawer"}, "location": "room",
      "answer": "236", "clues": ["c_weights"], "config": {"digits": 3}}
   ],

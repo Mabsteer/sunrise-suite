@@ -212,7 +212,7 @@ func tap(key: String) -> void:
 		"lock":
 			if inventory.selected != "":
 				use_selected_on(id)
-			elif session.lock_type(id) in ["dog", "sniff"]:
+			elif session.lock_type(id) in ["dog", "sniff"] and not session.is_open(id):
 				# A job only Chloé can do: to Juliette it's just a spot (the words are the only hint).
 				AudioManager.play_sfx("ui_click")
 				_show_dog_spot(id)
@@ -1545,8 +1545,6 @@ func send_chloe(key: String) -> Dictionary:
 	match str(trip.get("result", "")):
 		"acted":
 			pass # _on_dog_acted walks her there and back.
-		"needs":
-			_walk_chloe_to(target, "sniff", func() -> void: AudioManager.play_sfx("dog_whimper"))
 		"silly":
 			var find := str(trip.get("find", "sock"))
 			_walk_chloe_to(target, "sniff", func() -> void: AudioManager.play_sfx("dog_sniff"), true, func() -> void: _drop_silly_find(find))
@@ -1615,8 +1613,11 @@ func _on_dog_acted(lock_id: String, action: String) -> void:
 	_walk_chloe_to(target, pose, func() -> void:
 		AudioManager.play_sfx("dog_dig" if action == "dig" else "dog_sniff")
 		if action == "sniff":
-			AudioManager.play_sfx("dog_bark")
-		toast(tr("DOG_FOUND_IT") % text.lock_name(lock_id)))
+			AudioManager.play_sfx("dog_bark"), true, func() -> void:
+		# Back at Juliette's feet: she drops what she found, and its card opens.
+		AudioManager.play_sfx("dog_drop")
+		if not closeup.is_open() and not session.finished:
+			closeup.show_lock(lock_id))
 
 
 func _on_dog_found() -> void:

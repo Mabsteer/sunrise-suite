@@ -144,6 +144,10 @@ func _open_container(scene: LevelScene, lock_id: String) -> void:
 	scene.inventory.deselect()
 	if scene.hotspots.has("lock:" + lock_id):
 		scene.tap("lock:" + lock_id)
+		# An opened container must show what's inside when the player taps it.
+		var s: Dictionary = scene.closeup.showing
+		if scene.session.is_open(lock_id) and (str(s.get("kind", "")) != "lock" or str(s.get("id", "")) != lock_id):
+			_failures.append("%s: tapping the open %s doesn't show what's inside" % [scene.session.level.get("id", "?"), lock_id])
 	else:
 		scene.closeup.show_lock(lock_id)
 

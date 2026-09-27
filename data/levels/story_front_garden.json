@@ -14,8 +14,7 @@
     {"id": "letterbox", "type": "combo", "host": {"kind": "furniture", "furniture": "letterbox", "spot": "box"}, "location": "room",
      "answer": "1222", "clues": ["c_running", "c_number"], "config": {"digits": 4}},
     {"id": "walk", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_leash"},
-    {"id": "roses", "type": "dog", "action": "dig", "host": {"kind": "furniture", "furniture": "roses", "spot": "soil"}, "location": "room",
-     "after": ["walk"]}
+    {"id": "roses", "type": "dog", "action": "dig", "host": {"kind": "furniture", "furniture": "roses", "spot": "soil"}, "location": "room"}
   ],
   "items": [
     {"id": "i_leash", "type": "leash", "location": "letterbox"}

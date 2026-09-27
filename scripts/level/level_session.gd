@@ -314,9 +314,10 @@ func send_dog(lock_id: String) -> bool:
 
 ## Sends Chloé to whatever Juliette tapped (a hotspot key like "lock:under_bed" or "background").
 ## Returns { "result": ..., ... }:
-##   "acted": there was a job for her there and she did it (the lock opened)
-##   "needs": there is a job there, but she wants something first ("need": the care lock she's waiting on)
+##   "acted": there was something for her there and she found it (the lock opened)
 ##   "empty": nothing for her there;  "silly": nothing, but she brings back "find" (sock, leaf...)
+## Whatever is at a spot she can reach, she always finds, straight away: her jobs never wait for
+## another step (a trip that comes back empty would teach the player the spot is empty).
 ##   "unavailable": she isn't here
 func send_dog_to(key: String) -> Dictionary:
 	if not dog_present or finished:
@@ -327,22 +328,11 @@ func send_dog_to(key: String) -> Dictionary:
 		if locks.has(id) and lock_type(id) == "dog" and not opened.has(id) and lock_visible(id):
 			if send_dog(id):
 				return {"result": "acted", "lock": id}
-			var need := dog_need(id)
-			if need != "":
-				return {"result": "needs", "lock": id, "need": need}
 	var rng := RandomNumberGenerator.new()
 	rng.seed = hash("%s:%d:%d" % [str(level.get("id", "")), int(level.get("seed", 0)), dog_trips])
 	if rng.randf() < SILLY_CHANCE:
 		return {"result": "silly", "find": SILLY_FINDS[rng.randi_range(0, SILLY_FINDS.size() - 1)]}
 	return {"result": "empty"}
-
-
-## The care lock Chloé is waiting on before she'll do the job at `lock_id` ("" if none).
-func dog_need(lock_id: String) -> String:
-	for a in lock_after(lock_id):
-		if not opened.has(a) and lock_type(a) == "care":
-			return a
-	return ""
 
 
 ## What Chloé wants right now (a care lock given to her that's ready to be done), or "".

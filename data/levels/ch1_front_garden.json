@@ -19,8 +19,7 @@
      "_why": "Chloé scratches at the gate: she won't go on the street side without her leash, which was in the letterbox.",
      "hints": ["Chloé keeps scratching at the gate.", "She wants her leash, and it was in the letterbox.", "Select the leash, then tap Chloé."]},
     {"id": "roses", "type": "dog", "action": "dig", "host": {"kind": "furniture", "furniture": "roses", "spot": "soil"}, "location": "room",
-     "after": ["walk"],
-     "_why": "Something is buried under the roses; Chloé digs once she has her leash.",
+     "_why": "Something is buried under the roses; only Chloé digs.",
      "hints": ["Someone has dug in that flower bed before. Not by hand.", "Chloé could dig under the roses.", "Tap Chloé, then tap the soil under the roses."]},
     {"id": "bench", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "bench", "spot": "under"}, "location": "room",
      "_why": "A memory rolled under the bench; only Chloé fits.",
@@ -39,6 +38,7 @@
      "text": "Your old red beach bucket, full of shells and dried seaweed. Painted on the side in wobbly letters: JULIETTE · 5 ANS · ÉTÉ 2001."}
   ],
   "decoys": [
+    {"id": "d_market", "memory": "front_market", "host": {"kind": "prop", "prop": "note"}, "location": "walk"},
     {"id": "d_icecream", "memory": "front_icecream", "host": {"kind": "prop", "prop": "note"}, "location": "bench"}
   ]
 }

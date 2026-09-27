@@ -163,6 +163,8 @@ static func validate(level: Dictionary, tier_cfg: Dictionary = {}) -> Dictionary
 			errors.append("%s: %s lock without its item" % [lid, t])
 		if str(l.get("answer", "x")) == "" and not t in ["key", "tool", "hidden"]:
 			errors.append("%s: empty answer" % lid)
+		if str(l.get("type", "")) == "dog" and not (l.get("after", []) as Array).is_empty():
+			errors.append("%s: Chloé's jobs never wait for another step (no \"after\" on dog locks)" % lid)
 		for a: Variant in l.get("after", []):
 			if not lock_ids.has(str(a)):
 				errors.append("%s: comes after unknown lock %s" % [lid, a])

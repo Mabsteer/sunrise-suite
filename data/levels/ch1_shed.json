@@ -13,13 +13,12 @@
     {"id": "workbench", "type": "combo", "host": {"kind": "furniture", "furniture": "workbench", "spot": "left_drawer"}, "location": "room",
      "answer": "23", "clues": ["c_counts", "c_lid"], "config": {"digits": 2},
      "_why": "'You never did beat that very first day': the first number on the bucket lid, 23.",
-     "hints": ["It's too dark to read in here. And then: which day was the best?", "The numbers on the smallest bucket's lid belong to the workbench's left drawer.", "The very first day's count: 23."]},
+     "hints": ["It's too dark to read in here. And then: which day was the best?", "The numbers on the lid of the little red bucket (among the flower buckets) belong to the workbench's left drawer.", "The very first day's count: 23."]},
     {"id": "fringe", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_brush",
      "_why": "Chloé keeps bumping into things: her fringe is in her eyes. Her brush was in the workbench drawer.",
      "hints": ["Chloé keeps bumping into things.", "Her fringe is over her eyes, and her brush was in the workbench.", "Select the brush, then tap Chloé."]},
     {"id": "under", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "workbench", "spot": "under"}, "location": "room",
-     "after": ["fringe"],
-     "_why": "Something fell under the workbench; Chloé fits, once she can see.",
+     "_why": "Something fell under the workbench; only Chloé fits.",
      "hints": ["Something fell where only a small dog can go.", "Chloé can fetch from under the workbench.", "Tap Chloé, then tap under the workbench."]},
     {"id": "bicycle", "type": "combo", "host": {"kind": "furniture", "furniture": "bicycle", "spot": "lock"}, "location": "room",
      "answer": "2002", "clues": ["c_ribbons", "c_board"], "config": {"digits": 4},
@@ -34,10 +33,12 @@
   "clues": [
     {"id": "c_counts", "memory": "shed_counts", "host": {"kind": "prop", "prop": "note", "slot": "bench_1"}, "location": "room", "for": "workbench", "visible_when": "light"},
     {"id": "c_lid", "host": {"kind": "furniture", "furniture": "flower_cart", "spot": "buckets"}, "location": "room", "for": "workbench",
-     "text": "Zinc buckets. On the smallest lid, in felt pen, a column of numbers, each one crossed out by the next: 23, 19, 21, 17, 20."},
+     "text": "Among Mamie's zinc flower buckets hides a small red child's bucket. On its lid, in felt pen, a column of numbers, each one crossed out by the next: 23, 19, 21, 17, 20."},
     {"id": "c_ribbons", "memory": "shed_ribbons", "host": {"kind": "prop", "prop": "note"}, "location": "under", "for": "bicycle"},
     {"id": "c_board", "host": {"kind": "furniture", "furniture": "pegboard", "spot": "tools"}, "location": "room", "for": "bicycle",
      "text": "Among the tools hang three faded ribbons: MOST SHELLS · 2001, MOST SHELLS · 2002, MOST SHELLS · 2003."}
   ],
-  "decoys": []
+  "decoys": [
+    {"id": "d_contest", "memory": "shed_contest", "host": {"kind": "prop", "prop": "note"}, "location": "fringe"}
+  ]
 }

@@ -77,6 +77,11 @@
               "id": "bedroom_countbook",
               "title": "The counting book",
               "text": "Our counting book, for storm nights. You made me promise: one sheep for every star on your wall, and two kisses for every sheep. You were always asleep before the kisses. I gave them anyway."
+            },
+            {
+              "id": "bedroom_storm",
+              "title": "The storm drawing",
+              "text": "Under Chloé's paws, a child's drawing: a house, a very big moon, and two people in one bed. On the back, in Mamie's writing: \"The night of the big storm. You said the thunder was only the sky moving its furniture.\""
             }
           ]
         },
@@ -95,7 +100,7 @@
             {
               "id": "lounge_squares",
               "title": "The grey squares",
-              "text": "Every rainy day ended the same way: you finished the number square, and whatever was in the grey squares was your pocket money, read like a book. You never once let me finish one."
+              "text": "Every rainy day ended the same way: you finished the number square, and whatever was in the grey squares, read like a book, was your pocket money. It went straight into the middle of the long sideboard, where I kept the biscuit money. You never once let me finish one."
             },
             {
               "id": "lounge_cards",
@@ -114,12 +119,17 @@
             {
               "id": "garden_bicycle",
               "title": "The red bicycle",
-              "text": "The summer of the red bicycle: up and down this path all day. You fell off exactly as many times as there are daisies in my jam jar, and got back on every single time. The birds on the trellis laughed at you, all of them, and you laughed right back."
+              "text": "The summer of the red bicycle: up and down this path all day. You fell off once for every daisy in my jam jar, and got back on every single time, while every little bird on the trellis had something to say about it. The garden table remembers every fall."
             },
             {
               "id": "garden_crab",
               "title": "The crab",
               "text": "The crab in the rock pool pinched you just as the church bells finished ringing nine, and you cried until they rang the half hour. Henri's shadow clock in the garden still remembers that morning.\nIt only needs reminding."
+            },
+            {
+              "id": "garden_hose",
+              "title": "The garden hose",
+              "text": "The summer you were in charge of watering: you watered the tomatoes, then me, then the cat next door and, for some reason, the letterbox. We laughed until we had to sit down in the wet grass."
             }
           ]
         },
@@ -133,12 +143,17 @@
             {
               "id": "shed_counts",
               "title": "The shell counts",
-              "text": "Your first summers, the bucket came everywhere, full of shells. Every evening we counted them out on this workbench and I wrote the number on the lid, so you could beat it tomorrow.\nYou never did beat that very first day."
+              "text": "Your first summers, the little red bucket came everywhere, full of shells. Every evening we counted them out on this workbench and I wrote the number on its lid, so you could beat it tomorrow.\nYou never did beat that very first day."
             },
             {
               "id": "shed_ribbons",
               "title": "The ribbons",
               "text": "You never won the sandcastle contest, but you got a ribbon every year for the most shells. I made sure of that. The red bicycle came the summer after your very first ribbon, and you rode it straight into the roses."
+            },
+            {
+              "id": "shed_contest",
+              "title": "The contest rules",
+              "text": "The sandcastle contest rules, in your handwriting, stuck to the shed wall: 1. A moat. 2. Shells on everything. 3. Mamie is not allowed to help. (Mamie helped.)"
             }
           ]
         },
@@ -163,6 +178,11 @@
               "id": "front_icecream",
               "title": "The ice-cream",
               "text": "One ice cream a day, that was the rule. By the second week you had talked it up to two, and by August the man at the kiosk handed you a cone before you'd even asked. You had that effect on people."
+            },
+            {
+              "id": "front_market",
+              "title": "The first walk",
+              "text": "Your first evening here you insisted on walking me to the market \"so I wouldn't get lost\". It's round the corner. You held my hand the whole way and told everyone we met that I was your Mamie."
             }
           ]
         }
