@@ -110,6 +110,9 @@ func shots() -> Array[Dictionary]:
 		{"name": "lights_on_garden", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_garden"), "mode": "test"}, "action": func(s: Node) -> void: s.call("tap", "lights"), "frames": 90},
 		{"name": "lights_on_shed", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_shed"), "mode": "test"}, "action": func(s: Node) -> void: s.call("tap", "lights"), "frames": 90},
 		{"name": "lights_on_front_garden", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_front_garden"), "mode": "test"}, "action": func(s: Node) -> void: s.call("tap", "lights"), "frames": 90},
+		{"name": "room_toast", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_kitchen"), "mode": "test"}, "action": func(s: Node) -> void:
+			s.call("_play_exit", true)
+			s.call("_room_toast", {"stars": 2, "seashells": 25, "new_best_time": true}), "frames": 60},
 		{"name": "dev_panel", "screen": "level", "setup": func() -> void: SaveManager.settings["dev_mode"] = true, "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "test"}, "action": func(s: Node) -> void: s.get("ui").add_child(DevPanel.new()), "frames": 30},
 		{"name": "chapter_card", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "main", "record_id": "w1_hall"}, "frames": 40},
 		{"name": "room_hall_start", "screen": "level", "params": func() -> Dictionary: return {"level": Campaign.build("w1_hall"), "mode": "test"}, "frames": 40},

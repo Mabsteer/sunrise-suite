@@ -58,3 +58,28 @@ func test_the_last_room_of_a_walk_ends_it() -> void:
 	assert_eq(scene.call("_walk_next_level", {"first_clear": true}), "", "no walking into the next chapter by itself")
 	scene.queue_free()
 	await tree.process_frame
+
+
+## The whole ending of a room on a first time through: the exit opens onto the hall, a toast shows
+## the stars, and Juliette walks on (the scene is freed before the screen would change).
+func test_finishing_a_room_walks_into_the_next() -> void:
+	var settings := SaveManager.settings.duplicate(true)
+	SaveManager.settings["reduce_motion"] = false
+	Router.params = {"level": Campaign.build("w1_kitchen"), "mode": "main", "record_id": "w1_kitchen"}
+	var scene := (load("res://scenes/level/level.tscn") as PackedScene).instantiate() as LevelScene
+	tree.root.add_child(scene)
+	await tree.process_frame
+	var walked := []
+	scene.walk_started.connect(func(id: String) -> void: walked.append(id))
+	await scene.dev_finish()
+	assert_true(scene.host_sprites.has("exit_view"), "the kitchen door opened onto the hall")
+	assert_eq(scene.ui.get_node_or_null("RoomToast") != null, true, "a toast shows the stars")
+	for i in 60:
+		if not walked.is_empty():
+			break
+		await tree.create_timer(0.1).timeout
+	assert_eq(walked, ["w1_hall"], "Juliette walked into the hall")
+	# Leave before the walk-in timer would change the screen (it checks the room is still there).
+	scene.free()
+	await tree.create_timer(1.0).timeout
+	SaveManager.settings = settings

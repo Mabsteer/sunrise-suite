@@ -7,6 +7,8 @@ extends Node2D
 ## are what the player's taps call, and what the autoplay bot calls too.
 
 signal finished_level(result: Dictionary)
+## Juliette walks through the exit into the next room of the walk (just before the screen changes).
+signal walk_started(next_id: String)
 
 const BADGE := "ui/unlocked.svg"
 
@@ -767,9 +769,10 @@ func _room_toast(result: Dictionary) -> void:
 	card.name = "RoomToast"
 	card.add_theme_stylebox_override("panel", UIKit.card(18))
 	card.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
-	card.offset_left = -300
-	card.offset_right = 300
+	card.offset_left = -240
+	card.offset_right = 240
 	card.offset_top = 120
+	card.offset_bottom = 210
 	card.grow_horizontal = Control.GROW_DIRECTION_BOTH
 	card.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui.add_child(card)
@@ -783,12 +786,17 @@ func _room_toast(result: Dictionary) -> void:
 		s.texture = UIKit.texture("ui/star_full.svg" if i < stars else "ui/star_empty.svg")
 		s.custom_minimum_size = Vector2(56, 56)
 		s.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		s.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		h.add_child(s)
 	var shells := int(result.get("seashells", 0))
+	var lines: Array[Label] = []
 	if shells > 0:
-		h.add_child(UIKit.label("   " + tr("TOAST_SHELLS") % shells, 30, Palette.color("coral_dark")))
+		lines.append(UIKit.label("   " + tr("TOAST_SHELLS") % shells, 30, Palette.color("coral_dark")))
 	if bool(result.get("new_best_time", false)):
-		h.add_child(UIKit.label("   " + tr("RESULTS_NEW_BEST"), 26, Palette.color("sea_deep")))
+		lines.append(UIKit.label("   " + tr("RESULTS_NEW_BEST"), 26, Palette.color("sea_deep")))
+	for l in lines:
+		l.autowrap_mode = TextServer.AUTOWRAP_OFF
+		h.add_child(l)
 	UIKit.pop_in(card)
 	for i in stars:
 		get_tree().create_timer(0.2 + i * 0.25).timeout.connect(func() -> void: AudioManager.play_sfx("star_%d" % (i + 1)))
@@ -804,13 +812,20 @@ func _walk_through(next_id: String) -> void:
 		var wt: Array = ex["walk_to"]
 		focus = Vector2(float(wt[0]), float(wt[1]))
 	var kind := str(ex.get("kind", "door"))
+	walk_started.emit(next_id)
 	if bool(SaveManager.settings.get("reduce_motion", false)):
 		Launcher.play_main(next_id, {"arrive_from": kind})
 		return
 	room_view.zoom_focus = focus
 	var t := create_tween()
 	t.tween_property(room_view, "zoom", WALK_ZOOM, WALK_SECONDS).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
-	get_tree().create_timer(WALK_SECONDS * 0.7).timeout.connect(func() -> void: Launcher.play_main(next_id, {"arrive_from": kind}))
+	# A bound method (not a lambda): if the room is gone by then, the timer simply does nothing.
+	get_tree().create_timer(WALK_SECONDS * 0.7).timeout.connect(_walk_in.bind(next_id, kind))
+
+
+func _walk_in(next_id: String, kind: String) -> void:
+	if is_inside_tree():
+		Launcher.play_main(next_id, {"arrive_from": kind})
 
 
 ## The end of a walk (a chapter): every room's stars, the time, and on to the next chapter.
@@ -852,6 +867,7 @@ func _show_walk_results() -> void:
 			s.texture = UIKit.texture("ui/star_full.svg" if i < stars else "ui/star_empty.svg")
 			s.custom_minimum_size = Vector2(40, 40)
 			s.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			s.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 			row.add_child(s)
 		grid.add_child(row)
 	var info := UIKit.label(tr("WALK_DONE_INFO") % [star_total, rooms.size() * 3, _format_time(total)], 30, Palette.color("ink_soft"))

@@ -207,11 +207,14 @@ func _fly_in(slot: Control, from_global: Vector2) -> void:
 	var t := ghost.create_tween().set_parallel(true)
 	t.tween_property(ghost, "global_position", target, 0.45).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 	t.tween_property(ghost, "scale", Vector2(1.15, 1.15), 0.2)
+	# The item can be used up during the flight, so only hold on to its slot weakly.
+	var slot_ref: WeakRef = weakref(slot)
 	t.chain().tween_callback(func() -> void:
 		ghost.queue_free()
-		if is_instance_valid(slot):
-			slot.modulate.a = 1.0
-			UIKit.pop_in(slot, 0.15))
+		var s := slot_ref.get_ref() as Control
+		if s:
+			s.modulate.a = 1.0
+			UIKit.pop_in(s, 0.15))
 
 
 ## One inventory slot. Supports drag-and-drop combining.

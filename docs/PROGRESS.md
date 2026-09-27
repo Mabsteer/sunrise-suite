@@ -29,7 +29,15 @@ The owner's third playtest: a linear story over three chapters (days) of seven h
 - [x] **G7** Lights (and things only visible in the dark)
 - [x] **G8** Generated room ambience
 - [x] **G9** Faster local check (30 seeds locally, 200 in CI)
-- [ ] **Playtest checkpoint 1**
+- [ ] **Playtest checkpoint 1** (ready 2026-09-27): waiting for the owner. What to test, on the live build:
+  - **Dev mode:** Settings → tap "Version 0.1.0" (bottom right of the card) 5 times. A "Dev" button appears in Settings and in the pause menu: jump to any room, "Finish this room", "Do the next step", the answers of the room you're in, "Unlock every room", and the audio status.
+  - **Sound:** the ▶ button next to "Sound effects" plays a test sound. If it's silent, open Dev → Audio and note what "Browser audio" says (it should say "running"). Every room now has its own background sound ("Room sounds" slider).
+  - **No helpers:** no padlocks, paws or sparkles in the rooms. Settings → "Show helpers" turns them back on.
+  - **Bag and notebook:** the bag is see-through; the bag button folds it away. Notes you read go into Mamie's notebook (top right, "Notes" page) and paper notes disappear from their spot. Hints are on the notebook's "Hints" page.
+  - **Chloé:** in the hall you can't see her; listen, and zoom in on the cupboard under the stairs. Later: tap her (she stands up), then tap a spot. Try a spot where there's nothing too. Her needs show in her pose (the shed: fringe over her eyes).
+  - **Walking between rooms:** play the kitchen to the end: the door opens onto the hall and you walk in. The hall goes up the stairs (the little gate); the bedroom door shows the stairs down. The last room shows the walk's results. (Dev → Reset progress to see it again; replays show the normal results card.)
+  - **The stairs** in the hall, and **the lights**: every room has a switch, lamp, pull cord or lantern to find. In the bedroom the glow stars on the wall only show with the lamp off.
+  - Chapter 1's notes and puzzles are still the old, too-direct ones: that's phase B (G10-G13).
 
 ### Phase B: structure and chapter 1
 - [ ] **G10** Story bible for three chapters (STORY.md, story.json)
