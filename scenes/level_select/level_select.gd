@@ -1,6 +1,7 @@
 extends Control
-## Céline's house: the walks through the house, one row per walk with the seven rooms in route order
-## (kitchen → hall → bedroom → living room → garden → shed → front garden), plus Endless Sunrise.
+## Céline's house: the three days of Mamie's treasure hunt, one row per day with the seven rooms in
+## route order (kitchen → hall → bedroom → living room → garden → shed → front garden), plus Mamie's
+## shoebox (Endless). The story is linear: a room opens when the one before it is done.
 
 const CARD_SIZE := Vector2(236, 228)
 
@@ -80,13 +81,8 @@ func _walk_row(w: Dictionary, current: String) -> Control:
 	titles.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	titles.add_theme_constant_override("separation", 0)
 	head.add_child(titles)
-	titles.add_child(UIKit.label(tr(str(w.get("title", ""))), 38, Palette.color("ink"), HORIZONTAL_ALIGNMENT_LEFT))
-	titles.add_child(UIKit.label(tr(str(w.get("subtitle", ""))), 26, Palette.color("ink_soft"), HORIZONTAL_ALIGNMENT_LEFT))
-	var gate := int(w.get("star_gate", 0))
-	if gate > 0 and GameState.total_stars() < gate:
-		var gl := UIKit.label(tr("GATE_NEEDS") % gate, 28, Palette.color("coral_dark"), HORIZONTAL_ALIGNMENT_RIGHT)
-		gl.autowrap_mode = TextServer.AUTOWRAP_OFF
-		head.add_child(gl)
+	titles.add_child(UIKit.label("%s  ·  %s" % [tr("DAY_CARD") % int(w.get("day", 1)), tr(str(w.get("title", "")))], 38, Palette.color("ink"), HORIZONTAL_ALIGNMENT_LEFT))
+	titles.add_child(UIKit.label("%s  ·  %s" % [str(w.get("years", "")), tr(str(w.get("intro", "")))], 26, Palette.color("ink_soft"), HORIZONTAL_ALIGNMENT_LEFT))
 	var cards := HBoxContainer.new()
 	cards.add_theme_constant_override("separation", 14)
 	v.add_child(cards)
@@ -189,7 +185,7 @@ func _endless_row() -> Control:
 	v.alignment = BoxContainer.ALIGNMENT_CENTER
 	h.add_child(v)
 	v.add_child(UIKit.label(tr("ENDLESS_TITLE"), 42, Palette.color("ink"), HORIZONTAL_ALIGNMENT_LEFT))
-	var unlocked := GameState.campaign_finished()
+	var unlocked := GameState.side_modes_open()
 	var best := int((SaveManager.data.get("endless", {}) as Dictionary).get("best_tier", 0))
 	var sub := tr("ENDLESS_LOCKED") if not unlocked else (tr("ENDLESS_BEST") % best if best > 0 else tr("ENDLESS_READY"))
 	var sub_label := UIKit.label(sub, 30, Palette.color("ink_soft"), HORIZONTAL_ALIGNMENT_LEFT)
@@ -208,11 +204,8 @@ func _endless_row() -> Control:
 func _on_card(id: String, unlocked: bool, done: bool) -> void:
 	if not unlocked:
 		AudioManager.play_sfx("item_fail")
-		var reason := GameState.lock_reason(id)
 		var text := tr("LOCKED_PREVIOUS")
-		if reason.begins_with("stars:"):
-			text = tr("LOCKED_STARS") % int(reason.trim_prefix("stars:"))
-		elif not Campaign.room_available(str(Campaign.entry(id).get("room", ""))):
+		if not Campaign.room_available(str(Campaign.entry(id).get("room", ""))):
 			text = tr("LOCKED_SOON")
 		UIKit.dialog(self, tr("LOCKED_TITLE"), text, [[tr("OK"), Callable(), true]])
 		return
@@ -221,11 +214,12 @@ func _on_card(id: String, unlocked: bool, done: bool) -> void:
 		Launcher.play_main(id)
 		return
 	var room_name := tr(str(Data.get_dict("rooms/" + str(Campaign.entry(id).get("room", ""))).get("name", "")))
-	UIKit.dialog(self, tr("LEVEL_POPUP_TITLE") % room_name, tr("LEVEL_POPUP_TEXT"), [
-		[tr("PLAY_AGAIN_SAME"), func() -> void: Launcher.play_main(id), true],
-		[tr("PLAY_FRESH"), func() -> void: Launcher.play_replay(id)],
-		[tr("CANCEL"), Callable()],
-	])
+	var items: Array = [[tr("PLAY_AGAIN_SAME"), func() -> void: Launcher.play_main(id), true]]
+	# A hand-made story room is always the same room; a fresh puzzle only exists for generated ones.
+	if not Campaign.entry(id).has("level_file"):
+		items.append([tr("PLAY_FRESH"), func() -> void: Launcher.play_replay(id)])
+	items.append([tr("CANCEL"), Callable()])
+	UIKit.dialog(self, tr("LEVEL_POPUP_TITLE") % room_name, tr("LEVEL_POPUP_TEXT"), items)
 
 
 func _scroll_to_current() -> void:

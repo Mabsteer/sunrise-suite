@@ -1,12 +1,16 @@
 extends Control
-## Céline's scrapbook: a look back on her life, one page per chapter (room) in route order, from her
-## last years back to her childhood. Each page holds that period's postcard and the memories read
-## there. After the last chapter comes her last letter, once the treasure hunt is finished.
+## Céline's scrapbook: a look back on her life, a page per day of the hunt, and on it a tile per room
+## in route order (from her last years back to her childhood). Each room holds that period's postcard
+## and the memories read there. On Day 3, after the front garden, comes her last letter.
 
 const TILE := Vector2(410, 372)
 const CARD := Vector2(300, 198)
 
 var _overlay: Control
+## The day shown (1-3).
+var day := 1
+var _grid: GridContainer
+var _tabs: Array[Button] = []
 
 
 func _ready() -> void:
@@ -46,23 +50,66 @@ func _ready() -> void:
 	page.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	page.offset_left = 60
 	page.offset_right = -60
-	page.offset_top = 140
+	page.offset_top = 130
 	page.offset_bottom = -30
 	add_child(page)
-	var center := CenterContainer.new()
-	page.add_child(center)
-	var grid := GridContainer.new()
-	grid.columns = 4
-	grid.add_theme_constant_override("h_separation", 26)
-	grid.add_theme_constant_override("v_separation", 22)
-	center.add_child(grid)
-	var tilt := [-1.5, 1.2, -0.8, 1.6, -1.2, 0.9, -1.6, 1.0]
-	var i := 0
+	var pv := VBoxContainer.new()
+	pv.add_theme_constant_override("separation", 14)
+	page.add_child(pv)
+	var tabs := HBoxContainer.new()
+	tabs.alignment = BoxContainer.ALIGNMENT_CENTER
+	tabs.add_theme_constant_override("separation", 16)
+	pv.add_child(tabs)
 	for c: Dictionary in Data.get_dict("story").get("chapters", []):
-		grid.add_child(_chapter_tile(c, i, tilt[i % tilt.size()]))
-		i += 1
-	grid.add_child(_letter_tile())
+		var d := int(c.get("id", 1))
+		var b := UIKit.text_button("%s · %s" % [tr("DAY_CARD") % d, tr(str(c.get("title", "")))], Vector2(480, 76))
+		b.add_theme_font_size_override("font_size", 26)
+		b.pressed.connect(func() -> void:
+			AudioManager.play_sfx("page_turn")
+			show_day(d))
+		tabs.add_child(b)
+		_tabs.append(b)
+	var center := CenterContainer.new()
+	center.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	pv.add_child(center)
+	_grid = GridContainer.new()
+	_grid.columns = 4
+	_grid.add_theme_constant_override("h_separation", 26)
+	_grid.add_theme_constant_override("v_separation", 22)
+	center.add_child(_grid)
+	show_day(_latest_day())
 	AudioManager.play_music("hub_penthouse")
+
+
+## The day Juliette has got to (the first day with an unread memory, or the last one).
+func _latest_day() -> int:
+	var latest := 1
+	for e in Campaign.levels():
+		if GameState.is_level_completed(str(e["id"])):
+			latest = maxi(latest, int(e.get("walk", 1)))
+	return latest
+
+
+## Shows one day's page: a tile per room (and the last letter on the last day).
+func show_day(d: int) -> void:
+	day = d
+	for c in _grid.get_children():
+		c.queue_free()
+	for i in _tabs.size():
+		var b := _tabs[i]
+		if i + 1 == d:
+			UIKit.primary(b)
+		else:
+			for state in ["normal", "hover", "pressed", "hover_pressed"]:
+				b.remove_theme_stylebox_override(state)
+			for col in ["font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color"]:
+				b.remove_theme_color_override(col)
+	var tilt := [-1.5, 1.2, -0.8, 1.6, -1.2, 0.9, -1.6, 1.0]
+	var rooms: Array = Campaign.story_day(d).get("rooms", [])
+	for i in rooms.size():
+		_grid.add_child(_chapter_tile(rooms[i], i, tilt[i % tilt.size()]))
+	if d == (Data.get_dict("story").get("chapters", []) as Array).size():
+		_grid.add_child(_letter_tile())
 
 
 ## One chapter of Céline's life: years, title, its postcard (or the room), and how many memories were found.
@@ -74,7 +121,7 @@ func _chapter_tile(c: Dictionary, index: int, tilt: float) -> Control:
 	var sb := UIKit.box(Palette.color("white_warm", 0.7), 18, Palette.color("sand"), 3, 12)
 	for state in ["normal", "hover", "pressed", "hover_pressed"]:
 		b.add_theme_stylebox_override(state, sb)
-	b.pressed.connect(show_chapter.bind(room))
+	b.pressed.connect(show_room.bind(day, room))
 	var v := VBoxContainer.new()
 	v.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	v.offset_left = 14
@@ -93,7 +140,7 @@ func _chapter_tile(c: Dictionary, index: int, tilt: float) -> Control:
 	holder.custom_minimum_size = Vector2(0, 222)
 	holder.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	v.add_child(holder)
-	var pc := _postcard_for(room)
+	var pc := _postcard_for(day, room)
 	if not pc.is_empty() and GameState.has_postcard(str(pc["id"])):
 		var front := TextureRect.new()
 		front.texture = UIKit.texture(str(pc["front"]))
@@ -161,9 +208,9 @@ func _letter_tile() -> Control:
 	return b
 
 
-## A chapter page: the period, its intro, the postcard and every memory (read or still waiting).
-func show_chapter(room: String) -> void:
-	var c := Campaign.chapter(room)
+## A room's page for one day: the period, its intro, the postcard and every memory (read or waiting).
+func show_room(d: int, room: String) -> void:
+	var c := Campaign.story_room(d, room)
 	if c.is_empty():
 		return
 	AudioManager.play_sfx("page_turn")
@@ -188,7 +235,7 @@ func show_chapter(room: String) -> void:
 	row.add_theme_constant_override("h_separation", 22)
 	row.add_theme_constant_override("v_separation", 18)
 	v.add_child(row)
-	var pc := _postcard_for(room)
+	var pc := _postcard_for(d, room)
 	if not pc.is_empty():
 		var found := GameState.has_postcard(str(pc["id"]))
 		var pb := _memory_card(str(pc.get("place", "")) if found else tr("SCRAPBOOK_MISSING"), UIKit.texture(str(pc["front"])) if found else null, found)
@@ -292,9 +339,9 @@ func show_letter() -> void:
 	GameState.mark_final_letter_read()
 
 
-func _postcard_for(room: String) -> Dictionary:
+func _postcard_for(d: int, room: String) -> Dictionary:
 	for e in Campaign.levels():
-		if str(e.get("room", "")) == room and e.has("postcard"):
+		if int(e.get("walk", 0)) == d and str(e.get("room", "")) == room and e.has("postcard"):
 			return GameState.postcard(str(e["postcard"]))
 	return {}
 

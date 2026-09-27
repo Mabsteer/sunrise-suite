@@ -1,7 +1,8 @@
 class_name Campaign
 extends RefCounted
-## The walks through Céline's house (data/campaign.json) plus Replay, Daily and Endless levels,
-## all built by LevelGenerator (or loaded from hand-made level files).
+## The story's three days through Céline's house (data/campaign.json + data/story.json) plus Replay,
+## Daily and Endless levels, all built by LevelGenerator (or loaded from hand-made level files).
+## In code a day is a "walk": one walk through the seven rooms of the house.
 
 ## The route through Céline's house, in story order (each room's exit leads to the next).
 const ROUTE: PackedStringArray = ["kitchen", "hall", "bedroom", "lounge", "garden", "shed", "front_garden"]
@@ -12,11 +13,18 @@ const DAWN_START := 0.15
 static var _cache: Dictionary = {}
 
 
-## The walks, each with its "levels" (and "id", "title", "subtitle", "star_gate", "story").
+## The days (walks), each with its "levels", plus "id", "day", "title", "years" and "intro" from
+## data/story.json.
 static func walks() -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
-	for w: Dictionary in Data.get_dict("campaign").get("walks", []):
-		out.append(w)
+	for w: Dictionary in Data.get_dict("campaign").get("chapters", []):
+		var copy := w.duplicate()
+		var day := story_day(int(w.get("id", 0)))
+		for key in ["title", "years", "intro"]:
+			if day.has(key) and not copy.has(key):
+				copy[key] = day[key]
+		copy["day"] = int(w.get("id", 0))
+		out.append(copy)
 	return out
 
 
@@ -70,11 +78,6 @@ static func rooms() -> Array[String]:
 	return out
 
 
-## Total stars needed before a level can be started (the soft gate of its walk).
-static func star_gate_for(level_id: String) -> int:
-	return int(walk(int(entry(level_id).get("walk", 1))).get("star_gate", 0))
-
-
 ## "The bedroom · Mamie's last treasure hunt": how the UI names a main level.
 static func level_label(level_id: String) -> String:
 	var e := entry(level_id)
@@ -89,18 +92,35 @@ static func room_name(level_id: String) -> String:
 	return TranslationServer.translate(str(Data.get_dict("rooms/" + str(e.get("room", ""))).get("name", e.get("room", ""))))
 
 
-## The story chapter for a room (data/story.json), or {}.
-static func chapter(room_id: String) -> Dictionary:
+## A day of the story (data/story.json "chapters"): title, years, intro and its seven "rooms".
+static func story_day(day: int) -> Dictionary:
 	for c: Dictionary in Data.get_dict("story").get("chapters", []):
-		if str(c.get("room", "")) == room_id:
+		if int(c.get("id", 0)) == day:
 			return c
 	return {}
 
 
+## One room of one day: its period ("title", "years", "intro", "outro") and "memories". {} if none.
+static func story_room(day: int, room_id: String) -> Dictionary:
+	for r: Dictionary in story_day(day).get("rooms", []):
+		if str(r.get("room", "")) == room_id:
+			return r
+	return {}
+
+
+## Every story room of every day, in play order: [{ "day": int, "room": String, "page": Dictionary }].
+static func story_rooms() -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	for c: Dictionary in Data.get_dict("story").get("chapters", []):
+		for r: Dictionary in c.get("rooms", []):
+			out.append({"day": int(c.get("id", 0)), "room": str(r.get("room", "")), "page": r})
+	return out
+
+
 ## A memory (a story note) from data/story.json, by id.
 static func memory(memory_id: String) -> Dictionary:
-	for c: Dictionary in Data.get_dict("story").get("chapters", []):
-		for m: Dictionary in c.get("memories", []):
+	for sr in story_rooms():
+		for m: Dictionary in (sr["page"] as Dictionary).get("memories", []):
 			if str(m.get("id", "")) == memory_id:
 				return m
 	return {}
@@ -108,10 +128,10 @@ static func memory(memory_id: String) -> Dictionary:
 
 ## The name of the room a memory belongs to ("" if unknown).
 static func memory_room_name(memory_id: String) -> String:
-	for c: Dictionary in Data.get_dict("story").get("chapters", []):
-		for m: Dictionary in c.get("memories", []):
+	for sr in story_rooms():
+		for m: Dictionary in (sr["page"] as Dictionary).get("memories", []):
 			if str(m.get("id", "")) == memory_id:
-				return TranslationServer.translate(str(Data.get_dict("rooms/" + str(c.get("room", ""))).get("name", "")))
+				return TranslationServer.translate(str(Data.get_dict("rooms/" + str(sr["room"])).get("name", "")))
 	return ""
 
 
@@ -149,12 +169,12 @@ static func build(level_id: String) -> Dictionary:
 	level["title"] = level_id
 	level["walk"] = int(e.get("walk", 1))
 	level["step"] = int(e.get("step", 0))
-	if e.has("chapter"):
-		level["chapter"] = str(e["chapter"])
+	# Every main level is a room of a story day: its card, memories and the scrapbook page.
+	level["story_day"] = int(e.get("walk", 1))
 	if bool(e.get("finale", false)):
 		level["finale"] = true
-	# The sunrise spans the whole walk: each room brightens its own slice of the morning (the first
-	# room starts just before dawn, not in pitch dark, so the kitchen is easy to see).
+	# Each day is one morning: each room brightens its own slice of the sunrise (the first room
+	# starts just before dawn, not in pitch dark, so the kitchen is easy to see).
 	var n := float(ROUTE.size())
 	var k := float(e.get("step", 0))
 	level["sunrise_range"] = [DAWN_START + (1.0 - DAWN_START) * k / n, DAWN_START + (1.0 - DAWN_START) * (k + 1.0) / n]

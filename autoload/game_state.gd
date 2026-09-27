@@ -43,8 +43,8 @@ func total_stars() -> int:
 	return total
 
 
-## Is a main level playable? The first always; later ones once the previous level is done and the
-## walk's star gate is met.
+## Is a main level playable? The story is linear: the first room always, every later room once the
+## room before it is done (the last room of a day opens the next day). No star gates.
 func is_level_unlocked(level_id: String) -> bool:
 	if dev_unlocked():
 		return Campaign.index_of(level_id) >= 0
@@ -52,23 +52,22 @@ func is_level_unlocked(level_id: String) -> bool:
 	if idx <= 0:
 		return idx == 0
 	var list := Campaign.levels()
-	if not is_level_completed(str(list[idx - 1]["id"])):
-		return false
-	return total_stars() >= Campaign.star_gate_for(level_id)
+	return is_level_completed(str(list[idx - 1]["id"]))
 
 
-## Why a level is locked ("" if it isn't): "previous" or "stars:<needed>".
+## Why a level is locked ("" if it isn't): "previous".
 func lock_reason(level_id: String) -> String:
-	var idx := Campaign.index_of(level_id)
-	if idx <= 0:
-		return ""
-	var list := Campaign.levels()
-	if not is_level_completed(str(list[idx - 1]["id"])):
-		return "previous"
-	var need := Campaign.star_gate_for(level_id)
-	if total_stars() < need:
-		return "stars:%d" % need
-	return ""
+	return "" if is_level_unlocked(level_id) else "previous"
+
+
+## Daily Sunrise and Mamie's shoebox (Endless) open once the first day of the story is done.
+func side_modes_open() -> bool:
+	if dev_unlocked():
+		return true
+	for e in Campaign.levels():
+		if int(e.get("walk", 0)) == 1 and int(e.get("step", 0)) == Campaign.ROUTE.size() - 1:
+			return is_level_completed(str(e["id"]))
+	return false
 
 
 ## The next main level after `level_id` ("" if it was the last).
@@ -239,7 +238,8 @@ func all_postcards_found() -> bool:
 	return postcards_found_count() >= postcard_list().size() and not postcard_list().is_empty()
 
 
-## Is Mamie's last treasure hunt (walk 1) finished? Then her last letter can be read in the scrapbook.
+## Is Mamie's last treasure hunt finished (the last room of the last day)? Then her last letter can
+## be read in the scrapbook.
 func story_finished() -> bool:
 	for e in Campaign.levels():
 		if bool(e.get("finale", false)):
@@ -523,7 +523,6 @@ static func stars_for(session: LevelSession, par_time: float) -> int:
 ## Returns { "stars", "seashells", "first_clear", "new_stars", "unlocks": Array[String] }.
 func record_level_result(level: Dictionary, record_id: String, mode: String, session: LevelSession) -> Dictionary:
 	var id := record_id if record_id != "" else str(level.get("id", "level"))
-	var stars_before := total_stars()
 	var par := float(level.get("par_time", 600))
 	var stars := stars_for(session, par)
 	var shells := 0
@@ -563,12 +562,9 @@ func record_level_result(level: Dictionary, record_id: String, mode: String, ses
 		var nxt := next_level_id(id)
 		if first_clear and nxt != "" and is_level_unlocked(nxt):
 			unlocks.append(tr("UNLOCK_NEXT") % tr(str(Data.get_dict("rooms/" + str(Campaign.entry(nxt).get("room", ""))).get("name", ""))))
-		for w in Campaign.walks():
-			var need := int(w.get("star_gate", 0))
-			if need > 0 and stars_before < need and total_stars() >= need:
-				unlocks.append(tr("UNLOCK_WALK") % tr(str(w.get("title", ""))))
-		if first_clear and nxt == "" and Campaign.index_of(id) >= 0:
-			unlocks.append(tr("UNLOCK_ENDLESS"))
+		var entry := Campaign.entry(id)
+		if first_clear and int(entry.get("walk", 0)) == 1 and int(entry.get("step", 0)) == Campaign.ROUTE.size() - 1:
+			unlocks.append(tr("UNLOCK_SIDE_MODES"))
 		if first_clear:
 			for decor_name in grant_rewards("level", id):
 				unlocks.append(tr("UNLOCK_DECOR") % decor_name)

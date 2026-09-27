@@ -107,7 +107,7 @@ func start(level_data: Dictionary) -> void:
 	_build_chloe()
 	AudioManager.play_music("daily_sunrise" if mode == "daily" else str(room_view.room.get("music", "level_lounge")))
 	AudioManager.play_ambience(str(room_view.room.get("ambience", "ambience_ocean")))
-	if mode == "main" and level.has("chapter"):
+	if mode == "main" and level.has("story_day"):
 		_show_chapter_card()
 
 
@@ -117,21 +117,34 @@ func sky_t(progress: float) -> float:
 	return lerpf(float(r[0]), float(r[1]), progress)
 
 
-## The chapter card at the start of a story room: which part of Céline's life this room is.
+## The card at the start of a story room: which part of Céline's life this room is. The first room
+## of a day starts with the day itself ("Day 2 · Henri and Margot · 1960 - 2001").
 func _show_chapter_card() -> void:
-	var c := Campaign.chapter(str(level.get("chapter", "")))
+	var day := int(level.get("story_day", 1))
+	var c := Campaign.story_room(day, str(level.get("room", "")))
 	if c.is_empty():
 		return
 	_paused = true
 	var card := UIKit.dialog(ui, tr(str(c.get("title", ""))), "", [[tr("CHAPTER_START"), func() -> void: _paused = false, true]])
 	var body: VBoxContainer = card.get_meta("body")
+	var index := 0
+	if int(level.get("step", 0)) == 0:
+		var d := Campaign.story_day(day)
+		var day_line := UIKit.label("%s  ·  %s  ·  %s" % [tr("DAY_CARD") % day, tr(str(d.get("title", ""))), str(d.get("years", ""))], 34, Palette.color("coral_dark"))
+		body.add_child(day_line)
+		body.move_child(day_line, 0)
+		var day_intro := UIKit.handwriting(tr(str(d.get("intro", ""))), 38)
+		day_intro.custom_minimum_size.x = 820
+		body.add_child(day_intro)
+		body.move_child(day_intro, 1)
+		index = 2
 	var top := UIKit.label(tr("CHAPTER_OF") % (int(level.get("step", 0)) + 1) + "   ·   " + str(c.get("years", "")), 28, Palette.color("coral_dark"))
 	body.add_child(top)
-	body.move_child(top, 0)
+	body.move_child(top, index)
 	var intro := UIKit.handwriting(tr(str(c.get("intro", ""))), 42)
 	intro.custom_minimum_size.x = 820
 	body.add_child(intro)
-	body.move_child(intro, 2)
+	body.move_child(intro, index + 2)
 
 
 func _process(delta: float) -> void:
@@ -1254,8 +1267,8 @@ func _show_results(result: Dictionary) -> void:
 		body.add_child(ul)
 		body.move_child(ul, body.get_child_count() - 2)
 	# In the story walk: a line on the way to the next room.
-	if mode == "main" and level.has("chapter"):
-		var outro := str(Campaign.chapter(str(level["chapter"])).get("outro", ""))
+	if mode == "main" and level.has("story_day"):
+		var outro := str(Campaign.story_room(int(level["story_day"]), str(level.get("room", ""))).get("outro", ""))
 		if outro != "":
 			var ol := UIKit.handwriting(tr(outro), 34)
 			ol.custom_minimum_size.x = 680
@@ -1288,7 +1301,7 @@ func _mode_caption() -> String:
 		"endless":
 			return tr("MODE_ENDLESS") % int(level.get("tier", 1))
 	if level.has("walk"):
-		return tr("MODE_WALK") % [tr(str(Campaign.walk(int(level["walk"])).get("title", ""))), int(level.get("step", 0)) + 1]
+		return tr("MODE_WALK") % [int(level["walk"]), int(level.get("step", 0)) + 1]
 	return tr("MODE_TIER") % int(level.get("tier", 1))
 
 

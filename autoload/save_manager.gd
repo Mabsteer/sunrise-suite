@@ -4,7 +4,7 @@ extends Node
 
 const SAVE_PATH := "user://save.json"
 const SETTINGS_PATH := "user://settings.json"
-const SAVE_VERSION := 2
+const SAVE_VERSION := 3
 const SETTINGS_VERSION := 1
 
 var data: Dictionary = {}
@@ -88,6 +88,17 @@ func migrate_save(save: Dictionary) -> Dictionary:
 		save["endless"] = {}
 		save["final_letter_read"] = false
 		version = 2
+	if version < 3 and save.has("levels"):
+		# v3: the story became three days of seven rooms (docs/PLAN_V3.md); the rooms' puzzles and
+		# memories changed, so level progress, Endless, memories, the notebook and Chloé start over.
+		# Seashells, decor, postcards, the daily streak and settings stay.
+		save["levels"] = {}
+		save["endless"] = {}
+		save["memories"] = []
+		save["notebook"] = {}
+		save["chloe_found"] = false
+		save["final_letter_read"] = false
+		version = 3
 	if version > SAVE_VERSION:
 		push_warning("Save file is from a newer version (%d); loading what we can." % version)
 	var merged := _merge_defaults(save, default_save())

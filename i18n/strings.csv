@@ -64,10 +64,8 @@ OK,OK
 CANCEL,Never mind
 BOOK_TITLE,Céline's house
 TIER_TITLE,Sunrise %d
-GATE_NEEDS,Opens with %d stars
 LOCKED_TITLE,Not yet!
 LOCKED_PREVIOUS,Finish the room before this one first.
-LOCKED_STARS,"This walk opens with %d stars. Replay earlier rooms for more stars: finish quickly, and ask for 1 hint or fewer."
 LOCKED_SOON,This room is still being decorated. Check back soon!
 LEVEL_POPUP_TITLE,%s
 LEVEL_POPUP_TEXT,"Play the same puzzle again, or one of Mamie's other riddles in this room?"
@@ -75,13 +73,11 @@ PLAY_AGAIN_SAME,Same puzzle again
 PLAY_FRESH,A fresh puzzle
 POSTCARD_HERE,A postcard is hidden in this room!
 ENDLESS_TITLE,Endless Sunrise
-ENDLESS_LOCKED,Finish all three walks to unlock an endless hunt round the house that keeps getting trickier.
+ENDLESS_LOCKED,"Finish the first day of Mamie's hunt to open her shoebox: all the treasure hunts she ever made you, round and round the house."
 ENDLESS_READY,"The hunt keeps going round the house, trickier every room. How far can you go?"
 ENDLESS_BEST,Best so far: Sunrise %d
 ENDLESS_PLAY,Play Endless
 UNLOCK_NEXT,The way to %s is open!
-UNLOCK_GATE,Sunrise %d is open now!
-UNLOCK_ENDLESS,You've done every hunt in the shoebox! Endless Sunrise is open.
 NEXT_LEVEL,Next room
 NEXT_ENDLESS,Next endless sunrise
 BACK_TO_BOOK,Back to the house
@@ -185,15 +181,8 @@ ORDER_HELP,"Tap two things to swap them. When the order is right, tap Open."
 SUDOKU_HELP,"Tap an empty square to write 1, 2, 3 or 4. Every row, column and box needs each number once."
 PATTERN_HELP,"What comes next? Tap a gap, then fill it in."
 ROTATE_HELP,Tap a tile to turn it. Turn them all the right way up.
-WALK_1_TITLE,Mamie's last treasure hunt
-WALK_1_SUBTITLE,"Through the house, and back through her life."
-WALK_2_TITLE,The shoebox: when you were small
-WALK_2_SUBTITLE,The treasure hunts Mamie made for you every summer.
-WALK_3_TITLE,The shoebox: when you were big
-WALK_3_SUBTITLE,"The trickiest hunts, from your last summers here."
-UNLOCK_WALK,%s is open now!
-MODE_WALK,%s · %d of 7
-CHAPTER_OF,Chapter %d of 7
+MODE_WALK,Day %d · %d of 7
+CHAPTER_OF,Room %d of 7
 CHAPTER_START,Begin
 The kitchen,The kitchen
 The hall,The hall
@@ -243,3 +232,6 @@ NOTHING_SPECIAL,Nothing special here as far as you can see.
 TOAST_SHELLS,+%d seashells
 NEXT_CHAPTER,Next chapter
 WALK_DONE_INFO,"%d of %d stars · %s"
+UNLOCK_SIDE_MODES,"The first day is done! Mamie's shoebox and the Daily Sunrise are open."
+DAY_CARD,Day %d
+DAILY_LOCKED,"The Daily Sunrise opens after the first day of Mamie's hunt."

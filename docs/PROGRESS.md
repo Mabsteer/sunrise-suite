@@ -40,8 +40,8 @@ The owner's third playtest: a linear story over three chapters (days) of seven h
   - Chapter 1's notes and puzzles are still the old, too-direct ones: that's phase B (G10-G13).
 
 ### Phase B: structure and chapter 1
-- [ ] **G10** Story bible for three chapters (STORY.md, story.json)
-- [ ] **G11** Chapter structure: linear, Day cards, chapter results, finale after chapter 3, save v3
+- [x] **G10** Story bible for three chapters (STORY.md, story.json)
+- [x] **G11** Chapter structure: linear, Day cards, chapter results, finale after chapter 3, save v3
 - [ ] **G12** Hand-written hints and the notes lint
 - [ ] **G13** Chapter 1 rewritten
 - [ ] **G14** Half-cryptic generated notes, Endless becomes Mamie's shoebox

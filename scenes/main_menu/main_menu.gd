@@ -102,7 +102,7 @@ func _daily_caption() -> String:
 
 ## First launch: start the tutorial. Later: jump straight into the next unfinished sunrise
 ## (or Endless Sunrise once the book is done). The book has its own button.
-## What the big button does: "first", "next", "endless", or "book" (the next level waits behind a star gate).
+## What the big button does: "first", "next", "endless" (the story is done), or "book".
 func _quick_play() -> String:
 	if GameState.completed_count() == 0:
 		return "first"
@@ -134,6 +134,10 @@ func _on_play() -> void:
 
 
 func _on_daily() -> void:
+	if not GameState.side_modes_open():
+		AudioManager.play_sfx("item_fail")
+		UIKit.dialog(self, tr("MENU_DAILY"), tr("DAILY_LOCKED"), [[tr("OK"), Callable(), true]])
+		return
 	AudioManager.play_sfx("ui_click")
 	if Router.has_screen("calendar"):
 		Router.goto("calendar")

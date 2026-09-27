@@ -84,16 +84,14 @@ Keys starting with `_` (like `_help`) are comments and are ignored.
 - **companion** (optional): `"chloe"` when Chloé is in the level. Without it, levels have no dog locks (the validator checks).
 - **riddle** (optional, hand-made levels): how hard the notes are, for the par-time check (generated levels take it from `tiers.json`).
 
-## `data/campaign.json`: the walks through the house
-`walks`: `[ { "id": 1, "title", "subtitle" (text keys), "story"?: true, "star_gate": stars needed to start it, "levels": [ ... ] } ]`.
-Each walk lists the seven rooms in route order (kitchen, hall, bedroom, lounge = living room, garden, shed, front_garden). A level is `{ "id", "room", "tier", "seed", "level_file"?, "postcard"?, "chapter"?, "finale"? }`:
-- `level_file`: a hand-made level in `data/levels/` instead of a generated one.
-- `chapter`: shows that room's chapter card (from `data/story.json`) when the level starts.
-- `finale`: the end of the story; Mamie's last letter opens when it's finished.
-Walk levels share one morning: each room gets its own slice of the sunrise (`sunrise_range`, filled in by the game).
-
-- `find_dog`: Chloé is hiding in this room (walk 1: the hall). The level's key is in her hiding place; giving her Gaston (found in the level) brings her out.
-- `companion`: Chloé is with Juliette in this level (every room after the hall). Replays and Endless use her once she's been found.
+## `data/campaign.json`: the three days of the story
+`chapters`: `[ { "id": 1, "levels": [ ... ] } ]`, one per day (the day's title, years and intro come from `data/story.json`, same id).
+Each day lists the seven rooms in route order (kitchen, hall, bedroom, lounge = living room, garden, shed, front_garden). A level is `{ "id", "room", "tier", "seed", "level_file"?, "postcard"?, "find_dog"?, "companion"?, "finale"? }`:
+- `level_file`: a hand-made level in `data/levels/` instead of a generated one (rooms not written yet are generated placeholders).
+- `postcard`: the postcard hidden in this room (a hand-made level places its own; the campaign entry names it for the book and the scrapbook).
+- `find_dog`: Chloé is hiding in this room (Day 1: the hall). `companion`: Chloé is with Juliette (every room after the Day 1 hall).
+- `finale`: the end of the story (Day 3's front garden); Mamie's last letter opens when it's finished.
+The story is linear: a room opens when the room before it is done; the last room of a day opens the next day. The Daily Sunrise and Mamie's shoebox (Endless) open after Day 1. Each day is one morning: each room gets its own slice of the sunrise (`sunrise_range`, filled in by the game).
 
 ## Chloé, Mamie's Maltese
 Chloé is found in the hall in walk 1 and then follows Juliette. She sits at the room's `dog_spot` (and naps in the sunroom). Nothing on screen says what she can do; the player finds out:
@@ -104,8 +102,8 @@ Chloé is found in the hall in walk 1 and then follows Juliette. She sits at the
 - **hiding** (`finds_dog`): no sprite at all. A soft whimper or sniff every 25-45 s, and a tuft of fur at the bottom of her hiding place when zoomed in to 1.8x or more. Her hiding place's close-up is a dark space you can hold something out to.
 With "Show helpers" on, a paw badge marks her spots and tapping her makes her bark at the next step. Everything she does is an ordinary lock, so the solver, validator, hints and autoplay treat her like any other step. Her sprites are in `assets/sprites/props/chloe/` (drawn by `tools/art/chloe.mjs`); her sounds are `dog_bark`, `dog_squeak`, `dog_dig`, `dog_sniff`, `dog_happy`, `dog_whimper`, `dog_huff` and `dog_drop` in `tools/sfx/sfx.json`.
 
-## `data/story.json`: the chapters of Céline's life
-`chapters`: one per room in route order, `{ "room", "title", "years", "intro", "outro", "memories"?: [ { "id", "title", "text" } ] }`. The scrapbook shows one page per chapter; `memories` are the story notes collected there (see docs/STORY.md). Each memory is used by exactly one note in that room's story level (`data/levels/story_<room>.json`, and `tutorial.json` for the kitchen); a unit test checks this.
+## `data/story.json`: the days and rooms of Céline's life
+`chapters`: one per day, `{ "id", "day", "title", "years", "intro", "rooms": [ ... ] }`, newest period first (Day 1 = 2001–2025). `rooms`: the seven rooms in route order, `{ "room", "title", "years", "intro", "outro", "memories": [ { "id", "title", "text" } ] }`: the room's period (its card when the room starts, the scrapbook tile), and the memories (story notes) found there. A level's note with `"memory": id` takes its text from here. Each memory of a hand-made room is used by exactly one note in that room's level; a unit test checks this, and that the days go back in time. See docs/STORY.md.
 
 ## `data/daily.json`
 `rooms` rotation, `weekday_tiers` (Sunday first), `streak_rewards` (streak length → decor id).

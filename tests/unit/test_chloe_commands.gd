@@ -4,7 +4,7 @@ extends TestCase
 
 
 func _shed() -> LevelSession:
-	var s := LevelSession.new(Campaign.build("w1_shed"))
+	var s := LevelSession.new(Campaign.build("w3_shed"))
 	s.dog_present = true
 	return s
 
@@ -43,7 +43,7 @@ func test_empty_trips_are_seeded_and_sometimes_silly() -> void:
 
 
 func test_she_is_not_there_before_she_is_found() -> void:
-	var s := LevelSession.new(Campaign.build("w1_shed"))
+	var s := LevelSession.new(Campaign.build("w3_shed"))
 	s.dog_present = false
 	assert_eq(s.send_dog_to("lock:under")["result"], "unavailable")
 
@@ -52,7 +52,7 @@ func test_tap_chloe_then_a_spot_in_the_room() -> void:
 	var settings := SaveManager.settings.duplicate(true)
 	SaveManager.settings["show_helpers"] = false
 	SaveManager.settings["reduce_motion"] = true
-	Router.params = {"level": Campaign.build("w1_shed"), "mode": "test"}
+	Router.params = {"level": Campaign.build("w3_shed"), "mode": "test"}
 	var scene := (load("res://scenes/level/level.tscn") as PackedScene).instantiate() as LevelScene
 	tree.root.add_child(scene)
 	await tree.process_frame

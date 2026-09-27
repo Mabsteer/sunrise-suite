@@ -56,7 +56,7 @@ func test_every_room_has_a_light_to_find() -> void:
 
 
 func test_the_glow_stars_only_show_in_the_dark() -> void:
-	Router.params = {"level": Campaign.build("w1_bedroom"), "mode": "test"}
+	Router.params = {"level": Campaign.build("w2_bedroom"), "mode": "test"}
 	var scene := (load("res://scenes/level/level.tscn") as PackedScene).instantiate() as LevelScene
 	tree.root.add_child(scene)
 	await tree.process_frame
