@@ -849,6 +849,7 @@ func _show_walk_results() -> void:
 	grid.columns = 2
 	grid.add_theme_constant_override("h_separation", 30)
 	grid.add_theme_constant_override("v_separation", 6)
+	grid.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	body.add_child(grid)
 	body.move_child(grid, 1)
 	var total := 0.0
@@ -859,7 +860,10 @@ func _show_walk_results() -> void:
 		total += float(rec.get("best_time", 0.0))
 		var stars := int(rec.get("stars", 0))
 		star_total += stars
-		grid.add_child(UIKit.label(Campaign.room_name(id), 30, Palette.color("ink"), HORIZONTAL_ALIGNMENT_LEFT))
+		var room_label := UIKit.label(Campaign.room_name(id), 30, Palette.color("ink"), HORIZONTAL_ALIGNMENT_LEFT)
+		room_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+		room_label.custom_minimum_size = Vector2(360, 44)
+		grid.add_child(room_label)
 		var row := HBoxContainer.new()
 		row.alignment = BoxContainer.ALIGNMENT_END
 		for i in 3:
