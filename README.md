@@ -58,6 +58,12 @@ Sounds are made with **jsfxr** from `tools/sfx/sfx.json`.
 2. Copy the new link, and paste the part after `#` into that sound's `"b58"` field in `sfx.json` (remove its `preset`, `seed` and `overrides`).
 3. Run `npm run sfx` (needs Node.js). This rewrites the WAV files in `assets/audio/sfx/`.
 
+### Change a room's background sound
+Each room has a soft looping background (sea, gulls, birds, the hall clock, the fridge, wind, the market), made by `tools/ambience/ambience.mjs`.
+1. In that file, find the room in `ROOMS` and change its layers or their volumes (e.g. `["sea", 0.22]` → `["sea", 0.3]`).
+2. Run `npm run ambience` (or `npm run ambience -- --only hall`). This rewrites `assets/audio/ambience/<room>.wav`.
+The "Room sounds" slider in Settings sets how loud they are.
+
 ### Add music (Suno)
 Follow [`docs/SUNO_PROMPTS.md`](docs/SUNO_PROMPTS.md): make a track in Suno, name it exactly as listed (e.g. `menu_theme.mp3`) and put it in `assets/audio/music/`. Missing tracks are simply quiet.
 

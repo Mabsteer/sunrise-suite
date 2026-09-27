@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "sfx": "node tools/sfx/generate_sfx.mjs",
-    "sfx:list": "node tools/sfx/generate_sfx.mjs --list"
+    "sfx:list": "node tools/sfx/generate_sfx.mjs --list",
+    "ambience": "node tools/ambience/ambience.mjs"
   },
   "devDependencies": {
     "jsfxr": "^1.4.1"

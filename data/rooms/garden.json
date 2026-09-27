@@ -9,6 +9,7 @@
   "sun_x": 1100,
   "sky_rect": [-240, -180, 2400, 700],
   "music": "level_garden",
+  "ambience": "garden",
   "outdoor": true,
   "door": {"name": "the shed door", "rect": [1600, 380, 200, 320]},
   "exit": {"kind": "door", "to": "shed", "view_center": [780,440], "hinge": "left"},

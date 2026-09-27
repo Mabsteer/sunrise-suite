@@ -104,7 +104,7 @@ func start(level_data: Dictionary) -> void:
 	session.dog_acted.connect(_on_dog_acted)
 	_build_chloe()
 	AudioManager.play_music("daily_sunrise" if mode == "daily" else str(room_view.room.get("music", "level_lounge")))
-	AudioManager.play_ambience("ambience_ocean")
+	AudioManager.play_ambience(str(room_view.room.get("ambience", "ambience_ocean")))
 	if mode == "main" and level.has("chapter"):
 		_show_chapter_card()
 

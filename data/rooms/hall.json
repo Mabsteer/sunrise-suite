@@ -8,6 +8,7 @@
   "sun_x": 1610,
   "sky_rect": [100, 60, 1660, 320],
   "music": "level_hall",
+  "ambience": "hall",
   "door": {"name": "the stair gate", "rect": [1380, 610, 190, 160]},
   "exit": {"kind": "stairs_up", "to": "bedroom", "furniture": "stair_gate", "sprite_open": "props/hall/stair_gate_open.svg", "walk_to": [1880,200]},
   "light_switch": {"name": "the light switch", "rect": [1150,408,54,70], "glow": [760,90]},

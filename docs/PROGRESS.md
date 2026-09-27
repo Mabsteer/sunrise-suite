@@ -27,7 +27,7 @@ The owner's third playtest: a linear story over three chapters (days) of seven h
 - [x] **G5** Chloé the new way: tap her, then a spot; hidden in the hall; care through behaviour
 - [x] **G6** Walking from room to room: exits with a view of the next room, new hall stairs, toast per room
 - [x] **G7** Lights (and things only visible in the dark)
-- [ ] **G8** Generated room ambience
+- [x] **G8** Generated room ambience
 - [x] **G9** Faster local check (30 seeds locally, 200 in CI)
 - [ ] **Playtest checkpoint 1**
 

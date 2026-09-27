@@ -9,6 +9,7 @@
   "sun_x": 890,
   "sky_rect": [690, 110, 400, 320],
   "music": "level_bedroom",
+  "ambience": "bedroom",
   "door": {"name": "the door to the landing", "rect": [1640, 190, 230, 580]},
   "exit": {"kind": "stairs_down", "to": "lounge", "view_room": "hall", "view_center": [1640,380], "hinge": "right"},
   "light_switch": {"name": "the bedside lamp", "rect": [1270,420,110,130], "glow": [1320,470]},

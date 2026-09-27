@@ -10,6 +10,7 @@
   "sun_x": 980,
   "sky_rect": [520, 70, 1260, 720],
   "music": "level_lounge",
+  "ambience": "lounge",
   "door": {"name": "the garden doors", "rect": [1480, 110, 260, 650]},
   "exit": {"kind": "garden_doors", "to": "garden", "view_center": [860,470], "hinge": "left"},
   "light_switch": {"name": "the light switch by the garden doors", "rect": [1420,430,40,60], "sprite": "props/common/light_switch.svg", "glow": [900,260]},

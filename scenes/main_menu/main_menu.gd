@@ -92,7 +92,7 @@ func _ready() -> void:
 	version.offset_bottom = -16
 	add_child(version)
 	AudioManager.play_music("menu_theme")
-	AudioManager.play_ambience("ambience_ocean")
+	AudioManager.play_ambience("lounge" if AudioManager.has_ambience("lounge") else "ambience_ocean")
 
 
 func _daily_caption() -> String:

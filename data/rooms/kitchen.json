@@ -10,6 +10,7 @@
   "sun_x": 960,
   "sky_rect": [750, 150, 420, 380],
   "music": "level_kitchen",
+  "ambience": "kitchen",
   "door": {"name": "the door to the hall", "rect": [170, 110, 260, 660]},
   "exit": {"kind": "door", "to": "hall", "view_center": [640,470], "hinge": "left"},
   "light_switch": {"name": "the light switch by the door", "rect": [446,400,40,60], "sprite": "props/common/light_switch.svg", "glow": [960,150]},

@@ -8,6 +8,7 @@
   "sun_x": 960,
   "sky_rect": [-240, -180, 2400, 660],
   "music": "level_front_garden",
+  "ambience": "front_garden",
   "outdoor": true,
   "door": {"name": "the garden gate", "rect": [860, 450, 200, 160]},
   "exit": {"kind": "gate", "to": "kitchen"},

@@ -6,6 +6,8 @@ extends Node
 
 const SFX_DIR := "res://assets/audio/sfx/"
 const MUSIC_DIR := "res://assets/audio/music/"
+## Generated room sounds (tools/ambience, npm run ambience); Suno ambience tracks can also go in MUSIC_DIR.
+const AMBIENCE_DIR := "res://assets/audio/ambience/"
 const AUDIO_EXTENSIONS: PackedStringArray = ["ogg", "mp3", "wav"]
 const BUSES: PackedStringArray = ["Music", "SFX", "Ambience"]
 const SFX_POOL_SIZE := 10
@@ -152,12 +154,17 @@ func play_ambience(track: String) -> void:
 	if not enabled or track == _ambience_track:
 		return
 	_ambience_track = track
-	var stream := _load_stream(MUSIC_DIR, track, true)
+	var stream := _load_stream(AMBIENCE_DIR, track, true) if has_ambience(track) else _load_stream(MUSIC_DIR, track, true)
 	if stream == null:
 		_ambience_player.stop()
 		return
 	_ambience_player.stream = stream
 	_ambience_player.play()
+
+
+## True if a generated room sound exists (assets/audio/ambience/<name>.wav).
+func has_ambience(track: String) -> bool:
+	return ResourceLoader.exists(AMBIENCE_DIR + track + ".wav")
 
 
 ## Returns true if a sound or track file exists (used by tests and the settings screen).

@@ -59,3 +59,14 @@ func test_settings_have_a_test_sound_button() -> void:
 			found = true
 	panel.free()
 	assert_true(found, "a test-sound button sits next to the sound effects slider")
+
+
+func test_every_room_has_a_looping_room_sound() -> void:
+	for room in Campaign.ROUTE:
+		var name := str(Data.get_dict("rooms/" + room).get("ambience", ""))
+		assert_ne(name, "", "%s names its room sound" % room)
+		assert_true(AudioManager.has_ambience(name), "%s.wav exists (npm run ambience)" % name)
+		var stream := load(AudioManager.AMBIENCE_DIR + name + ".wav") as AudioStreamWAV
+		assert_not_null(stream, "%s loads" % name)
+		if stream:
+			assert_ne(stream.loop_mode, AudioStreamWAV.LOOP_DISABLED, "%s loops by itself" % name)
