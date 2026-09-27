@@ -1,0 +1,50 @@
+{
+  "_help": "Day 2, room 3: the bedroom, 'Dancing in socks' (1981-2001). Their song on the jewellery box; the wedding year on the photo (only readable with the lamp on); Henri's last number puzzle. See docs/STORY.md.",
+  "id": "ch2_bedroom",
+  "room": "bedroom",
+  "tier": 5,
+  "seed": 1,
+  "riddle": 3,
+  "par_time": 600,
+  "locks": [
+    {"id": "door", "type": "key", "is_door": true, "host": {"kind": "door"}, "location": "room", "item": "i_key",
+     "_why": "The key to the landing was in Henri's nightstand drawer.",
+     "hints": ["Time to go back down; the way out is locked.", "The key from the nightstand drawer opens the door to the landing.", "Select the brass key, then tap the door to the landing."]},
+    {"id": "under_bed", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "bed", "spot": "under_bed"}, "location": "room",
+     "_why": "Their song's note slid under the bed; only Chloé fits.",
+     "hints": ["Something is hiding with the dust bunnies.", "Chloé fits under the bed.", "Tap Chloé, then tap under the bed."]},
+    {"id": "music", "type": "sequence", "host": {"kind": "furniture", "furniture": "dressing_table", "spot": "jewellery_box"}, "location": "room",
+     "answer": "heart,wave,sun,star", "clues": ["c_song"], "config": {"length": 4},
+     "_why": "Love first; the sun just before the stars; the sea never last: heart, wave, sun, star is the only order.",
+     "hints": ["Sunday mornings had a tune. What played it?", "Their song belongs to the jewellery box.", "Heart, wave, sun, star."]},
+    {"id": "suitcase", "type": "key", "host": {"kind": "furniture", "furniture": "wardrobe", "spot": "suitcase"}, "location": "room",
+     "item": "i_tiny_key",
+     "_why": "The tiny key from the jewellery box opens the suitcase on the wardrobe.",
+     "hints": ["A tiny key, and something that travelled a lot.", "The tiny key opens the old suitcase on top of the wardrobe.", "Select the tiny key, then tap the old suitcase."]},
+    {"id": "wardrobe", "type": "combo", "host": {"kind": "furniture", "furniture": "wardrobe", "spot": "doors"}, "location": "room",
+     "answer": "1960", "clues": ["c_suitcase", "c_photo"], "config": {"digits": 4},
+     "_why": "The jacket only came out on the anniversary of the day in the photo; the wedding photo's year (only readable with the lamp on) is 1960.",
+     "hints": ["Where do Sunday clothes wait? And which day were they for?", "The wedding photo above the bed belongs to the wardrobe. Turn the lamp on to read it.", "The year in the photo's corner: 1960."]},
+    {"id": "paper", "type": "sudoku", "host": {"kind": "prop", "prop": "newspaper"}, "location": "wardrobe",
+     "answer": "2143341243211234", "config": {"givens": "2.4..4.2.3.1.2.4", "shaded": [1, 4, 10, 14]},
+     "_why": "Henri's last number square: every row, column and 2x2 box has 1-4 once.",
+     "hints": ["Finish what Henri started.", "Every row, every column and every 2x2 box needs 1, 2, 3 and 4 once.", "Top row: 2 1 4 3. Second row: 3 4 1 2."]},
+    {"id": "nightstand", "type": "combo", "host": {"kind": "furniture", "furniture": "nightstand", "spot": "drawer"}, "location": "room",
+     "answer": "1323", "clues": ["c_numbers"], "config": {"digits": 4},
+     "_why": "Henri's shaded squares, read like a book, 'kept by the bed with his glasses': 1, 3, 2, 3.",
+     "hints": ["Where did Henri keep his glasses?", "The shaded squares of Henri's number puzzle belong to the nightstand drawer.", "Read the shaded squares row by row: 1, 3, 2, 3."]}
+  ],
+  "items": [
+    {"id": "i_tiny_key", "type": "tiny_key", "location": "music"},
+    {"id": "i_key", "type": "brass_key", "location": "nightstand"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_song", "memory": "bedroom_song", "host": {"kind": "prop", "prop": "note"}, "location": "under_bed", "for": "music"},
+    {"id": "c_suitcase", "memory": "bedroom_suitcase", "host": {"kind": "prop", "prop": "note"}, "location": "suitcase", "for": "wardrobe"},
+    {"id": "c_photo", "host": {"kind": "furniture", "furniture": "wedding_photo", "spot": "photo"}, "location": "room", "for": "wardrobe", "visible_when": "light",
+     "text": "Céline and Henri on their wedding day, laughing under a very small lemon tree. In the lamplight you can read the year painted in the corner: 1960."},
+    {"id": "c_numbers", "memory": "bedroom_numbers", "host": {"kind": "prop", "prop": "note"}, "location": "paper", "for": "nightstand", "source": "paper"}
+  ],
+  "decoys": []
+}

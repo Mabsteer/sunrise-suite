@@ -53,8 +53,8 @@ The owner's third playtest: a linear story over three chapters (days) of seven h
   - **Mamie's shoebox / Daily:** notes now name things in Mamie's words ("the spoons' bedroom") instead of plainly.
 
 ### Phase C: chapters 2 and 3
-- [ ] **G15** Chapter 2
-- [ ] **G16** Chapter 3 and the finale
+- [x] **G15** Chapter 2
+- [x] **G16** Chapter 3 and the finale
 - [ ] **G17** Polish and the v3 summary
 - [ ] **Playtest checkpoint 3**
 

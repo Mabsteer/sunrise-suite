@@ -1,0 +1,41 @@
+{
+  "_help": "Day 3, room 4: the living room, 'Evenings by the radio' (1956). The radio stations on the little blackboard; Maman's three winter books in order. See docs/STORY.md.",
+  "id": "ch3_lounge",
+  "room": "lounge",
+  "tier": 8,
+  "seed": 1,
+  "riddle": 4,
+  "par_time": 600,
+  "locks": [
+    {"id": "door", "type": "key", "is_door": true, "host": {"kind": "door"}, "location": "room", "item": "i_key",
+     "_why": "The garden doors' key was behind the three books.",
+     "hints": ["The glass doors to the green are locked.", "The key from the books opens the garden doors.", "Select the brass key, then tap the garden doors."]},
+    {"id": "board", "type": "pattern", "host": {"kind": "prop", "prop": "chalkboard", "slot": "wall_left_top"}, "location": "room",
+     "answer": "97,100", "clues": ["c_radio"], "config": {"kind": "numbers", "terms": ["85", "88", "91", "94", "97", "100"], "blanks": [4, 5]},
+     "_why": "The radio stations, 'always three apart', and Mamie finished them: 97 and 100.",
+     "hints": ["Maman stopped writing the stations. Carry on for her.", "The stations on the little blackboard go up by the same amount each time.", "Three apart: 97, then 100."]},
+    {"id": "cabinet", "type": "key", "host": {"kind": "furniture", "furniture": "bookshelf", "spot": "cabinet"}, "location": "room",
+     "item": "i_tiny_key",
+     "_why": "The tiny key behind the blackboard opens the bookshelf cabinet.",
+     "hints": ["A tiny key, a low small door.", "The tiny key fits the bookshelf cabinet.", "Select the tiny key, then tap the bookshelf cabinet."]},
+    {"id": "books", "type": "order", "host": {"kind": "furniture", "furniture": "bookshelf", "spot": "books"}, "location": "room",
+     "answer": "star,wave,leaf", "clues": ["c_books"], "config": {"length": 3},
+     "_why": "Maman's winter books: stars first (dark early), the sea for the storms, the garden last: star, wave, leaf.",
+     "hints": ["Winter had an order of stories.", "Maman's three books belong on the bookshelf in her order.", "Star, wave, leaf."]},
+    {"id": "rug", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "rug", "spot": "rug"}, "location": "room",
+     "_why": "A memory slid under the rug; Chloé wriggles in.",
+     "hints": ["Something went under the flying carpet.", "Chloé can wriggle under the rug.", "Tap Chloé, then tap the rug."]}
+  ],
+  "items": [
+    {"id": "i_tiny_key", "type": "tiny_key", "location": "board"},
+    {"id": "i_key", "type": "brass_key", "location": "books"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_radio", "memory": "lounge_papa", "host": {"kind": "prop", "prop": "note", "slot": "coffee_1"}, "location": "room", "for": "board"},
+    {"id": "c_books", "memory": "lounge_books", "host": {"kind": "prop", "prop": "note"}, "location": "cabinet", "for": "books"}
+  ],
+  "decoys": [
+    {"id": "d_radio", "memory": "lounge_radio", "host": {"kind": "prop", "prop": "note"}, "location": "rug"}
+  ]
+}

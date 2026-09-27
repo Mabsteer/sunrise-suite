@@ -16,25 +16,25 @@
     {
       "id": 2,
       "levels": [
-        {"id": "w2_kitchen", "room": "kitchen", "tier": 5, "seed": 2201, "companion": true},
-        {"id": "w2_hall", "room": "hall", "tier": 5, "seed": 2202, "companion": true},
-        {"id": "w2_bedroom", "room": "bedroom", "tier": 5, "seed": 2203, "level_file": "story_bedroom", "postcard": "santorini", "companion": true},
-        {"id": "w2_lounge", "room": "lounge", "tier": 6, "seed": 2204, "level_file": "story_lounge", "postcard": "marrakech", "companion": true},
-        {"id": "w2_garden", "room": "garden", "tier": 6, "seed": 2205, "level_file": "story_garden", "postcard": "lisbon", "companion": true},
-        {"id": "w2_shed", "room": "shed", "tier": 6, "seed": 2206, "companion": true},
-        {"id": "w2_front_garden", "room": "front_garden", "tier": 7, "seed": 2207, "companion": true}
+        {"id": "w2_kitchen", "room": "kitchen", "tier": 5, "seed": 2201, "companion": true, "level_file": "ch2_kitchen"},
+        {"id": "w2_hall", "room": "hall", "tier": 5, "seed": 2202, "companion": true, "level_file": "ch2_hall", "postcard": "santorini"},
+        {"id": "w2_bedroom", "room": "bedroom", "tier": 5, "seed": 2203, "level_file": "ch2_bedroom", "companion": true},
+        {"id": "w2_lounge", "room": "lounge", "tier": 6, "seed": 2204, "level_file": "ch2_lounge", "companion": true, "postcard": "marrakech"},
+        {"id": "w2_garden", "room": "garden", "tier": 6, "seed": 2205, "level_file": "ch2_garden", "companion": true, "postcard": "lisbon"},
+        {"id": "w2_shed", "room": "shed", "tier": 6, "seed": 2206, "companion": true, "level_file": "ch2_shed"},
+        {"id": "w2_front_garden", "room": "front_garden", "tier": 7, "seed": 2207, "companion": true, "level_file": "ch2_front_garden"}
       ]
     },
     {
       "id": 3,
       "levels": [
-        {"id": "w3_kitchen", "room": "kitchen", "tier": 7, "seed": 2301, "companion": true},
-        {"id": "w3_hall", "room": "hall", "tier": 7, "seed": 2302, "companion": true},
-        {"id": "w3_bedroom", "room": "bedroom", "tier": 8, "seed": 2303, "companion": true},
-        {"id": "w3_lounge", "room": "lounge", "tier": 8, "seed": 2304, "companion": true},
-        {"id": "w3_garden", "room": "garden", "tier": 9, "seed": 2305, "companion": true},
-        {"id": "w3_shed", "room": "shed", "tier": 9, "seed": 2306, "level_file": "story_shed", "postcard": "kyoto", "companion": true},
-        {"id": "w3_front_garden", "room": "front_garden", "tier": 10, "seed": 2307, "level_file": "story_front_garden", "finale": true, "companion": true}
+        {"id": "w3_kitchen", "room": "kitchen", "tier": 7, "seed": 2301, "companion": true, "level_file": "ch3_kitchen"},
+        {"id": "w3_hall", "room": "hall", "tier": 7, "seed": 2302, "companion": true, "level_file": "ch3_hall", "postcard": "kyoto"},
+        {"id": "w3_bedroom", "room": "bedroom", "tier": 8, "seed": 2303, "companion": true, "level_file": "ch3_bedroom"},
+        {"id": "w3_lounge", "room": "lounge", "tier": 8, "seed": 2304, "companion": true, "level_file": "ch3_lounge"},
+        {"id": "w3_garden", "room": "garden", "tier": 9, "seed": 2305, "companion": true, "level_file": "ch3_garden"},
+        {"id": "w3_shed", "room": "shed", "tier": 9, "seed": 2306, "level_file": "ch3_shed", "companion": true},
+        {"id": "w3_front_garden", "room": "front_garden", "tier": 10, "seed": 2307, "level_file": "ch3_front_garden", "finale": true, "companion": true}
       ]
     }
   ]

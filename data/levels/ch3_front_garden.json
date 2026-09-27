@@ -1,0 +1,45 @@
+{
+  "_help": "Day 3, room 7: the front garden, 'Where it began' (1938-1948), and the end of the story. The hopscotch pattern and the house number for the letterbox; Chloé on her leash; she digs up the time capsule; the year on Maman's rose sign plus ten for the gate. The last letter opens when the gate does. See docs/STORY.md.",
+  "id": "ch3_front_garden",
+  "room": "front_garden",
+  "tier": 10,
+  "seed": 1,
+  "riddle": 4,
+  "par_time": 600,
+  "locks": [
+    {"id": "door", "type": "combo", "is_door": true, "host": {"kind": "door"}, "location": "room",
+     "answer": "1948", "clues": ["c_capsule", "c_sign"], "config": {"digits": 4},
+     "_why": "Maman planted the roses the year Céline was born (the sign says 1938); she buried the tin at ten, and 'the gate has kept that year': 1948.",
+     "hints": ["How old was she when she buried the tin? And when was she born?", "Maman's rose sign and the time capsule belong to the garden gate.", "1938 plus 10: 1948."]},
+    {"id": "hopscotch", "type": "pattern", "host": {"kind": "furniture", "furniture": "hopscotch", "spot": "squares"}, "location": "room",
+     "answer": "16,22", "config": {"kind": "numbers", "terms": ["1", "2", "4", "7", "11", "16", "22"], "blanks": [5, 6]},
+     "_why": "The chalk squares grow by one more each time (+1, +2, +3...): 16, then 22.",
+     "hints": ["Little Céline's hopscotch has a rule.", "Look at how much each number grows.", "+1, +2, +3, +4, +5, +6: 16 and 22."]},
+    {"id": "letterbox", "type": "combo", "host": {"kind": "furniture", "furniture": "letterbox", "spot": "box"}, "location": "room",
+     "answer": "1222", "clues": ["c_running", "c_number"], "config": {"digits": 4},
+     "_why": "Maman's number: the house (12, on the letterbox), then the last square Céline ever reached at hopscotch (22).",
+     "hints": ["Where did Maman keep the old dog's leash? Behind a number only they knew.", "The house number and the last hopscotch square belong to the letterbox.", "12, then 22: 1222."]},
+    {"id": "walk", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_leash",
+     "_why": "Chloé scratches at the gate for her leash (in the letterbox). Happy, she drops a memory.",
+     "hints": ["Chloé keeps scratching at the gate.", "She wants her leash, and it was in the letterbox.", "Select the leash, then tap Chloé."]},
+    {"id": "roses", "type": "dog", "action": "dig", "host": {"kind": "furniture", "furniture": "roses", "spot": "soil"}, "location": "room",
+     "_why": "The time capsule is buried under Maman's roses; Chloé digs it up.",
+     "hints": ["Something old is buried by the gate.", "Chloé could dig under the roses.", "Tap Chloé, then tap the soil under the roses."]}
+  ],
+  "items": [
+    {"id": "i_leash", "type": "leash", "location": "letterbox"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_running", "memory": "front_running", "host": {"kind": "prop", "prop": "note", "slot": "bench_1"}, "location": "room", "for": "letterbox"},
+    {"id": "c_number", "host": {"kind": "furniture", "furniture": "letterbox", "spot": "number"}, "location": "room", "for": "letterbox",
+     "text": "The house number, painted on the letterbox by Céline's father: 12."},
+    {"id": "c_capsule", "memory": "front_capsule", "host": {"kind": "prop", "prop": "tin_box"}, "location": "roses", "for": "door"},
+    {"id": "c_sign", "host": {"kind": "furniture", "furniture": "roses", "spot": "flowers"}, "location": "room", "for": "door",
+     "text": "Half hidden among the roses, a little enamel sign, chipped at the corners: FOR CÉLINE · 1938."}
+  ],
+  "decoys": [
+    {"id": "d_roses", "memory": "front_roses", "host": {"kind": "prop", "prop": "note"}, "location": "hopscotch"},
+    {"id": "d_marble", "memory": "front_marble", "host": {"kind": "prop", "prop": "note"}, "location": "walk"}
+  ]
+}

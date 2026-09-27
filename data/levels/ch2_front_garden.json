@@ -1,0 +1,44 @@
+{
+  "_help": "Day 2, room 7: the front garden, 'The key' (1960-1963). Margot's year carved in the swing; Maman's letter in the letterbox; Chloé digs up the little box under the roses; the house number opens it. The end of Day 2. See docs/STORY.md.",
+  "id": "ch2_front_garden",
+  "room": "front_garden",
+  "tier": 7,
+  "seed": 1,
+  "riddle": 3,
+  "par_time": 540,
+  "locks": [
+    {"id": "door", "type": "key", "is_door": true, "host": {"kind": "door"}, "location": "room", "item": "i_key",
+     "_why": "The key to the house (and the gate) was in Maman's little box under the roses.",
+     "hints": ["The gate to the street is locked. The second morning is nearly over.", "The old key from the little box opens the garden gate.", "Select the old key, then tap the garden gate."]},
+    {"id": "letterbox", "type": "combo", "host": {"kind": "furniture", "furniture": "letterbox", "spot": "box"}, "location": "room",
+     "answer": "1963", "clues": ["c_home", "c_swing"], "config": {"digits": 4},
+     "_why": "Henri carved Margot's name and year into the swing seat (1963), and 'Maman's letterbox has kept that year'.",
+     "hints": ["Henri made sure something would never forget Margot.", "The carving on the swing belongs to the letterbox.", "The swing says 1963: 1963."]},
+    {"id": "walk", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_leash",
+     "_why": "Chloé scratches at the gate for her leash (in the letterbox). Happy, she drops a memory.",
+     "hints": ["Chloé keeps scratching at the gate.", "She wants her leash, and it was in the letterbox.", "Select the leash, then tap Chloé."]},
+    {"id": "roses", "type": "dog", "action": "dig", "host": {"kind": "furniture", "furniture": "roses", "spot": "soil"}, "location": "room",
+     "_why": "Maman's letter: the key is under her roses, and 'don't let Henri dig': Chloé does.",
+     "hints": ["Maman didn't want Henri digging. Someone smaller, then.", "Chloé could dig under the roses.", "Tap Chloé, then tap the soil under the roses."]},
+    {"id": "box", "type": "combo", "host": {"kind": "prop", "prop": "lockbox"}, "location": "roses",
+     "answer": "12", "clues": ["c_key", "c_number"], "config": {"digits": 2},
+     "_why": "Maman's little box has 'our number on it': the house number, 12 (painted on the letterbox).",
+     "hints": ["Maman's box has a number only the family would know.", "The house number on the letterbox opens Maman's little box.", "12."]}
+  ],
+  "items": [
+    {"id": "i_leash", "type": "leash", "location": "letterbox"},
+    {"id": "i_key", "type": "old_key", "location": "box"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_home", "memory": "front_home", "host": {"kind": "prop", "prop": "note", "slot": "bench_1"}, "location": "room", "for": "letterbox"},
+    {"id": "c_swing", "host": {"kind": "furniture", "furniture": "pine", "spot": "swing"}, "location": "room", "for": "letterbox",
+     "text": "The swing on the old pine. Carved deep into the seat, careful letters: MARGOT · 1963."},
+    {"id": "c_key", "memory": "front_key", "host": {"kind": "prop", "prop": "note"}, "location": "letterbox", "for": "box"},
+    {"id": "c_number", "host": {"kind": "furniture", "furniture": "letterbox", "spot": "number"}, "location": "room", "for": "box",
+     "text": "The house number, painted on the letterbox: 12."}
+  ],
+  "decoys": [
+    {"id": "d_threshold", "memory": "front_threshold", "host": {"kind": "prop", "prop": "note"}, "location": "walk"}
+  ]
+}

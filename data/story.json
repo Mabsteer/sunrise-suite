@@ -201,7 +201,28 @@
           "years": "1990s - 2001",
           "intro": "Henri's number puzzle, Mamie's crossword, and too much coffee.",
           "outro": "The hall is quiet this morning.",
-          "memories": []
+          "memories": [
+            {
+              "id": "kitchen_crossword",
+              "title": "The crossword",
+              "text": "Every breakfast for forty years: Henri at that end with his number puzzle, me at this end with the crossword, and we cheated for each other. His favourite clue was always the same one: the year we met, one Saturday at the stall. I always pretended I'd forgotten it. He always looked at the old calendar anyway."
+            },
+            {
+              "id": "kitchen_coffee",
+              "title": "Henri's coffee",
+              "text": "Henri was a harbour master even at breakfast. The coffee went on at six o'clock sharp, and he wouldn't pour a drop until every boat in the harbour photo had gone out: one minute for each. The kitchen clock never dared to disagree."
+            },
+            {
+              "id": "kitchen_cup",
+              "title": "Henri's cup",
+              "text": "Henri's cup still hangs on its hook. I use it on Sundays, and I cheat at the crossword for him."
+            },
+            {
+              "id": "kitchen_pancakes",
+              "title": "Sunday pancakes",
+              "text": "On Sunday mornings Henri made pancakes in the shape of the countries we'd seen. They all came out looking like Portugal. We ate Portugal every Sunday for twenty years."
+            }
+          ]
         },
         {
           "room": "hall",
@@ -209,11 +230,27 @@
           "years": "1981 - 1994",
           "intro": "Margot left for Montréal, and the telephone in the hall rang every Sunday.",
           "outro": "Up the stairs, to their room.",
-          "memories": []
+          "memories": [
+            {
+              "id": "hall_leaving",
+              "title": "Margot leaves",
+              "text": "The morning Margot left for Montréal she was eighteen, with the big suitcase and her father's patience. She left her little hospital bracelet in the shell bowl, for luck, and of course she forgot it."
+            },
+            {
+              "id": "hall_calls",
+              "title": "Sunday calls",
+              "text": "After she left, the telephone in the hall rang every Sunday: breakfast time in Montréal, lunch time here. Margot never once got the hours right, so her father wrote them down for her and put the card in the old clock, where the ticking would keep it safe."
+            },
+            {
+              "id": "hall_travels",
+              "title": "The travel suitcase",
+              "text": "In those quiet years the suitcase by the door was never quite unpacked. When the house was too quiet, we went and watched the sun come up somewhere else. Santorini was the best one."
+            }
+          ]
         },
         {
           "room": "bedroom",
-          "title": "Henri",
+          "title": "Dancing in socks",
           "years": "1981 - 2001",
           "intro": "The house was quiet again. Number puzzles, dancing in socks, and trips at last.",
           "outro": "Down the stairs, through the hall, into the living room.",
@@ -221,17 +258,17 @@
             {
               "id": "bedroom_song",
               "title": "Our song",
-              "text": "On Sunday mornings Henri wound up my jewellery box and asked me to dance, in our socks, on the creaky floor. Our song has four notes: {heart} {sun} {star} {wave}, but not in that order.\nIt starts with the {heart}, of course. The {sun} comes right before the {star}. And the {wave} never comes last."
+              "text": "On Sunday mornings Henri wound up the little box on my dressing table and asked me to dance, in our socks, on the creaky floor. Our song always began with love, of course. The sunshine came just before the stars, and the sea never had the last word."
             },
             {
               "id": "bedroom_suitcase",
               "title": "The suitcase",
-              "text": "Every sticker on this suitcase is a place where we watched the sun come up. Santorini was the best one; Henri did his number puzzle by torchlight on the way up.\nHis good jacket, the one from our wedding, still hangs in the wardrobe. The wardrobe opens with the year of the wedding. It's on our photo above the bed."
+              "text": "Every sticker on this suitcase is a sunrise we watched together. His good jacket, the one from our wedding, still hangs with the Sunday clothes. It was only ever allowed out once a year: on the anniversary of the day in the photo above the bed."
             },
             {
               "id": "bedroom_numbers",
               "title": "Henri's last puzzle",
-              "text": "Every morning Henri did the number puzzle and I did the crossword, and we cheated for each other. This was his last one, and he left it half done. I never had the heart to finish it. Thank you for finishing it for him.\nThe squares he shaded, read like a book, open his nightstand drawer."
+              "text": "Every morning Henri did the number puzzle and I did the crossword, and we cheated for each other. This was his last one, half done. I never had the heart to finish it. He always shaded the squares he liked best, read them like a book, and kept whatever they said by the bed with his glasses."
             }
           ]
         },
@@ -245,17 +282,17 @@
             {
               "id": "lounge_lamps",
               "title": "Story time",
-              "text": "The rules for story time, written by Margot, aged seven:\nThe {star} lamp is ON, so nobody is scared.\nThe {sun} lamp is OFF, because it's night.\nThe {shell} lamp does the same as the {star} lamp.\nThe {wave} lamp does the opposite of the {shell} lamp.\n(Papa must read the voices properly.)"
+              "text": "The rules for story time, by Margot, aged seven:\nThe sun lamp is on, because it's the reading lamp.\nThe stars sleep while Papa reads.\nThe shells are on whenever the sun is.\nThe sea is only on when the stars are off.\n(Papa must do the voices properly.)"
             },
             {
               "id": "lounge_records",
               "title": "Sunday records",
-              "text": "Margot's secret hiding place, behind the books! A note in her round handwriting:\n\"Papa's Sunday records, the way he always plays them: the {star} is always last, for dancing. The {sun} comes right after the {wave}. The {heart} is never first, because Maman says it's too sad for the morning.\""
+              "text": "Margot's secret hiding place, behind the books! In her round handwriting: \"Papa's Sunday records, the way he always plays them: the dancing one last, under the stars. The sunny one straight after the sea song. And never the sad love song first, Maman says it's too sad for the morning.\""
             },
             {
               "id": "lounge_birthdays",
               "title": "Birthdays",
-              "text": "Margot's birthdays in this room: a cake with too many candles, a fort made of every cushion in the house, and one year a very surprised tortoise.\nShe hated her piano lessons. Then one day she didn't. I never found out why, and I never asked."
+              "text": "Margot's birthdays in this room: a cake with too many candles, a fort made of every cushion in the house, and one year a very surprised tortoise. She hated her piano lessons. Then one day she didn't. I never found out why, and I never asked."
             }
           ]
         },
@@ -269,17 +306,22 @@
             {
               "id": "garden_wedding",
               "title": "Under the lemon tree",
-              "text": "We married right here on 18 June 1960, under a lemon tree so small it needed a stick to stand up. We said yes at a quarter to eleven; Henri checked his watch, of course.\nThe next day he set the sundial to that moment. He called it \"our time\"."
+              "text": "We married right here on 18 June 1960, under a lemon tree so small it needed a stick to stand up. Henri checked his watch just as I said yes, of course: the big hand on the nine, the little one nearly at eleven. The garden has kept our time ever since."
             },
             {
               "id": "garden_seeds",
               "title": "The first spring",
-              "text": "Our first spring, the seed jars, in the order we sowed them:\nThe beans {leaf} went in first, Henri insisted. The tomatoes {heart} went in right before the sunflowers {sun}. The radishes {shell} were not last; they never are, they're too impatient."
+              "text": "Our first spring, the seed jars in the order we sowed them: the green beans first, Henri insisted. The tomatoes, red as hearts, went in just before the sunflowers. The radishes, pale as shells, were never last: they're far too impatient."
             },
             {
               "id": "garden_lemon",
               "title": "The first lemon",
-              "text": "The first lemon from our tree, summer 1961. It was tiny and very sour and we ate it anyway, one half each.\nThe garden table drawer opens with the daisies in my vase, then the birds in the picture on the trellis, then how many chairs we had at that table."
+              "text": "The first lemon from our tree, summer 1961. It was tiny and very sour and we ate it anyway, at the little table, one half each. Our only guests were the daisies in the jar and the birds on the trellis, and we only had the two chairs."
+            },
+            {
+              "id": "garden_stick",
+              "title": "The stick",
+              "text": "The stick that held up the lemon tree is still tied to its trunk. Henri said it could come off when the tree was taller than me. It still hasn't come off. I think we both liked it there."
             }
           ]
         },
@@ -289,15 +331,47 @@
           "years": "1960 - 1962",
           "intro": "Henri painted the shed blue and built everything in it.",
           "outro": "The side gate leads round to the front garden.",
-          "memories": []
+          "memories": [
+            {
+              "id": "shed_paint",
+              "title": "Sea blue",
+              "text": "Henri painted this shed blue the summer after we married, the colour of the sea at seven in the morning. He wrote on the pot when he finished, so he could buy the same blue again, and put his brushes away in his right-hand drawer. He never needed more. This blue has lasted."
+            },
+            {
+              "id": "shed_cradle",
+              "title": "The cradle",
+              "text": "Henri built Margot's cradle on this bench from the wood of his old rowing boat. He carved a little wave on it for every month we waited for her, and a star for each of the three of us. It went to Montréal with her, but I can still count them with my eyes shut. So could the little cart by the door."
+            },
+            {
+              "id": "shed_bench",
+              "title": "The bench",
+              "text": "Henri built the garden bench in here too, and carried it out on his back the day Margot learned to walk, so she'd have somewhere to walk to."
+            }
+          ]
         },
         {
           "room": "front_garden",
           "title": "The key",
-          "years": "1960",
-          "intro": "The day Maman gave them the house.",
+          "years": "1960 - 1963",
+          "intro": "The day Maman gave them the house, and the day they carried Margot home.",
           "outro": "The sun is up. The second day is done.",
-          "memories": []
+          "memories": [
+            {
+              "id": "front_home",
+              "title": "Margot comes home",
+              "text": "We carried Margot home through this gate on the first warm morning of spring, and Henri hung a swing on the old pine the very next day. He carved her name and the year into the seat, so it would never forget her. Maman's little post box by the gate has kept that year ever since."
+            },
+            {
+              "id": "front_key",
+              "title": "Maman's letter",
+              "text": "Maman's letter, the day we came home from Lisbon: \"The house is yours now. The key is where you always hid your treasures, under my roses, in the little box with our number on it. Don't let Henri dig: he'll pull them all up.\""
+            },
+            {
+              "id": "front_threshold",
+              "title": "Over the step",
+              "text": "Henri carried me over the step when we came home from Lisbon, and dropped me straight into Maman's roses. He said it was tradition. It was not."
+            }
+          ]
         }
       ]
     },
@@ -314,7 +388,23 @@
           "years": "1957 - 1960",
           "intro": "One vase on Maman's kitchen table, and a sunflower in it every Saturday.",
           "outro": "The hall, and the letterbox slot in the front door.",
-          "memories": []
+          "memories": [
+            {
+              "id": "kitchen_vase",
+              "title": "One vase",
+              "text": "One vase on Maman's kitchen table, and every Saturday for a whole year a sunflower in it, from a young sailor who swore they were for his mother. When he finally sailed, on a ship called the Aurore, he gave me his cabin number, as if I might come looking. Nine. His photo lived in two halves until he came back."
+            },
+            {
+              "id": "kitchen_market",
+              "title": "The market money",
+              "text": "Maman never wrote anything down twice. What mattered went into the grey squares of her number puzzle, read like a book, and then into the spoons' drawer with the market money. Nothing was ever lost."
+            },
+            {
+              "id": "kitchen_saturdays",
+              "title": "Saturdays",
+              "text": "Saturdays at the stall began in this kitchen at five: bread, coffee, and Maman's voice counting buckets. I thought everyone's mother counted buckets. Then I met Henri's."
+            }
+          ]
         },
         {
           "room": "hall",
@@ -322,7 +412,23 @@
           "years": "1958",
           "intro": "Henri's letters from the sea, through the slot in the front door.",
           "outro": "Up the stairs, to her old room.",
-          "memories": []
+          "memories": [
+            {
+              "id": "hall_letters",
+              "title": "Letters from the sea",
+              "text": "Henri's letters came through the slot in the front door, tied with string. Every one began the same way: \"On the Aurore it is morning, at the hour of my cabin, and I am thinking of you.\" And every one ended: \"Keep one sunflower for me.\""
+            },
+            {
+              "id": "hall_days_a",
+              "title": "Days at sea (torn)",
+              "text": "Half a letter, torn along the fold: \"...counted every day on the way to Japan: seventy of them...\""
+            },
+            {
+              "id": "hall_days_b",
+              "title": "Days at sea (the other half)",
+              "text": "The other half, from the basket by the door: \"...and seventy-seven on the way back, because I missed you, and because the captain got lost.\""
+            }
+          ]
         },
         {
           "room": "bedroom",
@@ -330,7 +436,23 @@
           "years": "1950s",
           "intro": "Céline's girlhood room, and the window where she watched for Papa's boat.",
           "outro": "Down the stairs, through the hall.",
-          "memories": []
+          "memories": [
+            {
+              "id": "bedroom_maman_song",
+              "title": "Maman's song",
+              "text": "Maman sang me to sleep in this room with the very song I later sang to you. Only she sang it the other way round: from the morning back to the night. She said it made the sunrise come quicker."
+            },
+            {
+              "id": "bedroom_papa_a",
+              "title": "Papa's boat (torn)",
+              "text": "Half a page from my diary: \"Papa left for the sea every morning at twenty...\""
+            },
+            {
+              "id": "bedroom_papa_b",
+              "title": "Papa's boat (the other half)",
+              "text": "The other half, from under the bed: \"...to six. From this window I waved until I couldn't see his lamp any more.\""
+            }
+          ]
         },
         {
           "room": "lounge",
@@ -338,7 +460,23 @@
           "years": "1956",
           "intro": "Evenings by the radio with Maman.",
           "outro": "Out into Maman's garden.",
-          "memories": []
+          "memories": [
+            {
+              "id": "lounge_papa",
+              "title": "The radio",
+              "text": "The winter Papa didn't come back from the sea, Maman and I sat by the radio every evening anyway. We weren't waiting any more; we just liked the voices. She wrote the stations on the little blackboard, one after another, always three apart, and then stopped: I finished them for her."
+            },
+            {
+              "id": "lounge_books",
+              "title": "Three books",
+              "text": "Every winter Maman read me the same three stories, always in the same order: the one about the stars first, because it got dark so early; the sea one when the storms came; and the garden one last, to bring the spring back."
+            },
+            {
+              "id": "lounge_radio",
+              "title": "The voices",
+              "text": "The man who read the sea forecast had the kindest voice in the world. Maman said he sounded like a lighthouse. I never found out his name. I didn't want to."
+            }
+          ]
         },
         {
           "room": "garden",
@@ -346,7 +484,33 @@
           "years": "1950s",
           "intro": "The flower beds that filled the stall at the market.",
           "outro": "The old shed door creaks open.",
-          "memories": []
+          "memories": [
+            {
+              "id": "garden_rows",
+              "title": "Maman's rows",
+              "text": "Maman planted her flower beds like a song: sunflowers, roses, green leaves for the bouquets, and again, and again, row after row. Whatever the rows said, the stall sold out by noon."
+            },
+            {
+              "id": "garden_cut_a",
+              "title": "Cutting time (torn)",
+              "text": "Half of Maman's garden list: \"Saturdays: cut the flowers at half past...\""
+            },
+            {
+              "id": "garden_cut_b",
+              "title": "Cutting time (the other half)",
+              "text": "The other half, folded small under the stone of the bird bath: \"...five, with the dew still on them, or they sulk.\""
+            },
+            {
+              "id": "garden_bouquets",
+              "title": "Bouquets",
+              "text": "Maman could tie a bouquet with one hand and give change with the other. I never learned the first. I was very good at the second."
+            },
+            {
+              "id": "garden_maman_hat",
+              "title": "Maman's hat",
+              "text": "Maman's straw hat hung on the shed door all summer. When it was gone from the hook, she was at the stall. When it was back, she was home. I told the time by that hat."
+            }
+          ]
         },
         {
           "room": "shed",
@@ -358,17 +522,22 @@
             {
               "id": "shed_price",
               "title": "One sunflower",
-              "text": "Maman's price board from the flower stall. A young sailor bought one sunflower every Saturday for a whole year. I thought he had a lot of vases. He had one. He was working up his courage.\nMy bicycle lock opens with how many sunflowers he bought that year, then the day in June we married (the eighteenth, you know that one)."
+              "text": "Maman's price board from the flower stall. A young sailor bought one sunflower every Saturday for a whole year. I thought he had a lot of vases. He had one. When I got my delivery bicycle that summer, I gave its little lock his sunflowers, and then the day in June I would marry him, though I didn't know it yet."
             },
             {
               "id": "shed_weights",
               "title": "Maman's scales",
-              "text": "Maman weighed everything twice. She had three weights, and she made me learn them by heart:\nAll three together weigh 11 kilos. The middle one is 1 kilo heavier than the small one. The big one weighs as much as two middle ones.\nThe workbench drawer opens with the small one, the middle one and the big one."
+              "text": "Maman weighed everything twice. She had three weights, and she made me learn them by heart before I could touch the till: all three together, eleven kilos. The middle one, a kilo more than the small one. The big one, as heavy as two middle ones. Smallest first, every morning, at the bench where she counted the money."
             },
             {
-              "id": "shed_letters",
-              "title": "Letters from the sea",
-              "text": "Henri's letters from the sea, tied with string. He wrote about the weather, the food and the other sailors' snoring, and at the end of every single one: \"Keep one sunflower for me.\"\nI kept all of them. The sunflowers didn't last, but the letters did."
+              "id": "shed_cart",
+              "title": "The flower cart",
+              "text": "Maman's cart went down to the market every Saturday before dawn, and I pushed it back up every afternoon. It squeaked on the left. It still does. I never oiled it: that squeak was the sound of Saturday."
+            },
+            {
+              "id": "shed_first_day",
+              "title": "My first Saturday",
+              "text": "My first Saturday alone at the stall I was seventeen, I sold everything by ten, and I gave the last bunch of sweet peas to a man who said it was for his mother. It wasn't Henri. Henri came later, and he was worse at lying."
             }
           ]
         },
@@ -382,7 +551,7 @@
             {
               "id": "front_running",
               "title": "Waving at Papa",
-              "text": "Every morning Papa left for the sea before dawn, and every morning I ran down this path in my nightdress to wave at his boat as the sun came up. That's where it started, ma puce: me and the sunrise.\nMaman kept the leash for her old dog in the letterbox. So do I. It opens with our house number, then the last number of my hopscotch game, the one you just finished."
+              "text": "Every morning Papa left for the sea before dawn, and every morning I ran down this path in my nightdress to wave at his boat as the sun came up. That's where it started, ma puce: me and the sunrise. Maman kept her old dog's leash behind a number only we knew: our house, and then the last square I ever reached at hopscotch."
             },
             {
               "id": "front_roses",
@@ -392,7 +561,12 @@
             {
               "id": "front_capsule",
               "title": "The time capsule",
-              "text": "A biscuit tin, rusty at the edges. I buried it under Maman's roses when I was ten years old. I was born in 1938, in this very house, so you can work out the year.\nThe gate opens with that year. The last letter is inside the tin, under the shell and the marble."
+              "text": "A biscuit tin, rusty at the edges. I buried it under Maman's roses when I was ten years old, with a shell, a marble and a drawing of the sun. The gate has kept that year for me. The last letter is inside the tin, under the shell and the marble."
+            },
+            {
+              "id": "front_marble",
+              "title": "The marble",
+              "text": "The marble in the tin was the best one in the whole street. I won it from Émile Martin, who cried, and I nearly gave it back. Nearly."
             }
           ]
         }

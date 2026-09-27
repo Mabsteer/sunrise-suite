@@ -1,0 +1,46 @@
+{
+  "_help": "Day 2, room 2: the hall, 'The quiet house' (1981-1994). Margot's bracelet and the year she left; the Sunday calls and the grandfather clock; Santorini in the basket. See docs/STORY.md.",
+  "id": "ch2_hall",
+  "room": "hall",
+  "tier": 5,
+  "seed": 1,
+  "riddle": 3,
+  "par_time": 540,
+  "locks": [
+    {"id": "door", "type": "key", "is_door": true, "host": {"kind": "door"}, "location": "room", "item": "i_key",
+     "_why": "The stair gate key was behind the clock face.",
+     "hints": ["The way upstairs is still shut.", "The key from the grandfather clock opens the stair gate.", "Select the brass key, then tap the stair gate."]},
+    {"id": "drawer", "type": "combo", "host": {"kind": "furniture", "furniture": "console", "spot": "drawer"}, "location": "room",
+     "answer": "1981", "clues": ["c_leaving", "c_bracelet"], "config": {"digits": 4},
+     "_why": "Margot was born in 1963 (the bracelet in the shell bowl) and left at eighteen: 1981.",
+     "hints": ["When did the house go quiet?", "Margot's bracelet in the bowl of shells, and her age when she left, belong to the console drawer.", "1963 plus 18: 1981."]},
+    {"id": "case", "type": "key", "host": {"kind": "furniture", "furniture": "grandfather_clock", "spot": "case"}, "location": "room",
+     "item": "i_tiny_key",
+     "_why": "The tiny key from the console drawer opens the clock's case.",
+     "hints": ["A tiny key, and a tall old belly that ticks.", "The tiny key opens the grandfather clock's case.", "Select the tiny key, then tap the clock's case."]},
+    {"id": "clock", "type": "clock", "host": {"kind": "furniture", "furniture": "grandfather_clock", "spot": "face"}, "location": "room",
+     "answer": "1:00", "clues": ["c_calls", "c_card"],
+     "_why": "Margot called straight after her 7 o'clock breakfast in Montréal, and here it's six hours later: one o'clock.",
+     "hints": ["Breakfast there, lunch here. How far apart?", "The card in the clock's case and the Sunday calls belong to the clock face.", "7 o'clock plus 6 hours: one o'clock."]},
+    {"id": "basket", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "console", "spot": "basket"}, "location": "room",
+     "_why": "Something slipped to the bottom of the basket of summer shoes; Chloé digs it out.",
+     "hints": ["Something slid under the summer shoes.", "Chloé can fetch from the basket of flip-flops.", "Tap Chloé, then tap the basket of flip-flops."]}
+  ],
+  "items": [
+    {"id": "i_tiny_key", "type": "tiny_key", "location": "drawer"},
+    {"id": "i_key", "type": "brass_key", "location": "clock"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_leaving", "memory": "hall_leaving", "host": {"kind": "prop", "prop": "note", "slot": "console_1"}, "location": "room", "for": "drawer"},
+    {"id": "c_bracelet", "host": {"kind": "furniture", "furniture": "console", "spot": "bowl"}, "location": "room", "for": "drawer",
+     "text": "Among the shells, a tiny hospital bracelet: MARGOT · BORN 12.4.1963."},
+    {"id": "c_calls", "memory": "hall_calls", "host": {"kind": "prop", "prop": "note"}, "location": "drawer", "for": "clock"},
+    {"id": "c_card", "host": {"kind": "prop", "prop": "note"}, "location": "case", "for": "clock",
+     "text": "A card in Margot's round writing: \"Maman, I'll call right after my breakfast, at 7, promise!\" And underneath, in Henri's: \"She means 7 in Montréal. We are six hours ahead.\""}
+  ],
+  "decoys": [
+    {"id": "d_travels", "memory": "hall_travels", "host": {"kind": "prop", "prop": "note"}, "location": "basket"}
+  ],
+  "postcard": {"id": "santorini", "host": {"kind": "prop", "prop": "postcard"}, "location": "basket"}
+}

@@ -1,0 +1,46 @@
+{
+  "_help": "Day 2, room 6: the shed, 'Henri's blue shed' (1960-1962). The year on the paint pot; string and a magnet make a fishing magnet for the jar on the shelf; the waves and stars on Margot's cradle. See docs/STORY.md.",
+  "id": "ch2_shed",
+  "room": "shed",
+  "tier": 6,
+  "seed": 1,
+  "riddle": 3,
+  "par_time": 600,
+  "locks": [
+    {"id": "door", "type": "key", "is_door": true, "host": {"kind": "door"}, "location": "room", "item": "i_key",
+     "_why": "The side door key was in the flower cart's drawer.",
+     "hints": ["The side way round is locked.", "The key from the flower cart's drawer opens the side door.", "Select the brass key, then tap the side door."]},
+    {"id": "right", "type": "combo", "host": {"kind": "furniture", "furniture": "workbench", "spot": "right_drawer"}, "location": "room",
+     "answer": "1961", "clues": ["c_paint", "c_pot"], "config": {"digits": 4},
+     "_why": "Henri wrote on the pot when he finished and put his brushes in his right-hand drawer; the pot on the pegboard says 1961.",
+     "hints": ["Henri wrote something down when the blue was finished.", "The paint pot on the pegboard belongs to Henri's right-hand drawer.", "SEA BLUE · 1961: 1961."]},
+    {"id": "under", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "workbench", "spot": "under"}, "location": "room",
+     "_why": "Something heavy rolled under the workbench; Chloé brings it out.",
+     "hints": ["Something rolled under Henri's bench.", "Chloé fits under the workbench.", "Tap Chloé, then tap under the workbench."]},
+    {"id": "jar", "type": "hidden", "host": {"kind": "furniture", "furniture": "shelves", "spot": "jar"}, "location": "room", "item": "i_fishing_magnet",
+     "_why": "The jar on the high shelf is too narrow for a hand: a magnet on a string reaches in.",
+     "hints": ["Something's at the bottom of a jar too narrow for your hand.", "String and a magnet together could fish it out of the jar on the shelf.", "Combine the string and the magnet, select the fishing magnet, then tap the jar on the shelf."]},
+    {"id": "cart", "type": "combo", "host": {"kind": "furniture", "furniture": "flower_cart", "spot": "drawer"}, "location": "room",
+     "answer": "93", "clues": ["c_cradle"], "config": {"digits": 2},
+     "_why": "A wave for every month they waited for Margot (9) and a star for each of the three of them (3); 'so could the little cart by the door'.",
+     "hints": ["How long do you wait for a baby? And how many were they?", "The cradle memory belongs to the flower cart's drawer.", "9 waves, 3 stars: 93."]}
+  ],
+  "items": [
+    {"id": "i_string", "type": "string", "location": "right"},
+    {"id": "i_magnet", "type": "magnet", "location": "under"},
+    {"id": "i_fishing_magnet", "type": "fishing_magnet", "location": "recipe"},
+    {"id": "i_key", "type": "brass_key", "location": "cart"}
+  ],
+  "recipes": [
+    {"a": "i_string", "b": "i_magnet", "result": "i_fishing_magnet"}
+  ],
+  "clues": [
+    {"id": "c_paint", "memory": "shed_paint", "host": {"kind": "prop", "prop": "note", "slot": "bench_1"}, "location": "room", "for": "right"},
+    {"id": "c_pot", "host": {"kind": "furniture", "furniture": "pegboard", "spot": "tools"}, "location": "room", "for": "right",
+     "text": "Next to the brushes on the pegboard, an old paint pot with a crust of blue on the lid: SEA BLUE · 1961 · H."},
+    {"id": "c_cradle", "memory": "shed_cradle", "host": {"kind": "prop", "prop": "note"}, "location": "jar", "for": "cart"}
+  ],
+  "decoys": [
+    {"id": "d_bench", "memory": "shed_bench", "host": {"kind": "prop", "prop": "note"}, "location": "cart"}
+  ]
+}

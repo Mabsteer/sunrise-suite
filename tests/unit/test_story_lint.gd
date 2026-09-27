@@ -5,10 +5,8 @@ extends TestCase
 ## three hints: a nudge, which object, how to read it.
 
 ## Hand-made levels the rules don't apply to (yet):
-## - the tutorial (the Day 1 kitchen may be explicit, and its guide does the hinting);
-## - the v2 story rooms that moved to Days 2 and 3 until G15/G16 rewrite them. This list must be
-##   just the tutorial once Day 3 is done.
-const EXCLUDED: PackedStringArray = ["tutorial", "story_bedroom", "story_lounge", "story_garden", "story_shed", "story_front_garden"]
+## the tutorial (the Day 1 kitchen may be explicit, and its guide does the hinting).
+const EXCLUDED: PackedStringArray = ["tutorial"]
 
 ## Words that turn a memory into an instruction.
 const FORBIDDEN: PackedStringArray = ["opens with", "open with", "read from", "read it from", "in that order", "the code", "set it to", "set the", "the drawer", "the lock", "padlock", "combination"]

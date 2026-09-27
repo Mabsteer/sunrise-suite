@@ -1,0 +1,50 @@
+{
+  "_help": "Day 2, room 5: the garden, 'The first years' (1960-1963). The wedding time on the sundial, the seed jars, the first lemon at the little table. See docs/STORY.md.",
+  "id": "ch2_garden",
+  "room": "garden",
+  "tier": 6,
+  "seed": 1,
+  "riddle": 3,
+  "par_time": 540,
+  "locks": [
+    {"id": "door", "type": "key", "is_door": true, "host": {"kind": "door"}, "location": "room", "item": "i_key",
+     "_why": "The old key to the shed was in the garden table drawer.",
+     "hints": ["Henri's blue door is locked.", "The old key from the garden table opens the shed door.", "Select the old key, then tap the shed door."]},
+    {"id": "sundial", "type": "clock", "host": {"kind": "furniture", "furniture": "sundial", "spot": "dial"}, "location": "room",
+     "answer": "10:45", "clues": ["c_wedding"],
+     "_why": "Big hand on the nine, little hand nearly at eleven: a quarter to eleven, and 'the garden has kept our time' points at the sundial.",
+     "hints": ["What tells the time in a garden?", "The wedding memory in the lemon tree is about the sundial.", "Big hand on 9, little hand nearly on 11: a quarter to eleven."]},
+    {"id": "seeds", "type": "order", "host": {"kind": "prop", "prop": "jar_shelf", "slot": "shed_wall"}, "location": "room",
+     "answer": "leaf,shell,heart,sun", "clues": ["c_seeds"], "config": {"length": 4},
+     "_why": "Beans (leaf) first; tomatoes (heart) just before sunflowers (sun); radishes (shell) not last: leaf, shell, heart, sun.",
+     "hints": ["The first spring had an order. Who insisted on what?", "The first spring note is about the row of seed jars on the shed wall.", "Leaf, shell, heart, sun."]},
+    {"id": "thirsty", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_water",
+     "_why": "Chloé pants in the sun; the water jug was behind the seed jars. She drops a memory when she's had a drink.",
+     "hints": ["Chloé is panting in the sun.", "She needs water: the jug was behind the seed jars.", "Select the water jug, then tap Chloé."]},
+    {"id": "roses", "type": "dog", "action": "dig", "host": {"kind": "furniture", "furniture": "flower_bed", "spot": "soil"}, "location": "room",
+     "_why": "The first lemon's note is buried under the roses; only Chloé digs.",
+     "hints": ["The soil under the thorny ones is soft.", "Chloé could dig under the roses.", "Tap Chloé, then tap the soil under the roses."]},
+    {"id": "table", "type": "combo", "host": {"kind": "furniture", "furniture": "garden_table", "spot": "drawer"}, "location": "room",
+     "answer": "532", "clues": ["c_lemon", "c_daisies", "c_birds"], "config": {"digits": 3},
+     "_why": "Their only guests: the daisies in the jar (5), the birds on the trellis (3), and the two chairs: 5, 3, 2.",
+     "hints": ["Who sat at the little table with them?", "The daisies, the birds and the chairs belong to the garden table drawer.", "5 daisies, 3 birds, 2 chairs: 532."]}
+  ],
+  "items": [
+    {"id": "i_water", "type": "water_jug", "location": "seeds"},
+    {"id": "i_key", "type": "old_key", "location": "table"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_wedding", "memory": "garden_wedding", "host": {"kind": "furniture", "furniture": "lemon_tree", "spot": "branches"}, "location": "room", "for": "sundial"},
+    {"id": "c_seeds", "memory": "garden_seeds", "host": {"kind": "prop", "prop": "note"}, "location": "sundial", "for": "seeds"},
+    {"id": "c_lemon", "memory": "garden_lemon", "host": {"kind": "prop", "prop": "note"}, "location": "roses", "for": "table"},
+    {"id": "c_daisies", "host": {"kind": "prop", "prop": "daisy_vase", "slot": "table_2", "count": 5}, "location": "room", "for": "table",
+     "text": "A jam jar of daisies on the garden table."},
+    {"id": "c_birds", "host": {"kind": "prop", "prop": "bird_picture", "slot": "trellis", "count": 3}, "location": "room", "for": "table",
+     "text": "A little painting of birds, hung on the trellis where the real ones sit."}
+  ],
+  "decoys": [
+    {"id": "d_stick", "memory": "garden_stick", "host": {"kind": "prop", "prop": "note"}, "location": "thirsty"}
+  ],
+  "postcard": {"id": "lisbon", "host": {"kind": "prop", "prop": "postcard"}, "location": "table"}
+}
