@@ -42,8 +42,8 @@ The owner's third playtest: a linear story over three chapters (days) of seven h
 ### Phase B: structure and chapter 1
 - [x] **G10** Story bible for three chapters (STORY.md, story.json)
 - [x] **G11** Chapter structure: linear, Day cards, chapter results, finale after chapter 3, save v3
-- [ ] **G12** Hand-written hints and the notes lint
-- [ ] **G13** Chapter 1 rewritten
+- [x] **G12** Hand-written hints and the notes lint
+- [x] **G13** Chapter 1 rewritten
 - [ ] **G14** Half-cryptic generated notes, Endless becomes Mamie's shoebox
 - [ ] **Playtest checkpoint 2**
 

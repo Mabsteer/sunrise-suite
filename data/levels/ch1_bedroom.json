@@ -1,0 +1,46 @@
+{
+  "_help": "Day 1, room 3: the bedroom, 'Thunderstorm nights' (2005-2009). The first note can only be read with the lamp on; the stars on the wall only show in the dark. See docs/STORY.md.",
+  "id": "ch1_bedroom",
+  "room": "bedroom",
+  "tier": 3,
+  "seed": 1,
+  "riddle": 2,
+  "par_time": 480,
+  "locks": [
+    {"id": "door", "type": "key", "is_door": true, "host": {"kind": "door"}, "location": "room", "item": "i_key",
+     "_why": "The key to the landing was in the nightstand drawer.",
+     "hints": ["Time to go back down. The door out is locked.", "The key from the nightstand drawer opens the door to the landing.", "Select the brass key, then tap the door to the landing."]},
+    {"id": "music", "type": "sequence", "host": {"kind": "furniture", "furniture": "dressing_table", "spot": "jewellery_box"}, "location": "room",
+     "answer": "star,wave,shell", "clues": ["c_lullaby"], "config": {"length": 3},
+     "_why": "The lullaby goes star, then wave, then shell; the jewellery box is a music box that plays it.",
+     "hints": ["Songs need something to play them. What in this room makes music?", "The lullaby belongs to the jewellery box on the dressing table.", "Play it in the song's order: the star, the wave, the shell."]},
+    {"id": "treats", "type": "key", "host": {"kind": "furniture", "furniture": "nightstand", "spot": "cupboard"}, "location": "room",
+     "item": "i_tiny_key",
+     "_why": "The tiny key from the jewellery box opens the nightstand cupboard.",
+     "hints": ["A tiny key, a small door.", "The tiny key from the jewellery box fits the nightstand cupboard.", "Select the tiny key, then tap the nightstand cupboard."]},
+    {"id": "breakfast", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_kibble",
+     "_why": "Chloé sits by her empty bowl: she's hungry. Her treats were in the nightstand cupboard.",
+     "hints": ["Chloé keeps looking at her bowl, then at you.", "Chloé is hungry, and her treats were in the nightstand.", "Select the kibble, then tap Chloé."]},
+    {"id": "under_bed", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "bed", "spot": "under_bed"}, "location": "room",
+     "after": ["breakfast"],
+     "_why": "Nobody fits under the bed except Chloé, and she only helps on a full stomach.",
+     "hints": ["Some places are too small for you. Not for everyone, though.", "Chloé fits under the bed.", "Tap Chloé, then tap under the bed."]},
+    {"id": "nightstand", "type": "combo", "host": {"kind": "furniture", "furniture": "nightstand", "spot": "drawer"}, "location": "room",
+     "answer": "816", "clues": ["c_countbook", "c_stars"], "config": {"digits": 3},
+     "_why": "Eight stars on the wall (they only glow in the dark): eight sheep, and two kisses each makes sixteen. 8 then 16.",
+     "hints": ["Storm nights were for counting. What did you count first?", "The stars on the wall and the counting book belong to the nightstand drawer. Turn the lamp off to see the stars.", "8 stars, so 8 sheep, and 2 kisses each makes 16: 8, then 16."]}
+  ],
+  "items": [
+    {"id": "i_tiny_key", "type": "tiny_key", "location": "music"},
+    {"id": "i_kibble", "type": "kibble", "location": "treats"},
+    {"id": "i_key", "type": "brass_key", "location": "nightstand"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_lullaby", "memory": "bedroom_lullaby", "host": {"kind": "prop", "prop": "note", "slot": "quilt_1"}, "location": "room", "for": "music", "visible_when": "light"},
+    {"id": "c_countbook", "memory": "bedroom_countbook", "host": {"kind": "prop", "prop": "open_book"}, "location": "under_bed", "for": "nightstand"},
+    {"id": "c_stars", "host": {"kind": "prop", "prop": "glow_stars", "slot": "wall_dresser"}, "location": "room", "for": "nightstand", "visible_when": "dark",
+     "text": "Little plastic stars stuck on the wall above the dressing table, glowing faintly in the dark. Eight of them."}
+  ],
+  "decoys": []
+}

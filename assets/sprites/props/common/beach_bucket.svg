@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96">
+  <!-- Juliette's old red beach bucket with shells in it. -->
+  <ellipse cx="48" cy="90" rx="34" ry="5" fill="#3b2e3a" opacity="0.15"/>
+  <path d="M18 30 L78 30 L70 88 L26 88 Z" fill="#ee7b6b"/><ellipse cx="48" cy="30" rx="30" ry="8" fill="#c95b52"/>
+  <path d="M20 26 C20 4 76 4 76 26" stroke="#f6c453" stroke-width="5" fill="none"/>
+  <path d="M28 52 H68" stroke="#fffbf5" stroke-width="5" stroke-linecap="round"/><path d="M32 66 H64" stroke="#fffbf5" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  <circle cx="40" cy="24" r="5" fill="#fcd9b8"/><circle cx="55" cy="23" r="4" fill="#fffbf5"/>
+</svg>

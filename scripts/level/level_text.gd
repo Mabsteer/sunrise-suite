@@ -185,13 +185,16 @@ func hint_texts(goal: Dictionary) -> PackedStringArray:
 			]
 		"see_clue":
 			var c := str(goal["id"])
-			var lock := str(goal["lock"])
 			return [
+				"Something in this room is still waiting to be read.",
 				"Have a closer look at %s." % clue_place(c),
-				"%s holds a clue for %s." % [_cap(clue_place(c)), lock_name(lock)],
-				"%s opens with %s." % [_cap(lock_name(lock)), answer_text(lock)],
+				"Tap %s and read it: it belongs with the others." % clue_place(c),
 			]
 		"open":
+			var hand: Array = session.locks.get(str(goal["id"]), {}).get("hints", [])
+			if hand.size() == 3:
+				# A story lock's own hints: a nudge in Mamie's voice, which object, how to read it.
+				return PackedStringArray([str(hand[0]), str(hand[1]), str(hand[2])])
 			return _open_hints(str(goal["id"]))
 		"lights":
 			var sw := str((room.get("light_switch", {}) as Dictionary).get("name", "the light switch"))
@@ -283,8 +286,8 @@ func _open_hints(lock_id: String) -> PackedStringArray:
 	if clue_list.size() > 1:
 		where = "%s and %s" % [clue_place(clue_list[0]), clue_place(clue_list[1])]
 	return [
-		"You've found everything %s needs." % name,
-		"Use the clue from %s on %s." % [where, name],
+		"You've read everything you need. Think about what it remembers.",
+		"The words from %s belong to %s." % [where, name],
 		"%s opens with %s." % [_cap(name), answer_text(lock_id)],
 	]
 

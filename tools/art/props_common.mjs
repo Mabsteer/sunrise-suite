@@ -240,5 +240,12 @@ files["lantern.svg"] = svg(50, 80, `  <path d="M25 2 V10" stroke="#3e3570" strok
 const star = (cx, cy, r) => { const p = []; for (let i = 0; i < 10; i++) { const a = -Math.PI / 2 + i * Math.PI / 5; const rr = i % 2 ? r * 0.45 : r; p.push(`${(cx + Math.cos(a) * rr).toFixed(1)} ${(cy + Math.sin(a) * rr).toFixed(1)}`); } return `<path d="M${p.join(" L")} Z" fill="#d9f5c4"/>`; };
 files["glow_stars.svg"] = svg(200, 90, [[20, 20, 10], [60, 50, 14], [100, 18, 9], [140, 44, 12], [180, 22, 8], [44, 76, 7], [118, 74, 8], [168, 70, 10]].map(([x, y, r]) => star(x, y, r)).join("\n  "), "Glow-in-the-dark stars stuck on the ceiling, glowing faintly.");
 
+// ---- Juliette's first beach bucket (Day 1 front garden)
+files["beach_bucket.svg"] = svg(96, 96, `  <ellipse cx="48" cy="90" rx="34" ry="5" fill="#3b2e3a" opacity="0.15"/>
+  <path d="M18 30 L78 30 L70 88 L26 88 Z" fill="#ee7b6b"/><ellipse cx="48" cy="30" rx="30" ry="8" fill="#c95b52"/>
+  <path d="M20 26 C20 4 76 4 76 26" stroke="#f6c453" stroke-width="5" fill="none"/>
+  <path d="M28 52 H68" stroke="#fffbf5" stroke-width="5" stroke-linecap="round"/><path d="M32 66 H64" stroke="#fffbf5" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  <circle cx="40" cy="24" r="5" fill="#fcd9b8"/><circle cx="55" cy="23" r="4" fill="#fffbf5"/>`, "Juliette's old red beach bucket with shells in it.");
+
 for (const [name, content] of Object.entries(files)) writeFileSync(join(OUT, name), content);
 console.log(`${Object.keys(files).length} prop SVGs written to ${OUT}`);

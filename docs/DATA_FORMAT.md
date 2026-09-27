@@ -51,6 +51,7 @@ Keys starting with `_` (like `_help`) are comments and are ignored.
 }
 ```
 - **visible_when** (optional, on items, clues and decoys): `"light"` (only seen with the room's light on) or `"dark"` (only with it off, like glow-in-the-dark stars). The room needs a `light_switch`; the solver and hints switch it when needed.
+- **Story locks** (hand-made rooms) also have `"_why"`: the intended reasoning in a sentence or two (for reviewers and the dev menu), and `"hints"`: exactly three strings, a nudge in Mamie's voice (never naming the lock), which object it belongs to, and how to read it. The hint button uses them instead of the generated hints. `tests/unit/test_story_lint.gd` checks both, and the notes rules in docs/STORY.md.
 - **requires_notes** (optional): memories from earlier rooms of the walk that this room needs. They are put in Mamie's notebook when the room starts (so a replay or a dev-mode jump still has them).
 - **location**: `"room"` (visible from the start), a **lock id** (inside that lock's container, reachable once it's open), or `"recipe"` (items made by combining).
 - **host**: where the thing is.

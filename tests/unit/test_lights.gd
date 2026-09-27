@@ -56,11 +56,11 @@ func test_every_room_has_a_light_to_find() -> void:
 
 
 func test_the_glow_stars_only_show_in_the_dark() -> void:
-	Router.params = {"level": Campaign.build("w2_bedroom"), "mode": "test"}
+	Router.params = {"level": Campaign.build("w1_bedroom"), "mode": "test"}
 	var scene := (load("res://scenes/level/level.tscn") as PackedScene).instantiate() as LevelScene
 	tree.root.add_child(scene)
 	await tree.process_frame
-	var h: Control = scene.hotspots["decoy:d_stars"]
+	var h: Control = scene.hotspots["clue:c_stars"]
 	assert_true(h.visible, "in the dark the stars glow")
 	scene.tap("lights")
 	assert_false(h.visible, "with the lamp on they're gone")

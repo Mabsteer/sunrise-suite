@@ -1,0 +1,44 @@
+{
+  "_help": "Day 1, room 7: the front garden, 'You came' (summer 2001). The drawings for Papa Henri and the letterbox; Chloé's leash; Juliette's first bucket under the roses; the gate ends the first day. See docs/STORY.md.",
+  "id": "ch1_front_garden",
+  "room": "front_garden",
+  "tier": 4,
+  "seed": 1,
+  "riddle": 2,
+  "par_time": 420,
+  "locks": [
+    {"id": "door", "type": "combo", "is_door": true, "host": {"kind": "door"}, "location": "room",
+     "answer": "2001", "clues": ["c_first", "c_bucket"], "config": {"digits": 4},
+     "_why": "The summer she first came through the gate is painted on her old bucket: 2001.",
+     "hints": ["When did you first come through this gate?", "The garden gate wants the summer you first came; your old bucket knows.", "The bucket says ÉTÉ 2001: 2001."]},
+    {"id": "letterbox", "type": "combo", "host": {"kind": "furniture", "furniture": "letterbox", "spot": "box"}, "location": "room",
+     "answer": "1212", "clues": ["c_drawings", "c_number"], "config": {"digits": 4},
+     "_why": "The house number (12, painted on the letterbox) written twice: 1212.",
+     "hints": ["Where did the drawings for Papa Henri go every day?", "The house number on the letterbox, and how you wrote it on every envelope.", "12, twice: 1212."]},
+    {"id": "walk", "type": "care", "host": {"kind": "dog"}, "location": "room", "item": "i_leash",
+     "_why": "Chloé scratches at the gate: she won't go on the street side without her leash, which was in the letterbox.",
+     "hints": ["Chloé keeps scratching at the gate.", "She wants her leash, and it was in the letterbox.", "Select the leash, then tap Chloé."]},
+    {"id": "roses", "type": "dog", "action": "dig", "host": {"kind": "furniture", "furniture": "roses", "spot": "soil"}, "location": "room",
+     "after": ["walk"],
+     "_why": "Something is buried under the roses; Chloé digs once she has her leash.",
+     "hints": ["Someone has dug in that flower bed before. Not by hand.", "Chloé could dig under the roses.", "Tap Chloé, then tap the soil under the roses."]},
+    {"id": "bench", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "bench", "spot": "under"}, "location": "room",
+     "_why": "A memory rolled under the bench; only Chloé fits.",
+     "hints": ["Something small rolled out of sight near the bench.", "Chloé fits under the bench.", "Tap Chloé, then tap under the bench."]}
+  ],
+  "items": [
+    {"id": "i_leash", "type": "leash", "location": "letterbox"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_drawings", "memory": "front_drawings", "host": {"kind": "prop", "prop": "note", "slot": "bench_1"}, "location": "room", "for": "letterbox"},
+    {"id": "c_number", "host": {"kind": "furniture", "furniture": "letterbox", "spot": "number"}, "location": "room", "for": "letterbox",
+     "text": "The house number, painted on the letterbox long ago: 12."},
+    {"id": "c_first", "memory": "front_first", "host": {"kind": "prop", "prop": "note"}, "location": "roses", "for": "door"},
+    {"id": "c_bucket", "host": {"kind": "prop", "prop": "beach_bucket"}, "location": "roses", "for": "door",
+     "text": "Your old red beach bucket, full of shells and dried seaweed. Painted on the side in wobbly letters: JULIETTE · 5 ANS · ÉTÉ 2001."}
+  ],
+  "decoys": [
+    {"id": "d_icecream", "memory": "front_icecream", "host": {"kind": "prop", "prop": "note"}, "location": "bench"}
+  ]
+}

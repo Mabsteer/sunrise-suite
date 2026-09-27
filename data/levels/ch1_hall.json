@@ -1,0 +1,48 @@
+{
+  "_help": "Day 1, room 2: the hall, 'Every summer, a little taller' (2009-2015). Notes with a \"memory\" take their text from data/story.json. Chloé hides in the cupboard under the stairs; Gaston brings her out. See docs/STORY.md.",
+  "id": "ch1_hall",
+  "room": "hall",
+  "tier": 2,
+  "seed": 1,
+  "riddle": 2,
+  "par_time": 420,
+  "locks": [
+    {"id": "door", "type": "key", "is_door": true, "host": {"kind": "door"}, "location": "room", "item": "i_key",
+     "_why": "The key was in the cardigan pocket Chloé was sleeping on.",
+     "hints": ["The way upstairs has a little gate. Gates like keys.", "The key from the cupboard under the stairs fits the stair gate.", "Select the brass key in your bag, then tap the stair gate."]},
+    {"id": "drawer", "type": "combo", "host": {"kind": "furniture", "furniture": "console", "spot": "drawer"}, "location": "room",
+     "answer": "579", "clues": ["c_marks_note", "c_marks"], "config": {"digits": 3},
+     "_why": "'The first three measurements' are the three lowest pencil marks on the door frame: 5, 7, 9.",
+     "hints": ["Where did you stand every first day of summer, heels to the wall?", "The pencil marks on the door frame have something to do with the console drawer.", "The three lowest marks, from the floor up: 5, 7, 9."]},
+    {"id": "clock", "type": "clock", "host": {"kind": "furniture", "furniture": "grandfather_clock", "spot": "face"}, "location": "room",
+     "answer": "7:15", "clues": ["c_bus", "c_ticket"],
+     "_why": "The clock should show the time of the bus; the old ticket in the beach bag says 07:15.",
+     "hints": ["What did you always carry on the bus? And what's still in it?", "The grandfather clock stopped; the beach bag remembers the bus.", "The ticket in the beach bag says 07:15: set the grandfather clock to a quarter past seven."]},
+    {"id": "photos", "type": "order", "host": {"kind": "prop", "prop": "photo_ledge", "slot": "wall_b"}, "location": "room",
+     "answer": "shell,wave,star,heart", "clues": ["c_photos"], "config": {"length": 4},
+     "_why": "The summers in the order they happened: shells for the castle, then swimming (the sea), the shooting stars, and last the ice-cream boy (a heart).",
+     "hints": ["Which summer came first? Think of what you cared about most at five.", "The photo ledge wants the summers back in order, oldest first.", "Shells, then the waves, then the stars, then the heart."]},
+    {"id": "cupboard", "type": "care", "finds_dog": true, "host": {"kind": "furniture", "furniture": "stairs", "spot": "cupboard"}, "location": "room",
+     "item": "i_gaston",
+     "_why": "Chloé hides under the stairs and only comes out for Gaston (the kitchen note says so).",
+     "hints": ["Listen. Something small is breathing under the stairs.", "Chloé is in the cupboard under the stairs. What can she never resist?", "Select Gaston in your bag, then tap the cupboard under the stairs."]}
+  ],
+  "items": [
+    {"id": "i_gaston", "type": "gaston", "location": "photos"},
+    {"id": "i_key", "type": "brass_key", "location": "cupboard"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_marks_note", "memory": "hall_marks", "host": {"kind": "prop", "prop": "note", "slot": "console_1"}, "location": "room", "for": "drawer"},
+    {"id": "c_marks", "host": {"kind": "furniture", "furniture": "height_marks", "spot": "marks"}, "location": "room", "for": "drawer",
+     "text": "Pencil lines on the door frame, each with a little number beside it: 5, 7, 9, 11, 13, 15. The higher ones are on tiptoe."},
+    {"id": "c_bus", "memory": "hall_bus", "host": {"kind": "prop", "prop": "note"}, "location": "drawer", "for": "clock"},
+    {"id": "c_ticket", "host": {"kind": "furniture", "furniture": "coat_rack", "spot": "beach_bag"}, "location": "room", "for": "clock",
+     "text": "At the bottom of the beach bag, under a sandy towel: an old bus ticket, soft as cloth. LINE 3 · BEACH · 07:15."},
+    {"id": "c_photos", "memory": "hall_photos", "host": {"kind": "prop", "prop": "note"}, "location": "clock", "for": "photos"}
+  ],
+  "decoys": [
+    {"id": "d_shoebox", "memory": "hall_shoebox", "host": {"kind": "prop", "prop": "note"}, "location": "cupboard"}
+  ],
+  "postcard": {"id": "reykjavik", "host": {"kind": "prop", "prop": "postcard"}, "location": "drawer"}
+}

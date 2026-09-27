@@ -5,12 +5,12 @@
       "id": 1,
       "levels": [
         {"id": "w1_kitchen", "room": "kitchen", "tier": 1, "seed": 2101, "level_file": "tutorial"},
-        {"id": "w1_hall", "room": "hall", "tier": 2, "seed": 2102, "level_file": "story_hall", "postcard": "reykjavik", "find_dog": true},
-        {"id": "w1_bedroom", "room": "bedroom", "tier": 3, "seed": 2103, "companion": true},
-        {"id": "w1_lounge", "room": "lounge", "tier": 3, "seed": 2104, "companion": true},
-        {"id": "w1_garden", "room": "garden", "tier": 4, "seed": 2105, "companion": true},
-        {"id": "w1_shed", "room": "shed", "tier": 4, "seed": 2106, "companion": true},
-        {"id": "w1_front_garden", "room": "front_garden", "tier": 4, "seed": 2107, "companion": true}
+        {"id": "w1_hall", "room": "hall", "tier": 2, "seed": 2102, "level_file": "ch1_hall", "postcard": "reykjavik", "find_dog": true},
+        {"id": "w1_bedroom", "room": "bedroom", "tier": 3, "seed": 2103, "level_file": "ch1_bedroom", "companion": true},
+        {"id": "w1_lounge", "room": "lounge", "tier": 3, "seed": 2104, "level_file": "ch1_lounge", "companion": true},
+        {"id": "w1_garden", "room": "garden", "tier": 4, "seed": 2105, "level_file": "ch1_garden", "companion": true},
+        {"id": "w1_shed", "room": "shed", "tier": 4, "seed": 2106, "level_file": "ch1_shed", "companion": true},
+        {"id": "w1_front_garden", "room": "front_garden", "tier": 4, "seed": 2107, "level_file": "ch1_front_garden", "companion": true}
       ]
     },
     {

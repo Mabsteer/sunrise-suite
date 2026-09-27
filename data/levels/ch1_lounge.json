@@ -1,0 +1,45 @@
+{
+  "_help": "Day 1, room 4: the living room, 'Rainy days' (2003-2005). The fort rules work the lamp panel; the rainy-day number square's grey squares give the credenza code. See docs/STORY.md.",
+  "id": "ch1_lounge",
+  "room": "lounge",
+  "tier": 3,
+  "seed": 1,
+  "riddle": 2,
+  "par_time": 540,
+  "locks": [
+    {"id": "door", "type": "key", "is_door": true, "host": {"kind": "door"}, "location": "room", "item": "i_key",
+     "_why": "The garden doors' key was in the credenza drawers.",
+     "hints": ["The garden is waiting outside, but the doors are locked.", "The key from the credenza drawers opens the garden doors.", "Select the brass key, then tap the garden doors."]},
+    {"id": "lamps", "type": "switches", "host": {"kind": "prop", "prop": "switch_panel", "slot": "wall_door"}, "location": "room",
+     "answer": "0110", "clues": ["c_fort"], "config": {"symbols": ["sun", "shell", "star", "wave"]},
+     "_why": "Night inside the fort: no sunshine (sun off). Not without the stars (star on). Shells glow when the stars do (shell on). The sea is never where the shells are (wave off).",
+     "hints": ["A fort needs the right light. Who made the rules?", "The fort rules are about the lamp panel by the garden doors.", "Sun off, shell on, star on, wave off."]},
+    {"id": "cabinet", "type": "key", "host": {"kind": "furniture", "furniture": "bookshelf", "spot": "cabinet"}, "location": "room",
+     "item": "i_small_key",
+     "_why": "The small key from behind the lamp panel opens the bookshelf cabinet.",
+     "hints": ["A small key, a small door low down.", "The small key fits the bookshelf cabinet.", "Select the small key, then tap the bookshelf cabinet."]},
+    {"id": "square", "type": "sudoku", "host": {"kind": "prop", "prop": "newspaper"}, "location": "cabinet",
+     "answer": "1234341221434321", "config": {"givens": "1..4.4..2..3..2.", "shaded": [2, 7, 9, 12]},
+     "_why": "A 4x4 number square: every row, column and 2x2 box has 1-4 once.",
+     "hints": ["Rainy days meant number squares. Finish it.", "Every row, every column and every 2x2 box needs 1, 2, 3 and 4 once.", "Top row: 1 2 3 4. Second row: 3 4 1 2."]},
+    {"id": "rug", "type": "dog", "action": "fetch", "host": {"kind": "furniture", "furniture": "rug", "spot": "rug"}, "location": "room",
+     "_why": "The torn-out page slid under the rug, where only Chloé can wriggle.",
+     "hints": ["Something slid somewhere only a small dog can go.", "Chloé can wriggle under the rug.", "Tap Chloé, then tap the rug."]},
+    {"id": "credenza", "type": "combo", "host": {"kind": "furniture", "furniture": "credenza", "spot": "drawers"}, "location": "room",
+     "answer": "3214", "clues": ["c_squares"], "config": {"digits": 4},
+     "_why": "The grey squares of the finished number square, read like a book (row by row): 3, 2, 1, 4. 'Pocket money' goes in the drawers.",
+     "hints": ["Pocket money had to live somewhere in this room.", "The grey squares of the number square open the credenza drawers.", "Read the grey squares row by row, like a book: 3, 2, 1, 4."]}
+  ],
+  "items": [
+    {"id": "i_small_key", "type": "tiny_key", "location": "lamps"},
+    {"id": "i_key", "type": "brass_key", "location": "credenza"}
+  ],
+  "recipes": [],
+  "clues": [
+    {"id": "c_fort", "memory": "lounge_fort", "host": {"kind": "prop", "prop": "note", "slot": "coffee_1"}, "location": "room", "for": "lamps"},
+    {"id": "c_squares", "memory": "lounge_squares", "host": {"kind": "prop", "prop": "note"}, "location": "rug", "for": "credenza", "source": "square"}
+  ],
+  "decoys": [
+    {"id": "d_cards", "memory": "lounge_cards", "host": {"kind": "prop", "prop": "note"}, "location": "credenza"}
+  ]
+}
